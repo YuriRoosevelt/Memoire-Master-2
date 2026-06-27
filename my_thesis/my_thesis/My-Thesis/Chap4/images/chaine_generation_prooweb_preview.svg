@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 34px; font-weight: 700; fill: #111827; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 20px; fill: #4b5563; }
+      .box-title { font-family: Arial, sans-serif; font-size: 23px; font-weight: 700; fill: #111827; }
+      .box-text { font-family: Arial, sans-serif; font-size: 18px; fill: #374151; }
+      .small { font-family: Arial, sans-serif; font-size: 16px; fill: #4b5563; }
+      .label { font-family: Arial, sans-serif; font-size: 17px; font-weight: 700; fill: #374151; }
+      .box { stroke-width: 2.2; rx: 8; ry: 8; }
+      .input { fill: #f8fafc; stroke: #475569; }
+      .process { fill: #ecfeff; stroke: #0891b2; }
+      .contract { fill: #f0fdf4; stroke: #16a34a; }
+      .output { fill: #fff7ed; stroke: #ea580c; }
+      .trace { fill: #fefce8; stroke: #ca8a04; }
+      .line { stroke: #1f2937; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #6b7280; stroke-width: 2.2; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1400" height="760" fill="#ffffff"/>
+  <text x="700" y="58" text-anchor="middle" class="title">Chaîne de génération de ProOWeb</text>
+  <text x="700" y="92" text-anchor="middle" class="subtitle">Du modèle BPMN enrichi vers une application web métier générée et traçable</text>
+
+  <rect x="55" y="175" width="235" height="135" class="box input"/>
+  <text x="172.5" y="215" text-anchor="middle" class="box-title">Entrées</text>
+  <text x="172.5" y="250" text-anchor="middle" class="box-text">Modèle BPMN</text>
+  <text x="172.5" y="278" text-anchor="middle" class="box-text">Spécification spec-v1</text>
+
+  <rect x="365" y="155" width="250" height="175" class="box process"/>
+  <text x="490" y="195" text-anchor="middle" class="box-title">Analyse et validation</text>
+  <text x="490" y="232" text-anchor="middle" class="box-text">Lecture du BPMN</text>
+  <text x="490" y="260" text-anchor="middle" class="box-text">Contrôle des rôles</text>
+  <text x="490" y="288" text-anchor="middle" class="box-text">Vérification des données</text>
+
+  <rect x="690" y="155" width="250" height="175" class="box contract"/>
+  <text x="815" y="195" text-anchor="middle" class="box-title">Contrats intermédiaires</text>
+  <text x="815" y="232" text-anchor="middle" class="box-text">Runtime contract</text>
+  <text x="815" y="260" text-anchor="middle" class="box-text">Data contract</text>
+  <text x="815" y="288" text-anchor="middle" class="box-text">Catalogues UI</text>
+
+  <rect x="1015" y="155" width="250" height="175" class="box process"/>
+  <text x="1140" y="195" text-anchor="middle" class="box-title">Gabarits M2T</text>
+  <text x="1140" y="232" text-anchor="middle" class="box-text">Projection vers fichiers</text>
+  <text x="1140" y="260" text-anchor="middle" class="box-text">Backend, frontend</text>
+  <text x="1140" y="288" text-anchor="middle" class="box-text">Configuration</text>
+
+  <rect x="265" y="455" width="300" height="155" class="box output"/>
+  <text x="415" y="498" text-anchor="middle" class="box-title">Application générée</text>
+  <text x="415" y="536" text-anchor="middle" class="box-text">Spring Boot</text>
+  <text x="415" y="564" text-anchor="middle" class="box-text">React / Vite</text>
+  <text x="415" y="592" text-anchor="middle" class="box-text">Tâches, formulaires, supervision</text>
+
+  <rect x="835" y="455" width="300" height="155" class="box trace"/>
+  <text x="985" y="498" text-anchor="middle" class="box-title">Traçabilité</text>
+  <text x="985" y="536" text-anchor="middle" class="box-text">Manifeste généré</text>
+  <text x="985" y="564" text-anchor="middle" class="box-text">Empreintes des fichiers</text>
+  <text x="985" y="592" text-anchor="middle" class="box-text">Régénération contrôlée</text>
+
+  <path d="M 290 242 L 360 242" class="line"/>
+  <path d="M 615 242 L 685 242" class="line"/>
+  <path d="M 940 242 L 1010 242" class="line"/>
+  <path d="M 1140 330 C 1140 405, 670 405, 510 455" class="line"/>
+  <path d="M 1140 330 C 1140 390, 1035 405, 995 455" class="line"/>
+  <path d="M 835 532 C 705 532, 660 430, 815 333" class="dash"/>
+
+  <text x="325" y="224" text-anchor="middle" class="label">1</text>
+  <text x="650" y="224" text-anchor="middle" class="label">2</text>
+  <text x="975" y="224" text-anchor="middle" class="label">3</text>
+  <text x="775" y="430" text-anchor="middle" class="small">fichiers applicatifs</text>
+  <text x="720" y="548" text-anchor="middle" class="small">retour pour évolution</text>
+
+  <text x="700" y="690" text-anchor="middle" class="small">Figure proposée : chaîne de génération, contrats intermédiaires, artefacts produits et mécanisme de traçabilité.</text>
+</svg>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_P3_Reclamation_Produit" targetNamespace="http://prooweb.example/bpmn/p3-reclamation-produit" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.16.0">
+  <bpmn:collaboration id="Collaboration_P3_Reclamation_Produit">
+    <bpmn:participant id="Participant_Organisation_Ecommerce" name="Organisation e-commerce" processRef="Process_P3_Reclamation_Produit" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_P3_Reclamation_Produit" name="P3 Réclamation de produit" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_P3_Reclamation_Produit">
+      <bpmn:lane id="Lane_Gestionnaire_Stock" name="Gestionnaire de stock">
+        <bpmn:flowNodeRef>UserTask_Verifier_Reference_Etat_Produit</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Renseigner_Resultat_Verification</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Service_Commercial" name="Service commercial">
+        <bpmn:flowNodeRef>UserTask_Examiner_Solution_Proposee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Solution_Acceptee</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Service_Client" name="Service client">
+        <bpmn:flowNodeRef>UserTask_Qualifier_Reclamation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Verifier_Commande_Concernee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Reclamation_Rejetee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Analyser_Motif_Reclamation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Verification_Stock_Necessaire</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Enregistrer_Decision</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Notifier_Client_Decision</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Cloturer_Reclamation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Reviser_Solution</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Proposer_Solution</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Validation_Commerciale_Necessaire</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Rejeter_Reclamation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Notifier_Client_Rejet</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Reclamation_Recevable</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Client" name="Client">
+        <bpmn:flowNodeRef>UserTask_Consulter_Reponse</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Deposer_Reclamation_Produit</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_Debut_Reclamation</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Reclamation_Cloturee</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:userTask id="UserTask_Qualifier_Reclamation" name="Qualifier la réclamation">
+      <bpmn:incoming>Flow_002</bpmn:incoming>
+      <bpmn:outgoing>Flow_003</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Verifier_Commande_Concernee" name="Vérifier la commande concernée">
+      <bpmn:incoming>Flow_003</bpmn:incoming>
+      <bpmn:outgoing>Flow_004</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_Reclamation_Rejetee" name="Fin">
+      <bpmn:incoming>Flow_007</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="UserTask_Analyser_Motif_Reclamation" name="Analyser le motif de réclamation">
+      <bpmn:incoming>Flow_008_Oui</bpmn:incoming>
+      <bpmn:outgoing>Flow_009</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_Verification_Stock_Necessaire" name="Vérification stock nécessaire ?">
+      <bpmn:incoming>Flow_009</bpmn:incoming>
+      <bpmn:outgoing>Flow_010_Oui</bpmn:outgoing>
+      <bpmn:outgoing>Flow_013_Non</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="UserTask_Verifier_Reference_Etat_Produit" name="Vérifier la référence et l&#39;état du produit">
+      <bpmn:incoming>Flow_010_Oui</bpmn:incoming>
+      <bpmn:outgoing>Flow_011</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Renseigner_Resultat_Verification" name="Renseigner le résultat de vérification">
+      <bpmn:incoming>Flow_011</bpmn:incoming>
+      <bpmn:outgoing>Flow_012</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Examiner_Solution_Proposee" name="Examiner la solution proposée">
+      <bpmn:incoming>Flow_015_Oui</bpmn:incoming>
+      <bpmn:outgoing>Flow_016</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_Solution_Acceptee" name="Solution acceptée ?">
+      <bpmn:incoming>Flow_016</bpmn:incoming>
+      <bpmn:outgoing>Flow_017_Non</bpmn:outgoing>
+      <bpmn:outgoing>Flow_019_Oui</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="UserTask_Enregistrer_Decision" name="Enregistrer la décision">
+      <bpmn:incoming>Flow_019_Oui</bpmn:incoming>
+      <bpmn:incoming>Flow_020_Non</bpmn:incoming>
+      <bpmn:outgoing>Flow_021</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Notifier_Client_Decision" name="Notifier le client">
+      <bpmn:incoming>Flow_021</bpmn:incoming>
+      <bpmn:outgoing>Flow_022</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Cloturer_Reclamation" name="Clôturer la réclamation">
+      <bpmn:incoming>Flow_022</bpmn:incoming>
+      <bpmn:outgoing>Flow_023</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Consulter_Reponse" name="Consulter la réponse">
+      <bpmn:incoming>Flow_023</bpmn:incoming>
+      <bpmn:outgoing>Flow_024</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Reviser_Solution" name="Réviser la solution">
+      <bpmn:incoming>Flow_017_Non</bpmn:incoming>
+      <bpmn:outgoing>Flow_018</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Proposer_Solution" name="Proposer une solution">
+      <bpmn:incoming>Flow_012</bpmn:incoming>
+      <bpmn:incoming>Flow_013_Non</bpmn:incoming>
+      <bpmn:incoming>Flow_018</bpmn:incoming>
+      <bpmn:outgoing>Flow_014</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_Validation_Commerciale_Necessaire" name="Validation commerciale nécessaire ?">
+      <bpmn:incoming>Flow_014</bpmn:incoming>
+      <bpmn:outgoing>Flow_015_Oui</bpmn:outgoing>
+      <bpmn:outgoing>Flow_020_Non</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="UserTask_Rejeter_Reclamation" name="Rejeter la réclamation">
+      <bpmn:incoming>Flow_005_Non</bpmn:incoming>
+      <bpmn:outgoing>Flow_006</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Notifier_Client_Rejet" name="Notifier le client du rejet">
+      <bpmn:incoming>Flow_006</bpmn:incoming>
+      <bpmn:outgoing>Flow_007</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_Reclamation_Recevable" name="Réclamation recevable ?">
+      <bpmn:incoming>Flow_004</bpmn:incoming>
+      <bpmn:outgoing>Flow_005_Non</bpmn:outgoing>
+      <bpmn:outgoing>Flow_008_Oui</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="UserTask_Deposer_Reclamation_Produit" name="Déposer une réclamation produit">
+      <bpmn:incoming>Flow_001</bpmn:incoming>
+      <bpmn:outgoing>Flow_002</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:startEvent id="StartEvent_Debut_Reclamation" name="Début">
+      <bpmn:outgoing>Flow_001</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_Reclamation_Cloturee" name="Fin">
+      <bpmn:incoming>Flow_024</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_002" sourceRef="UserTask_Deposer_Reclamation_Produit" targetRef="UserTask_Qualifier_Reclamation" />
+    <bpmn:sequenceFlow id="Flow_003" sourceRef="UserTask_Qualifier_Reclamation" targetRef="UserTask_Verifier_Commande_Concernee" />
+    <bpmn:sequenceFlow id="Flow_004" sourceRef="UserTask_Verifier_Commande_Concernee" targetRef="Gateway_Reclamation_Recevable" />
+    <bpmn:sequenceFlow id="Flow_007" sourceRef="UserTask_Notifier_Client_Rejet" targetRef="EndEvent_Reclamation_Rejetee" />
+    <bpmn:sequenceFlow id="Flow_008_Oui" name="Oui" sourceRef="Gateway_Reclamation_Recevable" targetRef="UserTask_Analyser_Motif_Reclamation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${reclamationRecevable == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_009" sourceRef="UserTask_Analyser_Motif_Reclamation" targetRef="Gateway_Verification_Stock_Necessaire" />
+    <bpmn:sequenceFlow id="Flow_010_Oui" name="Oui" sourceRef="Gateway_Verification_Stock_Necessaire" targetRef="UserTask_Verifier_Reference_Etat_Produit">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${verificationStockNecessaire == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_013_Non" name="Non" sourceRef="Gateway_Verification_Stock_Necessaire" targetRef="UserTask_Proposer_Solution">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${verificationStockNecessaire == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_011" sourceRef="UserTask_Verifier_Reference_Etat_Produit" targetRef="UserTask_Renseigner_Resultat_Verification" />
+    <bpmn:sequenceFlow id="Flow_012" sourceRef="UserTask_Renseigner_Resultat_Verification" targetRef="UserTask_Proposer_Solution" />
+    <bpmn:sequenceFlow id="Flow_015_Oui" name="Oui" sourceRef="Gateway_Validation_Commerciale_Necessaire" targetRef="UserTask_Examiner_Solution_Proposee">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${validationCommercialeNecessaire == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_016" sourceRef="UserTask_Examiner_Solution_Proposee" targetRef="Gateway_Solution_Acceptee" />
+    <bpmn:sequenceFlow id="Flow_017_Non" name="Non" sourceRef="Gateway_Solution_Acceptee" targetRef="UserTask_Reviser_Solution">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${solutionAcceptee == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_019_Oui" name="Oui" sourceRef="Gateway_Solution_Acceptee" targetRef="UserTask_Enregistrer_Decision">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${solutionAcceptee == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_020_Non" name="Non" sourceRef="Gateway_Validation_Commerciale_Necessaire" targetRef="UserTask_Enregistrer_Decision">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${validationCommercialeNecessaire == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_021" sourceRef="UserTask_Enregistrer_Decision" targetRef="UserTask_Notifier_Client_Decision" />
+    <bpmn:sequenceFlow id="Flow_022" sourceRef="UserTask_Notifier_Client_Decision" targetRef="UserTask_Cloturer_Reclamation" />
+    <bpmn:sequenceFlow id="Flow_023" sourceRef="UserTask_Cloturer_Reclamation" targetRef="UserTask_Consulter_Reponse" />
+    <bpmn:sequenceFlow id="Flow_024" sourceRef="UserTask_Consulter_Reponse" targetRef="EndEvent_Reclamation_Cloturee" />
+    <bpmn:sequenceFlow id="Flow_018" sourceRef="UserTask_Reviser_Solution" targetRef="UserTask_Proposer_Solution" />
+    <bpmn:sequenceFlow id="Flow_014" sourceRef="UserTask_Proposer_Solution" targetRef="Gateway_Validation_Commerciale_Necessaire" />
+    <bpmn:sequenceFlow id="Flow_005_Non" name="Non" sourceRef="Gateway_Reclamation_Recevable" targetRef="UserTask_Rejeter_Reclamation">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${reclamationRecevable == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_006" sourceRef="UserTask_Rejeter_Reclamation" targetRef="UserTask_Notifier_Client_Rejet" />
+    <bpmn:sequenceFlow id="Flow_001" sourceRef="StartEvent_Debut_Reclamation" targetRef="UserTask_Deposer_Reclamation_Produit" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_P3_Reclamation_Produit">
+    <bpmndi:BPMNPlane id="BPMNPlane_P3_Reclamation_Produit" bpmnElement="Collaboration_P3_Reclamation_Produit">
+      <bpmndi:BPMNShape id="Participant_Organisation_Ecommerce_di" bpmnElement="Participant_Organisation_Ecommerce" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="2810" height="810" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Gestionnaire_Stock_di" bpmnElement="Lane_Gestionnaire_Stock" isHorizontal="true">
+        <dc:Bounds x="190" y="710" width="2780" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Service_Commercial_di" bpmnElement="Lane_Service_Commercial" isHorizontal="true">
+        <dc:Bounds x="190" y="530" width="2780" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Service_Client_di" bpmnElement="Lane_Service_Client" isHorizontal="true">
+        <dc:Bounds x="190" y="290" width="2780" height="240" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Client_di" bpmnElement="Lane_Client" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="2780" height="210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Qualifier_Reclamation_di" bpmnElement="UserTask_Qualifier_Reclamation">
+        <dc:Bounds x="490" y="400" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Verifier_Commande_Concernee_di" bpmnElement="UserTask_Verifier_Commande_Concernee">
+        <dc:Bounds x="670" y="400" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Reclamation_Rejetee_di" bpmnElement="EndEvent_Reclamation_Rejetee">
+        <dc:Bounds x="1320" y="387" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1330" y="423" width="16" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Analyser_Motif_Reclamation_di" bpmnElement="UserTask_Analyser_Motif_Reclamation">
+        <dc:Bounds x="960" y="450" width="130" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Verification_Stock_Necessaire_di" bpmnElement="Gateway_Verification_Stock_Necessaire" isMarkerVisible="true">
+        <dc:Bounds x="1145" y="460" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1128" y="422.5" width="84" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Verifier_Reference_Etat_Produit_di" bpmnElement="UserTask_Verifier_Reference_Etat_Produit">
+        <dc:Bounds x="1260" y="755" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Renseigner_Resultat_Verification_di" bpmnElement="UserTask_Renseigner_Resultat_Verification">
+        <dc:Bounds x="1460" y="755" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Examiner_Solution_Proposee_di" bpmnElement="UserTask_Examiner_Solution_Proposee">
+        <dc:Bounds x="1970" y="580" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Solution_Acceptee_di" bpmnElement="Gateway_Solution_Acceptee" isMarkerVisible="true">
+        <dc:Bounds x="2170" y="595" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2151" y="645" width="88" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Enregistrer_Decision_di" bpmnElement="UserTask_Enregistrer_Decision">
+        <dc:Bounds x="2290" y="400" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Notifier_Client_Decision_di" bpmnElement="UserTask_Notifier_Client_Decision">
+        <dc:Bounds x="2460" y="400" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Cloturer_Reclamation_di" bpmnElement="UserTask_Cloturer_Reclamation">
+        <dc:Bounds x="2620" y="400" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Consulter_Reponse_di" bpmnElement="UserTask_Consulter_Reponse">
+        <dc:Bounds x="2740" y="150" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Reviser_Solution_di" bpmnElement="UserTask_Reviser_Solution">
+        <dc:Bounds x="1975" y="320" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Proposer_Solution_di" bpmnElement="UserTask_Proposer_Solution">
+        <dc:Bounds x="1535" y="380" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Validation_Commerciale_Necessaire_di" bpmnElement="Gateway_Validation_Commerciale_Necessaire" isMarkerVisible="true">
+        <dc:Bounds x="1835" y="460" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1828" y="410" width="63" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Rejeter_Reclamation_di" bpmnElement="UserTask_Rejeter_Reclamation">
+        <dc:Bounds x="955" y="320" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Notifier_Client_Rejet_di" bpmnElement="UserTask_Notifier_Client_Rejet">
+        <dc:Bounds x="1140" y="320" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Reclamation_Recevable_di" bpmnElement="Gateway_Reclamation_Recevable" isMarkerVisible="true">
+        <dc:Bounds x="850" y="395" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="910" y="406" width="62" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Deposer_Reclamation_Produit_di" bpmnElement="UserTask_Deposer_Reclamation_Produit">
+        <dc:Bounds x="335" y="150" width="130" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_Debut_Reclamation_di" bpmnElement="StartEvent_Debut_Reclamation">
+        <dc:Bounds x="242" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="245" y="208" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Reclamation_Cloturee_di" bpmnElement="EndEvent_Reclamation_Cloturee">
+        <dc:Bounds x="2895" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2905" y="208" width="16" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_001_di" bpmnElement="Flow_001">
+        <di:waypoint x="278" y="190" />
+        <di:waypoint x="335" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_002_di" bpmnElement="Flow_002">
+        <di:waypoint x="400" y="230" />
+        <di:waypoint x="400" y="440" />
+        <di:waypoint x="490" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_003_di" bpmnElement="Flow_003">
+        <di:waypoint x="620" y="440" />
+        <di:waypoint x="670" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_004_di" bpmnElement="Flow_004">
+        <di:waypoint x="800" y="440" />
+        <di:waypoint x="825" y="440" />
+        <di:waypoint x="825" y="420" />
+        <di:waypoint x="850" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_005_Non_di" bpmnElement="Flow_005_Non">
+        <di:waypoint x="875" y="395" />
+        <di:waypoint x="875" y="360" />
+        <di:waypoint x="955" y="360" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="879" y="355" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_006_di" bpmnElement="Flow_006">
+        <di:waypoint x="1085" y="360" />
+        <di:waypoint x="1140" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_007_di" bpmnElement="Flow_007">
+        <di:waypoint x="1270" y="360" />
+        <di:waypoint x="1295" y="360" />
+        <di:waypoint x="1295" y="405" />
+        <di:waypoint x="1320" y="405" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_008_Oui_di" bpmnElement="Flow_008_Oui">
+        <di:waypoint x="875" y="445" />
+        <di:waypoint x="875" y="485" />
+        <di:waypoint x="960" y="485" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="881" y="465" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_009_di" bpmnElement="Flow_009">
+        <di:waypoint x="1090" y="485" />
+        <di:waypoint x="1145" y="485" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_010_Oui_di" bpmnElement="Flow_010_Oui">
+        <di:waypoint x="1170" y="510" />
+        <di:waypoint x="1170" y="795" />
+        <di:waypoint x="1260" y="795" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1176" y="643" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_011_di" bpmnElement="Flow_011">
+        <di:waypoint x="1410" y="795" />
+        <di:waypoint x="1460" y="795" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_012_di" bpmnElement="Flow_012">
+        <di:waypoint x="1535" y="755" />
+        <di:waypoint x="1535" y="608" />
+        <di:waypoint x="1600" y="608" />
+        <di:waypoint x="1600" y="460" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_013_Non_di" bpmnElement="Flow_013_Non">
+        <di:waypoint x="1195" y="485" />
+        <di:waypoint x="1420" y="485" />
+        <di:waypoint x="1420" y="420" />
+        <di:waypoint x="1535" y="420" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1425" y="442" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_014_di" bpmnElement="Flow_014">
+        <di:waypoint x="1665" y="420" />
+        <di:waypoint x="1763" y="420" />
+        <di:waypoint x="1763" y="485" />
+        <di:waypoint x="1835" y="485" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_015_Oui_di" bpmnElement="Flow_015_Oui">
+        <di:waypoint x="1860" y="510" />
+        <di:waypoint x="1860" y="620" />
+        <di:waypoint x="1970" y="620" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1866" y="556" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_016_di" bpmnElement="Flow_016">
+        <di:waypoint x="2100" y="620" />
+        <di:waypoint x="2170" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_017_Non_di" bpmnElement="Flow_017_Non">
+        <di:waypoint x="2195" y="595" />
+        <di:waypoint x="2195" y="360" />
+        <di:waypoint x="2105" y="360" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2200" y="467" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_018_di" bpmnElement="Flow_018">
+        <di:waypoint x="1975" y="360" />
+        <di:waypoint x="1840" y="360" />
+        <di:waypoint x="1840" y="420" />
+        <di:waypoint x="1665" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_019_Oui_di" bpmnElement="Flow_019_Oui">
+        <di:waypoint x="2220" y="620" />
+        <di:waypoint x="2260" y="620" />
+        <di:waypoint x="2260" y="440" />
+        <di:waypoint x="2290" y="440" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2266" y="520" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_020_Non_di" bpmnElement="Flow_020_Non">
+        <di:waypoint x="1885" y="485" />
+        <di:waypoint x="2088" y="485" />
+        <di:waypoint x="2088" y="440" />
+        <di:waypoint x="2290" y="440" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1976" y="460" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_021_di" bpmnElement="Flow_021">
+        <di:waypoint x="2420" y="440" />
+        <di:waypoint x="2460" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_022_di" bpmnElement="Flow_022">
+        <di:waypoint x="2580" y="440" />
+        <di:waypoint x="2620" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_023_di" bpmnElement="Flow_023">
+        <di:waypoint x="2680" y="400" />
+        <di:waypoint x="2680" y="315" />
+        <di:waypoint x="2800" y="315" />
+        <di:waypoint x="2800" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_024_di" bpmnElement="Flow_024">
+        <di:waypoint x="2860" y="190" />
+        <di:waypoint x="2895" y="190" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

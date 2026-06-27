@@ -1,0 +1,14 @@
+\let\oldprintchaptertitle=\printchaptertitle
+\renewcommand{\printchaptertitle}[1]{%
+	\vspace*{-75pt}
+	\oldprintchaptertitle{#1}
+}%
+\myChapterStar{Abstract}{}{section}
+\let\printchaptertitle=\oldprintchaptertitle
+
+This thesis focuses on generating business web applications from process models. It begins with the observation that, in many organizations, processes already describe a significant portion of the work to be computerized: the activities to be sequenced, the stakeholders involved, the information handled, and the decisions to be made. However, when developing a web application, these models often remain confined to a purely documentary role, and their content must be manually reinterpreted by developers. This separation weakens the coherence between business needs and the software produced, complicates maintenance, and makes application evolution more expensive when procedures change. The objective of this work is therefore to design a framework capable of making more direct use of an enriched BPMN model to produce a structured, traceable, and adaptable business web application. To this end, we have designed ProOWeb, a framework that combines the BPMN model, responsible for representing the process flow, with a complementary specification. This specification provides the information that the model does not adequately contain, including roles, assignments, data, inputs, outputs, visibility rules, and the necessary information for form generation. The framework validates these elements, organizes them into a pivot model, and then projects them onto the artifacts of a business web application: processing views, application logic, data structures, access rules, instance tracking, and generation traces. The work also emphasizes controlled regeneration, ensuring that the resulting application can evolve without breaking the link between the process, the specification, and the code. Thus, ProOWeb aims not only to automate file writing but also to foster a lasting connection between business modeling and software development.
+
+\vspace{1cm}
+\noindent\textbf{Keywords:} Business process, business web application, BPMN, ProOWeb, application generation, model-driven engineering, rich specification, controlled regeneration.
+
+\myCleanStarChapterEnd

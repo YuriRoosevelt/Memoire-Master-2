@@ -1,0 +1,254 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+
+\title{Revue systématique de la littérature\\
+\large Génération d'applications web orientées processus à partir de modèles BPMN}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Les organisations modernes s'appuient de plus en plus sur des applications web pour automatiser leurs activités internes. Ces applications ne se limitent pas toujours à enregistrer et consulter des données. Dans de nombreux cas, elles doivent organiser un enchaînement d'activités : création d'une demande, instruction, affectation à un service, validation, traitement, notification et archivage. Cette logique d'enchaînement correspond à ce que la littérature désigne généralement comme un processus métier.
+
+Un processus métier ne représente donc pas seulement une suite d'actions. Il décrit une manière d'organiser le travail entre plusieurs acteurs, en tenant compte des rôles, des données, des règles de décision et des contraintes organisationnelles. Lorsqu'une application web doit supporter ce type de fonctionnement, elle devient une application orientée processus ou, dans la littérature anglophone, un \textit{process-aware information system}. Le système doit alors connaître explicitement les étapes du processus, les tâches à créer, les conditions de transition, les acteurs autorisés et les informations à conserver.
+
+BPMN, pour \textit{Business Process Model and Notation}, est aujourd'hui l'une des notations les plus utilisées pour représenter ces processus. Sa force est de proposer un langage graphique compréhensible par les analystes métier, les responsables organisationnels, les architectes et les développeurs. Toutefois, un diagramme BPMN ne constitue pas à lui seul une application web. Il décrit le déroulement général du processus, mais il ne précise pas toujours les formulaires, les services backend, les composants frontend, les règles de sécurité, les modèles de données, les tests ou les scripts de déploiement.
+
+Cette revue systématique de la littérature cherche à comprendre comment les chercheurs et les praticiens ont abordé ce passage entre modèle de processus et application logicielle. Elle ne part pas de la solution que nous souhaitons construire ; elle part des travaux existants qui vont dans la même direction : systèmes d'information orientés processus, génération de code à partir de modèles, développement web dirigé par les modèles, plateformes process-aware, génération d'interfaces depuis BPMN, low-code et workflows guidés par des modèles.
+
+L'objectif est double. Il s'agit d'abord d'identifier les contributions existantes qui montrent que les modèles de processus peuvent servir à construire des systèmes logiciels. Il s'agit ensuite de mettre en évidence les limites encore présentes : dépendance à un moteur, génération partielle, faible maîtrise du code produit, intégration incomplète des données, manque de gouvernance de la régénération ou faible prise en charge de la personnalisation. C'est à partir de cette analyse que pourra être justifiée la solution proposée dans la suite du mémoire.
+
+\section{Méthodologie de la revue}
+
+\subsection{Choix d'une approche systématique}
+
+La revue est conduite selon une approche systématique inspirée des recommandations de Kitchenham et Charters pour les revues systématiques en génie logiciel \cite{kitchenham2007}. Une revue systématique se distingue d'une revue narrative classique par le fait qu'elle définit à l'avance ses questions de recherche, ses critères de sélection, ses sources documentaires et sa grille d'analyse. L'objectif est de limiter l'arbitraire dans le choix des travaux et de rendre la démarche plus transparente.
+
+La présentation s'inspire également des principes de PRISMA 2020 \cite{prisma2020}. Dans ce mémoire, PRISMA n'est pas utilisé pour produire une méta-analyse statistique, mais comme un cadre de transparence : il permet de préciser la manière dont les travaux ont été recherchés, sélectionnés, classés et synthétisés. La revue est donc une revue systématique qualitative. Elle vise à construire un état de l'art argumenté, et non à calculer un effet statistique.
+
+\subsection{Question principale et questions secondaires}
+
+La question principale est la suivante :
+
+\textbf{RQ0 : Quels travaux existants permettent de concevoir, générer ou soutenir des applications web orientées processus à partir de modèles BPMN ou de modèles métier, et quelles limites justifient une nouvelle approche de framework génératif ?}
+
+Cette question est déclinée en six questions secondaires :
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{RQ1 :} Comment les travaux existants définissent-ils les systèmes d'information orientés processus ?
+  \item \textbf{RQ2 :} Comment BPMN est-il utilisé comme point d'entrée pour la conception ou la génération logicielle ?
+  \item \textbf{RQ3 :} Quels travaux génèrent ou soutiennent la génération d'applications web à partir de modèles de processus ?
+  \item \textbf{RQ4 :} Comment les approches model-driven et low-code traitent-elles la génération, l'évolution et la maîtrise du code ?
+  \item \textbf{RQ5 :} Comment les travaux existants prennent-ils en compte les données, les workflows et les artefacts intermédiaires ?
+  \item \textbf{RQ6 :} Quelles lacunes restent ouvertes pour une solution de génération d'applications web BPMN complète, maintenable et source-owned ?
+\end{itemize}
+
+\subsection{Stratégie de recherche documentaire}
+
+Les recherches ont été orientées vers les bases et sources suivantes : SpringerLink, ScienceDirect, IEEE Xplore, ACM Digital Library, Scopus, Web of Science, Google Scholar, ResearchGate, dépôts institutionnels et pages officielles des éditeurs. Les mots-clés ont été combinés autour de quatre familles :
+
+\begin{itemize}[leftmargin=*]
+  \item BPMN et processus métier : \textit{BPMN}, \textit{business process model}, \textit{process-aware information system} ;
+  \item génération et transformation : \textit{code generation}, \textit{model transformation}, \textit{model-driven engineering} ;
+  \item applications web : \textit{web application}, \textit{model-driven web development}, \textit{GUI generation} ;
+  \item low-code et plateformes : \textit{low-code}, \textit{workflow-driven}, \textit{domain-specific low-code platform}.
+\end{itemize}
+
+Les requêtes utilisées ont notamment pris les formes suivantes :
+
+\begin{verbatim}
+("BPMN" OR "business process model")
+AND ("code generation" OR "model transformation")
+AND ("web application" OR "process-aware information system")
+\end{verbatim}
+
+\begin{verbatim}
+("model-driven engineering" OR "MDE")
+AND ("process-aware information system" OR "BPMN")
+\end{verbatim}
+
+\begin{verbatim}
+("low-code" OR "no-code")
+AND ("model-driven engineering" OR "workflow")
+\end{verbatim}
+
+\subsection{Critères d'inclusion et d'exclusion}
+
+Un article est retenu lorsqu'il satisfait au moins l'un des critères suivants : il traite de systèmes d'information orientés processus ; il utilise BPMN comme modèle de conception ou d'exécution ; il propose une génération d'application, d'interface, de workflow ou d'artefact logiciel ; il analyse la relation entre low-code et ingénierie dirigée par les modèles ; il propose une approche de workflow guidée par des modèles ; ou il fournit une revue structurée utile pour situer le domaine.
+
+Sont exclus les travaux purement organisationnels sans lien avec le logiciel, les articles centrés uniquement sur le \textit{process mining}, les travaux sur des workflows scientifiques sans intérêt méthodologique pour la génération, ainsi que les sources qui ne fournissent pas d'informations suffisantes sur la méthode, l'architecture ou les résultats. L'article intitulé \textit{SOA Services Identification and Design Methods From Business Models} n'est pas intégré dans le corpus de cette revue, conformément au choix de recentrer l'état de l'art sur les approches directement liées à la génération d'applications web orientées processus.
+
+\subsection{Grille d'analyse}
+
+Chaque travail retenu est étudié selon les dimensions suivantes : problème traité, type de modèle utilisé, méthode proposée, artefacts produits, niveau d'automatisation, support outillé, place du code source, gestion de la personnalisation, gestion de l'évolution et limites. Cette grille permet d'éviter une simple succession de résumés. Elle permet surtout de comparer les travaux selon leur proximité avec la vision de notre recherche.
+
+\section{Présentation du corpus retenu}
+
+Le corpus principal est constitué d'articles récents publiés entre 2019 et 2026, complétés par quelques références méthodologiques ou conceptuelles plus anciennes lorsque celles-ci sont nécessaires. Les travaux retenus sont organisés en familles thématiques.
+
+\begin{longtable}{|p{3.6cm}|p{3.4cm}|p{4.4cm}|p{3.8cm}|}
+\hline
+\textbf{Famille} & \textbf{Travaux représentatifs} & \textbf{Contribution principale} & \textbf{Limite observée} \\
+\hline
+PAIS et génération & Drave et al. \cite{drave2022}, Neto et al. \cite{neto2022} & Construction de systèmes d'information orientés processus par modèles et génération & Génération encore liée à des environnements ou hypothèses spécifiques \\
+\hline
+BPMN enrichi et génération & Fedeli et al. \cite{fedeli2024}, Sajji et al. \cite{sajji2023} & Usage de BPMN comme point d'entrée pour générer ou structurer des artefacts & BPMN doit être enrichi pour couvrir les données, interfaces et règles \\
+\hline
+Modélisation assistée par IA & Soliman et al. \cite{soliman2025}, Hörner et al. \cite{horner2026}, Kourani et al. \cite{kourani2025} & Génération ou évaluation de modèles de processus à partir de descriptions textuelles & Ces travaux s'arrêtent souvent à la qualité du modèle, pas à l'application complète \\
+\hline
+Développement web dirigé par les modèles & Castillo et Dávila \cite{castillo2024}, Frontiers Review \cite{frontiers2023} & Cartographie des outils et transformations entre artefacts logiciels & Couverture hétérogène, difficulté à produire une chaîne complète \\
+\hline
+Low-code et MDE & Bucaioni et al. \cite{bucaioni2022}, Di Ruscio et al. \cite{diruscio2022}, Martínez-Lasaca et al. \cite{martinez2026} & Analyse du rapprochement entre low-code et model-driven engineering & Risques de verrouillage, évolution et maîtrise du code parfois insuffisantes \\
+\hline
+Workflows et données & Salado-Cid et al. \cite{swel2023}, MUSICODE \cite{musicode2025} & Modélisation de workflows orientés données et exécution guidée par modèles & Travaux souvent spécialisés, non centrés sur l'application web métier complète \\
+\hline
+\end{longtable}
+
+\section{Travaux sur les systèmes d'information orientés processus}
+
+Les travaux les plus proches de notre vision sont ceux qui considèrent explicitement les modèles de processus comme des artefacts de construction de systèmes d'information. Drave, Michael, Müller, Rumpe et Varga proposent une approche d'ingénierie dirigée par les modèles pour les \textit{process-aware information systems} \cite{drave2022}. Leur contribution est importante, car elle ne réduit pas l'application à une simple base de données ou à un moteur de workflow. Les auteurs défendent l'idée que les modèles de processus doivent être intégrés avec d'autres langages de modélisation, notamment pour les données, afin de générer des systèmes d'information extensibles.
+
+Ce travail rejoint fortement notre problématique. Il montre qu'un système orienté processus doit combiner plusieurs dimensions : processus, données, logique applicative et génération. Il insiste aussi sur l'intégration entre code généré et code écrit manuellement. Cette idée est essentielle dans un contexte de mémoire d'ingénierie logicielle, car une solution de génération ne peut pas supposer que toute l'application sera produite automatiquement. Les développeurs doivent pouvoir intervenir, compléter et maintenir le système.
+
+Neto et al. proposent de leur côté AKIP, une plateforme d'automatisation de processus pour le développement d'applications web process-aware \cite{neto2022}. L'intérêt de ce travail est très direct pour notre recherche : les auteurs cherchent à générer une application web fonctionnelle à partir d'un modèle de processus BPMN. Ils motivent leur proposition par plusieurs limites des solutions BPA existantes : verrouillage fournisseur, interfaces limitées, intégration difficile, pile technologique parfois vieillissante et faible prise en charge des fonctionnalités non directement liées au processus.
+
+AKIP constitue donc un travail très proche de notre vision. Il confirme qu'il existe un besoin scientifique et pratique pour des plateformes capables de générer des applications web orientées processus. Toutefois, il laisse aussi apparaître des questions qui restent ouvertes : comment organiser durablement le code généré ? comment gérer la régénération lorsque les modèles évoluent ? comment permettre la personnalisation sans casser la chaîne de génération ? Ces questions sont centrales pour notre propre recherche.
+
+\section{Travaux exploitant BPMN comme point d'entrée de génération}
+
+BPMN est souvent utilisé comme langage de modélisation, mais plusieurs travaux récents cherchent à aller plus loin en l'utilisant comme point d'entrée pour la génération ou l'automatisation. Fedeli et al. proposent FloBP, une approche model-driven pour développer et exécuter des processus métier enrichis par l'Internet des objets \cite{fedeli2024}. Leur contribution montre que BPMN peut être combiné avec des modèles complémentaires afin de prendre en charge des aspects techniques spécifiques, ici les dispositifs IoT. Cette approche est intéressante, car elle confirme que BPMN seul ne suffit pas : il doit être articulé avec d'autres modèles pour couvrir les besoins d'exécution.
+
+Sajji, Rhazali et Hadi étudient la génération d'interfaces graphiques à partir de modèles BPMN via IFML et une démarche MDA \cite{sajji2023}. Ce travail montre que le processus peut servir à dériver des éléments d'interface utilisateur. Il s'agit d'une contribution importante pour notre état de l'art, car une application web orientée processus doit fournir des écrans adaptés aux tâches. Cependant, la génération d'interface depuis BPMN pose une difficulté : une tâche BPMN ne décrit pas toujours les champs du formulaire, les données visibles, les règles de validation ou les droits d'accès. Il faut donc enrichir le modèle ou l'associer à d'autres artefacts.
+
+Les travaux sur la génération de modèles BPMN à partir du langage naturel apportent un autre éclairage. Soliman et al. explorent l'usage de petits modèles de langage ajustés pour générer du BPMN \cite{soliman2025}. Hörner, Möller et Reichert proposent BPMNGen, un cadre conversationnel permettant de générer des modèles BPMN 2.0 à partir de descriptions textuelles \cite{horner2026}. Kourani, Berti, Schuster et van der Aalst évaluent quant à eux les grands modèles de langage pour la modélisation de processus métier \cite{kourani2025}.
+
+Ces travaux ne génèrent pas directement des applications web. Leur apport est différent : ils montrent que la production du modèle BPMN lui-même devient un sujet scientifique actif. Ils soulignent aussi l'importance de la qualité du modèle, de son alignement sémantique avec la description métier et de sa compréhension par les utilisateurs. Pour notre recherche, ces travaux montrent que la chaîne de génération peut être pensée plus largement : avant même de générer l'application, il faut disposer d'un modèle de processus suffisamment correct, exploitable et validé.
+
+\section{Travaux sur le développement web dirigé par les modèles}
+
+Le développement web dirigé par les modèles constitue une autre famille de travaux importante. Castillo et Dávila proposent une cartographie systématique des outils de développement web dirigé par les modèles \cite{castillo2024}. Leur travail montre que plusieurs outils cherchent à réduire l'effort de développement en utilisant des modèles comme artefacts principaux. Cette cartographie est utile, car elle permet de situer les approches de génération web dans un paysage plus large que celui du BPMN.
+
+Cette littérature confirme que les modèles peuvent servir à décrire des données, des interfaces, des comportements ou des architectures. Toutefois, elle montre aussi que les outils existants sont hétérogènes. Certains se concentrent sur la génération d'interfaces, d'autres sur la persistance ou sur la navigation. Peu de travaux couvrent l'ensemble de la chaîne : modèle de processus, données, backend, frontend, règles d'affectation, sécurité, tests et déploiement.
+
+Les travaux sur la génération automatique d'artefacts de transformation renforcent cette observation \cite{frontiers2023}. Entre les exigences, les modèles, le code et les tests, il existe plusieurs niveaux d'artefacts. La transformation d'un niveau vers un autre n'est pas triviale. Elle demande des règles explicites, des modèles intermédiaires et une traçabilité. Dans notre problématique, cela signifie qu'une application web ne doit pas être générée directement à partir d'un BPMN brut. Il faut prévoir des artefacts intermédiaires, par exemple des contrats runtime, des contrats de données ou des catalogues de tâches.
+
+\section{Travaux sur low-code, no-code et ingénierie dirigée par les modèles}
+
+Les plateformes low-code et no-code sont importantes dans notre état de l'art, car elles partagent avec notre recherche un même objectif général : accélérer le développement d'applications. Bucaioni, Cicchetti et Ciccozzi réalisent une revue multivocale sur la modélisation dans le développement low-code \cite{bucaioni2022}. Leur travail montre que le low-code entretient une relation forte avec l'ingénierie dirigée par les modèles, même lorsque les plateformes ne se présentent pas explicitement comme des outils MDE.
+
+Di Ruscio et al. analysent précisément cette relation entre low-code et MDE \cite{diruscio2022}. Ils montrent que les deux approches cherchent à élever le niveau d'abstraction et à réduire l'effort de développement, mais qu'elles ne sont pas identiques. Certaines approches MDE produisent du code sans gérer le cycle de vie de l'application, tandis que certaines plateformes low-code offrent un environnement complet mais peuvent introduire un verrouillage technologique ou limiter l'export et la maîtrise des artefacts.
+
+Martínez-Lasaca, Díez, Guerra et de Lara proposent Dandelion+, une plateforme low-code model-driven destinée à créer des plateformes low-code spécifiques à un domaine \cite{martinez2026}. Leur travail est important, car il montre que la recherche actuelle essaie de rapprocher les plateformes low-code de la rigueur MDE. Dandelion+ introduit notamment des modèles, des métamodèles, des rôles, des workflows et des mécanismes de génération ou d'exécution.
+
+Ces travaux éclairent directement notre recherche. Ils montrent que l'automatisation du développement est une préoccupation actuelle, mais aussi que la maîtrise des artefacts reste un problème. Si une plateforme accélère le développement mais enferme l'application dans un environnement propriétaire, elle ne répond pas entièrement au besoin d'une équipe qui souhaite conserver le code source. Notre recherche se situe donc dans un espace intermédiaire : utiliser les modèles pour accélérer la production, sans perdre la capacité de comprendre, modifier et maintenir le code généré.
+
+\section{Travaux sur workflows, données et artefacts intermédiaires}
+
+Un processus métier ne manipule pas seulement des tâches. Il manipule aussi des données. Une demande contient des informations, une validation produit une décision, une tâche automatique peut consommer des données, et une supervision doit consulter l'historique. Pour générer une application web orientée processus, il faut donc articuler le flot de contrôle et le flot de données.
+
+Salado-Cid et al. proposent SWEL, un langage spécifique de domaine pour modéliser des workflows orientés données \cite{swel2023}. Même si le contexte concerne les workflows data-intensive, le travail est utile pour notre recherche. Il montre l'intérêt d'un langage spécifique, d'un métamodèle, de contraintes et de transformations pour passer d'une description de haut niveau vers une exécution contrôlée. Il souligne également la nécessité de séparer les concepts du domaine des détails technologiques.
+
+Les travaux autour de MUSICODE appliquent une logique low-code à des workflows de simulation \cite{musicode2025}. Ils montrent qu'un workflow peut devenir une représentation numérique exploitable pour produire une exécution concrète. Même si le domaine est différent de l'application web métier, l'idée est comparable : un modèle de workflow peut guider une chaîne de génération ou d'exécution.
+
+Ces travaux justifient l'importance des artefacts intermédiaires. Dans notre problématique, il ne suffit pas de transformer BPMN directement en code. Il faut produire des structures intermédiaires qui explicitent les tâches, les données, les rôles, les transitions, les règles d'accès et les dépendances. Ces structures rendent la génération plus contrôlable, plus testable et plus évolutive.
+
+\section{Synthèse critique des travaux étudiés}
+
+L'analyse des travaux existants permet de dégager plusieurs résultats. Premièrement, les modèles de processus sont bien reconnus comme des artefacts importants dans la conception des systèmes d'information. Les travaux sur les PAIS, AKIP et les approches MDE montrent que les processus peuvent guider la construction logicielle, et non seulement documenter l'organisation.
+
+Deuxièmement, BPMN est un excellent point d'entrée métier, mais il reste insuffisant pour générer seul une application web complète. Les travaux sur FloBP, la génération d'interfaces à partir de BPMN et la génération de BPMN par IA montrent tous, d'une manière différente, la nécessité d'enrichir, de valider ou de compléter le modèle de processus.
+
+Troisièmement, les approches existantes génèrent souvent une partie de la solution, mais rarement l'ensemble de l'application dans une architecture complète et maîtrisable. Certains travaux génèrent des interfaces, d'autres des systèmes orientés processus, d'autres des workflows ou des artefacts de transformation. La génération complète backend, frontend, contrats, tests, sécurité, scripts et gouvernance reste plus rare.
+
+Quatrièmement, les plateformes low-code montrent l'intérêt industriel de l'automatisation, mais posent des questions de maîtrise du code, de verrouillage, d'évolution et d'interopérabilité. Les travaux de Di Ruscio et al. et de Martínez-Lasaca et al. montrent que le rapprochement entre low-code et MDE est une piste pertinente, mais encore en construction.
+
+Cinquièmement, la question de la régénération est centrale. Une application générée n'est pas figée. Les modèles changent, les processus évoluent, les développeurs modifient le code, et les besoins métier se précisent. Une approche de génération doit donc prévoir une gouvernance : suivi des fichiers générés, gestion des conflits, personnalisation durable et traçabilité.
+
+\section{Positionnement de notre recherche}
+
+À partir de cette revue, notre recherche peut être positionnée comme une tentative de réponse à un espace encore insuffisamment couvert. Les travaux existants montrent qu'il est possible de générer des systèmes orientés processus, des interfaces, des workflows ou des plateformes low-code. Ils montrent aussi que les modèles peuvent jouer un rôle central dans la construction logicielle. Cependant, ils laissent ouvertes plusieurs questions : comment générer une application web complète à partir de BPMN enrichi ? comment conserver la maîtrise du code source ? comment gérer la régénération ? comment intégrer backend, frontend, données, rôles, tests et déploiement dans une même chaîne cohérente ?
+
+La solution envisagée dans ce mémoire, ProOWeb, se situe précisément dans cet espace. Elle ne doit pas être comprise comme un simple éditeur BPMN, ni comme un BPMS classique, ni comme une plateforme low-code fermée. Elle vise plutôt à exploiter BPMN comme point d'entrée métier, à l'enrichir par des spécifications complémentaires, puis à générer une application web modulaire dont le code reste accessible et maintenable.
+
+Ainsi, la contribution attendue n'est pas seulement technique. Elle est aussi méthodologique : proposer une architecture et une méthode permettant de transformer un processus métier modélisé en application web exploitable, tout en respectant les exigences de l'ingénierie logicielle : modularité, traçabilité, testabilité, sécurité, personnalisation et évolution contrôlée.
+
+\section{Conclusion}
+
+Cette revue systématique montre que notre sujet s'inscrit dans une continuité scientifique claire. Des chercheurs ont déjà étudié les systèmes d'information orientés processus, la génération d'applications à partir de modèles, la génération d'interfaces depuis BPMN, le développement web dirigé par les modèles et le rapprochement entre low-code et MDE. Ces travaux constituent une base solide pour notre mémoire.
+
+Cependant, la revue montre aussi que le problème n'est pas entièrement résolu. Les approches existantes couvrent souvent une partie de la chaîne, mais rarement l'ensemble : BPMN, données, règles métier, backend, frontend, sécurité, tests, déploiement et régénération. C'est cette lacune qui justifie la suite de notre travail.
+
+L'état de l'art permet donc de formuler clairement le besoin : concevoir un framework capable de transformer des modèles BPMN enrichis en applications web complètes, modulaires et maintenables, sans perdre la maîtrise du code source. Cette conclusion prépare naturellement l'approche d'ingénierie présentée dans les chapitres suivants.
+
+\begin{thebibliography}{99}
+
+\bibitem{kitchenham2007}
+B. Kitchenham and S. Charters, \textit{Guidelines for performing Systematic Literature Reviews in Software Engineering}, EBSE Technical Report EBSE-2007-01, 2007.
+
+\bibitem{prisma2020}
+M. J. Page et al., ``The PRISMA 2020 statement: an updated guideline for reporting systematic reviews'', \textit{BMJ}, 2021.
+
+\bibitem{drave2022}
+I. Drave, J. Michael, E. Müller, B. Rumpe, and S. Varga, ``Model-Driven Engineering of Process-Aware Information Systems'', \textit{SN Computer Science}, vol. 3, article 479, 2022. DOI: \url{https://doi.org/10.1007/s42979-022-01334-3}
+
+\bibitem{neto2022}
+U. T. Neto, T. Oliveira, R. Pillat, P. Alencar, D. Cowan, and G. Melo, ``AKIP Process Automation Platform: A Framework for the Development of Process-Aware Web Applications'', \textit{ICEIS}, 2022.
+
+\bibitem{fedeli2024}
+A. Fedeli, F. Fornari, A. Polini, B. Re, V. Torres, and P. Valderas, ``FloBP: a model-driven approach for developing and executing IoT-enhanced business processes'', \textit{Software and Systems Modeling}, vol. 23, pp. 1217--1246, 2024. DOI: \url{https://doi.org/10.1007/s10270-024-01150-8}
+
+\bibitem{sajji2023}
+A. Sajji, Y. Rhazali, and Y. Hadi, ``Graphical user Interfaces Generation from BPMN via IFML up to PSM Level'', \textit{International Journal of Advanced Computer Science and Applications}, vol. 14, no. 2, pp. 419--431, 2023. DOI: \url{https://doi.org/10.14569/IJACSA.2023.0140251}
+
+\bibitem{soliman2025}
+Soliman et al., ``Size matters less: how fine-tuned small LLMs excel in BPMN generation'', \textit{Journal of Electrical Systems and Information Technology}, 2025. DOI: \url{https://doi.org/10.1186/s43067-025-00288-9}
+
+\bibitem{horner2026}
+L. F. Hörner, M. Möller, and M. Reichert, ``Automatically Generating BPMN 2.0 Process Models from Natural Language Process Descriptions: Challenges, Framework, Quality Assessment'', \textit{Business \& Information Systems Engineering}, 2026. DOI: \url{https://doi.org/10.1007/s12599-025-00983-x}
+
+\bibitem{kourani2025}
+H. Kourani, A. Berti, D. Schuster, and W. M. P. van der Aalst, ``Evaluating Large Language Models on Business Process Modeling: Framework, Benchmark, and Self-Improvement Analysis'', \textit{Software and Systems Modeling}, 2025. DOI: \url{https://doi.org/10.1007/s10270-025-01318-w}
+
+\bibitem{castillo2024}
+J. Castillo and A. Dávila, ``Tools in Model-Driven Web Development: A Systematic Mapping Study'', \textit{LACCEI}, 2024. DOI: \url{https://doi.org/10.18687/LACCEI2024.1.1.1336}
+
+\bibitem{frontiers2023}
+Authors, ``Auto-generating Transformation Artifacts: A Review'', \textit{Frontiers in Computer Science}, 2023.
+
+\bibitem{bucaioni2022}
+A. Bucaioni, A. Cicchetti, and F. Ciccozzi, ``Modelling in low-code development: a multi-vocal systematic review'', \textit{Software and Systems Modeling}, vol. 21, pp. 1959--1981, 2022. DOI: \url{https://doi.org/10.1007/s10270-021-00964-0}
+
+\bibitem{diruscio2022}
+D. Di Ruscio, D. Kolovos, J. de Lara, A. Pierantonio, M. Tisi, and M. Wimmer, ``Low-code development and model-driven engineering: Two sides of the same coin?'', \textit{Software and Systems Modeling}, vol. 21, pp. 437--446, 2022. DOI: \url{https://doi.org/10.1007/s10270-021-00970-2}
+
+\bibitem{martinez2026}
+F. Martínez-Lasaca, P. Díez, E. Guerra, and J. de Lara, ``A model and workflow-driven approach for engineering domain-specific low-code platforms and applications'', \textit{Software and Systems Modeling}, vol. 25, pp. 579--614, 2026. DOI: \url{https://doi.org/10.1007/s10270-025-01308-y}
+
+\bibitem{swel2023}
+R. Salado-Cid et al., ``SWEL: A Domain-Specific Language for Modeling Data-Intensive Workflows'', \textit{Business \& Information Systems Engineering}, vol. 66, pp. 137--160, 2024. DOI: \url{https://doi.org/10.1007/s12599-023-00826-7}
+
+\bibitem{musicode2025}
+Authors, ``Streamlining Multi-scale Materials Modeling: The MUSICODE Low-Code Approach for Simulation Workflows and Executable MODAs'', \textit{Integrating Materials and Manufacturing Innovation}, 2025. DOI: \url{https://doi.org/10.1007/s40192-025-00395-5}
+
+\end{thebibliography}
+
+\end{document}

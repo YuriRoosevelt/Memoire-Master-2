@@ -1,0 +1,320 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\geometry{margin=2.5cm}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+
+\title{Revue de la littérature\\
+\large Génération d'applications web pilotées par des modèles BPMN}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+La construction d'applications web orientées processus métier occupe aujourd'hui une place importante dans l'ingénierie des systèmes d'information. Dans une organisation, de nombreuses activités ne se résument pas à une simple opération de saisie ou de consultation de données. Elles suivent un enchaînement d'étapes : une demande est créée, vérifiée, affectée, validée, rejetée, corrigée, transmise à un autre acteur, puis archivée. Chaque étape peut dépendre d'un rôle, d'une règle de gestion, d'une décision ou de l'état courant du dossier. Une application web qui supporte ce type de fonctionnement doit donc gérer à la fois des données, des utilisateurs, des règles, des formulaires, des transitions et une logique de suivi.
+
+Dans ce contexte, la modélisation des processus métier devient un moyen de réduire l'écart entre la compréhension métier et la réalisation technique. Le langage BPMN, pour \textit{Business Process Model and Notation}, est largement utilisé pour représenter graphiquement les activités, les événements, les passerelles de décision et les flux entre acteurs. Il constitue un support de discussion entre les analystes métier, les développeurs, les responsables fonctionnels et les architectes logiciels. Cependant, un diagramme BPMN ne suffit pas, à lui seul, à produire une application web complète. Il décrit principalement le déroulement du processus, mais il ne précise pas toujours les formulaires, les règles d'accès, les structures de données, les composants d'interface, les services applicatifs, les tests ou les mécanismes de déploiement.
+
+Cette limite place le projet ProOWeb dans une problématique d'ingénierie logicielle : comment passer d'un processus métier modélisé à une application web réellement exploitable, sans revenir entièrement à un développement manuel et sans dépendre fortement d'une plateforme propriétaire ou d'un moteur BPMS externe ? La solution recherchée doit conserver l'expressivité des modèles, automatiser une partie importante de la production logicielle, mais laisser aux développeurs la maîtrise du code généré.
+
+Cette revue de la littérature vise à étudier les travaux qui éclairent cette problématique. Elle s'intéresse aux systèmes d'information orientés processus, à BPMN, aux BPMS, à l'ingénierie dirigée par les modèles, à la génération de code, au développement web dirigé par les modèles, aux plateformes low-code et aux approches récentes d'assistance à la modélisation. L'objectif n'est pas de juxtaposer des résumés d'articles, mais de construire progressivement un état de l'art permettant de comprendre ce qui existe, ce qui fonctionne, ce qui reste limité et ce qui justifie une approche comme ProOWeb.
+
+\section{Démarche de revue et stratégie de recherche documentaire}
+
+\subsection{Démarche de revue}
+
+Pour situer correctement ProOWeb, il est nécessaire d'observer les travaux existants avec une méthode claire. Une revue de littérature non structurée risque de sélectionner uniquement les références les plus visibles ou les plus proches de l'intuition initiale du chercheur. À l'inverse, une démarche systématique oblige à formuler des questions, à préciser les critères de sélection et à analyser les articles selon une grille commune.
+
+La démarche adoptée s'inspire des recommandations de Kitchenham et Charters sur les revues systématiques en génie logiciel \cite{kitchenham2007}. Elle reprend aussi l'esprit de transparence de PRISMA 2020 \cite{prisma2020}, sans prétendre réaliser une méta-analyse statistique. Dans le cadre de ce mémoire, la revue est principalement qualitative : elle vise à organiser et interpréter les travaux disponibles afin de dégager les tendances, les limites et le positionnement de la contribution proposée.
+
+Le travail de revue a suivi quatre étapes. Premièrement, les questions de recherche ont été définies à partir de la problématique du mémoire. Deuxièmement, un corpus d'articles récents, principalement publiés entre 2019 et 2026, a été constitué autour de la génération d'applications orientées processus, de l'ingénierie dirigée par les modèles et du low-code. Troisièmement, les articles ont été regroupés par axes thématiques. Quatrièmement, chaque axe a été analysé en relation avec ProOWeb, afin d'identifier les apports et les limites des approches existantes.
+
+\subsection{Questions de recherche}
+
+Les questions de recherche permettent de guider la lecture et d'éviter une revue dispersée. Elles sont présentées dans le tableau \ref{tab:questions-recherche}.
+
+\begin{longtable}{|p{1.4cm}|p{8cm}|p{5cm}|}
+\caption{Questions de recherche et motivations de la revue}
+\label{tab:questions-recherche}\\
+\hline
+\textbf{ID} & \textbf{Question de recherche} & \textbf{Motivation} \\
+\hline
+\endfirsthead
+\hline
+\textbf{ID} & \textbf{Question de recherche} & \textbf{Motivation} \\
+\hline
+\endhead
+QR1 & Comment les processus métier sont-ils représentés et exploités dans les systèmes d'information ? & Comprendre le rôle des processus comme élément structurant des applications web métier. \\
+\hline
+QR2 & Quel rôle joue BPMN dans la modélisation et l'automatisation des processus ? & Évaluer l'intérêt de BPMN comme point d'entrée métier et identifier ses limites pour la génération d'applications. \\
+\hline
+QR3 & Quelles sont les capacités et limites des BPMS classiques ? & Comparer ProOWeb aux moteurs de workflow et aux plateformes BPM existantes. \\
+\hline
+QR4 & Comment l'ingénierie dirigée par les modèles permet-elle de transformer des modèles en artefacts logiciels ? & Situer ProOWeb dans le champ du développement dirigé par les modèles et de la génération de code. \\
+\hline
+QR5 & Quels travaux abordent la génération d'applications web, d'interfaces ou de composants logiciels à partir de modèles ? & Identifier les approches proches du besoin de ProOWeb, notamment côté backend et frontend. \\
+\hline
+QR6 & Que proposent les plateformes low-code et no-code, et quelles limites présentent-elles ? & Positionner ProOWeb par rapport à l'automatisation du développement sans perte de maîtrise du code source. \\
+\hline
+QR7 & Quelles lacunes persistent dans les travaux existants ? & Justifier la nécessité d'un framework génératif, modulaire, maintenable et source-owned. \\
+\hline
+\end{longtable}
+
+\subsection{Critères d'inclusion et d'exclusion}
+
+Les critères de sélection ont été définis pour retenir les travaux les plus utiles au mémoire. Le tableau \ref{tab:criteres} présente ces critères.
+
+\begin{longtable}{|p{3.2cm}|p{5.7cm}|p{5.7cm}|}
+\caption{Critères d'inclusion et d'exclusion}
+\label{tab:criteres}\\
+\hline
+\textbf{Critère} & \textbf{Inclusion} & \textbf{Exclusion} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Critère} & \textbf{Inclusion} & \textbf{Exclusion} \\
+\hline
+\endhead
+Période & Travaux publiés principalement entre 2019 et 2026, avec quelques références fondatrices. & Travaux trop anciens lorsqu'ils sont remplacés par des études plus récentes. \\
+\hline
+Thématique & BPMN, BPM, BPMS, applications web orientées processus, MDE, MDD, génération de code, low-code, workflows. & Études sans lien avec la conception ou la génération d'applications logicielles. \\
+\hline
+Type de source & Articles scientifiques, actes de conférences, revues systématiques, cartographies, documentations techniques nécessaires. & Blogs, opinions non scientifiques ou tutoriels sans contribution analysable. \\
+\hline
+Accès au contenu & Texte intégral disponible pour permettre une analyse réelle. & Documents dont seul le résumé est disponible. \\
+\hline
+Pertinence pour ProOWeb & Travaux permettant de comprendre la génération, l'exécution ou la structuration d'applications à partir de modèles. & Travaux centrés uniquement sur le \textit{process mining} ou sur des cas trop spécifiques sans généralisation. \\
+\hline
+\end{longtable}
+
+\subsection{Sources et mots-clés}
+
+Les recherches ont été orientées vers des bases scientifiques et des plateformes documentaires telles que SpringerLink, IEEE Xplore, ACM Digital Library, ScienceDirect, Scopus, Google Scholar et les dépôts des éditeurs. Les requêtes ont combiné des termes relatifs aux processus, à BPMN, à la génération de code et au développement web. Les expressions suivantes ont servi de base :
+
+\begin{verbatim}
+("BPMN" OR "business process model")
+AND ("code generation" OR "model-driven engineering" OR "MDE")
+AND ("web application" OR "information system")
+\end{verbatim}
+
+\begin{verbatim}
+("process-aware information system" OR "workflow engine")
+AND ("model-driven" OR "code generation" OR "web application")
+\end{verbatim}
+
+\begin{verbatim}
+("low-code development" OR "no-code development")
+AND ("model-driven engineering" OR "workflow" OR "code generation")
+\end{verbatim}
+
+À partir de ces recherches, un corpus de quinze articles récents a été retenu pour construire l'état de l'art. L'article \textit{SOA Services Identification and Design Methods From Business Models} n'a pas été intégré à ce corpus, conformément au choix de délimitation de cette revue.
+
+\subsection{Grille d'analyse}
+
+Chaque article a été étudié selon une grille commune : problème traité, modèle d'entrée, artefacts produits, niveau d'automatisation, place du code source, couverture du cycle de vie, prise en compte de la variabilité, limites et intérêt pour ProOWeb. Cette grille permet de comparer des travaux parfois très différents : certains proposent des plateformes, d'autres des approches de génération, d'autres des revues ou des cartographies.
+
+\section{Analyse des travaux existants}
+
+\subsection{Processus métier et systèmes d'information orientés processus}
+
+Les systèmes d'information orientés processus, souvent appelés \textit{process-aware information systems}, partent de l'idée que le processus métier ne doit pas seulement être documenté, mais aussi guider le comportement du système. Dans ce type d'application, l'état d'une instance de processus détermine les actions disponibles, les acteurs concernés et les transitions possibles.
+
+Drave et al. \cite{drave2022} montrent que les systèmes d'information d'entreprise doivent traiter à la fois les données et les processus. Leur approche d'ingénierie dirigée par les modèles insiste sur la nécessité de couvrir plusieurs aspects du système : données, activités automatiques, activités humaines et génération d'artefacts logiciels. Cette contribution est importante pour ProOWeb, car elle confirme que la génération d'une application orientée processus ne peut pas se limiter à produire un squelette de code. Elle doit aussi intégrer la logique de processus, les objets manipulés et les interactions avec les utilisateurs.
+
+Neto et al. \cite{neto2022} proposent la plateforme AKIP pour le développement d'applications web orientées processus. Leur travail est particulièrement proche de notre sujet, car il aborde explicitement la création d'applications web à partir d'une logique de processus. Les auteurs soulignent plusieurs limites des solutions existantes de Business Process Automation, notamment le verrouillage fournisseur, les interfaces peu flexibles, les difficultés d'intégration et l'obsolescence de certaines piles technologiques. Ces constats rejoignent directement le besoin traité par ProOWeb : produire une application web exploitable, mais aussi adaptable, intégrable et maîtrisable.
+
+Ces travaux montrent que la notion de processus doit être placée au coeur de l'application. Cependant, ils montrent aussi que l'ingénierie d'une application orientée processus nécessite plus qu'un moteur de workflow. Il faut une méthode pour relier le modèle de processus aux données, aux services, aux interfaces, aux règles de sécurité et aux mécanismes de maintenance.
+
+\subsection{BPMN comme langage de modélisation métier}
+
+BPMN est devenu une notation de référence pour représenter les processus métier. Sa force tient à sa capacité à décrire visuellement des activités, des événements, des décisions et des flux entre participants. Pour un acteur métier, BPMN permet de lire le parcours d'un dossier ou d'une demande. Pour un développeur, il fournit une première description de la logique applicative à mettre en oeuvre.
+
+La spécification BPMN de l'Object Management Group \cite{omgBpmn} définit les éléments nécessaires à la modélisation de processus exécutables ou descriptifs. Toutefois, la littérature récente montre que le passage du texte métier vers BPMN, puis de BPMN vers une application, reste difficile. Soliman et al. \cite{soliman2025} étudient la génération de modèles BPMN à partir de descriptions textuelles en évaluant de grands modèles de langage et des modèles plus petits affinés. Leur travail met en évidence la difficulté de produire des sorties BPMN précises, structurées et contrôlables lorsque les descriptions métier sont ambiguës.
+
+Hörner et al. \cite{horner2026} analysent également la génération automatique de modèles BPMN 2.0 à partir de descriptions en langage naturel. Leur contribution montre que la qualité d'un modèle BPMN ne dépend pas seulement de sa correction syntaxique. Un modèle doit aussi être sémantiquement fidèle au processus décrit et pragmatiquement utile pour les personnes qui devront l'exploiter. Kourani et al. \cite{kourani2025} prolongent cette réflexion en évaluant les grands modèles de langage dans des tâches de modélisation de processus métier. Dans un autre contexte, Fedeli et al. \cite{fedeli2024} montrent que BPMN peut aussi être enrichi pour intégrer des environnements techniques spécifiques, comme les processus métier associés à l'Internet des objets. Cette idée d'enrichissement est importante, car elle confirme qu'un modèle BPMN brut doit souvent être complété pour devenir exploitable dans une solution logicielle concrète.
+
+Ces travaux sont utiles pour ProOWeb à deux niveaux. D'abord, ils confirment que BPMN reste un artefact central pour représenter le processus. Ensuite, ils montrent que BPMN ne peut pas être considéré comme une source parfaite et autosuffisante. Le modèle doit être validé, enrichi et transformé. Dans ProOWeb, cette idée se traduit par l'utilisation de spécifications complémentaires et de contrats intermédiaires : le diagramme BPMN décrit la circulation du processus, tandis que d'autres artefacts précisent les données, les actions, les rôles, les formulaires et les éléments nécessaires à la génération.
+
+\subsection{BPMS et moteurs de workflow}
+
+Les BPMS tels que Camunda, Flowable, Bonita ou jBPM constituent une famille d'outils largement utilisée pour modéliser, déployer et exécuter des processus métier. Ils fournissent généralement un moteur d'exécution, une gestion des instances, une liste de tâches, des APIs, des connecteurs et parfois des interfaces de supervision. Leur apport est réel : ils évitent de développer manuellement toute la mécanique d'orchestration des workflows.
+
+Cependant, la logique d'un BPMS classique diffère de celle recherchée dans ProOWeb. Dans beaucoup de cas, le moteur BPM devient le centre de l'architecture. L'application doit s'intégrer autour de ses APIs, de ses conventions et de son modèle d'exécution. Cette approche convient lorsque l'objectif principal est d'orchestrer des processus dans une plateforme spécialisée. Elle devient moins adaptée lorsque l'objectif est de générer une application web complète, dont le code source reste lisible, modifiable et indépendant d'un fournisseur.
+
+La littérature sur les applications process-aware rejoint ce constat. Les limites récurrentes concernent le verrouillage technologique, la personnalisation de l'interface, l'intégration avec des architectures existantes et la difficulté à conserver une maîtrise fine du code produit \cite{neto2022}. ProOWeb ne cherche donc pas à nier l'intérêt des BPMS. Il vise plutôt un autre espace : générer une application web orientée processus à partir de modèles BPMN enrichis, tout en conservant une architecture logicielle ouverte.
+
+\subsection{Ingénierie dirigée par les modèles et génération de code}
+
+L'ingénierie dirigée par les modèles repose sur l'idée que les modèles peuvent devenir des artefacts productifs et non de simples documents. Dans cette perspective, le modèle exprime une partie du système à un niveau d'abstraction plus élevé que le code. Des transformations permettent ensuite de produire des modèles plus détaillés, des configurations ou du code source.
+
+L'approche MDA de l'OMG \cite{omgMda} distingue classiquement les modèles indépendants de la plateforme et les modèles spécifiques à une plateforme. Cette séparation est importante pour ProOWeb : le processus métier ne doit pas être enfermé dès le départ dans une technologie particulière. Il doit d'abord être exprimé dans un modèle métier, puis transformé progressivement vers des artefacts techniques.
+
+Siahaan et al. \cite{siahaan2024} proposent une revue des transformations automatiques entre artefacts de développement logiciel. Leur travail montre que les transformations peuvent relier des exigences, des modèles, du code et des tests, mais qu'elles posent aussi des problèmes de traçabilité, de qualité et de cohérence. Castillo et Dávila \cite{castillo2024} présentent une cartographie des outils de développement web dirigé par les modèles. Ils montrent que le développement web model-driven reste actif, mais que les outils varient fortement selon les modèles supportés, les artefacts générés et le niveau de maturité.
+
+Pour ProOWeb, ces travaux apportent une justification méthodologique. Le framework doit être conçu comme une chaîne de transformation contrôlée. Il ne suffit pas de lire un fichier BPMN et d'écrire du code. Il faut introduire des étapes intermédiaires qui rendent la génération plus fiable : validation du modèle, extraction des éléments métier, construction d'un contrat runtime, définition d'un contrat de données, choix des modules à générer, puis production des artefacts backend et frontend.
+
+\subsection{Génération d'applications web et d'interfaces à partir de modèles}
+
+La génération d'applications web à partir de modèles est un axe directement lié à ProOWeb. Les travaux de Sajji et al. \cite{sajji2023} proposent une génération d'interfaces graphiques à partir de BPMN en passant par IFML et jusqu'au niveau PSM. Cette approche illustre l'intérêt de chaîner plusieurs modèles : BPMN représente le processus, IFML décrit les interactions utilisateur, et le PSM rapproche le modèle de l'implémentation.
+
+Ce type de démarche met en évidence une difficulté centrale : un modèle de processus ne contient pas automatiquement toutes les informations nécessaires à l'interface utilisateur. Une tâche BPMN peut représenter une validation, mais l'interface associée doit connaître les champs à afficher, les données obligatoires, les actions disponibles, les messages d'erreur, les droits d'accès et les transitions possibles. Le passage de BPMN à une interface nécessite donc une couche supplémentaire d'interprétation ou d'enrichissement.
+
+Dans ProOWeb, cette observation justifie la séparation entre le modèle BPMN, les spécifications complémentaires et les artefacts générés. Le frontend ne doit pas être une simple projection mécanique du diagramme. Il doit être construit à partir d'une compréhension plus complète du processus : quelle tâche est visible, pour quel rôle, avec quelles données et quelles actions de sortie.
+
+\subsection{Low-code, no-code et proximité avec l'ingénierie dirigée par les modèles}
+
+Les plateformes low-code et no-code cherchent à accélérer le développement logiciel en réduisant la quantité de code écrit manuellement. Elles offrent souvent des interfaces visuelles, des composants prêts à l'emploi, des connecteurs et des mécanismes de déploiement simplifiés. Cette promesse rejoint en partie celle de ProOWeb : diminuer l'effort de développement et rendre la construction d'applications plus systématique.
+
+Bucaioni et al. \cite{bucaioni2022} montrent, dans une revue multivocale, que la modélisation occupe une place importante dans le low-code. Les plateformes low-code s'appuient souvent sur des représentations visuelles ou déclaratives, même lorsqu'elles ne se revendiquent pas explicitement de l'ingénierie dirigée par les modèles. Di Ruscio et al. \cite{diruscio2022} défendent l'idée que low-code et MDE partagent plusieurs objectifs : abstraction, automatisation, productivité et réduction de la distance entre métier et technique.
+
+Toutefois, les plateformes low-code présentent aussi des limites. Martínez-Lasaca et al. \cite{martinez2026} expliquent que certaines plateformes reposent sur des processus de génération propriétaires et peu flexibles, ce qui peut freiner l'interopérabilité et créer une dépendance au fournisseur. Pańkowska \cite{pankowska2024} souligne également que le cycle de développement low-code diffère des méthodes traditionnelles, notamment parce qu'il donne un rôle important à l'utilisateur final.
+
+ProOWeb peut être positionné comme une approche proche du low-code par son objectif d'accélération, mais différente par son orientation source-owned. L'application générée doit rester sous le contrôle de l'équipe de développement. Le code doit pouvoir être lu, versionné, testé, modifié et déployé indépendamment du générateur. Cette différence est essentielle pour un projet académique d'ingénierie logicielle, car la productivité ne suffit pas si elle se fait au détriment de la maintenabilité.
+
+\subsection{Workflows, données et artefacts intermédiaires}
+
+Une application orientée processus ne manipule pas seulement des transitions. Elle manipule aussi des données. Les décisions prises dans un processus dépendent souvent des valeurs saisies, des documents fournis, des règles métier ou de l'historique du dossier. Il devient donc nécessaire de représenter les liens entre workflow et données.
+
+Salado-Cid et al. \cite{salado2023} proposent SWEL, un langage spécifique au domaine pour modéliser des workflows orientés données. Leur travail montre que les langages de workflow existants peuvent être trop liés à une plateforme et limiter la réutilisabilité. Campagna et al. \cite{campagna2025}, dans le contexte des workflows de simulation, montrent également l'intérêt d'une approche low-code structurée par des descriptions exécutables et des artefacts de haut niveau.
+
+Ces travaux éclairent une décision importante pour ProOWeb : la génération doit s'appuyer sur des artefacts intermédiaires stables. Le contrat runtime décrit le comportement attendu du processus ; le contrat de données décrit les informations manipulées ; le manifeste de génération permet d'identifier les fichiers produits et leur statut. Ces artefacts jouent le rôle de pont entre le modèle métier et le code source.
+
+\section{Synthèse critique et positionnement de la recherche}
+
+\subsection{Synthèse des apports et limites}
+
+L'analyse des travaux existants fait apparaître plusieurs tendances. D'abord, BPMN demeure une notation pertinente pour représenter les processus métier, mais il ne suffit pas à décrire une application web complète. Ensuite, les BPMS offrent une exécution robuste des workflows, mais ils placent souvent le moteur au centre de l'architecture. Enfin, les approches MDE et low-code montrent que la génération logicielle est possible, mais elles soulèvent des questions de flexibilité, de traçabilité, de personnalisation et de maîtrise du code.
+
+\begin{longtable}{|p{3.2cm}|p{4.1cm}|p{4.2cm}|p{3.4cm}|}
+\caption{Synthèse critique des familles de travaux}
+\label{tab:synthese-familles}\\
+\hline
+\textbf{Famille} & \textbf{Apports} & \textbf{Limites observées} & \textbf{Lien avec ProOWeb} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Famille} & \textbf{Apports} & \textbf{Limites observées} & \textbf{Lien avec ProOWeb} \\
+\hline
+\endhead
+BPMN et modélisation & Langage partagé entre métier et technique ; représentation claire des activités et décisions. & Ne décrit pas complètement les formulaires, données, règles d'accès et composants applicatifs. & BPMN sert de point d'entrée, mais doit être enrichi. \\
+\hline
+BPMS et workflows & Exécution de processus, gestion d'instances, tâches et supervision. & Dépendance au moteur, personnalisation parfois limitée, code source moins central. & ProOWeb cherche une génération source-owned plutôt qu'une architecture centrée BPMS. \\
+\hline
+MDE et génération & Passage des modèles vers des artefacts logiciels ; séparation des niveaux d'abstraction. & Besoin de validation, traçabilité, gestion des transformations et des évolutions. & ProOWeb adopte une chaîne de transformation avec contrats intermédiaires. \\
+\hline
+Développement web dirigé par les modèles & Production d'interfaces, navigation, composants et structures web. & Souvent lié à des outils ou métamodèles spécifiques. & ProOWeb vise backend et frontend autour du processus métier. \\
+\hline
+Low-code/no-code & Accélération du développement ; accès facilité aux utilisateurs non experts. & Risque de verrouillage, code peu maîtrisable, génération propriétaire. & ProOWeb conserve l'automatisation tout en gardant le code source ouvert à l'équipe. \\
+\hline
+Workflows orientés données & Prise en compte des données dans l'exécution et la génération. & Langages parfois spécialisés ou difficiles à intégrer dans une application web générale. & ProOWeb introduit des contrats de données pour relier workflow et objets métier. \\
+\hline
+\end{longtable}
+
+\subsection{Lacunes identifiées}
+
+La première lacune concerne l'écart entre le modèle BPMN et l'application web complète. Les travaux existants montrent comment représenter un processus, comment exécuter un workflow ou comment générer certains artefacts. Cependant, peu d'approches couvrent de manière intégrée le processus complet allant du modèle BPMN enrichi vers un backend, un frontend, des contrats d'exécution, des règles d'accès, des tests et une structure de projet maintenable.
+
+La deuxième lacune concerne la maîtrise du code source. Les BPMS et plateformes low-code peuvent accélérer la production, mais ils introduisent souvent une dépendance à un moteur, une plateforme ou un générateur propriétaire. Dans un contexte académique et professionnel, il est important que l'application générée puisse être comprise et maintenue par les développeurs.
+
+La troisième lacune concerne la régénération et l'évolution. Une application générée n'est pas figée. Les processus changent, les règles métier évoluent et les développeurs peuvent personnaliser certaines parties du code. Un framework génératif doit donc prévoir la traçabilité des fichiers générés, la détection des conflits et la séparation entre ce qui est régénérable et ce qui doit rester sous contrôle humain.
+
+La quatrième lacune concerne la variabilité. Toutes les applications orientées processus n'ont pas les mêmes besoins. Certaines nécessitent une authentification avancée, d'autres des notifications, une organisation hiérarchique, un audit, des tests end-to-end ou une intégration externe. Une architecture de génération doit permettre d'activer ces capacités selon le contexte, sans rendre chaque application inutilement complexe.
+
+\subsection{Positionnement de ProOWeb}
+
+À partir de cette revue, ProOWeb peut être positionné comme un framework d'ingénierie dirigée par les modèles, spécialisé dans la génération d'applications web orientées processus métier. Il se situe entre trois familles d'approches.
+
+D'un côté, il se distingue du développement manuel traditionnel, car il cherche à réduire la traduction répétitive entre processus métier et code applicatif. Le développeur n'a pas à reconstruire à la main toute la logique de workflow, les routes, les composants, les transitions et les structures de base.
+
+D'un autre côté, il se distingue des BPMS classiques, car son objectif n'est pas de placer un moteur externe au centre de l'application. ProOWeb vise plutôt à générer une application web structurée, dans laquelle le code source reste disponible, compréhensible et maintenable.
+
+Enfin, il se rapproche du low-code par son ambition d'automatisation, mais il s'en éloigne par son orientation source-owned. Le résultat attendu n'est pas seulement une application configurée dans une plateforme, mais un projet logiciel complet, organisé et versionnable.
+
+L'originalité de ProOWeb réside donc dans la combinaison de plusieurs principes : BPMN comme point d'entrée métier, spécification complémentaire pour enrichir le modèle, contrats intermédiaires pour stabiliser la transformation, feature packs pour gérer la variabilité, génération backend et frontend, et gouvernance des fichiers générés pour permettre l'évolution.
+
+\section{Conclusion}
+
+Cette revue de la littérature montre que la génération d'applications web pilotées par des modèles BPMN se situe à l'intersection de plusieurs domaines : BPM, BPMN, BPMS, ingénierie dirigée par les modèles, génération de code, développement web model-driven et low-code. Chacun de ces domaines apporte une partie de la réponse.
+
+BPMN fournit un langage de représentation compréhensible par les acteurs métier et techniques. Les BPMS permettent d'exécuter des processus et de gérer des instances. L'ingénierie dirigée par les modèles apporte les principes de transformation et de génération. Le low-code montre l'intérêt d'abstraire une partie du développement. Les travaux sur les workflows orientés données rappellent que les processus ne peuvent pas être séparés des informations qu'ils manipulent.
+
+Cependant, ces approches ne répondent pas entièrement au besoin traité dans ce mémoire : produire une application web complète, modulaire, maintenable et source-owned à partir de modèles BPMN enrichis. C'est précisément dans cet espace que se situe ProOWeb. Sa contribution attendue est de proposer une architecture et une méthode de génération capables de transformer un processus métier en artefacts logiciels exploitables, tout en conservant la traçabilité, la variabilité et la maîtrise du code source.
+
+\begin{thebibliography}{99}
+
+\bibitem{kitchenham2007}
+B. Kitchenham and S. Charters, \textit{Guidelines for performing Systematic Literature Reviews in Software Engineering}, EBSE Technical Report EBSE-2007-01, 2007.
+
+\bibitem{prisma2020}
+M. J. Page et al., ``The PRISMA 2020 statement: an updated guideline for reporting systematic reviews'', \textit{BMJ}, 2021.
+
+\bibitem{omgBpmn}
+Object Management Group, \textit{Business Process Model and Notation (BPMN), Version 2.0}, 2011. Disponible : \url{https://www.omg.org/spec/BPMN/2.0/}
+
+\bibitem{omgMda}
+Object Management Group, \textit{Model Driven Architecture}. Disponible : \url{https://www.omg.org/mda/}
+
+\bibitem{drave2022}
+I. Drave, J. Michael, E. Müller, B. Rumpe, and S. Varga, ``Model-Driven Engineering of Process-Aware Information Systems'', \textit{SN Computer Science}, vol. 3, article 479, 2022.
+
+\bibitem{fedeli2024}
+A. Fedeli, F. Fornari, A. Polini, B. Re, V. Torres, and P. Valderas, ``FloBP: a model-driven approach for developing and executing IoT-enhanced business processes'', \textit{Software and Systems Modeling}, vol. 23, pp. 1217--1246, 2024.
+
+\bibitem{soliman2025}
+G. Soliman, N. Abdel Wars, and H. Hesham, ``Size matters less: how fine-tuned small LLMs excel in BPMN generation'', \textit{Journal of Electrical Systems and Information Technology}, vol. 12, article 95, 2025.
+
+\bibitem{horner2026}
+L. F. Hörner, M. Möller, and M. Reichert, ``Automatically Generating BPMN 2.0 Process Models from Natural Language Process Descriptions: Challenges, Framework, Quality Assessment'', 2026.
+
+\bibitem{kourani2025}
+H. Kourani, A. Berti, D. Schuster, and W. M. P. van der Aalst, ``Evaluating large language models on business process modeling: framework, benchmark, and self-improvement analysis'', \textit{Software and Systems Modeling}, 2025.
+
+\bibitem{neto2022}
+U. T. Neto, T. Oliveira, R. Pillat, P. Alencar, D. Cowan, and G. Melo, ``AKIP Process Automation Platform: A Framework for the Development of Process-Aware Web Applications'', 2022.
+
+\bibitem{castillo2024}
+J. Castillo and A. Dávila, ``Tools in Model-Driven Web Development: A Systematic Mapping Study'', in \textit{22nd LACCEI International Multi-Conference for Engineering, Education, and Technology}, 2024.
+
+\bibitem{siahaan2024}
+D. Siahaan et al., ``A scoping review of auto-generating transformation between software development artifacts'', \textit{Frontiers in Computer Science}, vol. 5, article 1306064, 2024.
+
+\bibitem{sajji2023}
+A. Sajji, Y. Rhazali, and Y. Hadi, ``Graphical User Interfaces Generation from BPMN via IFML up to PSM Level'', \textit{International Journal of Advanced Computer Science and Applications}, vol. 14, no. 2, 2023.
+
+\bibitem{bucaioni2022}
+A. Bucaioni, A. Cicchetti, and F. Ciccozzi, ``Modelling in low-code development: a multi-vocal systematic review'', \textit{Software and Systems Modeling}, vol. 21, pp. 1959--1981, 2022.
+
+\bibitem{diruscio2022}
+D. Di Ruscio, D. Kolovos, J. de Lara, A. Pierantonio, M. Tisi, and M. Wimmer, ``Low-code development and model-driven engineering: Two sides of the same coin?'', \textit{Software and Systems Modeling}, vol. 21, pp. 437--446, 2022.
+
+\bibitem{martinez2026}
+F. Martínez-Lasaca, P. Díez, E. Guerra, and J. de Lara, ``A model and workflow-driven approach for engineering domain-specific low-code platforms and applications'', \textit{Software and Systems Modeling}, vol. 25, pp. 579--614, 2026.
+
+\bibitem{pankowska2024}
+M. Pańkowska, ``Low Code Development Cycle Investigation'', 2024.
+
+\bibitem{salado2023}
+R. Salado-Cid, A. Vallecillo, K. Munir, and J. R. Romero, ``SWEL: A Domain-Specific Language for Modeling Data-Intensive Workflows'', 2023.
+
+\bibitem{campagna2025}
+D. Campagna et al., ``Streamlining Multi-scale Materials Modeling: The MUSICODE Low-Code Approach for Simulation Workflows and Executable MODAs'', \textit{Integrating Materials and Manufacturing Innovation}, vol. 14, pp. 136--152, 2025.
+
+\end{thebibliography}
+
+\end{document}

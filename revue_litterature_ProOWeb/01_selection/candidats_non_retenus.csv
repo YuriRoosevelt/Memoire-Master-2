@@ -1,0 +1,6 @@
+id,title,reason
+E01,SOA Services Identification and Design Methods From Business Models,Exclu conformément à la délimitation de la revue; le sujet est trop centré sur l'identification de services SOA et non sur la génération d'applications web BPMN.
+E02,Articles centrés uniquement sur le process mining,Exclus lorsqu'ils ne traitent pas de génération d'application ou d'exécution applicative.
+E03,Articles sur chatbots LLM et API REST/OpenAPI,Conservés comme anciennes traces du dossier mais hors périmètre de la revue ProOWeb.
+E04,Blogs ou tutoriels low-code,Exclus lorsqu'ils ne fournissent pas de contribution scientifique ou méthodologique exploitable.
+E05,Études industrielles très spécifiques,Exclues lorsqu'elles ne permettent pas de généraliser une méthode ou une architecture.

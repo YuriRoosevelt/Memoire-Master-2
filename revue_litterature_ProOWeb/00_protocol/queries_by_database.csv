@@ -1,0 +1,9 @@
+database,query,covered_questions,notes
+SpringerLink,"(""process-aware information system"" OR BPMN) AND (""model-driven engineering"" OR ""code generation"")",QR1;QR2;QR3;QR4,"Requête utilisée pour identifier les travaux PAIS, MDE, BPMN et low-code."
+SpringerLink,"(""low-code"" OR ""no-code"") AND (""model-driven engineering"" OR workflow)",QR4;QR6,"Requête utile pour les travaux sur low-code et MDE."
+ScienceDirect,"(""BPMN"" OR ""business process model"") AND (""GUI generation"" OR ""model transformation"" OR ""code generation"")",QR2;QR3,"Requête utilisée pour identifier les travaux de génération d'interfaces ou transformations."
+IEEE Xplore,"(""BPMN"" OR ""business process management"") AND (""web application"" OR ""process-aware information system"")",QR1;QR2;QR3,"Complément pour les articles orientés BPM et applications web."
+ACM Digital Library,"(""model-driven web development"" OR ""web application generation"") AND (model OR metamodel)",QR3;QR4,"Complément pour le développement web dirigé par les modèles."
+Google Scholar,"""AKIP Process Automation Platform"" ""process-aware web applications""",QR1;QR3,"Recherche ciblée pour le travail proche de ProOWeb."
+Google Scholar,"""Graphical user Interfaces Generation from BPMN"" IFML PSM",QR2;QR3,"Recherche ciblée pour la génération d'interfaces depuis BPMN."
+Google Scholar,"""SWEL"" ""Data-Intensive Workflows""",QR5,"Recherche ciblée pour les workflows orientés données."

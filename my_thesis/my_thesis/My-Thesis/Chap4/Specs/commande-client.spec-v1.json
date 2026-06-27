@@ -1,0 +1,305 @@
+{
+  "processId": "Process_P1_Commande_Client",
+  "processKey": "commande_client",
+  "schemaVersion": 1,
+  "name": "Commande client",
+  "description": "Processus de traitement d'une commande client dans l'organisation e-commerce.",
+  "start": {
+    "allowedRoles": ["CLIENT"],
+    "startActivities": ["UserTask_PasserCommande"]
+  },
+  "monitoring": {
+    "supervisorRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"]
+  },
+  "activities": {
+    "UserTask_PasserCommande": {
+      "activityId": "passer_commande",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["CLIENT"],
+        "mode": "DIRECT",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["CATALOGUE", "CLIENT_PROFILE"],
+        "fields": ["client.identite", "commande.lignes", "commande.adresseLivraison"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["commande.numero", "commande.total", "commande.dateSoumission"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_VerifierInfosCommande": {
+      "activityId": "verifier_informations_commande",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_COMMERCIAL"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "PREVIOUS_ACTIVITY"],
+        "fields": ["commande.numero", "client.identite", "commande.lignes", "commande.total"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["commandeRecevable", "commentaireCommercial"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_AnnulerCommande": {
+      "activityId": "annuler_commande",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_COMMERCIAL"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "commentaireCommercial"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["commande.statut", "commande.motifAnnulation"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_NotifierAnnulationClient": {
+      "activityId": "notifier_annulation_client",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_COMMERCIAL"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "commande.motifAnnulation"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["notificationClient", "dateNotification"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_ValiderCommande": {
+      "activityId": "valider_commande",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_COMMERCIAL"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "client.identite", "commande.total"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["commande.statut", "dateValidationCommerciale"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["SERVICE_COMMERCIAL", "GESTIONNAIRE_STOCK", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_VerifierDisponibiliteProduits": {
+      "activityId": "verifier_disponibilite_produits",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "SHARED_DATA"],
+        "fields": ["commande.numero", "commande.lignes", "stock.disponibilite"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["stockDisponible", "commentaireStock"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_MarquerCommandeAttenteStock": {
+      "activityId": "marquer_commande_attente_stock",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "commentaireStock"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["commande.statut", "dateMiseEnAttente"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL", "GESTIONNAIRE_STOCK"]
+      }
+    },
+    "UserTask_InformerClientAttente": {
+      "activityId": "informer_client_attente",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_COMMERCIAL"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "dateMiseEnAttente", "commentaireStock"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["notificationClient", "dateNotification"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_PreparerCommande": {
+      "activityId": "preparer_commande",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "SHARED_DATA"],
+        "fields": ["commande.numero", "commande.lignes", "stock.disponibilite"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["decisionPreparation", "referenceColis", "commentairePreparation"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_EnregistrerPreparation": {
+      "activityId": "enregistrer_preparation",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "referenceColis", "commentairePreparation"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["commande.statut", "datePreparation", "referenceColis"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL", "GESTIONNAIRE_STOCK"]
+      }
+    },
+    "UserTask_ConfirmerCommandePreparee": {
+      "activityId": "confirmer_commande_preparee",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_COMMERCIAL"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "commande.statut", "referenceColis"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["commande.statut", "dateConfirmationPreparation"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL", "GESTIONNAIRE_STOCK"]
+      }
+    },
+    "UserTask_ConsulterConfirmation": {
+      "activityId": "consulter_confirmation",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["CLIENT"],
+        "mode": "DIRECT",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["commande.numero", "commande.statut", "referenceColis"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["dateConsultationClient"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    }
+  },
+  "sharedData": {
+    "entities": [
+      {
+        "name": "Client",
+        "fields": [
+          { "name": "identite", "type": "string", "required": true },
+          { "name": "email", "type": "string", "required": true },
+          { "name": "telephone", "type": "string", "required": false }
+        ]
+      },
+      {
+        "name": "Produit",
+        "fields": [
+          { "name": "reference", "type": "string", "required": true },
+          { "name": "designation", "type": "string", "required": true },
+          { "name": "prixUnitaire", "type": "number", "required": true }
+        ]
+      },
+      {
+        "name": "Commande",
+        "fields": [
+          { "name": "numero", "type": "string", "required": true },
+          { "name": "statut", "type": "string", "required": true },
+          { "name": "total", "type": "number", "required": true },
+          { "name": "adresseLivraison", "type": "string", "required": true }
+        ]
+      },
+      {
+        "name": "Stock",
+        "fields": [
+          { "name": "referenceProduit", "type": "string", "required": true },
+          { "name": "quantiteDisponible", "type": "number", "required": true },
+          { "name": "seuilAlerte", "type": "number", "required": true }
+        ]
+      }
+    ]
+  }
+}

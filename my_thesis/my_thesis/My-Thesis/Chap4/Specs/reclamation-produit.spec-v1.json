@@ -1,0 +1,365 @@
+{
+  "processId": "Process_P3_Reclamation_Produit",
+  "processKey": "reclamation_produit",
+  "schemaVersion": 1,
+  "name": "Réclamation de produit",
+  "description": "Processus de qualification, analyse, décision et clôture d'une réclamation de produit dans l'organisation e-commerce.",
+  "start": {
+    "allowedRoles": ["CLIENT"],
+    "startActivities": ["UserTask_Deposer_Reclamation_Produit"]
+  },
+  "monitoring": {
+    "supervisorRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"]
+  },
+  "activities": {
+    "UserTask_Deposer_Reclamation_Produit": {
+      "activityId": "deposer_reclamation_produit",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["CLIENT"],
+        "mode": "DIRECT",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["CLIENT_PROFILE", "SHARED_DATA"],
+        "fields": ["client.identite", "commande.numero", "produit.reference"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["reclamation.numero", "reclamation.motif", "reclamation.description"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["CLIENT", "SERVICE_CLIENT"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_CLIENT"]
+      }
+    },
+    "UserTask_Qualifier_Reclamation": {
+      "activityId": "qualifier_reclamation",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "reclamation.motif", "reclamation.description"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["categorieReclamation", "commentaireQualification"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_Verifier_Commande_Concernee": {
+      "activityId": "verifier_commande_concernee",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "SHARED_DATA"],
+        "fields": ["commande.numero", "client.identite", "produit.reference"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["reclamationRecevable", "commentaireVerificationCommande"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_Rejeter_Reclamation": {
+      "activityId": "rejeter_reclamation",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "commentaireVerificationCommande"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["reclamation.statut", "reclamation.motifRejet"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_CLIENT"]
+      }
+    },
+    "UserTask_Notifier_Client_Rejet": {
+      "activityId": "notifier_client_rejet",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "reclamation.motifRejet"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["notificationClient", "dateNotification"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_CLIENT"]
+      }
+    },
+    "UserTask_Analyser_Motif_Reclamation": {
+      "activityId": "analyser_motif_reclamation",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "categorieReclamation", "produit.reference"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["verificationStockNecessaire", "validationCommercialeNecessaire", "analyseServiceClient"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "GESTIONNAIRE_STOCK"],
+        "dataViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "GESTIONNAIRE_STOCK"]
+      }
+    },
+    "UserTask_Verifier_Reference_Etat_Produit": {
+      "activityId": "verifier_reference_etat_produit",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "SHARED_DATA"],
+        "fields": ["produit.reference", "commande.numero", "reclamation.motif"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["resultatVerificationProduit", "commentaireStock"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_CLIENT", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_CLIENT"]
+      }
+    },
+    "UserTask_Renseigner_Resultat_Verification": {
+      "activityId": "renseigner_resultat_verification",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["resultatVerificationProduit", "commentaireStock"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["verificationProduitValidee", "dateVerificationProduit"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_CLIENT"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "SERVICE_CLIENT"]
+      }
+    },
+    "UserTask_Proposer_Solution": {
+      "activityId": "proposer_solution",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["analyseServiceClient", "resultatVerificationProduit", "commentaireStock"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["solutionProposee", "validationCommercialeNecessaire"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL"],
+        "dataViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_Examiner_Solution_Proposee": {
+      "activityId": "examiner_solution_proposee",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_COMMERCIAL"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "solutionProposee"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["solutionAcceptee", "commentaireCommercial"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_COMMERCIAL", "SERVICE_CLIENT", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["SERVICE_COMMERCIAL", "SERVICE_CLIENT"]
+      }
+    },
+    "UserTask_Reviser_Solution": {
+      "activityId": "reviser_solution",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["solutionProposee", "commentaireCommercial"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["solutionProposee", "commentaireRevision"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL"],
+        "dataViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_Enregistrer_Decision": {
+      "activityId": "enregistrer_decision",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "solutionProposee", "solutionAcceptee"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["decision.type", "decision.commentaire", "reclamation.statut"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_Notifier_Client_Decision": {
+      "activityId": "notifier_client_decision",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "decision.type", "decision.commentaire"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["notificationClient", "dateNotification"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_CLIENT"]
+      }
+    },
+    "UserTask_Cloturer_Reclamation": {
+      "activityId": "cloturer_reclamation",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["SERVICE_CLIENT"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "decision.type", "notificationClient"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["reclamation.statut", "dateCloture"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["SERVICE_CLIENT", "SERVICE_COMMERCIAL", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_CLIENT", "SERVICE_COMMERCIAL"]
+      }
+    },
+    "UserTask_Consulter_Reponse": {
+      "activityId": "consulter_reponse",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["CLIENT"],
+        "mode": "DIRECT",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["reclamation.numero", "decision.type", "decision.commentaire"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["dateConsultationClient"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["CLIENT", "SERVICE_CLIENT"],
+        "dataViewerRoles": ["CLIENT", "SERVICE_CLIENT"]
+      }
+    }
+  },
+  "sharedData": {
+    "entities": [
+      {
+        "name": "Client",
+        "fields": [
+          { "name": "identite", "type": "string", "required": true },
+          { "name": "email", "type": "string", "required": true }
+        ]
+      },
+      {
+        "name": "Commande",
+        "fields": [
+          { "name": "numero", "type": "string", "required": true },
+          { "name": "statut", "type": "string", "required": true }
+        ]
+      },
+      {
+        "name": "Produit",
+        "fields": [
+          { "name": "reference", "type": "string", "required": true },
+          { "name": "designation", "type": "string", "required": true }
+        ]
+      },
+      {
+        "name": "Reclamation",
+        "fields": [
+          { "name": "numero", "type": "string", "required": true },
+          { "name": "motif", "type": "string", "required": true },
+          { "name": "description", "type": "string", "required": true },
+          { "name": "statut", "type": "string", "required": true }
+        ]
+      }
+    ]
+  }
+}

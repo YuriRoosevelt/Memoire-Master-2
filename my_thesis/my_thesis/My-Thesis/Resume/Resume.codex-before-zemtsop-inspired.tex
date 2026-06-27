@@ -1,0 +1,18 @@
+\let\oldprintchaptertitle=\printchaptertitle
+\renewcommand{\printchaptertitle}[1]{%
+	\vspace*{-75pt}
+	\oldprintchaptertitle{#1}
+}%
+\myChapterStar{Résumé}{}{section}
+\let\printchaptertitle=\oldprintchaptertitle
+
+Ce mémoire s'inscrit dans le domaine de la modélisation des processus métier et de la génération d'applications web. Dans de nombreuses organisations, les processus décrivent les activités à réaliser, les acteurs impliqués, les données manipulées et les règles de décision. Pourtant, lors du développement d'une application web, ces processus restent souvent séparés du code produit. Cette séparation peut entraîner des écarts entre le modèle métier et l'application livrée, rallonger le temps de développement et rendre l'évolution du système plus difficile. Les solutions existantes apportent des réponses partielles : certaines exécutent des workflows, d'autres génèrent des interfaces ou des fragments applicatifs, mais elles ne couvrent pas toujours la génération d'une application web métier complète et fonctionnelle.
+
+Pour répondre à cette difficulté, nous proposons ProOWeb, une approche d'ingénierie dirigée par les modèles permettant de générer une application web métier à partir d'un modèle BPMN enrichi. L'approche conserve BPMN comme support de description du workflow, puis l'associe à une spécification complémentaire, appelée \textit{spec-v1}. Cette spécification décrit les informations nécessaires à la génération : rôles, affectations, entrées, sorties, données métier, règles de visibilité et contraintes de progression. Les deux sources sont ensuite validées et transformées en un modèle pivot qui stabilise les informations avant leur projection vers l'application générée.
+
+La contribution principale de ce travail est donc une chaîne de génération qui maintient la continuité entre le processus métier, les règles applicatives et les artefacts produits. ProOWeb ne vise pas seulement la production de fichiers ou de prototypes ; il cherche à produire une application web métier exploitable, capable de présenter les tâches aux utilisateurs, d'appliquer la logique du processus, de gérer les données associées, de contrôler les accès et de suivre l'évolution des instances. L'approche prend également en compte l'évolution de l'application grâce à des mécanismes de traçabilité, de préservation du code personnalisé et de régénération contrôlée.
+
+\vspace{0.8cm}
+\noindent\textbf{Mots clés:} BPMN, application web métier, génération de code, ingénierie dirigée par les modèles, processus métier, ProOWeb, spécification enrichie.
+
+\myCleanStarChapterEnd

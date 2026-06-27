@@ -1,0 +1,16 @@
+id,title,axis
+P01,Model-Driven Engineering of Process-Aware Information Systems,PAIS et MDE
+P02,FloBP: a model-driven approach for developing and executing IoT-enhanced business processes,BPMN enrichi
+P03,Size matters less: how fine-tuned small LLMs excel in BPMN generation,Assistance BPMN par IA
+P04,Automatically Generating BPMN 2.0 Process Models from Natural Language Process Descriptions,Assistance BPMN par IA
+P05,A model and workflow-driven approach for engineering domain-specific low-code platforms and applications,Low-code et MDE
+P06,Modelling in low-code development: a multi-vocal systematic review,Low-code et MDE
+P07,Low-code development and model-driven engineering: Two sides of the same coin?,Low-code et MDE
+P08,Streamlining Multi-scale Materials Modeling: The MUSICODE Low-Code Approach for Simulation Workflows and Executable MODAs,Workflows exécutables
+P09,Evaluating large language models on business process modeling,Assistance BPMN par IA
+P10,AKIP Process Automation Platform: A Framework for the Development of Process-Aware Web Applications,Applications web process-aware
+P11,Tools in Model-Driven Web Development: A Systematic Mapping Study,Développement web dirigé par les modèles
+P12,A scoping review of auto-generating transformation between software development artifacts,Transformations et artefacts intermédiaires
+P13,Low Code Development Cycle Investigation,Low-code
+P14,SWEL: A Domain-Specific Language for Modeling Data-Intensive Workflows,Workflows et données
+P15,Graphical user Interfaces Generation from BPMN via IFML up to PSM Level,Génération d'interfaces depuis BPMN

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_P2_Reapprovisionnement_Du_Stock"
+  targetNamespace="http://prooweb.local/bpmn/p2-reapprovisionnement-stock">
+
+  <bpmn:collaboration id="Collaboration_P2_Reapprovisionnement">
+    <bpmn:participant id="Participant_Organisation_Ecommerce" name="Organisation e-commerce" processRef="Process_P2_Reapprovisionnement_Du_Stock" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_P2_Reapprovisionnement_Du_Stock" name="P2 Réapprovisionnement du stock" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_P2_Reapprovisionnement">
+      <bpmn:lane id="Lane_Administrateur" name="Administrateur">
+        <bpmn:flowNodeRef>StartEvent_Admin_Optionnel</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Parametrer_Seuils_Stock</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Admin_Optionnel</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Gestionnaire_Stock" name="Gestionnaire de stock">
+        <bpmn:flowNodeRef>StartEvent_Reapprovisionnement</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Identifier_Produit_Stock_Faible</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Creer_Demande_Reapprovisionnement</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Cloturer_Demande_Refusee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Demande_Refusee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Enregistrer_Reception_Produits</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_Mettre_A_Jour_Stock</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Cloturer_Reapprovisionnement</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_Reapprovisionnement_Cloture</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Responsable_Achats" name="Responsable achats">
+        <bpmn:flowNodeRef>UserTask_Examiner_Demande_Reapprovisionnement</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Demande_Justifiee</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Refuser_Reapprovisionnement</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Valider_Reapprovisionnement</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>UserTask_Enregistrer_Decision_Achat</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+
+    <bpmn:startEvent id="StartEvent_Admin_Optionnel" name="Début optionnel">
+      <bpmn:outgoing>Flow_Admin_Start_To_Parametrer</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="UserTask_Parametrer_Seuils_Stock" name="Paramétrer les seuils de stock">
+      <bpmn:incoming>Flow_Admin_Start_To_Parametrer</bpmn:incoming>
+      <bpmn:outgoing>Flow_Admin_Parametrer_To_End</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_Admin_Optionnel" name="Fin optionnel">
+      <bpmn:incoming>Flow_Admin_Parametrer_To_End</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:startEvent id="StartEvent_Reapprovisionnement" name="Début">
+      <bpmn:outgoing>Flow_Start_To_Identifier</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="UserTask_Identifier_Produit_Stock_Faible" name="Identifier un produit en stock faible">
+      <bpmn:incoming>Flow_Start_To_Identifier</bpmn:incoming>
+      <bpmn:outgoing>Flow_Identifier_To_Creer_Demande</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Creer_Demande_Reapprovisionnement" name="Créer une demande de réapprovisionnement">
+      <bpmn:incoming>Flow_Identifier_To_Creer_Demande</bpmn:incoming>
+      <bpmn:outgoing>Flow_Creer_Demande_To_Examiner</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <bpmn:userTask id="UserTask_Examiner_Demande_Reapprovisionnement" name="Examiner la demande de réapprovisionnement">
+      <bpmn:incoming>Flow_Creer_Demande_To_Examiner</bpmn:incoming>
+      <bpmn:outgoing>Flow_Examiner_To_Gateway</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_Demande_Justifiee" name="Demande justifiée ?">
+      <bpmn:incoming>Flow_Examiner_To_Gateway</bpmn:incoming>
+      <bpmn:outgoing>Flow_Gateway_To_Refuser</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Gateway_To_Valider</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:userTask id="UserTask_Refuser_Reapprovisionnement" name="Refuser le réapprovisionnement">
+      <bpmn:incoming>Flow_Gateway_To_Refuser</bpmn:incoming>
+      <bpmn:outgoing>Flow_Refuser_To_Cloturer_Refusee</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Cloturer_Demande_Refusee" name="Clôturer la demande refusée">
+      <bpmn:incoming>Flow_Refuser_To_Cloturer_Refusee</bpmn:incoming>
+      <bpmn:outgoing>Flow_Cloturer_Refusee_To_End</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_Demande_Refusee" name="Fin">
+      <bpmn:incoming>Flow_Cloturer_Refusee_To_End</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:userTask id="UserTask_Valider_Reapprovisionnement" name="Valider le réapprovisionnement">
+      <bpmn:incoming>Flow_Gateway_To_Valider</bpmn:incoming>
+      <bpmn:outgoing>Flow_Valider_To_Enregistrer_Decision</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Enregistrer_Decision_Achat" name="Enregistrer la décision d'achat">
+      <bpmn:incoming>Flow_Valider_To_Enregistrer_Decision</bpmn:incoming>
+      <bpmn:outgoing>Flow_Enregistrer_Decision_To_Reception</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="UserTask_Enregistrer_Reception_Produits" name="Enregistrer la réception des produits">
+      <bpmn:incoming>Flow_Enregistrer_Decision_To_Reception</bpmn:incoming>
+      <bpmn:outgoing>Flow_Reception_To_Maj_Stock</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="ServiceTask_Mettre_A_Jour_Stock" name="Mettre à jour le stock">
+      <bpmn:incoming>Flow_Reception_To_Maj_Stock</bpmn:incoming>
+      <bpmn:outgoing>Flow_Maj_Stock_To_Cloturer_Reappro</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="UserTask_Cloturer_Reapprovisionnement" name="Clôturer le réapprovisionnement">
+      <bpmn:incoming>Flow_Maj_Stock_To_Cloturer_Reappro</bpmn:incoming>
+      <bpmn:outgoing>Flow_Cloturer_Reappro_To_End</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_Reapprovisionnement_Cloture" name="Fin">
+      <bpmn:incoming>Flow_Cloturer_Reappro_To_End</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="Flow_Admin_Start_To_Parametrer" sourceRef="StartEvent_Admin_Optionnel" targetRef="UserTask_Parametrer_Seuils_Stock" />
+    <bpmn:sequenceFlow id="Flow_Admin_Parametrer_To_End" sourceRef="UserTask_Parametrer_Seuils_Stock" targetRef="EndEvent_Admin_Optionnel" />
+    <bpmn:sequenceFlow id="Flow_Start_To_Identifier" sourceRef="StartEvent_Reapprovisionnement" targetRef="UserTask_Identifier_Produit_Stock_Faible" />
+    <bpmn:sequenceFlow id="Flow_Identifier_To_Creer_Demande" sourceRef="UserTask_Identifier_Produit_Stock_Faible" targetRef="UserTask_Creer_Demande_Reapprovisionnement" />
+    <bpmn:sequenceFlow id="Flow_Creer_Demande_To_Examiner" sourceRef="UserTask_Creer_Demande_Reapprovisionnement" targetRef="UserTask_Examiner_Demande_Reapprovisionnement" />
+    <bpmn:sequenceFlow id="Flow_Examiner_To_Gateway" sourceRef="UserTask_Examiner_Demande_Reapprovisionnement" targetRef="Gateway_Demande_Justifiee" />
+    <bpmn:sequenceFlow id="Flow_Gateway_To_Refuser" name="Non" sourceRef="Gateway_Demande_Justifiee" targetRef="UserTask_Refuser_Reapprovisionnement">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${demandeJustifiee == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_Refuser_To_Cloturer_Refusee" sourceRef="UserTask_Refuser_Reapprovisionnement" targetRef="UserTask_Cloturer_Demande_Refusee" />
+    <bpmn:sequenceFlow id="Flow_Cloturer_Refusee_To_End" sourceRef="UserTask_Cloturer_Demande_Refusee" targetRef="EndEvent_Demande_Refusee" />
+    <bpmn:sequenceFlow id="Flow_Gateway_To_Valider" name="Oui" sourceRef="Gateway_Demande_Justifiee" targetRef="UserTask_Valider_Reapprovisionnement">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${demandeJustifiee == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_Valider_To_Enregistrer_Decision" sourceRef="UserTask_Valider_Reapprovisionnement" targetRef="UserTask_Enregistrer_Decision_Achat" />
+    <bpmn:sequenceFlow id="Flow_Enregistrer_Decision_To_Reception" sourceRef="UserTask_Enregistrer_Decision_Achat" targetRef="UserTask_Enregistrer_Reception_Produits" />
+    <bpmn:sequenceFlow id="Flow_Reception_To_Maj_Stock" sourceRef="UserTask_Enregistrer_Reception_Produits" targetRef="ServiceTask_Mettre_A_Jour_Stock" />
+    <bpmn:sequenceFlow id="Flow_Maj_Stock_To_Cloturer_Reappro" sourceRef="ServiceTask_Mettre_A_Jour_Stock" targetRef="UserTask_Cloturer_Reapprovisionnement" />
+    <bpmn:sequenceFlow id="Flow_Cloturer_Reappro_To_End" sourceRef="UserTask_Cloturer_Reapprovisionnement" targetRef="EndEvent_Reapprovisionnement_Cloture" />
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_P2_Reapprovisionnement">
+    <bpmndi:BPMNPlane id="BPMNPlane_P2_Reapprovisionnement" bpmnElement="Collaboration_P2_Reapprovisionnement">
+      <bpmndi:BPMNShape id="Participant_Organisation_Ecommerce_di" bpmnElement="Participant_Organisation_Ecommerce" isHorizontal="true">
+        <dc:Bounds x="80" y="60" width="2700" height="760" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Administrateur_di" bpmnElement="Lane_Administrateur" isHorizontal="true">
+        <dc:Bounds x="110" y="60" width="2670" height="180" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Gestionnaire_Stock_di" bpmnElement="Lane_Gestionnaire_Stock" isHorizontal="true">
+        <dc:Bounds x="110" y="240" width="2670" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Responsable_Achats_di" bpmnElement="Lane_Responsable_Achats" isHorizontal="true">
+        <dc:Bounds x="110" y="520" width="2670" height="300" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="StartEvent_Admin_Optionnel_di" bpmnElement="StartEvent_Admin_Optionnel">
+        <dc:Bounds x="210" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Parametrer_Seuils_Stock_di" bpmnElement="UserTask_Parametrer_Seuils_Stock">
+        <dc:Bounds x="310" y="110" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Admin_Optionnel_di" bpmnElement="EndEvent_Admin_Optionnel">
+        <dc:Bounds x="580" y="132" width="36" height="36" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="StartEvent_Reapprovisionnement_di" bpmnElement="StartEvent_Reapprovisionnement">
+        <dc:Bounds x="210" y="362" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Identifier_Produit_Stock_Faible_di" bpmnElement="UserTask_Identifier_Produit_Stock_Faible">
+        <dc:Bounds x="310" y="340" width="210" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Creer_Demande_Reapprovisionnement_di" bpmnElement="UserTask_Creer_Demande_Reapprovisionnement">
+        <dc:Bounds x="580" y="340" width="240" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="UserTask_Examiner_Demande_Reapprovisionnement_di" bpmnElement="UserTask_Examiner_Demande_Reapprovisionnement">
+        <dc:Bounds x="890" y="610" width="250" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Demande_Justifiee_di" bpmnElement="Gateway_Demande_Justifiee" isMarkerVisible="true">
+        <dc:Bounds x="1220" y="625" width="50" height="50" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="UserTask_Refuser_Reapprovisionnement_di" bpmnElement="UserTask_Refuser_Reapprovisionnement">
+        <dc:Bounds x="1340" y="560" width="220" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Cloturer_Demande_Refusee_di" bpmnElement="UserTask_Cloturer_Demande_Refusee">
+        <dc:Bounds x="1620" y="340" width="230" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Demande_Refusee_di" bpmnElement="EndEvent_Demande_Refusee">
+        <dc:Bounds x="1920" y="362" width="36" height="36" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="UserTask_Valider_Reapprovisionnement_di" bpmnElement="UserTask_Valider_Reapprovisionnement">
+        <dc:Bounds x="1340" y="700" width="220" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Enregistrer_Decision_Achat_di" bpmnElement="UserTask_Enregistrer_Decision_Achat">
+        <dc:Bounds x="1620" y="700" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Enregistrer_Reception_Produits_di" bpmnElement="UserTask_Enregistrer_Reception_Produits">
+        <dc:Bounds x="1920" y="340" width="240" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_Mettre_A_Jour_Stock_di" bpmnElement="ServiceTask_Mettre_A_Jour_Stock">
+        <dc:Bounds x="2220" y="340" width="200" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_Cloturer_Reapprovisionnement_di" bpmnElement="UserTask_Cloturer_Reapprovisionnement">
+        <dc:Bounds x="2480" y="340" width="230" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Reapprovisionnement_Cloture_di" bpmnElement="EndEvent_Reapprovisionnement_Cloture">
+        <dc:Bounds x="2735" y="362" width="36" height="36" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="Flow_Admin_Start_To_Parametrer_di" bpmnElement="Flow_Admin_Start_To_Parametrer">
+        <di:waypoint x="246" y="150" />
+        <di:waypoint x="310" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Admin_Parametrer_To_End_di" bpmnElement="Flow_Admin_Parametrer_To_End">
+        <di:waypoint x="510" y="150" />
+        <di:waypoint x="580" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Start_To_Identifier_di" bpmnElement="Flow_Start_To_Identifier">
+        <di:waypoint x="246" y="380" />
+        <di:waypoint x="310" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Identifier_To_Creer_Demande_di" bpmnElement="Flow_Identifier_To_Creer_Demande">
+        <di:waypoint x="520" y="380" />
+        <di:waypoint x="580" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Creer_Demande_To_Examiner_di" bpmnElement="Flow_Creer_Demande_To_Examiner">
+        <di:waypoint x="820" y="380" />
+        <di:waypoint x="855" y="380" />
+        <di:waypoint x="855" y="650" />
+        <di:waypoint x="890" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Examiner_To_Gateway_di" bpmnElement="Flow_Examiner_To_Gateway">
+        <di:waypoint x="1140" y="650" />
+        <di:waypoint x="1220" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Gateway_To_Refuser_di" bpmnElement="Flow_Gateway_To_Refuser">
+        <di:waypoint x="1270" y="650" />
+        <di:waypoint x="1305" y="650" />
+        <di:waypoint x="1305" y="600" />
+        <di:waypoint x="1340" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Refuser_To_Cloturer_Refusee_di" bpmnElement="Flow_Refuser_To_Cloturer_Refusee">
+        <di:waypoint x="1560" y="600" />
+        <di:waypoint x="1590" y="600" />
+        <di:waypoint x="1590" y="380" />
+        <di:waypoint x="1620" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Cloturer_Refusee_To_End_di" bpmnElement="Flow_Cloturer_Refusee_To_End">
+        <di:waypoint x="1850" y="380" />
+        <di:waypoint x="1920" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Gateway_To_Valider_di" bpmnElement="Flow_Gateway_To_Valider">
+        <di:waypoint x="1245" y="675" />
+        <di:waypoint x="1245" y="740" />
+        <di:waypoint x="1340" y="740" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Valider_To_Enregistrer_Decision_di" bpmnElement="Flow_Valider_To_Enregistrer_Decision">
+        <di:waypoint x="1560" y="740" />
+        <di:waypoint x="1620" y="740" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Enregistrer_Decision_To_Reception_di" bpmnElement="Flow_Enregistrer_Decision_To_Reception">
+        <di:waypoint x="1860" y="740" />
+        <di:waypoint x="1890" y="740" />
+        <di:waypoint x="1890" y="380" />
+        <di:waypoint x="1920" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Reception_To_Maj_Stock_di" bpmnElement="Flow_Reception_To_Maj_Stock">
+        <di:waypoint x="2160" y="380" />
+        <di:waypoint x="2220" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Maj_Stock_To_Cloturer_Reappro_di" bpmnElement="Flow_Maj_Stock_To_Cloturer_Reappro">
+        <di:waypoint x="2420" y="380" />
+        <di:waypoint x="2480" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_Cloturer_Reappro_To_End_di" bpmnElement="Flow_Cloturer_Reappro_To_End">
+        <di:waypoint x="2710" y="380" />
+        <di:waypoint x="2735" y="380" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

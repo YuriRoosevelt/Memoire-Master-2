@@ -1,0 +1,10 @@
+database,role_in_review,selected_items,main_axes
+SpringerLink,Source principale pour les articles MDE BPMN low-code et workflows,9,"PAIS; BPMN; low-code; workflows; modélisation assistée"
+ScienceDirect,Source complémentaire pour les transformations et génération,1,"Transformation d'artefacts; génération"
+IEEE Xplore,Source complémentaire pour BPM BPMS et applications web,0,"Aucun article principal retenu dans le corpus final"
+ACM Digital Library,Source complémentaire pour MDWD et génération web,0,"Aucun article principal retenu dans le corpus final"
+LACCEI,Source de la cartographie MDWD,1,"Model-driven web development"
+ICEIS,Source du travail AKIP,1,"Applications web process-aware"
+Frontiers,Source de la revue sur transformations entre artefacts,1,"Artefacts intermédiaires; traçabilité"
+IJACSA,Source de la génération GUI depuis BPMN,1,"BPMN; IFML; interfaces"
+Google Scholar,Source de repérage transversal,15,"Repérage, DOI, versions accessibles"

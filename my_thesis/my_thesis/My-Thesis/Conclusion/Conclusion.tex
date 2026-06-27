@@ -1,0 +1,36 @@
+\myChapterStar{Conclusion générale}{}{true}
+\myMiniToc{}{Sommaire}
+
+\mySectionStar{Bilan du travail}{}{true}
+
+Ce mémoire s'est intéressé à la génération d'applications web métier à partir de modèles BPMN enrichis. Le problème traité vient du fait qu'un modèle de processus décrit bien le déroulement du travail, mais ne contient pas toujours toutes les informations nécessaires pour produire une application web réellement exploitable : rôles, données, formulaires, règles d'accès, suivi des instances et évolution du code généré.
+
+Dans ce travail, nous avons proposé ProOWeb, un framework de génération d'applications web métier pilotées par BPMN. Pour atteindre cet objectif, nous avons d'abord étudié les notions de processus métier, de BPMN, d'applications web orientées processus et d'ingénierie dirigée par les modèles. Nous avons ensuite analysé les travaux existants afin de comprendre leurs apports et leurs limites lorsqu'il s'agit de passer d'un modèle de processus à une application complète.
+
+La contribution proposée repose sur l'association d'un modèle BPMN et d'une spécification complémentaire, appelée \textit{spec-v1}. Le modèle BPMN conserve le déroulement du processus, tandis que la spécification apporte les informations applicatives nécessaires à la génération. Ces éléments sont validés, organisés dans un modèle pivot, puis transformés en contrats et en artefacts logiciels.
+
+Rendus au terme de ce mémoire, nous retenons principalement les contributions suivantes :
+\begin{itemize}
+    \item la définition de ProOWeb comme framework de génération d'applications web métier à partir de modèles BPMN enrichis ;
+    \item la proposition d'une spécification \textit{spec-v1} permettant de compléter BPMN sans alourdir le diagramme de processus ;
+    \item la mise en place d'une chaîne de génération allant des modèles d'entrée vers les contrats intermédiaires, puis vers les artefacts backend et frontend ;
+    \item la prise en compte de la traçabilité et de la régénération contrôlée, afin que le projet généré puisse évoluer sans perdre le lien avec les modèles ;
+    \item l'application du framework à une organisation de commerce électronique à travers trois processus : commande client, réapprovisionnement du stock et réclamation de produit.
+\end{itemize}
+
+Le cas d'étude a permis de montrer que ProOWeb ne se limite pas à la génération d'un processus isolé. Il peut produire une base applicative regroupant plusieurs processus appartenant à une même organisation. Les résultats obtenus restent toutefois à considérer comme une étape de validation. Le framework dépend encore de la qualité des modèles fournis, et certains aspects d'une application réelle, comme le paiement, la livraison, les intégrations externes ou les règles métier complexes, nécessitent encore des développements complémentaires.
+
+\mySectionStar{Quelques perspectives}{}{true}
+
+Ce travail ouvre plusieurs pistes d'amélioration. Les plus importantes sont les suivantes :
+\begin{itemize}
+    \item enrichir la spécification \textit{spec-v1} pour prendre en compte des règles métier plus complexes et des validations plus fines ;
+    \item développer un environnement d'assistance à la modélisation, afin d'aider l'utilisateur à construire et vérifier les modèles BPMN et les fichiers \textit{spec-v1} ;
+    \item étendre ProOWeb vers d'autres architectures techniques, afin de réduire sa dépendance à une pile technologique particulière ;
+    \item renforcer la génération de tests automatiques liés aux transitions, aux rôles, aux formulaires et aux règles de visibilité ;
+    \item évaluer le framework sur d'autres organisations et sur des processus plus nombreux, afin de mieux apprécier sa robustesse et sa portée.
+\end{itemize}
+
+En définitive, ProOWeb constitue une base de travail pour rapprocher la modélisation des processus métier et la réalisation d'applications web. Il ne remplace pas le développeur, mais lui offre un point de départ plus structuré, plus traçable et plus proche du fonctionnement réel de l'organisation.
+
+\myCleanStarChapterEnd

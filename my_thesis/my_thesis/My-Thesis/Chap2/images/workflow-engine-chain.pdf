@@ -1,0 +1,93 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 1080 420] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 2602 >>
+stream
+1.6 w 0.12 0.22 0.35 RG
+BT /F1 18 Tf 310 370 Td (Chaine de traitement par un moteur de workflow BPMN) Tj ET
+q 0.93 0.97 1 rg 35 235 145 75 re f Q
+35 235 145 75 re S
+BT /F1 13 Tf 47 285 Td (Modele BPMN) Tj ET
+BT /F1 9 Tf 47 265 Td (processus executable) Tj ET
+180 272 m 230 272 l S
+230 272 m 221.39257972996057 277.0904141575037 l S
+230 272 m 221.39257972996057 266.9095858424963 l S
+q 0.93 0.97 1 rg 230 235 145 75 re f Q
+230 235 145 75 re S
+BT /F1 13 Tf 242 285 Td (Deploiement) Tj ET
+BT /F1 9 Tf 242 265 Td (definition du processus) Tj ET
+375 272 m 425 272 l S
+425 272 m 416.3925797299606 277.0904141575037 l S
+425 272 m 416.3925797299606 266.9095858424963 l S
+q 0.93 0.97 1 rg 425 220 190 105 re f Q
+425 220 190 105 re S
+BT /F1 13 Tf 437 300 Td (Moteur workflow) Tj ET
+BT /F1 9 Tf 437 280 Td (Camunda / Flowable / jBPM) Tj ET
+520 220 m 520 175 l S
+520 175 m 525.0904141575037 183.60742027003943 l S
+520 175 m 514.9095858424963 183.60742027003943 l S
+q 0.93 0.97 1 rg 435 95 170 80 re f Q
+435 95 170 80 re S
+BT /F1 13 Tf 447 150 Td (Instances) Tj ET
+BT /F1 9 Tf 447 130 Td (etat, variables, historique) Tj ET
+615 272 m 665 322 l S
+665 322 m 655.3141683887137 319.5131011283515 l S
+665 322 m 662.5131011283514 312.3141683887137 l S
+q 0.93 0.97 1 rg 665 285 165 75 re f Q
+665 285 165 75 re S
+BT /F1 13 Tf 677 335 Td (Tasklist) Tj ET
+BT /F1 9 Tf 677 315 Td (taches humaines) Tj ET
+615 272 m 665 222 l S
+665 222 m 662.5131011283514 231.68583161128632 l S
+665 222 m 655.3141683887137 224.48689887164855 l S
+q 0.93 0.97 1 rg 665 185 165 75 re f Q
+665 185 165 75 re S
+BT /F1 13 Tf 677 235 Td (Workers) Tj ET
+BT /F1 9 Tf 677 215 Td (taches de service) Tj ET
+830 222 m 875 222 l S
+875 222 m 866.3925797299605 227.09041415750372 l S
+875 222 m 866.3925797299605 216.90958584249628 l S
+q 0.93 0.97 1 rg 875 185 160 75 re f Q
+875 185 160 75 re S
+BT /F1 13 Tf 887 235 Td (Services metier) Tj ET
+BT /F1 9 Tf 887 215 Td (API et systemes externes) Tj ET
+830 322 m 875 322 l S
+875 322 m 866.3925797299605 327.0904141575037 l S
+875 322 m 866.3925797299605 316.9095858424963 l S
+q 0.93 0.97 1 rg 875 285 160 75 re f Q
+875 285 160 75 re S
+BT /F1 13 Tf 887 335 Td (Suivi) Tj ET
+BT /F1 9 Tf 887 315 Td (monitoring et incidents) Tj ET
+520 95 m 520 60 l S
+520 60 m 525.0904141575037 68.60742027003944 l S
+520 60 m 514.9095858424963 68.60742027003943 l S
+q 0.93 0.97 1 rg 435 15 170 55 re f Q
+435 15 170 55 re S
+BT /F1 13 Tf 447 45 Td (Donnees) Tj ET
+BT /F1 9 Tf 447 25 Td (journaux et audit) Tj ET
+BT /F1 10 Tf 42 202 Td (Le moteur orchestre le processus, mais les interfaces, donnees et services restent a concevoir.) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000242 00000 n 
+0000000312 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+2965
+%%EOF

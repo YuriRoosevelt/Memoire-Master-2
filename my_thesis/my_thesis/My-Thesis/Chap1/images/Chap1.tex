@@ -1,0 +1,304 @@
+\myChapter{Généralités sur le Business Process Model and Notation et le développement web}{}
+\label{chap:services_composition_generalities}
+\myMiniToc{mysection}{Sommaire}
+
+\mySection{Introduction}{}
+
+La conception d'une application métier ne commence pas toujours devant un éditeur de code. Elle commence souvent par une question plus simple, mais plus profonde : comment le travail est-il réellement accompli dans l'organisation ? Avant de parler de base de données, d'interface utilisateur, d'API ou de déploiement, il faut comprendre les activités à réaliser, les acteurs concernés, les informations manipulées et les décisions qui orientent le déroulement du travail. Cette compréhension constitue le socle de tout système d'information sérieux.
+
+Dans un établissement universitaire, par exemple, une demande d'attestation peut sembler banale. Pourtant, elle implique plusieurs étapes : dépôt de la demande par l'étudiant, vérification de son identité, contrôle de sa situation académique, validation par un service compétent, génération du document, signature éventuelle, puis mise à disposition du résultat. Si l'on développe directement une application sans représenter ce fonctionnement, certains cas seront oubliés : dossier incomplet, demande rejetée, rôle du chef de service, trace de validation, notification de l'étudiant, archivage du document. La modélisation des processus permet justement de rendre ces éléments visibles avant leur traduction technique.
+
+Ce chapitre présente les notions essentielles nécessaires à la suite du mémoire. Il ne défend pas encore une solution particulière ; il établit plutôt les bases conceptuelles qui permettront de comprendre les chapitres suivants. La première partie introduit les processus métier, le Business Process Management (BPM) et le standard Business Process Model and Notation (BPMN). La seconde partie présente les fondements du développement web moderne : fonctionnement du Web, application web, architecture client-serveur, API, sécurité, maintenabilité et déploiement.
+
+\mySection{Généralités sur les processus métier et le BPMN}{}
+\label{sec:calcul_orientee_service}
+
+\subsection{Notion de processus}{}
+\label{subsec:evolution_high_performance}
+
+\subsubsection{Définition générale}
+
+Un processus désigne un ensemble organisé d'activités qui permet de transformer une situation initiale en un résultat attendu. Il peut être simple, comme le traitement d'une demande de mot de passe oublié, ou plus complexe, comme l'inscription administrative d'un étudiant dans une université. Dans tous les cas, un processus suppose une progression : il existe un début, des activités intermédiaires, des décisions possibles et une fin.
+
+Un processus ne doit pas être confondu avec une tâche isolée. Une tâche représente une action précise, tandis qu'un processus décrit l'enchaînement de plusieurs tâches dans un ordre logique. Par exemple, "vérifier les pièces du dossier" est une tâche ; "traiter une demande d'inscription" est un processus, car il regroupe plusieurs tâches, plusieurs acteurs et plusieurs conditions.
+
+Dans la littérature, le processus est souvent étudié comme un objet d'analyse, de pilotage et d'amélioration. Van der Aalst considère le Business Process Management comme un domaine centré sur la conception, l'exécution, le contrôle et l'amélioration des processus opérationnels \cite{aalst2013}. Cette définition montre qu'un processus ne sert pas seulement à décrire ce qui existe ; il peut aussi aider à organiser le travail, à détecter des lenteurs et à préparer l'automatisation.
+
+\subsubsection{Composantes d'un processus}
+
+Pour comprendre un processus, il est utile d'identifier ses composantes principales. Les entrées correspondent aux éléments nécessaires au démarrage du processus : une demande, un formulaire, une pièce justificative, un événement ou une information reçue. Les activités représentent les opérations effectuées. Les acteurs sont les personnes, services ou systèmes responsables de ces activités. Les règles indiquent les conditions à respecter. Les sorties correspondent aux résultats produits : document validé, dossier rejeté, inscription confirmée ou notification envoyée.
+
+\begin{center}
+\begin{tabular}{|p{3.2cm}|p{5.2cm}|p{6.4cm}|}
+\hline
+\textbf{Composante} & \textbf{Rôle dans le processus} & \textbf{Exemple dans une demande d'attestation} \\
+\hline
+Entrée & Élément qui déclenche ou alimente le processus & Formulaire de demande rempli par l'étudiant \\
+\hline
+Activité & Travail à réaliser pour faire avancer le processus & Vérifier la scolarité de l'étudiant \\
+\hline
+Acteur & Personne, service ou système responsable d'une activité & Service de la scolarité \\
+\hline
+Règle & Condition qui guide une décision & L'étudiant doit être régulièrement inscrit \\
+\hline
+Sortie & Résultat produit par le processus & Attestation générée ou demande rejetée \\
+\hline
+\end{tabular}
+\end{center}
+
+Cette lecture simple est très importante en informatique. Une application web métier doit souvent représenter ces mêmes composantes : les entrées deviennent des formulaires ou des requêtes, les activités deviennent des opérations, les acteurs deviennent des rôles, les règles deviennent des validations, et les sorties deviennent des documents, des états ou des notifications.
+
+\subsubsection{Processus métier}
+
+Un processus métier est un processus lié à un objectif concret de l'organisation. Il décrit comment une structure produit un service, traite une demande, prend une décision ou coordonne plusieurs intervenants. Dans une entreprise, il peut s'agir du traitement d'une commande ; dans une mairie, de la délivrance d'un acte ; dans une université, de l'inscription d'un étudiant ou de la validation d'un mémoire.
+
+Le caractère "métier" vient du fait que le processus exprime une réalité organisationnelle avant d'être une réalité informatique. Il traduit les pratiques, les responsabilités et les contraintes du domaine étudié. Ainsi, deux organisations peuvent utiliser les mêmes outils techniques, mais avoir des processus très différents. C'est pourquoi l'analyse métier doit précéder la conception technique lorsque l'on souhaite construire une application adaptée au contexte réel.
+
+Un processus métier comporte généralement trois dimensions. La dimension fonctionnelle répond à la question : que faut-il faire ? La dimension organisationnelle répond à la question : qui le fait ? La dimension informationnelle répond à la question : quelles données sont nécessaires ou produites ? Ces trois dimensions forment une base utile pour passer ensuite vers la conception d'un système d'information.
+
+\subsection{Gestion des processus métier (BPM)}
+
+\subsubsection{Définition du BPM}
+
+Le BPM, ou \textit{Business Process Management}, désigne l'ensemble des méthodes, pratiques et outils utilisés pour identifier, modéliser, analyser, exécuter, surveiller et améliorer les processus métier. Dumas et al. le présentent comme une discipline située à la rencontre de la gestion des organisations et des technologies de l'information \cite{dumas2018bpm}. Cette position intermédiaire explique son importance dans les projets informatiques : le BPM aide à traduire un besoin organisationnel en éléments exploitables par les concepteurs.
+
+Le BPM n'est donc pas uniquement une technique de dessin. Il correspond à une manière de penser l'organisation à travers ses flux de travail. Dans une administration, il peut servir à réduire les délais de traitement d'un dossier. Dans une entreprise, il peut aider à normaliser une procédure commerciale. Dans une université, il peut clarifier les étapes d'un processus d'inscription ou de soutenance.
+
+\subsubsection{Cycle de vie du BPM}
+
+Le cycle de vie du BPM est généralement décrit comme une boucle. Il commence par l'identification du processus à étudier, puis se poursuit par sa découverte, sa modélisation, son analyse, sa reconfiguration éventuelle, son implémentation, son exécution, sa surveillance et son amélioration continue \cite{dumas2018bpm,aalst2013}. Cette boucle rappelle que les processus évoluent avec les besoins, les règlements, les contraintes matérielles et les retours des utilisateurs.
+
+Dans un exemple universitaire, l'ancien processus de demande d'attestation peut être entièrement manuel : l'étudiant se déplace, dépose une demande papier, revient plusieurs jours plus tard et récupère le document. Après analyse, l'organisation peut décider de numériser certaines étapes : dépôt en ligne, suivi du statut, notification automatique, archivage numérique. Le processus n'a pas seulement été informatisé ; il a aussi été repensé.
+
+\begin{center}
+\begin{tabular}{|p{3.5cm}|p{10.8cm}|}
+\hline
+\textbf{Étape du cycle BPM} & \textbf{Question principale} \\
+\hline
+Identification & Quel processus doit être étudié et pourquoi ? \\
+\hline
+Découverte & Comment le processus fonctionne-t-il actuellement ? \\
+\hline
+Modélisation & Comment représenter clairement ce fonctionnement ? \\
+\hline
+Analyse & Où se trouvent les lenteurs, erreurs ou ambiguïtés ? \\
+\hline
+Amélioration & Comment rendre le processus plus efficace ou plus fiable ? \\
+\hline
+Implémentation & Comment traduire le processus dans l'organisation ou dans un système logiciel ? \\
+\hline
+Surveillance & Les résultats obtenus correspondent-ils aux objectifs ? \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Intérêt du BPM pour les systèmes d'information}
+
+Le BPM apporte une valeur particulière aux systèmes d'information, car il évite de réduire l'application à une simple collection d'écrans. Une application métier doit accompagner un travail organisé. Elle doit donc respecter des étapes, des responsabilités, des droits d'accès et des règles de décision. Le BPM aide à identifier ces éléments avant la phase de développement.
+
+Sans cette analyse, les développeurs risquent de produire une application techniquement fonctionnelle, mais mal alignée avec les pratiques de l'organisation. À l'inverse, un processus bien modélisé permet de discuter plus clairement avec les utilisateurs, de valider les règles métier et de réduire les malentendus entre les acteurs métier et les acteurs techniques.
+
+\subsection{Modélisation des processus métier}
+
+\subsubsection{Objectifs de la modélisation}
+
+La modélisation d'un processus consiste à produire une représentation simplifiée, mais structurée, d'une réalité organisationnelle. Elle permet de rendre visible ce qui est parfois implicite dans les habitudes de travail. Elle facilite également la communication : un diagramme bien construit peut être discuté par un responsable métier, un analyste, un développeur et un décideur.
+
+La modélisation poursuit plusieurs objectifs. Elle sert à comprendre un processus existant, à concevoir un nouveau processus, à comparer plusieurs variantes, à préparer une automatisation ou à documenter un fonctionnement. Dans un mémoire portant sur les applications web métier, cet aspect est essentiel, car la qualité de l'application dépend en grande partie de la qualité de la compréhension initiale du processus.
+
+\subsubsection{Qualités d'un bon modèle de processus}
+
+Un bon modèle de processus doit être lisible, cohérent et suffisamment précis. La lisibilité signifie qu'un lecteur peut comprendre le déroulement général sans effort excessif. La cohérence signifie que le modèle ne contient pas de contradictions évidentes, comme une activité inaccessible ou une fin impossible à atteindre. La précision signifie que les activités, les décisions et les responsabilités sont décrites avec un niveau de détail adapté à l'objectif du modèle.
+
+Un modèle trop pauvre ne permet pas de comprendre le fonctionnement réel. À l'inverse, un modèle trop détaillé devient difficile à lire et perd son rôle de support de communication. L'enjeu consiste donc à choisir le bon niveau d'abstraction. Pour expliquer un processus à un responsable, un diagramme global peut suffire. Pour préparer une automatisation, il faut souvent préciser davantage les événements, les données, les rôles et les conditions.
+
+\subsection{Le standard BPMN}
+
+\subsubsection{Définition et objectif}
+
+BPMN, pour \textit{Business Process Model and Notation}, est un standard de modélisation des processus métier maintenu par l'Object Management Group. Sa version 2.0.2 définit à la fois une notation graphique et des éléments de méta-modèle permettant de représenter des processus, des événements, des activités, des passerelles, des participants et des flux \cite{omg2013bpmn}. Son intérêt principal est de proposer un langage visuel compréhensible par les acteurs métier, tout en restant exploitable par des outils informatiques.
+
+BPMN répond à un besoin fréquent dans les organisations : disposer d'une notation commune pour décrire les processus. Avant l'existence d'une notation partagée, chaque équipe pouvait représenter les processus à sa manière, avec des symboles locaux et des règles implicites. Cette diversité rendait les échanges difficiles. BPMN cherche à réduire cette ambiguïté en fournissant une grammaire visuelle plus stable.
+
+\subsubsection{Bref historique}
+
+BPMN a d'abord été développé par la Business Process Management Initiative, puis repris par l'Object Management Group après la fusion des deux organisations. L'adoption de BPMN par l'OMG a renforcé son statut de standard international. La version 2.0 a marqué une étape importante, car elle a clarifié non seulement la notation graphique, mais aussi la structure formelle des modèles et leur échange entre outils \cite{omg2013bpmn}.
+
+Cette évolution explique pourquoi BPMN est aujourd'hui utilisé dans de nombreux contextes : documentation des procédures, analyse organisationnelle, automatisation de workflows, conception de systèmes d'information et communication entre acteurs métier et techniques. Drave et al. soulignent d'ailleurs que les modèles de processus peuvent jouer un rôle central dans l'ingénierie des systèmes d'information orientés processus \cite{drave2022}.
+
+\subsubsection{Éléments de base de BPMN}
+
+BPMN organise ses éléments autour de quelques familles principales. Les objets de flux décrivent la dynamique du processus. Ils comprennent les événements, les activités et les passerelles. Les événements indiquent qu'une situation se produit : démarrage d'une demande, réception d'un message, expiration d'un délai ou fin du traitement. Les activités représentent le travail effectué. Les passerelles permettent de modéliser les choix, les parallélismes et les synchronisations.
+
+Les objets de connexion relient ces éléments. Le flux de séquence indique l'ordre dans lequel les activités s'enchaînent. Le flux de message représente un échange entre participants différents. L'association sert à rattacher une information, une annotation ou un objet de données à un élément du processus.
+
+BPMN propose aussi des éléments de partitionnement, notamment les bassins et les couloirs. Un bassin représente généralement un participant, comme une organisation ou un système. Un couloir permet de subdiviser ce participant en rôles ou services. Dans un processus d'inscription universitaire, un bassin peut représenter l'université, tandis que les couloirs peuvent représenter l'étudiant, la scolarité, le service financier et le responsable académique.
+
+\begin{center}
+\begin{tabular}{|p{3.5cm}|p{4.2cm}|p{6.8cm}|}
+\hline
+\textbf{Famille BPMN} & \textbf{Éléments courants} & \textbf{Utilité} \\
+\hline
+Objets de flux & Événement, activité, passerelle & Décrire ce qui se passe dans le processus \\
+\hline
+Connexions & Flux de séquence, flux de message, association & Montrer l'ordre, les échanges et les liens d'information \\
+\hline
+Partitions & Bassin, couloir & Représenter les participants et les responsabilités \\
+\hline
+Données & Objet de données, magasin de données & Indiquer les informations utilisées ou produites \\
+\hline
+Artefacts & Annotation, groupe & Ajouter des explications sans modifier la logique du processus \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Événements, activités et passerelles}
+
+Les événements jouent un rôle important, car ils marquent les moments significatifs du processus. Un événement de début peut être "demande soumise". Un événement intermédiaire peut être "paiement reçu" ou "délai dépassé". Un événement de fin peut être "attestation délivrée" ou "demande rejetée". Cette logique aide à distinguer les faits qui déclenchent une action des actions elles-mêmes.
+
+Les activités décrivent le travail à réaliser. BPMN distingue plusieurs types d'activités, comme les tâches utilisateur, les tâches de service, les tâches manuelles ou les sous-processus. Une tâche utilisateur suppose l'intervention d'une personne à travers une interface. Une tâche de service peut être exécutée automatiquement par un système. Cette distinction est utile lorsqu'on envisage une informatisation, car toutes les activités ne doivent pas être traitées de la même manière.
+
+Les passerelles décrivent les chemins possibles. Une passerelle exclusive indique qu'un seul chemin sera choisi, par exemple "dossier complet ?" avec deux sorties : oui ou non. Une passerelle parallèle indique que plusieurs branches peuvent être exécutées en même temps, par exemple vérifier les pièces administratives et vérifier le paiement. Une passerelle inclusive permet plusieurs chemins selon les conditions remplies. Ces éléments évitent de représenter les décisions sous forme de phrases ambiguës.
+
+\subsubsection{Types de diagrammes BPMN}
+
+BPMN distingue principalement les diagrammes de processus, les diagrammes de collaboration et les diagrammes de chorégraphie \cite{omg2013bpmn}. Le diagramme de processus décrit le déroulement interne d'un processus dans un participant donné. Il est adapté lorsque l'on souhaite comprendre l'enchaînement des activités d'un service ou d'un système.
+
+Le diagramme de collaboration met en relation plusieurs participants et montre les messages qu'ils échangent. Il devient utile lorsqu'un processus implique plusieurs organisations, par exemple une université et une banque dans le cadre du paiement des frais d'inscription. Le diagramme de chorégraphie se concentre davantage sur les interactions entre participants que sur l'organisation interne de chacun. Il est pertinent pour décrire des protocoles d'échange.
+
+\subsubsection{Exemple d'interprétation d'un processus BPMN}
+
+Considérons le processus simplifié de validation d'une demande d'attestation. L'étudiant soumet une demande en ligne. Le service de la scolarité vérifie si le dossier est complet. Si le dossier est incomplet, une notification est envoyée à l'étudiant pour correction. Si le dossier est complet, le service vérifie la situation académique. Si l'étudiant est éligible, l'attestation est générée et transmise pour signature. Sinon, la demande est rejetée avec justification.
+
+Dans une lecture BPMN, la soumission de la demande correspond à un événement de début. La vérification du dossier est une activité. La question "dossier complet ?" est une passerelle exclusive. L'envoi d'une notification est une activité de communication. La génération de l'attestation peut être une tâche de service si elle est automatisée. La signature peut être une tâche utilisateur si elle exige une validation humaine. L'événement de fin peut être "attestation disponible" ou "demande rejetée".
+
+Cet exemple montre que BPMN ne se limite pas à une représentation graphique. Il aide à identifier des responsabilités, des décisions, des données et des interactions. Il donne ainsi une base claire pour discuter ensuite d'une application web chargée de soutenir ce processus.
+
+\subsubsection{Limites de BPMN}
+
+BPMN est expressif, mais il ne décrit pas tout. Il permet de représenter le déroulement d'un processus, mais il ne précise pas toujours la structure exacte des données, les règles fines de validation, la conception détaillée des interfaces, les contraintes de sécurité ou les choix techniques d'architecture. Un modèle BPMN peut dire qu'un agent vérifie un dossier, mais il ne précise pas nécessairement tous les champs du formulaire, les formats acceptés, les exceptions ou les règles d'accès.
+
+Cette limite n'est pas un défaut du standard ; elle rappelle simplement que BPMN a un périmètre. Il est excellent pour représenter le processus, mais il doit souvent être complété par d'autres informations lorsqu'on veut construire une application complète. Dans un projet logiciel, le modèle BPMN doit donc être lu comme une base métier, et non comme une spécification technique exhaustive.
+
+\mySection{Généralités sur le développement web}{}
+\label{sec:service_composition}
+
+\subsection{Évolution du Web}
+
+\subsubsection{Du document hypertexte à la plateforme applicative}
+
+Le Web est né comme un système de documents hypertextes reliés entre eux. À l'origine, l'objectif principal était de consulter et de partager des informations. Le navigateur envoyait une requête à un serveur, recevait un document HTML, puis l'affichait à l'utilisateur. Cette architecture simple a permis la diffusion rapide du Web.
+
+Avec le temps, les usages se sont transformés. Les utilisateurs n'ont plus seulement consulté des pages ; ils ont commencé à interagir avec des services : messagerie, commerce électronique, réseaux sociaux, plateformes universitaires, banques en ligne, tableaux de bord administratifs. Le Web est ainsi devenu une plateforme applicative. Les technologies côté client, côté serveur, les bases de données, les API et les mécanismes de sécurité se sont progressivement renforcés.
+
+Les principes généraux de l'architecture du Web reposent notamment sur l'identification des ressources, les URI, les représentations et les liens \cite{w3c2004webarch}. HTTP joue un rôle central dans cette architecture. Le RFC 9110 le décrit comme un protocole applicatif sans état, fondé sur des requêtes et des réponses, permettant l'interaction avec des ressources identifiées \cite{rfc9110}. Cette base explique pourquoi les applications web modernes utilisent souvent des routes, des méthodes HTTP et des formats d'échange comme JSON.
+
+\subsubsection{Fonctionnement général d'une application web}
+
+Une application web repose généralement sur une interaction entre un client et un serveur. Le client est souvent un navigateur. Il affiche l'interface, collecte les actions de l'utilisateur et envoie des requêtes. Le serveur reçoit ces requêtes, exécute les traitements nécessaires, accède éventuellement à une base de données, puis retourne une réponse. MDN Web Docs décrit ce fonctionnement comme un échange où le client demande des ressources que le serveur fournit sous une forme exploitable par le navigateur \cite{mdn2026webworks}.
+
+Prenons l'exemple d'une plateforme de demande d'attestation. L'étudiant remplit un formulaire dans son navigateur. Lorsque le formulaire est soumis, le client envoie une requête au serveur. Le serveur vérifie les données, enregistre la demande, attribue un statut et retourne une réponse indiquant si l'opération a réussi. Plus tard, un agent se connecte, consulte les demandes en attente, valide ou rejette le dossier. Chaque action correspond à des échanges entre le client et le serveur.
+
+\subsection{Définition d'une application web}
+
+Une application web est un logiciel accessible à travers un navigateur ou un client utilisant les technologies du Web. Elle permet à l'utilisateur d'effectuer des actions, de consulter ou modifier des données, et d'interagir avec un système distant. Contrairement à un site vitrine, qui sert principalement à présenter des informations, une application web accompagne un usage fonctionnel : inscription, paiement, suivi, validation, recherche, communication ou production de documents.
+
+Une application web comporte généralement une interface utilisateur, une couche de traitement, une couche d'accès aux données et des mécanismes de sécurité. L'interface doit être compréhensible et adaptée aux utilisateurs. La couche de traitement applique les règles métier. La couche de données assure la persistance des informations. La sécurité contrôle l'identité, les permissions et la protection des données.
+
+Dans un contexte métier, une application web doit également gérer des états. Une demande peut être "soumise", "en cours de vérification", "à corriger", "validée" ou "rejetée". Ces états ne sont pas de simples libellés ; ils traduisent l'avancement du processus et conditionnent les actions possibles. Par exemple, une demande validée ne doit plus être modifiée par l'étudiant, tandis qu'une demande à corriger doit redevenir accessible.
+
+\subsection{Architecture client-serveur}
+
+L'architecture client-serveur constitue l'un des modèles fondamentaux du Web. Le client initie la communication en envoyant une requête, tandis que le serveur traite cette requête et produit une réponse. Cette séparation des responsabilités permet de centraliser les traitements et les données sur le serveur tout en offrant une interface accessible depuis plusieurs postes clients.
+
+Dans une application universitaire, le même serveur peut répondre à plusieurs types d'utilisateurs : étudiants, agents administratifs, enseignants, responsables de département. Chaque utilisateur accède à l'application avec un navigateur, mais le serveur applique des règles différentes selon son rôle. Cette centralisation facilite la cohérence des données et la gestion des droits.
+
+Le modèle client-serveur peut être enrichi par des architectures en couches. Une architecture à trois niveaux distingue généralement la présentation, la logique métier et la persistance. La présentation concerne les écrans et l'expérience utilisateur. La logique métier contient les règles et traitements. La persistance gère la base de données. Cette séparation améliore la maintenabilité, car une modification de l'interface ne doit pas nécessairement modifier la base de données.
+
+\subsection{HTTP, ressources et API}
+
+HTTP est le protocole le plus utilisé pour les échanges entre clients et serveurs web. Il repose sur des méthodes comme GET, POST, PUT, PATCH et DELETE, qui expriment l'intention générale de la requête. GET sert généralement à consulter une ressource, POST à créer ou soumettre des données, PUT ou PATCH à modifier, DELETE à supprimer. Le RFC 9110 précise que les méthodes HTTP portent une sémantique commune indépendamment de la version concrète du protocole utilisée \cite{rfc9110}.
+
+Une API web est une interface qui permet à un client ou à un autre système d'interagir avec les fonctionnalités d'une application. Dans une API orientée ressources, les URL représentent des objets du domaine : \texttt{/demandes}, \texttt{/etudiants}, \texttt{/documents}, \texttt{/utilisateurs}. Les méthodes HTTP indiquent l'opération souhaitée. Cette organisation rend les échanges plus prévisibles et facilite l'intégration.
+
+Le style REST, formalisé par Fielding, a fortement influencé la conception des API web modernes \cite{fielding2000architectural}. Il met l'accent sur les ressources, les représentations, l'interface uniforme et l'absence d'état côté serveur entre deux requêtes. Dans la pratique, toutes les API dites REST ne respectent pas parfaitement ces contraintes, mais le style REST demeure une référence importante pour structurer les échanges entre frontend et backend.
+
+\subsection{Frontend, backend et base de données}
+
+Le frontend désigne la partie de l'application avec laquelle l'utilisateur interagit directement. Il comprend les pages, formulaires, tableaux, menus, messages, boutons et composants visuels. Son rôle n'est pas seulement esthétique. Un bon frontend guide l'utilisateur, réduit les erreurs et rend le processus compréhensible. Dans une application de gestion de demandes, l'utilisateur doit savoir clairement quelles informations fournir, quel est l'état de sa demande et quelles actions sont disponibles.
+
+Le backend désigne la partie serveur de l'application. Il reçoit les requêtes, contrôle les droits d'accès, applique les règles métier, traite les données et communique avec la base de données. Il constitue souvent le coeur logique de l'application. Par exemple, c'est le backend qui vérifie qu'un étudiant ne peut pas valider lui-même sa demande, qu'un agent ne voit que les dossiers de son service ou qu'une attestation ne peut être générée qu'après validation.
+
+La base de données assure la conservation durable des informations. Elle stocke les utilisateurs, les demandes, les documents, les statuts, les traces d'action et les paramètres du système. Sa conception doit être cohérente avec les besoins métier. Une mauvaise structure de données peut rendre l'application difficile à faire évoluer, même si l'interface paraît correcte.
+
+\subsection{Modèles architecturaux du web}
+
+\subsubsection{Architecture monolithique}
+
+Une architecture monolithique regroupe les principales fonctionnalités dans une même application déployée comme un seul ensemble. Ce modèle est simple à comprendre et peut être très efficace pour des projets de taille modérée. Il facilite le développement initial, les tests locaux et le déploiement. Toutefois, lorsque l'application grandit, le monolithe peut devenir difficile à maintenir si les modules internes ne sont pas bien organisés.
+
+Le monolithe ne doit pas être considéré comme une mauvaise architecture par principe. Pour de nombreux projets académiques, administratifs ou institutionnels, il peut constituer un choix raisonnable. L'important est de garder une séparation claire entre les couches : interface, logique métier, accès aux données et sécurité.
+
+\subsubsection{Architecture orientée services}
+
+L'architecture orientée services consiste à organiser le système autour de services réutilisables, chacun exposant des fonctionnalités à travers des interfaces définies. Papazoglou et Van den Heuvel présentent cette approche comme une manière de construire des systèmes distribués à partir de services interopérables \cite{papazoglou2007service}. Elle convient lorsque plusieurs applications doivent partager des fonctions communes, comme l'authentification, la facturation ou la notification.
+
+Dans un système universitaire, un service d'identité peut être utilisé par plusieurs applications : plateforme d'inscription, bibliothèque numérique, portail de notes, messagerie institutionnelle. Cette mutualisation réduit les duplications, mais exige une bonne gouvernance des interfaces et des dépendances.
+
+\subsubsection{Microservices}
+
+Les microservices prolongent l'idée d'architecture orientée services en découpant l'application en services plus petits, autonomes et déployables indépendamment. Dragoni et al. décrivent les microservices comme une évolution des pratiques de conception de systèmes distribués \cite{dragoni2017microservices}. Newman insiste sur l'importance du découpage par capacités métier et de l'autonomie des services \cite{newman2021building}.
+
+Cette architecture peut offrir de la souplesse dans les grands systèmes, mais elle augmente aussi la complexité : communication réseau, observabilité, gestion des erreurs, cohérence des données, sécurité interservices et déploiement. Pour un projet de taille limitée, adopter des microservices sans nécessité réelle peut compliquer inutilement le développement.
+
+\subsection{Sécurité des applications web}
+
+La sécurité est une dimension fondamentale du développement web. Une application métier manipule souvent des données sensibles : identité, notes, paiements, documents administratifs, décisions internes. Elle doit donc protéger la confidentialité, l'intégrité et la disponibilité des informations.
+
+Les risques classiques incluent les failles d'authentification, les contrôles d'accès insuffisants, les injections, les erreurs de configuration, l'exposition de données sensibles et les vulnérabilités dans les dépendances. Le projet OWASP Top 10 constitue une référence largement utilisée pour sensibiliser les développeurs aux risques majeurs des applications web \cite{owaspTopTen2026}.
+
+Dans une application de gestion de demandes, la sécurité se manifeste concrètement. Un étudiant ne doit consulter que ses propres demandes. Un agent ne doit valider que les dossiers relevant de son service. Les pièces jointes doivent être contrôlées. Les actions importantes doivent être tracées. Les mots de passe ne doivent jamais être stockés en clair. Ces exigences ne sont pas accessoires ; elles font partie de la qualité de l'application.
+
+\subsection{Maintenabilité, évolutivité et déploiement}
+
+Une application web n'est pas seulement jugée au moment où elle fonctionne pour la première fois. Elle doit pouvoir être corrigée, adaptée et améliorée. La maintenabilité désigne la facilité avec laquelle une équipe peut comprendre, modifier et tester l'application. Elle dépend de la clarté du code, de la séparation des responsabilités, de la qualité des noms, de la documentation et des tests.
+
+L'évolutivité désigne la capacité de l'application à accompagner l'augmentation des besoins : plus d'utilisateurs, plus de données, plus de fonctionnalités ou plus d'intégrations. Elle ne se réduit pas à la performance technique. Une application évolutive est aussi une application dont l'architecture permet d'ajouter de nouvelles règles sans tout réécrire.
+
+Le déploiement concerne la mise à disposition de l'application dans un environnement d'exécution. Les conteneurs, popularisés notamment par Docker, permettent d'emballer une application avec ses dépendances afin de faciliter son exécution dans différents environnements \cite{merkel2014docker,7036275}. Cette pratique aide à réduire les différences entre l'environnement du développeur, l'environnement de test et l'environnement de production.
+
+\mySection{Lien conceptuel entre processus métier et application web}{}
+
+Les processus métier et les applications web ne relèvent pas du même niveau de description, mais ils sont fortement liés. Le processus décrit le travail à réaliser ; l'application web fournit un moyen technique pour réaliser, suivre ou contrôler ce travail. Cette relation peut être observée dans de nombreux systèmes : une demande en ligne suit un processus ; un paiement déclenche une validation ; une approbation modifie un état ; une notification correspond à un événement.
+
+Le passage du processus à l'application exige cependant une interprétation. Une activité peut devenir un formulaire, une opération backend ou une tâche automatique. Un rôle métier peut devenir un profil utilisateur ou une permission. Une passerelle peut devenir une règle de décision. Un objet de données peut inspirer une table de base de données ou une structure de formulaire. Cette correspondance n'est jamais totalement mécanique, car le modèle de processus ne contient pas toujours tous les détails nécessaires.
+
+\begin{center}
+\begin{tabular}{|p{4cm}|p{5cm}|p{5.2cm}|}
+\hline
+\textbf{Élément métier} & \textbf{Lecture possible dans une application web} & \textbf{Exemple} \\
+\hline
+Activité utilisateur & Formulaire ou écran de traitement & Saisir une demande d'attestation \\
+\hline
+Tâche automatisée & Service backend & Générer un numéro de dossier \\
+\hline
+Rôle ou couloir & Profil utilisateur ou permission & Agent de scolarité, étudiant, responsable \\
+\hline
+Passerelle exclusive & Condition métier & Dossier complet ou incomplet \\
+\hline
+Événement & Déclencheur ou changement d'état & Demande soumise, document signé \\
+\hline
+Objet de données & Entité ou document numérique & Dossier, pièce jointe, attestation \\
+\hline
+\end{tabular}
+\end{center}
+
+Cette correspondance explique pourquoi la modélisation des processus est utile dans les projets d'applications web métier. Elle donne une base de discussion avant le développement, réduit les oublis et facilite la compréhension commune entre les acteurs. Elle ne remplace pas l'analyse technique, mais elle l'oriente.
+
+\mySection{Conclusion}{}
+
+Ce chapitre a présenté les principales notions nécessaires à la compréhension du mémoire. Les processus métier permettent de représenter le travail organisé d'une institution ou d'une entreprise. Le BPM fournit un cadre pour identifier, modéliser, analyser, exécuter et améliorer ces processus. BPMN, en tant que standard de modélisation, offre une notation claire pour représenter les activités, événements, décisions, responsabilités, données et échanges.
+
+Le chapitre a également introduit les bases du développement web. Une application web moderne repose sur des interactions client-serveur, des API, une séparation entre frontend, backend et données, ainsi que des exigences de sécurité, de maintenabilité et de déploiement. Ces notions montrent qu'une application métier ne se résume pas à une interface graphique ; elle constitue un système logiciel qui doit respecter des règles organisationnelles et techniques.
+
+Enfin, le lien entre processus métier et application web a été clarifié. Un modèle de processus peut aider à comprendre les écrans, les rôles, les états, les décisions et les services nécessaires à une application. Toutefois, cette relation doit être interprétée avec rigueur, car BPMN décrit principalement le déroulement métier et non l'ensemble des détails techniques. Cette base conceptuelle prépare la revue de la littérature, où seront étudiées les approches existantes qui cherchent à rapprocher modèles de processus et développement d'applications web.

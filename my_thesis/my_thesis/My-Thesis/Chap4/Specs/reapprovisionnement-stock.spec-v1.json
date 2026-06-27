@@ -1,0 +1,278 @@
+{
+  "processId": "Process_P2_Reapprovisionnement_Du_Stock",
+  "processKey": "reapprovisionnement_stock",
+  "schemaVersion": 1,
+  "name": "Réapprovisionnement du stock",
+  "description": "Processus de détection, validation et clôture d'un besoin de réapprovisionnement dans l'organisation e-commerce.",
+  "start": {
+    "allowedRoles": ["GESTIONNAIRE_STOCK", "ADMINISTRATEUR"],
+    "startActivities": [
+      "UserTask_Identifier_Produit_Stock_Faible",
+      "UserTask_Parametrer_Seuils_Stock"
+    ]
+  },
+  "monitoring": {
+    "supervisorRoles": ["RESPONSABLE_ACHATS", "ADMINISTRATEUR"]
+  },
+  "activities": {
+    "UserTask_Parametrer_Seuils_Stock": {
+      "activityId": "parametrer_seuils_stock",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["ADMINISTRATEUR"],
+        "mode": "DIRECT",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["SHARED_DATA"],
+        "fields": ["produit.reference", "stock.seuilAlerte", "stock.quantiteDisponible"]
+      },
+      "output": {
+        "storage": "SHARED_DATA",
+        "fields": ["stock.seuilAlerte", "dateMiseAJourSeuil"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["ADMINISTRATEUR", "GESTIONNAIRE_STOCK"],
+        "dataViewerRoles": ["ADMINISTRATEUR", "GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"]
+      }
+    },
+    "UserTask_Identifier_Produit_Stock_Faible": {
+      "activityId": "identifier_produit_stock_faible",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["SHARED_DATA"],
+        "fields": ["produit.reference", "produit.designation", "stock.quantiteDisponible", "stock.seuilAlerte"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["besoinReapprovisionnement", "commentaireStock"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_Creer_Demande_Reapprovisionnement": {
+      "activityId": "creer_demande_reapprovisionnement",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "SHARED_DATA"],
+        "fields": ["produit.reference", "stock.quantiteDisponible", "besoinReapprovisionnement"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["demandeReappro.numero", "demandeReappro.quantiteDemandee", "demandeReappro.justification"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"]
+      }
+    },
+    "UserTask_Examiner_Demande_Reapprovisionnement": {
+      "activityId": "examiner_demande_reapprovisionnement",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["RESPONSABLE_ACHATS"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "PREVIOUS_ACTIVITY"],
+        "fields": ["demandeReappro.numero", "produit.reference", "demandeReappro.quantiteDemandee", "demandeReappro.justification"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["demandeJustifiee", "commentaireResponsableAchats"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["RESPONSABLE_ACHATS", "GESTIONNAIRE_STOCK", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_Refuser_Reapprovisionnement": {
+      "activityId": "refuser_reapprovisionnement",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["RESPONSABLE_ACHATS"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["demandeReappro.numero", "commentaireResponsableAchats"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["demandeReappro.statut", "demandeReappro.motifRefus"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"]
+      }
+    },
+    "UserTask_Cloturer_Demande_Refusee": {
+      "activityId": "cloturer_demande_refusee",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["demandeReappro.numero", "demandeReappro.motifRefus"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["dateCloture", "commentaireCloture"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"]
+      }
+    },
+    "UserTask_Valider_Reapprovisionnement": {
+      "activityId": "valider_reapprovisionnement",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["RESPONSABLE_ACHATS"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["demandeReappro.numero", "demandeReappro.quantiteDemandee"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["demandeReappro.statut", "dateValidationAchats"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_Enregistrer_Decision_Achat": {
+      "activityId": "enregistrer_decision_achat",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["RESPONSABLE_ACHATS"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["demandeReappro.numero", "dateValidationAchats"]
+      },
+      "output": {
+        "storage": "PROCESS_CONTEXT",
+        "fields": ["decisionAchat", "referenceDecisionAchat"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"]
+      }
+    },
+    "UserTask_Enregistrer_Reception_Produits": {
+      "activityId": "enregistrer_reception_produits",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT"],
+        "fields": ["demandeReappro.numero", "produit.reference", "demandeReappro.quantiteDemandee"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["quantiteRecue", "dateReception", "commentaireReception"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS"]
+      }
+    },
+    "ServiceTask_Mettre_A_Jour_Stock": {
+      "activityId": "mettre_a_jour_stock",
+      "activityType": "AUTOMATIC",
+      "handler": {
+        "type": "INTERNAL",
+        "name": "updateStockAfterReception"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "SHARED_DATA"],
+        "fields": ["produit.reference", "quantiteRecue"]
+      },
+      "output": {
+        "storage": "SHARED_DATA",
+        "fields": ["stock.quantiteDisponible", "stock.dateDernierMouvement"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"]
+      }
+    },
+    "UserTask_Cloturer_Reapprovisionnement": {
+      "activityId": "cloturer_reapprovisionnement",
+      "activityType": "MANUAL",
+      "assignment": {
+        "candidateRoles": ["GESTIONNAIRE_STOCK"],
+        "mode": "CLAIM",
+        "strategy": "ROLE_BASED"
+      },
+      "input": {
+        "sources": ["PROCESS_CONTEXT", "SHARED_DATA"],
+        "fields": ["demandeReappro.numero", "produit.reference", "stock.quantiteDisponible"]
+      },
+      "output": {
+        "storage": "BOTH",
+        "fields": ["demandeReappro.statut", "dateCloture"]
+      },
+      "visibility": {
+        "activityViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"],
+        "dataViewerRoles": ["GESTIONNAIRE_STOCK", "RESPONSABLE_ACHATS", "ADMINISTRATEUR"]
+      }
+    }
+  },
+  "sharedData": {
+    "entities": [
+      {
+        "name": "Produit",
+        "fields": [
+          { "name": "reference", "type": "string", "required": true },
+          { "name": "designation", "type": "string", "required": true },
+          { "name": "categorie", "type": "string", "required": false }
+        ]
+      },
+      {
+        "name": "Stock",
+        "fields": [
+          { "name": "referenceProduit", "type": "string", "required": true },
+          { "name": "quantiteDisponible", "type": "number", "required": true },
+          { "name": "seuilAlerte", "type": "number", "required": true },
+          { "name": "dateDernierMouvement", "type": "datetime", "required": false }
+        ]
+      },
+      {
+        "name": "DemandeReapprovisionnement",
+        "fields": [
+          { "name": "numero", "type": "string", "required": true },
+          { "name": "quantiteDemandee", "type": "number", "required": true },
+          { "name": "statut", "type": "string", "required": true }
+        ]
+      }
+    ]
+  }
+}
