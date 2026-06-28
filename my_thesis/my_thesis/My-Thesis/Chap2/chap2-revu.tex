@@ -180,7 +180,7 @@ les détails de l'interaction.
 %les interfaces et les opérations de gestion de données ; elle ne traite pas
 %entièrement le backend, la sécurité ou l'évolution de l'application générée.
 
-Ces même auteurs poursuivent cette logique en étudiant la transformation d'IFML
+Ces mêmes auteurs poursuivent cette logique en étudiant la transformation d'IFML
 vers Symfony \cite{sajji2025}. L'intérêt de ce prolongement est de montrer que
 le modèle d'interaction peut servir de point de départ à une génération
 orientée framework web concret. La transformation s'appuie sur des règles ATL,
@@ -308,7 +308,7 @@ concentrent sur une seule de ces dimensions.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{Chap2/images/Image5.png}
-\caption{Génération en deux étapes d'un système d'information orienté processus\cite{drave2022}.}
+\caption{Génération en deux étapes d'un système d'information orienté processus, adaptée de \cite{drave2022}.}
 \label{fig:chap2-generation-drave}
 \end{figure}
 
@@ -424,6 +424,18 @@ produire seul une application web complète. Les travaux doivent souvent lui
 associer des modèles d'interaction, des modèles de données, des métadonnées ou
 des langages propres au domaine. Cette nécessité confirme que la génération ne
 peut pas reposer uniquement sur le diagramme de processus.
+
+Ce constat précise aussi le positionnement de ProOWeb. Un BPMS classique,
+comme Camunda, Flowable ou jBPM, fournit d'abord un moteur et des services pour
+déployer, exécuter et superviser des processus. ProOWeb poursuit un autre but :
+utiliser le processus comme source d'une chaîne de génération couvrant le socle
+backend/frontend, les données, les règles d'accès et les ressources du runtime.
+Il ne remplace donc pas un moteur de processus généraliste. De même, il se
+distingue d'une plateforme low-code par le caractère explicite et inspectable
+de ses sources BPMN et \textit{spec-v1}, de ses contrats intermédiaires et de
+ses transformations. Cette transparence facilite la traçabilité, mais elle
+demande un effort de modélisation et ne supprime pas les adaptations propres au
+projet.
 
 La limite la plus importante concerne l'évolution du résultat généré. Une
 application web doit pouvoir être modifiée, maintenue et parfois régénérée après

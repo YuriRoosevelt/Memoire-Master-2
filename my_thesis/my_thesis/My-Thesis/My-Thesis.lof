@@ -1,0 +1,42 @@
+\babel@toc {french}{}\relax
+\addvspace {10pt}
+\contentsline {figure}{\numberline {1}{\ignorespaces Exemple de processus métier }}{6}{figure.caption.22}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Cycle de vie du BPM \citep {dumas2013fundamentals} }}{7}{figure.caption.23}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Historique du BPMN \citep {vonRosing2015bpmn} }}{11}{figure.caption.24}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Les différents éléments de BPMN 2.0.}}{12}{figure.caption.25}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Les types des tâches dans BPMN 2.0.}}{13}{figure.caption.27}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Événements dans BPMN 2.0.}}{13}{figure.caption.28}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Les branchements de BPMN 2.0.}}{14}{figure.caption.29}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Les flux de séquence de BPMN 2.0.}}{14}{figure.caption.31}%
+\contentsline {figure}{\numberline {9}{\ignorespaces La représentation d'un pool avec deux lanes en BPMN 2.0.}}{15}{figure.caption.33}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Les données de BPMN 2.0.}}{15}{figure.caption.35}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Les artéfacts.}}{16}{figure.caption.37}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Exemple de diagramme de processus}}{16}{figure.caption.38}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Exemple de diagramme de collaboration}}{17}{figure.caption.39}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Exemple de diagramme de chorégraphie}}{17}{figure.caption.40}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Pyramide de modélisation de l'OMG.\cite {jezequel2012}.}}{18}{figure.caption.41}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Schéma de base d'une transformation de modèle \cite {meghzili2022}}}{19}{figure.caption.42}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Illustration des trois niveaux d'abstraction du MDA \cite {meghzili2022}}}{20}{figure.caption.43}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Cœur du modèle RBAC, adapté de \cite {sandhu1996rbac}}}{24}{figure.caption.48}%
+\addvspace {10pt}
+\contentsline {figure}{\numberline {19}{\ignorespaces Modélisation d'un processus BPMN exécutable dans Camunda Modeler, d'après la documentation Camunda \cite {camunda2026modeler}.}}{28}{figure.caption.50}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Fonctionnalités et technologies d'une application web pilotée par processus \cite {schaffer2021}.}}{29}{figure.caption.51}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Interface générée dans WebWorkFlow pour une tâche de workflow, extraite de \cite {hemel2008}.}}{29}{figure.caption.52}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Architecture et principe de génération d'une application dans AKIP, adaptés de \cite {neto2022}.}}{30}{figure.caption.53}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Transformation d'un modèle IFML vers un modèle Symfony, adaptée de \cite {sajji2025}.}}{31}{figure.caption.54}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Cycle de prototypage rapide d'applications web proposé par \cite {hoyos2017}.}}{33}{figure.caption.55}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Extraits de code généré pour le contrôleur et la vue dans l'approche de \cite {hoyos2017}.}}{33}{figure.caption.56}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Génération en deux étapes d'un système d'information orienté processus, adaptée de \cite {drave2022}.}}{34}{figure.caption.57}%
+\addvspace {10pt}
+\contentsline {figure}{\numberline {27}{\ignorespaces Architecture générale de ProOWeb}}{42}{figure.caption.60}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Algorithme de transformation modèle-à-modèle BPMN/spec-v1 vers le modèle pivot}}{51}{figure.caption.65}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Algorithme de transformation Model-to-Text vers le socle applicatif}}{54}{figure.caption.67}%
+\addvspace {10pt}
+\contentsline {figure}{\numberline {30}{\ignorespaces Chaîne de génération de ProOWeb}}{63}{figure.caption.73}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Initialisation du projet \texttt {E-commerce\_Application}}}{64}{figure.caption.74}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Portail de connexion à l'application \texttt {E-commerce\_Application}}}{74}{figure.caption.82}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Tableau de bord pour un utilisateur connecté avec le rôle \texttt {CLIENT}}}{75}{figure.caption.83}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Tableau de bord pour un utilisateur connecté avec le rôle \texttt {GESTIONNAIRE\_STOCK}}}{75}{figure.caption.84}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Tableau de bord pour un utilisateur connecté avec le rôle \texttt {SERVICE\_COMMERCIAL}}}{75}{figure.caption.85}%
+\contentsfinish
+\contentsfinish

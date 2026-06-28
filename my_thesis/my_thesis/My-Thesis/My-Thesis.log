@@ -1,0 +1,6794 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.18)  28 JUN 2026 06:21
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./My-Thesis.tex
+(My-Thesis.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(../Template-Style/main-style.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memo
+ir.cls
+Document Class: memoir 2025/11/04 v3.8.4b configurable book, report, article do
+cument class
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpat
+ch.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\ex
+pl3.sty
+Package: expl3 2025-12-24 L3 programming layer (loader) 
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l
+3backend-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count275
+))
+Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/
+xparse\xparse.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\et
+oolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count276
+))
+\onelineskip=\skip49
+\lxvchars=\skip50
+\xlvchars=\skip51
+\@memcnta=\count277
+\c@@memmarkcntra=\count278
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ift
+ex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+)
+\trimtop=\skip52
+\trimedge=\skip53
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/memoir\mem1
+2.clo
+File: mem12.clo 2022/07/29 v0.5 memoir class 12pt size option
+)
+\binding=\skip54
+\spinemargin=\skip55
+\foremargin=\skip56
+\uppermargin=\skip57
+\lowermargin=\skip58
+\headdrop=\skip59
+\normalrulethickness=\skip60
+\mem@maxheadheight=\skip61
+\mem@maxfootheight=\skip62
+\headwidth=\skip63
+\c@storedpagenumber=\count279
+\memPD=\dimen148
+\m@mabparskip=\skip64
+\thanksmarkwidth=\skip65
+\thanksmarksep=\skip66
+\droptitle=\skip67
+\c@book=\count280
+\c@part=\count281
+\c@chapter=\count282
+\c@section=\count283
+\c@subsection=\count284
+\c@subsubsection=\count285
+\c@paragraph=\count286
+\c@subparagraph=\count287
+\beforechapskip=\skip68
+\midchapskip=\skip69
+\afterchapskip=\skip70
+\chapindent=\skip71
+\bottomsectionskip=\skip72
+\secindent=\skip73
+\beforesecskip=\skip74
+\aftersecskip=\skip75
+\subsecindent=\skip76
+\beforesubsecskip=\skip77
+\aftersubsecskip=\skip78
+\subsubsecindent=\skip79
+\beforesubsubsecskip=\skip80
+\aftersubsubsecskip=\skip81
+\paraindent=\skip82
+\beforeparaskip=\skip83
+\afterparaskip=\skip84
+\subparaindent=\skip85
+\beforesubparaskip=\skip86
+\aftersubparaskip=\skip87
+\pfbreakskip=\skip88
+\c@@ppsavesec=\count288
+\c@@ppsaveapp=\count289
+\ragrparindent=\dimen149
+\everylistparindent=\dimen150
+\parsepi=\skip89
+\topsepi=\skip90
+\itemsepi=\skip91
+\parsepii=\skip92
+\topsepii=\skip93
+\topsepiii=\skip94
+\itemsepii=\skip95
+\itemsepiii=\skip96
+\partopsepii=\skip97
+\partopsepiii=\skip98
+\m@msavetopsep=\skip99
+\m@msavepartopsep=\skip100
+\@enLab=\toks17
+\abstitleskip=\skip101
+\absleftindent=\skip102
+\abs@leftindent=\dimen151
+\absrightindent=\skip103
+\absparindent=\skip104
+\absparsep=\skip105
+\c@vslineno=\count290
+\c@poemline=\count291
+\c@modulo@vs=\count292
+\c@memfvsline=\count293
+\vleftskip=\skip106
+\vrightskip=\skip107
+\stanzaskip=\skip108
+\versewidth=\skip109
+\vgap=\skip110
+\vindent=\skip111
+\vleftmargin=\dimen152
+\c@verse=\count294
+\c@chrsinstr=\count295
+\beforepoemtitleskip=\skip112
+\afterpoemtitleskip=\skip113
+\c@poem=\count296
+\beforePoemTitleskip=\skip114
+\midPoemTitleskip=\skip115
+\afterPoemTitleskip=\skip116
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\array
+.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen153
+\ar@mcellbox=\box53
+\extrarowheight=\dimen154
+\NC@list=\toks18
+\extratabsurround=\skip117
+\backup@length=\skip118
+\ar@cellbox=\box54
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolu
+mn.sty
+Package: dcolumn 2025/10/21 v1.06 decimal alignment package (DPC)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\delar
+ray.sty
+Package: delarray 2014/10/28 v1.01 array delimiter package (DPC)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabul
+arx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen155
+\TX@old@table=\dimen156
+\TX@old@col=\dimen157
+\TX@target=\dimen158
+\TX@delta=\dimen159
+\TX@cols=\count297
+\TX@ftn=\toks19
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\bo
+oktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen160
+\lightrulewidth=\dimen161
+\cmidrulewidth=\dimen162
+\belowrulesep=\dimen163
+\belowbottomsep=\dimen164
+\aboverulesep=\dimen165
+\abovetopsep=\dimen166
+\cmidrulesep=\dimen167
+\cmidrulekern=\dimen168
+\defaultaddspace=\dimen169
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen170
+\@belowrulesep=\dimen171
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen172
+)
+\ctableftskip=\skip119
+\ctabrightskip=\skip120
+\abovecolumnspenalty=\count302
+\@linestogo=\count303
+\@cellstogo=\count304
+\@cellsincolumn=\count305
+\crtok=\toks20
+\@mincolumnwidth=\dimen173
+\c@newflo@tctr=\count306
+\mem@margin@floatbox=\box55
+\@contcwidth=\skip121
+\@contindw=\skip122
+\abovecaptionskip=\skip123
+\belowcaptionskip=\skip124
+\subfloattopskip=\skip125
+\subfloatcapskip=\skip126
+\subfloatcaptopadj=\skip127
+\subfloatbottomskip=\skip128
+\subfloatlabelskip=\skip129
+\subfloatcapmargin=\dimen174
+\c@@contsubnum=\count307
+\m@mscap@capbox=\box56
+\m@mscap@fbox=\box57
+\sidecapsep=\dimen175
+\sidecapwidth=\dimen176
+\m@m@tempdima=\dimen177
+\m@mscapraise=\dimen178
+\sidecapraise=\dimen179
+\m@mscapmainwidth=\dimen180
+\m@mscaplkern=\dimen181
+\beforeepigraphskip=\skip130
+\afterepigraphskip=\skip131
+\epigraphwidth=\skip132
+\epigraphrule=\skip133
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\na
+meref.sty
+Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/refcount\re
+fcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\l
+txcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr
+\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/gettitles
+tring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\k
+voptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics\ke
+yval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks21
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\k
+vsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)))
+\c@section@level=\count308
+)
+\tocentryskip=\skip134
+\tocbaseline=\skip135
+\cftparskip=\skip136
+\cftbeforebookskip=\skip137
+\cftbookindent=\dimen182
+\cftbooknumwidth=\dimen183
+\cftbeforepartskip=\skip138
+\cftpartindent=\skip139
+\cftpartnumwidth=\skip140
+\cftbeforechapterskip=\skip141
+\cftchapterindent=\skip142
+\cftchapternumwidth=\skip143
+\cftbeforesectionskip=\skip144
+\cftsectionindent=\skip145
+\cftsectionnumwidth=\skip146
+\cftbeforesubsectionskip=\skip147
+\cftsubsectionindent=\skip148
+\cftsubsectionnumwidth=\skip149
+\cftbeforesubsubsectionskip=\skip150
+\cftsubsubsectionindent=\skip151
+\cftsubsubsectionnumwidth=\skip152
+\cftbeforeparagraphskip=\skip153
+\cftparagraphindent=\skip154
+\cftparagraphnumwidth=\skip155
+\cftbeforesubparagraphskip=\skip156
+\cftsubparagraphindent=\skip157
+\cftsubparagraphnumwidth=\skip158
+\prechapterprecisshift=\dimen184
+\c@maxsecnumdepth=\count309
+\bibindent=\dimen185
+\bibitemsep=\skip159
+\indexcolsep=\skip160
+\indexrule=\skip161
+\indexmarkstyle=\toks22
+\@indexbox=\insert252
+LaTeX Info: Redefining \raggedbottom on input line 8095.
+LaTeX Info: Redefining \flushbottom on input line 8099.
+\glossarycolsep=\dimen186
+\glossaryrule=\dimen187
+\sideparvshift=\skip162
+\sideins=\insert251
+\sidebartopsep=\skip163
+\sidebarhsep=\skip164
+\sidebarvsep=\skip165
+\sidebarwidth=\skip166
+\footmarkwidth=\skip167
+\footmarksep=\skip168
+\footparindent=\skip169
+\footinsdim=\skip170
+\footinsv@r=\insert250
+\@mpfootinsv@r=\insert249
+\m@m@k=\count310
+\m@m@h=\dimen188
+\m@mipn@skip=\skip171
+\sidefootins=\insert248
+\sidefootadjust=\skip172
+\sidefootheight=\skip173
+\sidefoothsep=\skip174
+\sidefootvsep=\skip175
+\sidefootwidth=\skip176
+\m@mdownsf=\skip177
+\c@sidefootnote=\count311
+\sidefootmarkwidth=\skip178
+\sidefootmarksep=\skip179
+\sidefootparindent=\skip180
+\c@pagenote=\count312
+\c@pagenoteshadow=\count313
+\mem@pn@lastkern=\skip181
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\verba
+tim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks23
+\verbatim@line=\toks24
+\verbatim@in@stream=\read2
+)
+\verbatimindent=\skip182
+\verbatim@out=\write3
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/base\shortv
+rb.sty
+Package: shortvrb 2024/12/25 v3.0q Standard LaTeX documentation package V3 (FMi
+)
+)
+\bvboxsep=\skip183
+\c@memfbvline=\count314
+\c@bvlinectr=\count315
+\bvnumlength=\skip184
+\fb@frw=\dimen189
+\fb@frh=\dimen190
+\FrameRule=\dimen191
+\FrameSep=\dimen192
+\c@cp@cntr=\count316
+\c@ism@mctr=\count317
+\c@xsm@mctr=\count318
+\c@csm@mctr=\count319
+\c@ksm@mctr=\count320
+\c@xksm@mctr=\count321
+\c@cksm@mctr=\count322
+\c@msm@mctr=\count323
+\c@xmsm@mctr=\count324
+\c@cmsm@mctr=\count325
+\c@bsm@mctr=\count326
+\c@workm@mctr=\count327
+\c@sheetsequence=\count328
+\c@lastsheet=\count329
+\c@lastpage=\count330
+\c@figure=\count331
+\c@lofdepth=\count332
+\cftbeforefigureskip=\skip185
+\cftfigureindent=\skip186
+\cftfigurenumwidth=\skip187
+\c@table=\count333
+\c@lotdepth=\count334
+\cftbeforetableskip=\skip188
+\cfttableindent=\skip189
+\cfttablenumwidth=\skip190
+Package abstract [2008/07/23] emulated by memoir.
+Package appendix [2008/07/23] emulated by memoir.
+Package ccaption [2008/07/23] emulated by memoir.
+Package changepage [2008/07/23] emulated by memoir.
+Package chngcntr [2008/07/23] emulated by memoir.
+Package chngpage [2008/07/23] emulated by memoir.
+Package crop emulated by memoir.
+Package enumerate [2008/07/23] emulated by memoir.
+Package epigraph [2008/07/23] emulated by memoir.
+Package ifmtarg [2008/07/23] emulated by memoir.
+Package index [2008/07/23] emulated by memoir.
+Package makeidx [2008/07/23] emulated by memoir.
+Package moreverb [2008/07/23] emulated by memoir.
+Package needspace [2008/07/23] emulated by memoir.
+Package newfile [2008/07/23] emulated by memoir.
+Package nextpage [2008/07/23] emulated by memoir.
+Package pagenote [2008/07/23] emulated by memoir.
+Package parskip [2008/07/23] emulated by memoir.
+Package patchcmd [2008/07/23] emulated by memoir.
+Package setspace [2008/07/23] emulated by memoir.
+Package showidx [2008/07/23] emulated by memoir.
+Package titleref [2008/07/23] emulated by memoir.
+Package titling [2008/07/23] emulated by memoir.
+Package tocbibind [2008/07/23] emulated by memoir.
+Package tocloft [2008/07/23] emulated by memoir.
+Package tocvsec2 [2008/07/23] emulated by memoir.
+Package verse [2008/07/23] emulated by memoir.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\pifo
+nt.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upzd
+.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upsy
+.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pslatex\psl
+atex.sty
+Package: pslatex 2021/01/13 v1.3 pslatex emulation (DPC)
+LaTeX Encoding Info:    Redeclaring text command \textsterling (encoding ?) on 
+input line 51.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 66.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/ptmcm/m/n on input line 66.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptmcm/m/n on input line 66.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 67.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/ptmcm/m/it on input line 67.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/ptmcm/m/it on input line 67.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 68.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/pzccm/m/n on input line 68.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/pzccm/m/n on input line 68.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 69.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 69.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/psycm/m/n on input line 69.
+\symbold=\mathgroup4
+\symitalic=\mathgroup5
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 75.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 75.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 76.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/ptm/m/it on input line 76.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 76.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/babel\bab
+el.sty
+Package: babel 2025/12/11 v25.17 The multilingual framework for LuaLaTeX, pdfLa
+TeX and XeLaTeX
+\babel@savecnt=\count335
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input li
+ne 2068.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input li
+ne 2070.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input lin
+e 2072.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input lin
+e 2073.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) 
+on input line 2074.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) 
+on input line 2076.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) 
+on input line 2101.
+\U@D=\dimen193
+\l@unhyphenated=\language79
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/babel\txt
+babel.def)
+\bbl@readstream=\read3
+\bbl@dirlevel=\count336
+Package babel Info: Configuration files are deprecated, as
+(babel)             they can break document portability.
+(babel)             Reported on input line 4196.
+
+*************************************
+* Local config file bblopts.cfg used
+*
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblop
+ts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/babel/loc
+ale/fr\babel-french.tex)
+Package babel Info: Importing font and identification data for french
+(babel)             from babel-fr.ini. Reported on input line 4320.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/babel-fre
+nch\french.ldf
+Language: french 2025-08-15 v4.0e French support from the babel system
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/babel-fre
+nch\french3.ldf
+Language: french 2025-08-15 v3.7e French support from the babel system
+\FB@stdchar=\count337
+Package babel Info: Making : an active character on input line 273.
+Package babel Info: Making ; an active character on input line 274.
+Package babel Info: Making ! an active character on input line 275.
+Package babel Info: Making ? an active character on input line 276.
+\FBguill@level=\count338
+\FBold@everypar=\toks25
+\FB@Mht=\dimen194
+\mc@charclass=\count339
+\mc@charfam=\count340
+\mc@charslot=\count341
+\std@mcc=\count342
+\dec@mcc=\count343
+\FB@pardim=\dimen195
+\listindentFB=\dimen196
+\descindentFB=\dimen197
+\labelindentFB=\dimen198
+\labelwidthFB=\dimen199
+\leftmarginFB=\dimen256
+\parindentFFN=\dimen257
+\FBfnindent=\dimen258
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\sc
+alefnt.sty)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/base\fonten
+c.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/yfonts\yfon
+ts.sty
+Package: yfonts 2019/04/04 v1.4 (WaS&NP)
+Now handling font encoding LY ...
+... no UTF-8 mapping file for font encoding LY
+Now handling font encoding LYG ...
+... no UTF-8 mapping file for font encoding LYG
+LaTeX Encoding Info:    Redeclaring text command \" (encoding LYG) on input lin
+e 58.
+LaTeX Encoding Info:    Text composite with undeclared \" in encoding LYG on in
+put line 58.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\eu
+script.sty
+Package: euscript 2009/06/22 v3.00 Euler Script fonts
+LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
+(Font)                  U/eus/m/n --> U/eus/b/n on input line 33.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/base\latexs
+ym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/stmaryrd\st
+maryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\am
+ssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\am
+sfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks26
+\symAMSa=\mathgroup8
+\symAMSb=\mathgroup9
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+LaTeX Font Info:    Redeclaring math symbol \boxdot on input line 44.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+math.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip191
+
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+text.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+gen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks27
+\ex@=\dimen259
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+bsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen260
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\ams
+opn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count344
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count345
+\leftroot@=\count346
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count347
+\DOTSCASE@=\count348
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box58
+\strutbox@=\box59
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen261
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count349
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count350
+\dotsspace@=\muskip17
+\c@parentequation=\count351
+\dspbrk@lvl=\count352
+\tag@help=\toks28
+\row@=\count353
+\column@=\count354
+\maxfields@=\count355
+\andhelp@=\toks29
+\eqnshift@=\dimen262
+\alignsep@=\dimen263
+\tagshift@=\dimen264
+\tagwidth@=\dimen265
+\totwidth@=\dimen266
+\lineht@=\dimen267
+\@envbody=\toks30
+\multlinegap=\skip192
+\multlinetaggap=\skip193
+\mathdisplay@stack=\toks31
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics\gr
+aphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics\gr
+aphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics\tr
+ig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cf
+g\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics-de
+f\pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen268
+\Gin@req@width=\dimen269
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pstricks\ps
+t-all.sty
+Package: pst-all 2008/01/01 the main pstricks tools
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pstricks\ps
+tricks.sty
+Package: pstricks 2024/02/02 v0.75 LaTeX wrapper for `PSTricks' (RN,HV)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcol
+or.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cf
+g\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics\ma
+thcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\p
+st-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xke
+yval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\x
+keyval.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\x
+kvutils.tex
+\XKV@toks=\toks32
+\XKV@tempa@toks=\toks33
+)
+\XKV@depth=\count356
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pstricks.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-fp.tex `pst-fp' v0.06, 2020/11/20 (hv)
+\pstFP@xs=\count357
+\pstFP@xia=\count358
+\pstFP@xib=\count359
+\pstFP@xfa=\count360
+\pstFP@xfb=\count361
+\pstFP@rega=\count362
+\pstFP@regb=\count363
+\pstFP@regs=\count364
+\pstFP@times=\count365
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utiliti
+es\pgffor.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utiliti
+es\pgfrcs.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utili
+ties\pgfutil-common.tex
+\pgfutil@everybye=\toks34
+\pgfutil@tempdima=\dimen270
+\pgfutil@tempdimb=\dimen271
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utili
+ties\pgfutil-latex.def
+\pgfutil@abb=\box60
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utili
+ties\pgfrcs.code.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.r
+evision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utiliti
+es\pgfkeys.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utili
+ties\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utili
+ties\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks37
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pg
+fmath.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmath.code.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathutil.code.tex
+\pgf@x=\dimen272
+\pgf@xa=\dimen273
+\pgf@xb=\dimen274
+\pgf@xc=\dimen275
+\pgf@y=\dimen276
+\pgf@ya=\dimen277
+\pgf@yb=\dimen278
+\pgf@yc=\dimen279
+\c@pgf@counta=\count366
+\c@pgf@countb=\count367
+\c@pgf@countc=\count368
+\c@pgf@countd=\count369
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathparser.code.tex
+\pgfmath@dimen=\dimen280
+\pgfmath@count=\count370
+\pgfmath@box=\box61
+\pgfmath@toks=\toks38
+\pgfmath@stack@operand=\toks39
+\pgfmath@stack@operation=\toks40
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.basic.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.trigonometric.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.random.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.comparison.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.base.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.round.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.misc.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfunctions.integerarithmetics.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathcalc.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count371
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utili
+ties\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen281
+\pgffor@skip=\dimen282
+\pgffor@stack=\toks41
+\pgffor@toks=\toks42
+))
+\psLoopIndex=\count372
+
+`PSTricks' v3.22A  <2025/12/13> (tvz,hv)
+\pst@dima=\dimen283
+\pst@dimb=\dimen284
+\pst@dimc=\dimen285
+\pst@dimd=\dimen286
+\pst@dimg=\dimen287
+\pst@dimh=\dimen288
+\pst@dimm=\dimen289
+\pst@dimn=\dimen290
+\pst@dimo=\dimen291
+\pst@dimp=\dimen292
+\pst@hbox=\box62
+\pst@ibox=\box63
+\pst@boxg=\box64
+\pst@cnta=\count373
+\pst@cntb=\count374
+\pst@cntc=\count375
+\pst@cntd=\count376
+\pst@cntg=\count377
+\pst@cnth=\count378
+\pst@cntm=\count379
+\pst@cntn=\count380
+\pst@cnto=\count381
+\pst@cntp=\count382
+\@zero=\count383
+\pst@toks=\toks43
+--- We are running latex or xelatex ---
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pstricks.con)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pstricks-color.tex)
+\psunit=\dimen293
+\psxunit=\dimen294
+\psyunit=\dimen295
+\pst@C@@rType=\count384
+\pslinewidth=\dimen296
+\psk@startLW=\dimen297
+\psk@endLW=\dimen298
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pstricks-arrows.tex
+\pshooklength=\dimen299
+\pshookwidth=\dimen300
+)
+\pst@customdefs=\toks44
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pstricks-dots.tex)
+\pslinearc=\dimen301
+\pst@symbolStep=\dimen302
+\pst@symbolWidth=\dimen303
+\pst@symbolLinewidth=\dimen304
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-code-grid.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-code-box.tex
+\everypsbox=\toks45
+\psframesep=\dimen305
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-code-arc.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-code-circle_ellipse.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-code-ref_rot.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-code-put.tex
+\pslabelsep=\dimen306
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-code-pspicture.tex
+\sh@wgridXunit=\dimen307
+\sh@wgridYunit=\dimen308
+\pst@shift=\dimen309
+\ps@imagectr=\count385
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pstricks.con))
+File: pstricks.tex 2025/12/13 v3.22A `PSTricks' (tvz,hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks\
+pst-fp.tex `pst-fp' v0.06, 2020/11/20 (hv))
+File: pst-fp.tex 2020/11/20 v0.06 `PST-fp' (hv)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-plot\ps
+t-plot.sty
+Package: pst-plot 2011/06/05 v1.00 LaTeX wrapper for `pst-plot' (HV)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\pst
+-xkey.sty
+Package: pst-xkey 2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/multido\mul
+tido.sty
+Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
+
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/multido\m
+ultido.tex  v1.42, 2010/05/14 <tvz>
+\multido@count=\count386
+\multidocount=\count387
+\multido@stuff=\toks46
+)
+File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
+)
+Package: pst-plot 2021/09/23 package wrapper for pst-plot.tex (hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-plot\
+pst-plot.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-tools
+\pst-tools.tex `PST-tools' v0.12, 2021/09/23 (hv)
+\randomi=\count388
+\ranval=\count389
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks-
+add\pstricks-add.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-node\
+pst-node.tex  v1.44, 2024/07/04
+\psrow=\count390
+\pscol=\count391
+\psmatrixcnt=\count392
+\psrowsep=\skip194
+\pscolsep=\skip195
+\pst@args=\count393
+\num@pts=\count394
+\pst@argcnt=\count395
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-arrow
+\pst-arrow.tex `pst-arrow' v0.05, 2021/11/16 (dr,hv))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-3d\ps
+t-3d.tex `PST-3d' v1.11, 2010/02/14 (tvz))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-math\
+pst-math.tex `pst-math' v0.67 , (CJ,hv))
+`pstricks-add' v3.94, 2023/04/17 (dr,hv)
+\psparallelogramsep=\dimen310
+\pst@cntC=\count396
+\pst@stepcount=\count397
+\chart@ColorIndex=\dimen311
+\chart@ColorStep=\dimen312
+\pst@chartHeight=\dimen313
+\pst@chartStackDepth=\dimen314
+\pst@chartStackWidth=\dimen315
+\chart@Toggle=\count398
+\psVectorCtr=\count399
+)  v1.94, 2022/11/21 (tvz,hv)
+\pstRadUnit=\dimen316
+\pstRadUnitInv=\dimen317
+\pst@linecnt=\count400
+\RCD@file=\read4
+\psxlabelsep=\dimen318
+\psylabelsep=\dimen319
+\psk@subticksize=\dimen320
+\pst@xticksizeA=\dimen321
+\pst@xticksizeB=\dimen322
+\pst@xticksizeC=\dimen323
+\pst@yticksizeA=\dimen324
+\pst@yticksizeB=\dimen325
+\pst@yticksizeC=\dimen326
+\@digitcounter=\count401
+\psk@llx=\dimen327
+\psk@lly=\dimen328
+\psk@urx=\dimen329
+\psk@ury=\dimen330
+\pst@xunit=\dimen331
+\pst@yunit=\dimen332
+)
+File: pst-plot.tex 2022/11/21 1.94 `pst-plot' (tvz,hv)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-node\ps
+t-node.sty
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-node\
+pst-node.tex)
+File: pst-node.tex 2022/11/21 1.94 `pst-node' (tvz,hv)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-tree\ps
+t-tree.sty
+Package: pst-tree 2009/01/25 package wrapper for pst-tree.tex
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-tree\
+pst-tree.tex  v1.14, 2021/09/04(tvz,dg,hv)
+\pstree@rootbox=\box65
+\pstree@box=\box66
+\psnodecnt=\count402
+\pstreelevel=\count403
+\pstreecnt=\count404
+\pstree@cnt=\count405
+\pstree@stop=\count406
+)
+File: pst-tree.tex 2021/09/04 1.14 `pst-tree' (tvz,hv)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-grad\ps
+t-grad.sty
+Package: pst-grad 2004/07/15 package wrapper for pst-grad.tex (hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-grad\
+pst-grad.tex `pst-grad' v1.06, 2006/11/27 (tvz,dg,hv))
+File: pst-grad.tex 2006/11/27 1.06 `pst-grad' (tvz)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-coil\ps
+t-coil.sty
+Package: pst-coil 2010/02/01 package wrapper for pst-coil.tex (hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-coil\
+pst-coil.tex  v1.06, 2006/11/27
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-node\
+pst-node.tex))
+File: pst-coil.tex 2024/08/13 v1.08 `PST-coil' (tvz,hv)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-text\ps
+t-text.sty
+Package: pst-text 2018/12/28 package wrapper for pst-text.tex (hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-text\
+pst-text.tex  v1.01, 2018/12/22(tvz,hv))
+File: pst-text.tex 2018/12/22 1.01 `pst-text' (tvz)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-3d\pst-
+3d.sty
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-3d\ps
+t-3d.tex)
+File: pst-3d.tex 2018/12/22 v1.01 `PST-3d' (hv)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-eps\pst
+-eps.sty
+Package: pst-eps 2005/05/20 package wrapper for pst-eps.tex (hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-eps\p
+st-eps.tex  v1.00, 2006/11/04
+\pst@epsout=\write4
+\pst@tempout=\write5
+)
+File: pst-eps.tex 2006/11/04 1.00 `pst-eps' (tvz)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-fill\ps
+t-fill.sty
+Package: pst-fill 2010/03/20 package wrapper for pst-fill.tex (hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-fill\
+pst-fill.tex `PST-Fill' v1.02, 2021/10/01 (tvz,dg,hv)
+\pst@fillbox=\box67
+)
+File: pst-fill.tex 2021/10/01 v1.02 `PST-fill' (tvz,dg,hv)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pstricks-ad
+d\pstricks-add.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-math\ps
+t-math.sty
+Package: pst-math 2023/07/03 v 0.67 package wrapper for PSTricks pst-math.tex
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pst-calcula
+te\pst-calculate.sty
+Package: pst-calculate 2019/01/24 v. 0.02(Herbert Voss) Support for caculations
+ with floating point numbers.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siu
+nitx.sty
+Package: siunitx 2026-04-15 v3.5.4 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count407
+\l__siunitx_number_exponent_fixed_int=\count408
+\l__siunitx_number_min_decimal_int=\count409
+\l__siunitx_number_min_integer_int=\count410
+\l__siunitx_number_round_precision_int=\count411
+\l__siunitx_number_lower_threshold_int=\count412
+\l__siunitx_number_upper_threshold_int=\count413
+\l__siunitx_number_group_first_int=\count414
+\l__siunitx_number_group_size_int=\count415
+\l__siunitx_number_group_min_int=\count416
+\l__siunitx_number_group_minimum_int=\count417
+\l__siunitx_compound_count_int=\count418
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/translation
+s\translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmd
+s\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+\l__siunitx_table_tmp_box=\box68
+\l__siunitx_table_tmp_dim=\dimen333
+\l__siunitx_table_column_width_dim=\dimen334
+\l__siunitx_table_integer_box=\box69
+\l__siunitx_table_decimal_box=\box70
+\l__siunitx_table_uncert_box=\box71
+\l__siunitx_table_before_box=\box72
+\l__siunitx_table_after_box=\box73
+\l__siunitx_table_before_dim=\dimen335
+\l__siunitx_table_carry_dim=\dimen336
+\l__siunitx_unit_tmp_int=\count419
+\l__siunitx_unit_position_int=\count420
+\l__siunitx_unit_total_int=\count421
+\l__siunitx_sexagesimal_tmp_dim=\dimen337
+\l__siunitx_sexagesimal_marker_box=\box74
+\l__siunitx_sexagesimal_unit_box=\box75
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifl
+uatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xst
+ring.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/xstring\x
+string.tex
+\xs_counta=\count422
+\xs_countb=\count423
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pst-math\
+pst-math.tex)
+File: pst-math.tex 2021/10/01 v1.02 `PST-math' (hv)
+\c@Rand@No=\count424
+\c@Random@Left=\count425
+\c@Random@Right=\count426
+\c@Random@No@max=\count427
+)
+Package: pstricks-add 2021/09/10 v. 0.17 package wrapper for pstricks-add.tex (
+hv)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pstricks-
+add\pstricks-add.tex)
+File: pstricks-add.tex 2021/10/01 v1.02 `PSTricks-add' (hv)
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fa
+ncyvrb.sty
+Package: fancyvrb 2026/04/16 4.6a verbatim text (tvz,hv)
+\FV@CodeLineNo=\count428
+\FV@InFile=\read5
+\FV@TabBox=\box76
+\c@FancyVerbLine=\count429
+\FV@StepNumber=\count430
+\FV@OutFile=\write6
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ma
+thrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup10
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/vmargin\vma
+rgin.sty
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+
+Package: vmargin 2004/07/15 V2.5 set document margins (VK)
+\PaperWidth=\dimen338
+\PaperHeight=\dimen339
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\ti
+tletoc.sty
+Package: titletoc 2025/01/04 v2.17 TOC entries
+\ttl@leftsep=\dimen340
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/bbding\bbdi
+ng.sty
+Package: bbding 1999/04/15 v1.01 Dingbats symbols
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/wasysym\was
+ysym.sty
+Package: wasysym 2020/01/19 v2.4 Wasy-2 symbol support package
+\symwasy=\mathgroup11
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 93.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen
+.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pd
+fpages.sty
+Package: pdfpages 2026/03/30 v0.6h Insert pages of external PDF documents (AM)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.
+sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count431
+\calc@Bcount=\count432
+\calc@Adimen=\dimen341
+\calc@Bdimen=\dimen342
+\calc@Askip=\skip196
+\calc@Bskip=\skip197
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count433
+\calc@Cskip=\skip198
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso
+-pic.sty
+Package: eso-pic 2025/12/10 v3.0d eso-pic (RN)
+\ESO@tempdima=\dimen343
+\ESO@tempdimb=\dimen344
+)
+\AM@pagewidth=\dimen345
+\AM@pageheight=\dimen346
+\AM@fboxrule=\dimen347
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pp
+pdftex.def
+File: pppdftex.def 2026/03/30 v0.6h Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count434
+\AM@pagebox=\box77
+\AM@global@opts=\toks47
+\AM@pagecnt=\count435
+\AM@toc@title=\toks48
+\AM@lof@heading=\toks49
+\c@AM@survey=\count436
+\AM@templatesizebox=\box78
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/morewrites\
+morewrites.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/morewrites\
+primargs.sty
+Package: primargs 2024/02/02 Parsing arguments of primitives
+)
+Package: morewrites 2024/02/02 Always room for a new write
+\g__morewrites_later_int=\count437
+\l__morewrites_user_int=\count438
+\g__morewrites_iow=\write7
+\g__morewrites_ior=\read6
+\g__morewrites_group_level_int=\count439
+\g__morewrites_shipout_box=\box79
+\l__morewrites_collect_next_int=\count440
+\g__morewrites_alloc_write_int=\count441
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\multi
+col.sty
+Package: multicol 2025/10/21 v2.0b multicolumn formatting (FMi)
+\c@tracingmulticols=\count442
+\mult@box=\box80
+\multicol@leftmargin=\dimen348
+\c@unbalance=\count443
+\c@collectmore=\count444
+\doublecol@number=\count445
+\multicoltolerance=\count446
+\multicolpretolerance=\count447
+\full@width=\dimen349
+\page@free=\dimen350
+\premulticols=\dimen351
+\postmulticols=\dimen352
+\multicolsep=\skip199
+\multicolbaselineskip=\skip256
+\partial@page=\box81
+\last@line=\box82
+\mc@boxedresult=\box83
+\maxbalancingoverflow=\dimen353
+\mult@rightbox=\box84
+\mult@grightbox=\box85
+\mult@firstbox=\box86
+\mult@gfirstbox=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\@tempa=\box105
+\@tempa=\box106
+\@tempa=\box107
+\@tempa=\box108
+\@tempa=\box109
+\@tempa=\box110
+\@tempa=\box111
+\@tempa=\box112
+\@tempa=\box113
+\@tempa=\box114
+\@tempa=\box115
+\@tempa=\box116
+\@tempa=\box117
+\@tempa=\box118
+\@tempa=\box119
+\@tempa=\box120
+\@tempa=\box121
+\@tempa=\box122
+\@tempa=\box123
+\c@minrows=\count448
+\c@columnbadness=\count449
+\c@finalcolumnbadness=\count450
+\last@try=\dimen354
+\multicolovershoot=\dimen355
+\multicolundershoot=\dimen356
+\mult@nat@firstbox=\box124
+\colbreak@box=\box125
+\mc@col@check@num=\count451
+\g__mc_curr_col_int=\count452
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\co
+lortbl.sty
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
+\everycr=\toks50
+\minrowclearance=\skip257
+\rownum=\count453
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/memoir\memh
+fixc.sty
+Package: memhfixc 2025/09/16 v1.24 hyperref package fixes for memoir class
+) (../Template-Style/chapter-styles/list-of-chapter-styles.tex
+(../Template-Style/chapter-styles/fieldset/fieldset.tex)
+(../Template-Style/chapter-styles/titleontopright/titleontopright.tex)
+(../Template-Style/chapter-styles/bringhurst/bringhurst.tex)
+(../Template-Style/chapter-styles/southall/southall.tex
+\headindent=\skip258
+\rightblock=\skip259
+)
+(../Template-Style/chapter-styles/chappell/chappell.tex))
+(../Template-Style/section-styles/section-styles.tex)
+(../Template-Style/footer-header-styles/footer-header-styles.tex)
+(../Template-Style/toc-styles/toc-styles.tex)
+(../Template-Style/minitoc-styles/minitoc-styles.tex)
+(../Template-Style/bib-table-styles/bib-table-styles.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/caption\cap
+tion.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/caption\cap
+tion3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen357
+\captionmargin=\dimen358
+\caption@leftmargin=\dimen359
+\caption@rightmargin=\dimen360
+\caption@width=\dimen361
+\caption@indent=\dimen362
+\caption@parindent=\dimen363
+\caption@hangindent=\dimen364
+Package caption Info: memoir document class detected.
+Package caption Info: french babel package is loaded.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/caption\cap
+tion-memoir.sto
+File: caption-memoir.sto 2023/09/08 v2.2c Adaption of the caption package to th
+e memoir document class (AR)
+))
+\c@caption@flags=\count454
+\c@continuedfloat=\count455
+Package caption Info: changepage package is loaded.
+\caption@adjustwidth@hsize=\dimen365
+\caption@adjustwidth@linewidth=\dimen366
+)) (../Template-Style/user-commands/user-commands.tex))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/caption\sub
+caption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count456
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count457
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/float\float
+.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count458
+\float@exts=\toks51
+\float@box=\box126
+\@float@everytoks=\toks52
+\@floatcapt=\box127
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/listings\li
+stings.sty
+\lst@mode=\count459
+\lst@gtempboxa=\box128
+\lst@token=\toks53
+\lst@length=\count460
+\lst@currlwidth=\dimen367
+\lst@column=\count461
+\lst@pos=\count462
+\lst@lostspace=\dimen368
+\lst@width=\dimen369
+\lst@newlines=\count463
+\lst@lineno=\count464
+\lst@maxwidth=\dimen370
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/listings\ls
+tpatch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/listings\ls
+tmisc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count465
+\lst@skipnumbers=\count466
+\lst@framebox=\box129
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/listings\li
+stings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/fronten
+dlayer\tikz.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basicla
+yer\pgf.sty
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basicla
+yer\pgfcore.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systeml
+ayer\pgfsys.sty
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/syste
+mlayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@x=\dimen371
+\pgf@y=\dimen372
+\pgf@xa=\dimen373
+\pgf@ya=\dimen374
+\pgf@xb=\dimen375
+\pgf@yb=\dimen376
+\pgf@xc=\dimen377
+\pgf@yc=\dimen378
+\pgf@xd=\dimen379
+\pgf@yd=\dimen380
+\w@pgf@writea=\write129
+\r@pgf@reada=\read7
+\c@pgf@counta=\count467
+\c@pgf@countb=\count468
+\c@pgf@countc=\count469
+\c@pgf@countd=\count470
+\t@pgf@toka=\toks54
+\t@pgf@tokb=\toks55
+\t@pgf@tokc=\toks56
+\pgf@sys@id@count=\count471
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/syste
+mlayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/syste
+mlayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/syste
+mlayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/syste
+mlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count472
+\pgfsyssoftpath@bigbuffer@items=\count473
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/syste
+mlayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\
+pgfint.code.tex)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen381
+\pgf@picmaxx=\dimen382
+\pgf@picminy=\dimen383
+\pgf@picmaxy=\dimen384
+\pgf@pathminx=\dimen385
+\pgf@pathmaxx=\dimen386
+\pgf@pathminy=\dimen387
+\pgf@pathmaxy=\dimen388
+\pgf@xx=\dimen389
+\pgf@xy=\dimen390
+\pgf@yx=\dimen391
+\pgf@yy=\dimen392
+\pgf@zx=\dimen393
+\pgf@zy=\dimen394
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen395
+\pgf@path@lasty=\dimen396
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen397
+\pgf@shorten@start@additional=\dimen398
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box130
+\pgf@hbox=\box131
+\pgf@layerbox@main=\box132
+\pgf@picture@serial@count=\count474
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen399
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen400
+\pgf@pt@y=\dimen401
+\pgf@pt@temp=\dimen402
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen403
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen404
+\pgf@sys@shading@range@num=\count475
+\pgf@shadingcount=\count476
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box133
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basic
+layer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modul
+es\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box134
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modul
+es\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compati
+bility\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen405
+\pgf@nodesepend=\dimen406
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compati
+bility\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/front
+endlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libra
+ries\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count477
+\pgfplotmarksize=\dimen407
+)
+\tikz@lastx=\dimen408
+\tikz@lasty=\dimen409
+\tikz@lastxsaved=\dimen410
+\tikz@lastysaved=\dimen411
+\tikz@lastmovetox=\dimen412
+\tikz@lastmovetoy=\dimen413
+\tikzleveldistance=\dimen414
+\tikzsiblingdistance=\dimen415
+\tikz@figbox=\box135
+\tikz@figbox@bg=\box136
+\tikz@tempbox=\box137
+\tikz@tempbox@bg=\box138
+\tikztreelevel=\count478
+\tikznumberofchildren=\count479
+\tikznumberofcurrentchild=\count480
+\tikz@fig@count=\count481
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modul
+es\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count482
+\pgfmatrixcurrentcolumn=\count483
+\pgf@matrix@numberofcolumns=\count484
+)
+\tikz@expandcount=\count485
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/front
+endlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libra
+ries\pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen416
+\pgfarrowlength=\dimen417
+\pgfarrowwidth=\dimen418
+\pgfarrowlinewidth=\dimen419
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pgf/front
+endlayer/tikz/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/listingsutf
+8\listingsutf8.sty
+Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/stringenc
+\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape
+\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hy
+perref.sty
+Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinek
+eys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hyc
+olor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+\@linkdim=\dimen420
+\Hy@linkcounter=\count486
+\Hy@pagecounter=\count487
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd
+1enc.def
+File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\i
+ntcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count488
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pu
+enc.def
+File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `plainpages' set `false' on input line 4066.
+Package hyperref Info: Option `pdfpagelabels' set `true' on input line 4066.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4066
+.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4066.
+Package hyperref Info: Option `unicode' set `true' on input line 4066.
+Package hyperref Info: Hyper figures OFF on input line 4195.
+Package hyperref Info: Link nesting OFF on input line 4200.
+Package hyperref Info: Hyper index ON on input line 4203.
+Package hyperref Info: Plain pages OFF on input line 4210.
+Package hyperref Info: Backreferencing OFF on input line 4215.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4462.
+\c@Hy@tempcnt=\count489
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4801.
+\XeTeXLinkMargin=\dimen421
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bi
+tset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/bigintcal
+c\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count490
+\Field@Width=\dimen422
+\Fld@charsize=\dimen423
+Package hyperref Info: Hyper figures OFF on input line 6078.
+Package hyperref Info: Link nesting OFF on input line 6083.
+Package hyperref Info: Hyper index ON on input line 6086.
+Package hyperref Info: backreferencing OFF on input line 6093.
+Package hyperref Info: Link coloring ON on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6103.
+Package hyperref Info: PDF/A mode OFF on input line 6108.
+\Hy@abspage=\count491
+\c@Item=\count492
+\c@Hfootnote=\count493
+)
+Package hyperref Info: Driver: hpdftex.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hp
+dftex.def
+File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
+\Fld@listcount=\count494
+\c@bookmark@seq@number=\count495
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilech
+eck\rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/uniquecou
+nter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip260
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/generic/thumbpdf\
+thumbpdf.sty
+Package: thumbpdf 2018/09/07 v3.17 Inclusion of thumbnails (HO)
+
+
+Package thumbpdf Warning: Thumbnail data file `My-Thesis.tpt' not found.
+
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/base\inpute
+nc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks57
+\inpenc@posthook=\toks58
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natb
+ib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip261
+\bibsep=\skip262
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count496
+) (defs-and-imports.tex
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/algorithm2e
+\algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count497
+\algocf@hangindent=\skip263
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\i
+foddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count498
+LaTeX Info: Redefining \checkoddpage on input line 45.
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspac
+e.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/relsize\rel
+size.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip264
+\skiplinenumber=\skip265
+\skiprule=\skip266
+\skiphlne=\skip267
+\skiptext=\skip268
+\skiplength=\skip269
+\algomargin=\skip270
+\skipalgocfslide=\skip271
+\algowidth=\dimen424
+\inoutsize=\dimen425
+\inoutindent=\dimen426
+\interspacetitleruled=\dimen427
+\interspacealgoruled=\dimen428
+\interspacetitleboxruled=\dimen429
+\algocf@ruledwidth=\skip272
+\algocf@inoutbox=\box139
+\algocf@inputbox=\box140
+\AlCapSkip=\skip273
+\AlCapHSkip=\skip274
+\algoskipindent=\skip275
+\algocf@nlbox=\box141
+\algocf@hangingbox=\box142
+\algocf@untilbox=\box143
+\algocf@skipuntil=\skip276
+\algocf@capbox=\box144
+\algocf@lcaptionbox=\skip277
+\algoheightruledefault=\skip278
+\algoheightrule=\skip279
+\algotitleheightruledefault=\skip280
+\algotitleheightrule=\skip281
+\c@algocfline=\count499
+\c@algocfproc=\count500
+\c@algocf=\count501
+\algocf@algoframe=\box145
+\algocf@algobox=\box146
+)
+\c@theorem=\count502
+)
+\defaultBeforeChapSkip=\skip282
+
+
+Package french3.ldf Warning: Please load the "natbib" package
+(french3.ldf)                BEFORE babel/french; reported on input line 122.
+
+Package french3.ldf Info: Setting StandardEnumerateEnv=true for
+(french3.ldf)             compatibility with enumerate package,
+(french3.ldf)             reported on input line 122.
+(My-Thesis.aux
+Package babel Info: 'french' activates 'french' shorthands.
+(babel)             Reported on input line 14.
+)
+\openout1 = `My-Thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 122.
+LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line
+ 122.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsp
+zccm.fd
+File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
+)
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for LY/yfrak/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for LYG/ygoth/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+
+
+Class memoir Warning: \addtodef is marked deprecated and will be
+(memoir)              removed in 2026, use instead \patchcmd,
+(memoir)              \pretocmd or \apptocmd from the etoolbox package
+(memoir)              (which is autoloaded by the class) on input line 122.
+
+LaTeX Info: Redefining \degres on input line 122.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/context/base/mkii
+\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count503
+\scratchdimen=\dimen430
+\scratchbox=\box147
+\nofMPsegments=\count504
+\nofMParguments=\count505
+\everyMPshowfont=\toks59
+\MPscratchCnt=\count506
+\MPscratchDim=\dimen431
+\MPnumerator=\count507
+\makeMPintoPDFobject=\count508
+\everyMPtoPDFconversion=\toks60
+)
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pk
+g\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\ep
+stopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/translation
+s/dicts\translations-basic-dictionary-french.trsl
+File: translations-basic-dictionary-french.trsl (french translation file `trans
+lations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `french'. on input line 122.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\p
+dflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\p
+dflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/graphics\ls
+cape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count509
+Package hyperref Info: Link coloring ON on input line 122.
+ (My-Thesis.out) (My-Thesis.out)
+\@outlinefile=\write130
+\openout7 = `My-Thesis.out'.
+
+
+
+pdfTeX warning: pdflatex.exe (file ./CoverYuri.pdf): PDF inclusion: found PDF v
+ersion <1.7>, but at most version <1.5> allowed
+<CoverYuri.pdf, id=532, 597.55246pt x 845.07718pt>
+File: CoverYuri.pdf Graphic file (type pdf)
+<use CoverYuri.pdf>
+Package pdftex.def Info: CoverYuri.pdf  used on input line 128.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./CoverYuri.pdf): PDF inclusion: found PDF v
+ersion <1.7>, but at most version <1.5> allowed
+
+
+pdfTeX warning: pdflatex.exe (file ./CoverYuri.pdf): PDF inclusion: found PDF v
+ersion <1.7>, but at most version <1.5> allowed
+<CoverYuri.pdf, id=534, page=1, 597.55246pt x 845.07718pt>
+File: CoverYuri.pdf Graphic file (type pdf)
+<use CoverYuri.pdf, page 1>
+Package pdftex.def Info: CoverYuri.pdf , page1 used on input line 128.
+(pdftex.def)             Requested size: 597.551pt x 845.07512pt.
+File: CoverYuri.pdf Graphic file (type pdf)
+<use CoverYuri.pdf, page 1>
+Package pdftex.def Info: CoverYuri.pdf , page1 used on input line 128.
+(pdftex.def)             Requested size: 598.18013pt x 845.96486pt.
+File: CoverYuri.pdf Graphic file (type pdf)
+<use CoverYuri.pdf, page 1>
+Package pdftex.def Info: CoverYuri.pdf , page1 used on input line 128.
+(pdftex.def)             Requested size: 598.18013pt x 845.96486pt.
+File: CoverYuri.pdf Graphic file (type pdf)
+<use CoverYuri.pdf, page 1>
+Package pdftex.def Info: CoverYuri.pdf , page1 used on input line 128.
+(pdftex.def)             Requested size: 598.18013pt x 845.96486pt.
+File: CoverYuri.pdf Graphic file (type pdf)
+<use CoverYuri.pdf, page 1>
+Package pdftex.def Info: CoverYuri.pdf , page1 used on input line 128.
+(pdftex.def)             Requested size: 598.18013pt x 845.96486pt.
+\openout7 = `My-Thesis.mw'.
+
+[1
+Non-PDF special ignored!
+<special> header=pstricks.pro
+Non-PDF special ignored!
+<special> header=pst-algparser.pro
+Non-PDF special ignored!
+<special> header=pst-tools.pro
+Non-PDF special ignored!
+<special> header=pst-dots.pro
+Non-PDF special ignored!
+<special> header=pst-node.pro
+Non-PDF special ignored!
+<special> header=pst-3d.pro
+Non-PDF special ignored!
+<special> header=pst-math.pro
+Non-PDF special ignored!
+<special> header=pstricks-add.pro
+Non-PDF special ignored!
+<special> header=pst-grad.pro
+Non-PDF special ignored!
+<special> header=pst-coil.pro
+Non-PDF special ignored!
+<special> header=pst-text.pro
+
+Non-PDF special ignored!
+<special> ps: /pssetRGBcolor /setrgbcolor load def /pssetCMYKcolor /setcmyk...
+Non-PDF special ignored!
+<special> ps:tx@Dict begin  gsave STV CP T /ps@rot 0 def grestore  end
+Non-PDF special ignored!
+<special> ps:tx@Dict begin  gsave STV CP T /ps@refangle 0.  def grestore  e...
+Non-PDF special ignored!
+<special> ps:tx@Dict begin  gsave STV CP T /ps@rot 0 def grestore  end
+Non-PDF special ignored!
+<special> ps:0.8 setlinewidth 0 setgray
+
+ <./CoverYuri.pdf>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+(declaration-authorship/declaration-authorship.tex) (Dedication/Dedication.tex
+
+Class memoir Warning: The material used in the headers is too large
+(14.49998pt) for the given head height (12.0pt), it is recommended to
+either increase the head height or redesign the header
+(in both cases you will find help in the memoir manual). on input line 2.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[1
+
+
+{C:/Users/Yuri Roosevelt NK/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C
+:/Users/Yuri Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r
+.enc}] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 24.
+LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line
+ 24.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1p
+tmcm.fd
+File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
+)
+LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line
+ 24.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omlp
+tmcm.fd
+File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+psycm on input line
+ 24.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omxp
+sycm.fd
+File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.09996> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 24
+.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.
+fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 24.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <6.5> not available
+(Font)              size <6> substituted on input line 24.
+
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
+4.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/stmaryrd\us
+tmry.fd)
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 24.
+
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <6.5> not available
+(Font)              size <6> substituted on input line 24.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
+
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\um
+sa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 24.
+
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\um
+sb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 24
+.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ur
+sfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 24.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <6.5> not available
+(Font)              size <6> substituted on input line 24.
+
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 24
+.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/wasysym\uwa
+sy.fd
+File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
+)
+
+LaTeX Font Warning: Font shape `U/wasy/m/n' in size <13> not available
+(Font)              size <12> substituted on input line 24.
+
+
+LaTeX Font Warning: Font shape `U/wasy/m/n' in size <6.5> not available
+(Font)              size <6> substituted on input line 24.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[2
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+) (Acknowledgements/Acknowledgements.tex
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[3
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+) (My-Thesis.toc
+LaTeX Font Info:    Trying to load font information for OT1+pzc on input line 1
+5.
+
+(C:\Users\Yuri Roosevelt NK\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1p
+zc.fd
+File: ot1pzc.fd 2020/03/25 font definitions for OT1/pzc.
+)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[4
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (5.50816pt too wide) in paragraph at lines 54--54
+ [][] [][]  $[]$ \T1/ptm/m/n/13 - Sys-tèmes d'in-for-ma-tion orien-tés pro-ces-
+sus et pla-te-formes d'exé- 
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 67.
+\openout7 = `My-Thesis.mw'.
+
+
+[5] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[6] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[7] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+ (list-of-acronyms.tex)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[8
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+ (My-Thesis.lot)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[9
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+ (My-Thesis.lof
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[10
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (24.87198pt too wide) in paragraph at lines 39--39
+ [][] [][] $[]$ \T1/ptm/m/n/13 - Ta-bleau de bord pour un uti-li-sa-teur connec
+té avec le rôle \T1/pcr/m/n/13 GESTIONNAIRE_STOCK[][] []  
+ []
+
+
+Overfull \hbox (24.87198pt too wide) in paragraph at lines 40--40
+ [][] [][] $[]$ \T1/ptm/m/n/13 - Ta-bleau de bord pour un uti-li-sa-teur connec
+té avec le rôle \T1/pcr/m/n/13 SERVICE_COMMERCIAL[][] []  
+ []
+
+)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[11] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+ (Resume/Resume.tex
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[12
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+) (Abstract/Abstract.tex
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[13
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+) (Introduction/Introduction.tex
+\c@ttl@toc@chapters=\count510
+ (My-Thesis.ptc)
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 11.69992pt on input line 8.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 11.69992pt on input line 8.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 14.3999pt on input line 8.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 P
+      arallÃ¨lement, l'ingÃ©nierie dirigÃ©e par les modÃ¨les propose de plac...
+\openout7 = `My-Thesis.mw'.
+
+[1
+
+
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[2] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (10.81181pt too wide) in paragraph at lines 24--25
+\T1/ptm/m/n/13 modèle et modèle-à-texte. Ces trans-for-ma-tions pro-duisent un 
+socle ba-ckend/frontend,
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[3] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[4] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+) (Chap1/Chap1.tex
+Chapitre I.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 71.99951pt on input line 1.
+LaTeX Font Info:    Calculating math sizes for size <80> on input line 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <80> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <55.99976> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <40> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <80> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <55.99976> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <40> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <80> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <55.99976> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <40> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <80> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <55.99976> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <40> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/wasy/m/n' in size <80> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/wasy/m/n' in size <55.99976> not available
+(Font)              size <24.88> substituted on input line 1.
+
+
+LaTeX Font Warning: Font shape `U/wasy/m/n' in size <40> not available
+(Font)              size <24.88> substituted on input line 1.
+
+(My-Thesis.ptc)
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 13.49991pt on input line 17.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[5
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image1.JPG, id=1132, 410.2828pt x 126.4725pt>
+File: Chap1/images/image1.JPG Graphic file (type jpg)
+<use Chap1/images/image1.JPG>
+Package pdftex.def Info: Chap1/images/image1.JPG  used on input line 59.
+(pdftex.def)             Requested size: 320.57364pt x 98.81796pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[6 <./Chap1/images/image1.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 12.59991pt on input line 66.
+<Chap1/images/image2.JPG, id=1142, 325.96782pt x 300.3722pt>
+File: Chap1/images/image2.JPG Graphic file (type jpg)
+<use Chap1/images/image2.JPG>
+Package pdftex.def Info: Chap1/images/image2.JPG  used on input line 79.
+(pdftex.def)             Requested size: 320.57364pt x 295.42606pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[7 <./Chap1/images/image2.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <14> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 84.
+LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
+(Font)              scaled to size 12.59991pt on input line 84.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[8] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (0.30057pt too wide) in paragraph at lines 110--112
+[]\T1/ptm/m/n/13 Les sys-tèmes de ges-tion des pro-ces-sus mé-tier, gé-né-ra-le
+-ment dé-si-gnés par l'abré-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[9] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (1.9529pt too wide) in paragraph at lines 119--120
+\T1/ptm/m/n/13 cu-ter des work-flows, gé-rer des pro-ces-sus com-plexes et co-o
+r-don-ner des tâches
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[10] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image3.JPG, id=1169, 442.65375pt x 128.73094pt>
+File: Chap1/images/image3.JPG Graphic file (type jpg)
+<use Chap1/images/image3.JPG>
+Package pdftex.def Info: Chap1/images/image3.JPG  used on input line 172.
+(pdftex.def)             Requested size: 350.49698pt x 101.93594pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[11 <./Chap1/images/image3.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image4.JPG, id=1177, 467.49657pt x 260.47313pt>
+File: Chap1/images/image4.JPG Graphic file (type jpg)
+<use Chap1/images/image4.JPG>
+Package pdftex.def Info: Chap1/images/image4.JPG  used on input line 194.
+(pdftex.def)             Requested size: 320.57364pt x 178.62173pt.
+<Chap1/images/image5.JPG, id=1178, 426.09187pt x 94.85437pt>
+File: Chap1/images/image5.JPG Graphic file (type jpg)
+<use Chap1/images/image5.JPG>
+Package pdftex.def Info: Chap1/images/image5.JPG  used on input line 219.
+(pdftex.def)             Requested size: 384.68576pt x 85.64168pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[12 <./Chap1/images/image4.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image6.JPG, id=1184, 227.34938pt x 63.98906pt>
+File: Chap1/images/image6.JPG Graphic file (type jpg)
+<use Chap1/images/image6.JPG>
+Package pdftex.def Info: Chap1/images/image6.JPG  used on input line 230.
+(pdftex.def)             Requested size: 277.82788pt x 78.19736pt.
+<Chap1/images/image7.JPG, id=1185, 369.63094pt x 54.9553pt>
+File: Chap1/images/image7.JPG Graphic file (type jpg)
+<use Chap1/images/image7.JPG>
+Package pdftex.def Info: Chap1/images/image7.JPG  used on input line 256.
+(pdftex.def)             Requested size: 384.68576pt x 57.19408pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[13 <./Chap1/images/image5.JPG> <./Chap1/images/image6.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image8.JPG, id=1190, 342.5297pt x 60.97781pt>
+File: Chap1/images/image8.JPG Graphic file (type jpg)
+<use Chap1/images/image8.JPG>
+Package pdftex.def Info: Chap1/images/image8.JPG  used on input line 280.
+(pdftex.def)             Requested size: 363.31941pt x 64.6836pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[14 <./Chap1/images/image7.JPG> <./Chap1/images/image8.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image9.JPG, id=1197, 429.85594pt x 147.55125pt>
+File: Chap1/images/image9.JPG Graphic file (type jpg)
+<use Chap1/images/image9.JPG>
+Package pdftex.def Info: Chap1/images/image9.JPG  used on input line 309.
+(pdftex.def)             Requested size: 235.08864pt x 80.69638pt.
+<Chap1/images/image11.JPG, id=1198, 666.23906pt x 98.61844pt>
+File: Chap1/images/image11.JPG Graphic file (type jpg)
+<use Chap1/images/image11.JPG>
+Package pdftex.def Info: Chap1/images/image11.JPG  used on input line 320.
+(pdftex.def)             Requested size: 320.57364pt x 47.45216pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[15 <./Chap1/images/image9.JPG> <./Chap1/images/image11.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image12.JPG, id=1205, 397.485pt x 124.21407pt>
+File: Chap1/images/image12.JPG Graphic file (type jpg)
+<use Chap1/images/image12.JPG>
+Package pdftex.def Info: Chap1/images/image12.JPG  used on input line 339.
+(pdftex.def)             Requested size: 213.71576pt x 66.78838pt.
+<Chap1/images/image15.JPG, id=1207, 484.81125pt x 60.97781pt>
+File: Chap1/images/image15.JPG Graphic file (type jpg)
+<use Chap1/images/image15.JPG>
+Package pdftex.def Info: Chap1/images/image15.JPG  used on input line 356.
+(pdftex.def)             Requested size: 277.82788pt x 34.94565pt.
+<Chap1/images/image14.JPG, id=1209, 477.28313pt x 223.58531pt>
+File: Chap1/images/image14.JPG Graphic file (type jpg)
+<use Chap1/images/image14.JPG>
+Package pdftex.def Info: Chap1/images/image14.JPG  used on input line 363.
+(pdftex.def)             Requested size: 277.82788pt x 130.14694pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[16 <./Chap1/images/image12.JPG> <./Chap1/images/image15.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image13.JPG, id=1215, 483.30562pt x 143.03438pt>
+File: Chap1/images/image13.JPG Graphic file (type jpg)
+<use Chap1/images/image13.JPG>
+Package pdftex.def Info: Chap1/images/image13.JPG  used on input line 370.
+(pdftex.def)             Requested size: 277.82788pt x 82.22665pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[17 <./Chap1/images/image14.JPG> <./Chap1/images/image13.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image19.JPG, id=1226, 172.39406pt x 143.78719pt>
+File: Chap1/images/image19.JPG Graphic file (type jpg)
+<use Chap1/images/image19.JPG>
+Package pdftex.def Info: Chap1/images/image19.JPG  used on input line 393.
+(pdftex.def)             Requested size: 213.71576pt x 178.25478pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[18 <./Chap1/images/image19.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image16.JPG, id=1237, 386.19281pt x 243.15843pt>
+File: Chap1/images/image16.JPG Graphic file (type jpg)
+<use Chap1/images/image16.JPG>
+Package pdftex.def Info: Chap1/images/image16.JPG  used on input line 406.
+(pdftex.def)             Requested size: 277.82788pt x 174.92923pt.
+<Chap1/images/image17.JPG, id=1240, 378.66469pt x 206.27063pt>
+File: Chap1/images/image17.JPG Graphic file (type jpg)
+<use Chap1/images/image17.JPG>
+Package pdftex.def Info: Chap1/images/image17.JPG  used on input line 416.
+(pdftex.def)             Requested size: 277.82788pt x 151.34427pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[19 <./Chap1/images/image16.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[20 <./Chap1/images/image17.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[21] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[22] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap1/images/image20.JPG, id=1276, 337.26pt x 204.01219pt>
+File: Chap1/images/image20.JPG Graphic file (type jpg)
+<use Chap1/images/image20.JPG>
+Package pdftex.def Info: Chap1/images/image20.JPG  used on input line 571.
+(pdftex.def)             Requested size: 277.82788pt x 168.0631pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[23] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (2.79713pt too wide) in paragraph at lines 588--595
+[]\T1/ptm/m/n/13 Dans une ap-pli-ca-tion clas-sique, le dé-ve-lop-peur peut co-
+der di-rec-te-ment les condi-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[24 <./Chap1/images/image20.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+) (Chap2/chap2-revu.tex
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[25] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Chapitre II.
+(My-Thesis.ptc)
+Underfull \hbox (badness 10000) in paragraph at lines 3--4
+
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[26
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (2.74635pt too wide) in paragraph at lines 21--37
+[]\T1/ptm/m/n/13 L'analyse des tra-vaux s'est faite en trois étapes : com-prend
+re l'ob-jec-tif de chaque
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[27] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap2/images/Image1.png, id=1321, 369.63094pt x 210.7875pt>
+File: Chap2/images/Image1.png Graphic file (type png)
+<use Chap2/images/Image1.png>
+Package pdftex.def Info: Chap2/images/Image1.png  used on input line 70.
+(pdftex.def)             Requested size: 320.57364pt x 182.81113pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[28 <./Chap2/images/Image1.png>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap2/images/schaffer2021-process-driven-application.png, id=1334, 126.59296pt
+ x 55.407pt>
+File: Chap2/images/schaffer2021-process-driven-application.png Graphic file (ty
+pe png)
+<use Chap2/images/schaffer2021-process-driven-application.png>
+Package pdftex.def Info: Chap2/images/schaffer2021-process-driven-application.p
+ng  used on input line 94.
+(pdftex.def)             Requested size: 320.57364pt x 140.34073pt.
+<Chap2/images/hemel2008-webworkflow-interface.png, id=1339, 71.5473pt x 40.1098
+5pt>
+File: Chap2/images/hemel2008-webworkflow-interface.png Graphic file (type png)
+<use Chap2/images/hemel2008-webworkflow-interface.png>
+Package pdftex.def Info: Chap2/images/hemel2008-webworkflow-interface.png  used
+ on input line 115.
+(pdftex.def)             Requested size: 320.57364pt x 179.75511pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[29 <./Chap2/images/schaffer2021-process-driven-application.png (PNG copy)> <./
+Chap2/images/hemel2008-webworkflow-interface.png (PNG copy)>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap2/images/Image6.png, id=1349, 293.59688pt x 132.495pt>
+File: Chap2/images/Image6.png Graphic file (type png)
+<use Chap2/images/Image6.png>
+Package pdftex.def Info: Chap2/images/Image6.png  used on input line 138.
+(pdftex.def)             Requested size: 320.57364pt x 144.66937pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[30 <./Chap2/images/Image6.png>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (15.14586pt too wide) in paragraph at lines 183--190
+[]\T1/ptm/m/n/13 Ces mêmes au-teurs pour-suivent cette lo-gique en étu-diant la
+ trans-for-ma-tion d'IFML
+ []
+
+<Chap2/images/sajji2025-ifml-symfony.jpg, id=1360, 298.6065pt x 110.376pt>
+File: Chap2/images/sajji2025-ifml-symfony.jpg Graphic file (type jpg)
+<use Chap2/images/sajji2025-ifml-symfony.jpg>
+Package pdftex.def Info: Chap2/images/sajji2025-ifml-symfony.jpg  used on input
+ line 193.
+(pdftex.def)             Requested size: 320.57364pt x 118.50029pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[31 <./Chap2/images/sajji2025-ifml-symfony.jpg>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap2/images/Image8.JPG, id=1374, 407.27156pt x 340.27126pt>
+File: Chap2/images/Image8.JPG Graphic file (type jpg)
+<use Chap2/images/Image8.JPG>
+Package pdftex.def Info: Chap2/images/Image8.JPG  used on input line 242.
+(pdftex.def)             Requested size: 299.20076pt x 249.98993pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[32] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap2/images/image9.JPG, id=1382, 325.215pt x 282.30469pt>
+File: Chap2/images/image9.JPG Graphic file (type jpg)
+<use Chap2/images/image9.JPG>
+Package pdftex.def Info: Chap2/images/image9.JPG  used on input line 256.
+(pdftex.def)             Requested size: 205.1653pt x 178.09842pt.
+<Chap2/images/image10.JPG, id=1383, 331.2375pt x 358.33875pt>
+File: Chap2/images/image10.JPG Graphic file (type jpg)
+<use Chap2/images/image10.JPG>
+Package pdftex.def Info: Chap2/images/image10.JPG  used on input line 261.
+(pdftex.def)             Requested size: 205.1653pt x 221.94902pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[33 <./Chap2/images/Image8.JPG> <./Chap2/images/image9.JPG> <./Chap2/images/ima
+ge10.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+<Chap2/images/Image5.png, id=1394, 419.31656pt x 138.5175pt>
+File: Chap2/images/Image5.png Graphic file (type png)
+<use Chap2/images/Image5.png>
+Package pdftex.def Info: Chap2/images/Image5.png  used on input line 310.
+(pdftex.def)             Requested size: 320.57364pt x 105.89789pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[34 <./Chap2/images/Image5.png>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (9.71141pt too wide) in paragraph at lines 334--344
+\T1/ptm/m/n/13 plété pour pro-duire une ap-pli-ca-tion ex-ploi-table. Fe-deli e
+t al. in-tro-duisent des concepts
+ []
+
+
+Overfull \hbox (8.98833pt too wide) in paragraph at lines 334--344
+\T1/ptm/m/n/13 propres aux en-vi-ron-ne-ments en-ri-chis par l'In-ter-net des o
+b-jets [[]], tan-dis que Salado-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[35] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/b/n/12 Portée et ré-sul-tat
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/b/n/12 Évaluation pré-
+ []
+
+
+Overfull \hbox (4.14519pt too wide) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 WebWorkFlow
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Intégration d'abs-trac-
+ []
+
+
+Underfull \hbox (badness 1577) in paragraph at lines 413--413
+\T1/ptm/m/n/12 tions de work-flow à
+ []
+
+
+Underfull \hbox (badness 1152) in paragraph at lines 413--413
+\T1/ptm/m/n/12 des ap-pli-ca-tions web
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Couverture des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 de contrôle de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Dépendance au lan-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Transformation de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 BPMN vers IFML,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 puis d'IFML vers
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Hoyos et
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 Restrepo-
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 413--413
+\T1/ptm/m/n/12 for-mu-laires, vues et
+ []
+
+
+Underfull \hbox (badness 5316) in paragraph at lines 413--413
+\T1/ptm/m/n/12 lan-gage na-tu-rel res-
+ []
+
+
+Underfull \hbox (badness 1117) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Étude de cas dé-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Langage d'en-trée
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 contraint et ré-sul-tat
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Pietruck et
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Génération d'API
+ []
+
+
+Underfull \hbox (badness 2698) in paragraph at lines 413--413
+\T1/ptm/m/n/12 REST orien-tées mé-
+ []
+
+
+Underfull \hbox (badness 2680) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Démonstration de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 la trans-for-ma-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 de mo-dèles de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 pro-ces-sus et de
+ []
+
+
+Underfull \hbox (badness 1817) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Représentation de
+ []
+
+
+Underfull \hbox (badness 7851) in paragraph at lines 413--413
+\T1/ptm/m/n/12 va-riantes proches
+ []
+
+
+Underfull \hbox (badness 5548) in paragraph at lines 413--413
+\T1/ptm/m/n/12 d'un même pro-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Configuration et
+ []
+
+
+Underfull \hbox (badness 6944) in paragraph at lines 413--413
+\T1/ptm/m/n/12 pli-ca-tion web fonc-
+ []
+
+
+Underfull \hbox (badness 3792) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Étude in-dus-trielle
+ []
+
+
+Underfull \hbox (badness 7291) in paragraph at lines 413--413
+\T1/ptm/m/n/12 por-tant sur trois
+ []
+
+
+Underfull \hbox (badness 4316) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Personnalisations mé-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Uyanik et
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Environnement in-
+ []
+
+
+Underfull \hbox (badness 6063) in paragraph at lines 413--413
+\T1/ptm/m/n/12 té-gré de concep-tion
+ []
+
+
+Underfull \hbox (badness 6001) in paragraph at lines 413--413
+\T1/ptm/m/n/12 de pro-ces-sus et de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Gains im-por-tants
+ []
+
+
+Underfull \hbox (badness 1975) in paragraph at lines 413--413
+\T1/ptm/m/n/12 rap-por-tés pour le
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 dé-ve-lop-pe-ment,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Résultats liés à un
+ []
+
+
+Underfull \hbox (badness 3746) in paragraph at lines 413--413
+\T1/ptm/m/n/12 contexte ex-pé-ri-men-tal
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Travaux low-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Usage de mo-dèles
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 pour ac-cé-lé-rer la
+ []
+
+
+Underfull \hbox (badness 8132) in paragraph at lines 413--413
+\T1/ptm/m/n/12 construc-tion d'ap-pli-
+ []
+
+
+Underfull \hbox (badness 2617) in paragraph at lines 413--413
+[]|\T1/ptm/m/n/12 Revues et études
+ []
+
+
+Underfull \hbox (badness 3815) in paragraph at lines 413--413
+\T1/ptm/m/n/12 de trans-for-ma-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
+\T1/ptm/m/n/12 vers des pla-te-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[36] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[37] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+) (Chap3/Chap3.tex
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[38] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Chapitre III.
+(My-Thesis.ptc)
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[39
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 4582) in paragraph at lines 56--56
+\T1/ptm/m/n/12 si-bi-lité et les don-nées sans
+ []
+
+
+Underfull \hbox (badness 3098) in paragraph at lines 56--56
+[]|\T1/ptm/m/n/12 Projet ap-pli-ca-tif com-pre-nant
+ []
+
+
+Underfull \hbox (badness 5161) in paragraph at lines 56--56
+[]|\T1/ptm/m/n/12 Produire un socle ap-pli-ca-tif
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+\T1/ptm/m/n/12 fonc-tion-nel, exé-cu-table, ver-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[40] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \hbox (0.46802pt too wide) in paragraph at lines 70--71
+\T1/ptm/m/n/13 duite. La qua-trième concerne l'ex-ploi-ta-tion et l'évo-lu-tion
+ de cette ap-pli-ca-tion. Cette
+ []
+
+<Chap3/images/architecture_ProOWeb1.png, id=1489, 174.4116pt x 130.8087pt>
+File: Chap3/images/architecture_ProOWeb1.png Graphic file (type png)
+<use Chap3/images/architecture_ProOWeb1.png>
+Package pdftex.def Info: Chap3/images/architecture_ProOWeb1.png  used on input 
+line 74.
+(pdftex.def)             Requested size: 350.49698pt x 262.87817pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[41] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[42 <./Chap3/images/architecture_ProOWeb1.png (PNG copy)>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[43] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[44] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 262.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[45] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--318
+[]|\T1/ptm/m/n/10 Complétude re-la-
+ []
+
+
+Underfull \hbox (badness 5578) in paragraph at lines 318--318
+[]|\T1/ptm/m/n/10 La spé-ci-fi-ca-tion com-plète BPMN
+ []
+
+
+Underfull \hbox (badness 5403) in paragraph at lines 318--318
+\T1/ptm/m/n/10 doivent être com-pa-tibles avec le
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[46] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[47] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 3872) in paragraph at lines 417--417
+[]|\T1/ptm/m/n/10.95 Données déjà pré-sentes dans
+ []
+
+
+Underfull \hbox (badness 3250) in paragraph at lines 417--417
+\T1/ptm/m/n/10.95 ti-vité an-té-rieure dé-si-gnée par
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 417--417
+[]|\T1/ptm/m/n/10.95 Service ba-ckend ou ex-
+ []
+
+
+Underfull \hbox (badness 7649) in paragraph at lines 417--417
+[]|\T1/ptm/m/n/10.95 Schéma des don-nées mé-tier
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[48] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 4752) in paragraph at lines 452--452
+[]|\T1/ptm/m/n/12 Toute ac-ti-vité en-ri-chie doit
+ []
+
+
+Underfull \hbox (badness 1292) in paragraph at lines 452--452
+[]|\T1/ptm/m/n/12 Perte ou mau-vaise per-sis-
+ []
+
+
+Underfull \hbox (badness 3482) in paragraph at lines 452--452
+[]|\T1/ptm/m/n/12 Une tran-si-tion gé-né-rée doit
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 452--452
+[]|\T1/ptm/m/n/12 Les champs af-fi-chés doivent
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[49] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap3/images/Algorithme_M2M.png, id=1586, 135.1449pt x 168.8709pt>
+File: Chap3/images/Algorithme_M2M.png Graphic file (type png)
+<use Chap3/images/Algorithme_M2M.png>
+Package pdftex.def Info: Chap3/images/Algorithme_M2M.png  used on input line 48
+8.
+(pdftex.def)             Requested size: 427.49242pt x 534.17499pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[50] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[51 <./Chap3/images/Algorithme_M2M.png (PNG copy)>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[52] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap3/images/Algorithme_M2T.png, id=1600, 135.1449pt x 168.8709pt>
+File: Chap3/images/Algorithme_M2T.png Graphic file (type png)
+<use Chap3/images/Algorithme_M2T.png>
+Package pdftex.def Info: Chap3/images/Algorithme_M2T.png  used on input line 56
+9.
+(pdftex.def)             Requested size: 427.49242pt x 534.17499pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[53] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[54 <./Chap3/images/Algorithme_M2T.png (PNG copy)>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 626--626
+[]|\T1/ptm/b/n/12 Élément du mo-dèle
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 626--626
+[]|\T1/ptm/m/n/12 Règle d'ac-cès et filtre de
+ []
+
+
+Underfull \hbox (badness 4353) in paragraph at lines 626--626
+[]|\T1/ptm/m/n/12 Transition du work-
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 626--626
+[]|\T1/ptm/m/n/12 Structure mé-tier, sto-ckage,
+ []
+
+
+Underfull \hbox (badness 3724) in paragraph at lines 626--626
+[]|\T1/ptm/m/n/12 Service de sau-ve-garde et
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[55] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[56] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[57] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 1708) in paragraph at lines 765--765
+[]|\T1/ptm/m/n/12 Suivre les fi-chiers gé-né-rés,
+ []
+
+
+Underfull \hbox (badness 6808) in paragraph at lines 765--765
+[]|\T1/ptm/m/n/12 Identifier les fi-chiers que
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 765--765
+[]|\T1/ptm/m/n/12 Comparer l'état at-tendu et
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 765--765
+[]|\T1/ptm/m/n/12 Éviter l'écra-se-ment si-len-
+ []
+
+
+Underfull \hbox (badness 2261) in paragraph at lines 765--765
+[]|\T1/ptm/m/n/12 Copier les fi-chiers conflic-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 765--765
+[]|\T1/ptm/m/n/12 Réduire les mo-di-fi-ca-tions
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[58] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+) (Chap4/Chap4.tex
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[59] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Chapitre IV.
+(My-Thesis.ptc)
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[60
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+[]|\T1/ptm/m/n/12 Node.js / Ja-vaS-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+[]|\T1/ptm/m/n/12 Interface de
+ []
+
+
+Underfull \hbox (badness 2662) in paragraph at lines 43--43
+[]|\T1/ptm/m/n/12 Pages web ProO-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+[]|\T1/ptm/m/n/12 PostgreSQL avec
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[61] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 1990) in paragraph at lines 67--67
+[]|\T1/ptm/m/n/12 Contrats run-time et
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[62] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap4/images/image2.png, id=1656, 201.3924pt x 113.34344pt>
+File: Chap4/images/image2.png Graphic file (type png)
+<use Chap4/images/image2.png>
+Package pdftex.def Info: Chap4/images/image2.png  used on input line 83.
+(pdftex.def)             Requested size: 320.57364pt x 180.4331pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[63 <./Chap4/images/image2.png (PNG copy)>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap4/images/image1.JPG, id=1661, 879.285pt x 465.99094pt>
+File: Chap4/images/image1.JPG Graphic file (type jpg)
+<use Chap4/images/image1.JPG>
+Package pdftex.def Info: Chap4/images/image1.JPG  used on input line 95.
+(pdftex.def)             Requested size: 320.57364pt x 169.88974pt.
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <10.95> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 96.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[64 <./Chap4/images/image1.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 1953) in paragraph at lines 128--128
+[]|\T1/ptm/m/n/12 Définir les champs af-fi-chés, les champs pro-duits et les
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 128--128
+[]|\T1/ptm/m/n/12 Registre des pro-ces-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[65] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[66] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+[]|\T1/ptm/m/n/12 Ressources de
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 231--231
+\T1/ptm/m/n/12 de pro-ces-sus, en-ti-tés et
+ []
+
+
+Underfull \hbox (badness 4556) in paragraph at lines 231--231
+[]|\T1/ptm/m/it/12 Process Run-time Work-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
+[]|\T1/ptm/m/n/12 Manifeste, scripts de
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[67] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[68] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 6284) in paragraph at lines 283--283
+[]|\T1/ptm/b/n/12 Responsabilité prin-ci-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
+[]|\T1/ptm/m/n/12 Service com-
+ []
+
+
+Underfull \hbox (badness 1112) in paragraph at lines 283--283
+[]|\T1/ptm/m/n/12 Gestionnaire de
+ []
+
+
+Underfull \hbox (badness 2698) in paragraph at lines 283--283
+\T1/ptm/m/n/12 tés, pré-pa-rer les com-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
+[]|\T1/ptm/m/n/12 Responsable
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
+[]|\T1/ptm/m/n/12 Valider les ré-ap-pro-vi-
+ []
+
+
+Underfull \hbox (badness 8019) in paragraph at lines 283--283
+[]|\T1/ptm/m/n/12 Qualifier les ré-cla-ma-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[69] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+[]|\T1/ptm/m/n/12 P1 : com-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+[]|\T1/ptm/m/n/12 Recevoir, vé-ri-fier,
+ []
+
+
+Underfull \hbox (badness 2460) in paragraph at lines 302--302
+\T1/ptm/m/n/12 pré-pa-rer et clô-tu-rer
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 302--302
+\T1/ptm/m/n/12 sée sur la bou-tique
+ []
+
+
+Underfull \hbox (badness 7203) in paragraph at lines 302--302
+[]|\T1/ptm/m/n/12 Client, ser-vice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+\T1/ptm/m/n/12 com-mer-cial,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+[]|\T1/ptm/m/n/12 Commande confir-mée,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+\T1/ptm/m/n/12 pré-pa-rée, an-nu-lée ou
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+\T1/ptm/m/n/12 stock, res-pon-
+ []
+
+
+Underfull \hbox (badness 5607) in paragraph at lines 302--302
+\T1/ptm/m/n/12 mande et pro-po-ser
+ []
+
+
+Underfull \hbox (badness 7203) in paragraph at lines 302--302
+[]|\T1/ptm/m/n/12 Client, ser-vice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+\T1/ptm/m/n/12 client, ser-vice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--302
+\T1/ptm/m/n/12 com-mer-cial,
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[70] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+[]|\T1/ptm/m/n/12 Soumission, vé-ri-fi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+\T1/ptm/m/n/12 ca-tion, pré-pa-ra-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+\T1/ptm/m/n/12 et confir-ma-tion ou
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+\T1/ptm/m/n/12 in-ter-rup-tion d'une
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 325--325
+[]|\T1/ptm/m/n/12 Détection du be-soin,
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 325--325
+\T1/ptm/m/n/12 dé-ci-sion d'achat, ré-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+[]|\T1/ptm/m/n/12 Dépôt, qua-li-fi-ca-tion,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--325
+\T1/ptm/m/n/12 vé-ri-fi-ca-tion, pro-po-
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 325--325
+\T1/ptm/m/n/12 si-tion de so-lu-tion et
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[71] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[72] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+[]|\T1/ptm/m/n/12 Client, ser-vice
+ []
+
+
+Underfull \hbox (badness 2932) in paragraph at lines 377--377
+\T1/ptm/m/n/12 com-mer-cial, ges-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+[]|\T1/ptm/m/n/12 Client, com-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+[]|\T1/ptm/m/n/12 Gestionnaire de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+[]|\T1/ptm/m/n/12 Produit, seuil,
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 377--377
+[]|\T1/ptm/m/n/12 Demande de ré-ap-pro-vi-sion-ne-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+[]|\T1/ptm/m/n/12 Client, ser-vice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+\T1/ptm/m/n/12 client, ser-vice
+ []
+
+
+Underfull \hbox (badness 2932) in paragraph at lines 377--377
+\T1/ptm/m/n/12 com-mer-cial, ges-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+[]|\T1/ptm/m/n/12 Commande,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--377
+\T1/ptm/m/n/12 mo-tif, pro-duit
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 377--377
+\T1/ptm/m/n/12 concerné, dé-ci-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+[]|\T1/ptm/b/n/12 Spec. nor-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+[]|\T1/ptm/b/n/12 Contrat
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--398
+[]|\T1/ptm/m/n/12 P1 : com-
+ []
+
+
+Overfull \hbox (1.87836pt too wide) in paragraph at lines 398--398
+[]|\T1/pcr/m/n/12 v1.runtime. 
+ []
+
+
+Overfull \hbox (1.87836pt too wide) in paragraph at lines 398--398
+[]|\T1/pcr/m/n/12 v1.runtime. 
+ []
+
+
+Overfull \hbox (1.87836pt too wide) in paragraph at lines 398--398
+[]|\T1/pcr/m/n/12 v1.runtime. 
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[73] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+<Chap4/images/image6.JPG, id=1811, 288.3272pt x 238.64156pt>
+File: Chap4/images/image6.JPG Graphic file (type jpg)
+<use Chap4/images/image6.JPG>
+Package pdftex.def Info: Chap4/images/image6.JPG  used on input line 427.
+(pdftex.def)             Requested size: 320.57364pt x 265.34314pt.
+<Chap4/images/image7.JPG, id=1812, 1025.33063pt x 486.31688pt>
+File: Chap4/images/image7.JPG Graphic file (type jpg)
+<use Chap4/images/image7.JPG>
+Package pdftex.def Info: Chap4/images/image7.JPG  used on input line 434.
+(pdftex.def)             Requested size: 320.57364pt x 152.04785pt.
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[74 <./Chap4/images/image6.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+<Chap4/images/image9.JPG, id=1817, 1026.08344pt x 482.55281pt>
+File: Chap4/images/image9.JPG Graphic file (type jpg)
+<use Chap4/images/image9.JPG>
+Package pdftex.def Info: Chap4/images/image9.JPG  used on input line 441.
+(pdftex.def)             Requested size: 320.57364pt x 150.76056pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 442--442
+[][]|\T1/ptm/m/it/10.95 Ta-bleau de bord pour un uti-li-sa-teur connecté avec l
+e rôle
+ []
+
+<Chap4/images/image10.JPG, id=1818, 1002.74625pt x 473.51906pt>
+File: Chap4/images/image10.JPG Graphic file (type jpg)
+<use Chap4/images/image10.JPG>
+Package pdftex.def Info: Chap4/images/image10.JPG  used on input line 448.
+(pdftex.def)             Requested size: 320.57364pt x 151.38467pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 449--449
+[][]|\T1/ptm/m/it/10.95 Ta-bleau de bord pour un uti-li-sa-teur connecté avec l
+e rôle
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[75 <./Chap4/images/image7.JPG> <./Chap4/images/image9.JPG> <./Chap4/images/ima
+ge10.JPG>] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
+[]|\T1/ptm/m/n/12 Cohérence
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
+\T1/ptm/m/n/12 BPMN-
+ []
+
+
+Underfull \hbox (badness 7944) in paragraph at lines 495--495
+[]|\T1/ptm/m/n/12 Les ac-ti-vi-tés du mo-dèle
+ []
+
+
+Underfull \hbox (badness 2096) in paragraph at lines 495--495
+\T1/ptm/m/n/12 apparaissent-elles dans les
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
+[]|\T1/ptm/m/n/12 Comparaison entre BPMN,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
+[]|\T1/ptm/m/n/12 Capacité multi-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
+[]|\T1/ptm/m/n/12 L'application regroupe-t-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 495--495
+\T1/ptm/m/n/12 elle plu-sieurs pro-ces-sus
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 495--495
+\T1/ptm/m/n/12 dans un même en-vi-ron-ne-
+ []
+
+
+Underfull \hbox (badness 3068) in paragraph at lines 495--495
+\T1/ptm/m/n/12 ils iden-ti-fiables après dé-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[76] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+[]|\T1/ptm/m/n/12 Ressources de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+[]|\T1/ptm/m/n/12 Les trois pro-ces-sus
+ []
+
+
+Underfull \hbox (badness 3872) in paragraph at lines 519--519
+\T1/ptm/m/n/12 dis-posent cha-cun d'un
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+\T1/ptm/m/n/12 BPMN, d'une spé-ci-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+\T1/ptm/m/n/12 fi-ca-tion, d'un contrat
+ []
+
+
+Underfull \hbox (badness 1152) in paragraph at lines 519--519
+[]|\T1/ptm/m/n/12 ProOWeb conserve le lien entre la
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 519--519
+[]|\T1/ptm/m/n/12 Les ca-ta-logues run-time
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 519--519
+\T1/ptm/m/n/12 et data re-groupent les
+ []
+
+
+Underfull \hbox (badness 2970) in paragraph at lines 519--519
+\T1/ptm/m/n/12 ca-tions Java, des ges-
+ []
+
+
+Underfull \hbox (badness 2197) in paragraph at lines 519--519
+\T1/ptm/m/n/12 des en-ti-tés et des dé-
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 519--519
+\T1/ptm/m/n/12 pôts de don-nées par-ta-
+ []
+
+
+Underfull \hbox (badness 4543) in paragraph at lines 519--519
+[]|\T1/ptm/m/n/12 Les scé-na-rios Cy-press
+ []
+
+
+Underfull \hbox (badness 4391) in paragraph at lines 519--519
+\T1/ptm/m/n/12 dans le \T1/ptm/m/it/12 Pro-cess Run-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+[]|\T1/ptm/m/n/12 Trois fi-chiers ciblent
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+\T1/ptm/m/n/12 res-pec-ti-ve-ment la
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+\T1/ptm/m/n/12 com-mande, le ré-ap-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+\T1/ptm/m/n/12 pro-vi-sion-ne-ment et la
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+[]|\T1/ptm/m/n/12 Les fi-chiers pro-duits
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 519--519
+\T1/ptm/m/n/12 élé-ments gé-rés par
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[77] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Enrichir BPMN
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Association BPMN--
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+\T1/ptm/m/it/12 spec-v1 \T1/ptm/m/n/12 et va-li-da-tion
+ []
+
+
+Underfull \hbox (badness 1442) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Trois paires de sources co-hé-rentes ;
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+\T1/ptm/m/n/12 contrats nor-ma-li-sés pro-duits pour
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Stabiliser les
+ []
+
+
+Underfull \hbox (badness 5022) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Backend Spring Boot,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Soutenir plu-
+ []
+
+
+Underfull \hbox (badness 6348) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Registre et ca-ta-logues
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+\T1/ptm/m/n/12 com-muns, trois en-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 541--541
+\T1/ptm/m/n/12 un même works-pace ; in-ter-ac-tions
+ []
+
+
+Underfull \hbox (badness 1062) in paragraph at lines 541--541
+[]|\T1/ptm/m/n/12 Préparer l'évo-lu-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[78] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 556--556
+[]|\T1/ptm/m/n/12 Passer la com-mande,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 556--556
+[]|\T1/ptm/m/n/12 État \T1/pcr/m/n/12 COMPLETED\T1/ptm/m/n/12 , mar-queur
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 556--556
+[]|\T1/ptm/m/n/12 Réapprovisionnement
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 556--556
+[]|\T1/ptm/m/n/12 État fi-nal et pré-sence des trois
+ []
+
+
+Underfull \hbox (badness 2229) in paragraph at lines 556--556
+[]|\T1/ptm/m/n/12 Réclamation de pro-
+ []
+
+
+Underfull \hbox (badness 1158) in paragraph at lines 556--556
+[]|\T1/ptm/m/n/12 Déposer, qua-li-fier puis
+ []
+
+
+Underfull \hbox (badness 6775) in paragraph at lines 556--556
+\T1/ptm/m/n/12 vé-ri-fier la com-mande
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 556--556
+[]|\T1/ptm/m/n/12 État fi-nal et pré-sence des trois
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[79] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[80] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[81] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[82] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+ (Conclusion/Conclusion.tex
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[83] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+ (My-Thesis.ptc)
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
+Overfull \hbox (0.87785pt too wide) in paragraph at lines 15--24
+[]\T1/ptm/m/n/13 ProOWeb ré-pond à ce pro-blème par une chaîne d'in-gé-nie-rie 
+ex-pli-cite. Le BPMN
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[84
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[85] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[86] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+) (My-Thesis.bbl
+Underfull \hbox (badness 1308) in paragraph at lines 35--38
+\T1/ptm/m/n/13 Ver-sion 2.0.2,'' [][]$https : / / www . omg . org / spec / BPMN
+ / 2 . 0 . 2/$[][], Ob-ject Ma-na-ge-
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[87
+
+
+] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 1087) in paragraph at lines 113--115
+[]\T1/ptm/m/n/13 ------, ``Mof query/view/transformation (qvt),'' [][]$https : 
+/ / www . omg . org / spec /
+ []
+
+
+Underfull \hbox (badness 1406) in paragraph at lines 127--130
+[]\T1/ptm/m/n/13 MDN Web Docs, ``How the web works,'' [][]$https : / / develope
+r . mozilla . org /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--130
+\T1/ptm/m/n/13 en-[]US / docs / Learn _ web _ development / Getting _ started /
+ Web _ standards / How _
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[88] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 153--156
+\T1/ptm/m/n/13 ta-tion,'' [][]$https : / / docs . camunda . io / docs / compone
+nts / modeler / about-[]modeler/$[][],
+ []
+
+
+Underfull \hbox (badness 7796) in paragraph at lines 178--181
+[]\T1/ptm/m/n/13 Flowable, ``Flo-wable Open Source BPMN Do-cu-men-ta-tion,'' []
+[]$https : / /
+ []
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[89] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[90] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[91] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+)
+Overfull \vbox (2.49998pt too high) has occurred while \output is active []
+
+\openout7 = `My-Thesis.mw'.
+
+
+[92] (My-Thesis.mw)
+\openout7 = `My-Thesis.mw'.
+
+
+
+Class memoir Warning: The material used in the headers is too large
+(14.49998pt) for the given head height (12.0pt), it is recommended to
+either increase the head height or redesign the header
+(in both cases you will find help in the memoir manual). on input line 201.
+
+\tf@ptc=\write131
+\openout7 = `My-Thesis.ptc'.
+
+\tf@toc=\write132
+\openout7 = `My-Thesis.toc'.
+
+\tf@lot=\write133
+\openout7 = `My-Thesis.lot'.
+
+\tf@lof=\write134
+\openout7 = `My-Thesis.lof'.
+
+(My-Thesis.aux
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+\openout7 = `My-Thesis.mw'.
+
+)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2020/03/25>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 55.12pt have occurred.
+
+\openout7 = `My-Thesis.out'.
+
+Package rerunfilecheck Info: File `My-Thesis.out' has not changed.
+(rerunfilecheck)             Checksum: A847ACDED5709DE1171D9C6FC1768BCB;35536.
+\openout7 = `My-Thesis.ptc'.
+
+\openout7 = `My-Thesis.toc'.
+
+\openout7 = `My-Thesis.lot'.
+
+\openout7 = `My-Thesis.lof'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 47111 strings out of 467870
+ 912218 string characters out of 5412511
+ 1501959 words of memory out of 5000000
+ 72322 multiletter control sequences out of 15000+600000
+ 782238 words of font info for 274 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 130i,17n,125p,2082b,3052s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/Yuri Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb><C:/Users/Yuri Roosevelt NK/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Yuri Roosevelt NK/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Yuri 
+Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><
+C:/Users/Yuri Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
+r/ucrro8a.pfb><C:/Users/Yuri Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/urw/helvetic/uhvb8a.pfb><C:/Users/Yuri Roosevelt NK/AppData/Local/Programs
+/MiKTeX/fonts/type1/urw/helvetic/uhvbo8a.pfb><C:/Users/Yuri Roosevelt NK/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/urw/symbol/usyr.pfb><C:/Users/Yuri Roosevel
+t NK/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Y
+uri Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pf
+b><C:/Users/Yuri Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/type1/urw/tim
+es/utmr8a.pfb><C:/Users/Yuri Roosevelt NK/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/urw/times/utmri8a.pfb><C:/Users/Yuri Roosevelt NK/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
+Output written on My-Thesis.pdf (106 pages, 7118681 bytes).
+PDF statistics:
+ 2095 PDF objects out of 2487 (max. 8388607)
+ 526 named destinations out of 1000 (max. 500000)
+ 1264 words of extra memory for PDF output out of 10000 (max. 10000000)
+

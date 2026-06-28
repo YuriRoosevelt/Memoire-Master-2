@@ -3,34 +3,66 @@
 
 \mySectionStar{Bilan du travail}{}{true}
 
-Ce mémoire s'est intéressé à la génération d'applications web métier à partir de modèles BPMN enrichis. Le problème traité vient du fait qu'un modèle de processus décrit bien le déroulement du travail, mais ne contient pas toujours toutes les informations nécessaires pour produire une application web réellement exploitable : rôles, données, formulaires, règles d'accès, suivi des instances et évolution du code généré.
+Ce mémoire est parti d'un décalage concret : BPMN décrit avec précision le
+déroulement d'un processus, mais ne porte pas, à lui seul, toutes les décisions
+nécessaires à une application web métier. Les formulaires, les données
+persistées, les affectations, les règles de visibilité, la sécurité et la
+cohabitation entre code généré et code personnalisé restent à préciser. La
+problématique consistait donc à produire une application à partir de modèles
+BPMN enrichis tout en maintenant la cohérence entre ces dimensions et les
+évolutions futures du projet.
 
-Dans ce travail, nous avons proposé ProOWeb, un framework de génération d'applications web métier pilotées par BPMN. Pour atteindre cet objectif, nous avons d'abord étudié les notions de processus métier, de BPMN, d'applications web orientées processus et d'ingénierie dirigée par les modèles. Nous avons ensuite analysé les travaux existants afin de comprendre leurs apports et leurs limites lorsqu'il s'agit de passer d'un modèle de processus à une application complète.
+ProOWeb répond à ce problème par une chaîne d'ingénierie explicite. Le BPMN
+reste la référence du workflow ; la spécification \textit{spec-v1} décrit les
+informations applicatives absentes du diagramme. Leur validation croisée
+alimente un modèle pivot, matérialisé par des contrats runtime et data. Des
+transformations modèle-à-modèle puis modèle-à-texte projettent ces contrats vers
+un backend Spring Boot, un frontend React, des ressources de données, des règles
+d'accès et des composants d'exécution. Enfin, les clés de processus, les
+versions, les contrats et le manifeste maintiennent un lien observable entre
+les modèles et les fichiers produits.
 
-La contribution proposée repose sur l'association d'un modèle BPMN et d'une spécification complémentaire, appelée \textit{spec-v1}. Le modèle BPMN conserve le déroulement du processus, tandis que la spécification apporte les informations applicatives nécessaires à la génération. Ces éléments sont validés, organisés dans un modèle pivot, puis transformés en contrats et en artefacts logiciels.
-
-Rendus au terme de ce mémoire, nous retenons principalement les contributions suivantes :
+Les principales contributions de ce travail sont les suivantes :
 \begin{itemize}
-    \item la définition de ProOWeb comme framework de génération d'applications web métier à partir de modèles BPMN enrichis ;
-    \item la proposition d'une spécification \textit{spec-v1} permettant de compléter BPMN sans alourdir le diagramme de processus ;
-    \item la mise en place d'une chaîne de génération allant des modèles d'entrée vers les contrats intermédiaires, puis vers les artefacts backend et frontend ;
-    \item la prise en compte de la traçabilité et de la régénération contrôlée, afin que le projet généré puisse évoluer sans perdre le lien avec les modèles ;
-    \item l'application du framework à une organisation de commerce électronique à travers trois processus : commande client, réapprovisionnement du stock et réclamation de produit.
+    \item une spécification enrichie, formalisée par une grammaire et des contraintes de validité, qui complète BPMN sans transformer le diagramme en description technique de toute l'application ;
+    \item une architecture séparant les sources, les validations, les contrats intermédiaires, les générateurs et le projet cible ;
+    \item des algorithmes explicites de validation, de construction des contrats, de génération et de régénération couvrant le runtime, le backend, le frontend, les données et la sécurité ;
+    \item un dispositif de traçabilité et de régénération fondé notamment sur un manifeste, des empreintes et des points d'extension ;
+    \item une mise à l'épreuve sur trois processus liés d'une organisation de commerce électronique.
 \end{itemize}
 
-Le cas d'étude a permis de montrer que ProOWeb ne se limite pas à la génération d'un processus isolé. Il peut produire une base applicative regroupant plusieurs processus appartenant à une même organisation. Les résultats obtenus restent toutefois à considérer comme une étape de validation. Le framework dépend encore de la qualité des modèles fournis, et certains aspects d'une application réelle, comme le paiement, la livraison, les intégrations externes ou les règles métier complexes, nécessitent encore des développements complémentaires.
+Le cas d'étude fournit des résultats vérifiables, mais circonscrits. Les trois
+processus disposent chacun d'un BPMN, d'une spécification normalisée, d'un
+contrat runtime et d'un contrat data dans un même workspace. Des catalogues
+globaux, des classes Java, des composants React, des scénarios Cucumber et trois
+tests Cypress complètent ces ressources. Cette observation confirme la
+production d'un socle multi-processus cohérent et traçable. Elle ne démontre pas
+encore toutes les propriétés d'une application en production : les scénarios
+Cypress simulent le backend et ne couvrent que deux ou trois activités par
+processus ; la persistance réelle, la sécurité, la charge, les interactions
+inter-processus et la régénération après personnalisation demandent des essais
+supplémentaires.
+
+Le résultat doit donc être formulé avec mesure. ProOWeb ne remplace ni l'analyse
+métier ni le développeur. Il réduit la distance entre le processus et le projet
+logiciel en produisant un socle fonctionnel, traçable et extensible. L'équipe de
+développement reste responsable des règles non modélisées, des intégrations
+externes, de l'expérience utilisateur et de la validation dans son environnement.
 
 \mySectionStar{Quelques perspectives}{}{true}
 
-Ce travail ouvre plusieurs pistes d'amélioration. Les plus importantes sont les suivantes :
+Les prolongements prioritaires découlent directement de ces limites :
 \begin{itemize}
-    \item enrichir la spécification \textit{spec-v1} pour prendre en compte des règles métier plus complexes et des validations plus fines ;
-    \item développer un environnement d'assistance à la modélisation, afin d'aider l'utilisateur à construire et vérifier les modèles BPMN et les fichiers \textit{spec-v1} ;
-    \item étendre ProOWeb vers d'autres architectures techniques, afin de réduire sa dépendance à une pile technologique particulière ;
-    \item renforcer la génération de tests automatiques liés aux transitions, aux rôles, aux formulaires et aux règles de visibilité ;
-    \item évaluer le framework sur d'autres organisations et sur des processus plus nombreux, afin de mieux apprécier sa robustesse et sa portée.
+    \item exécuter des campagnes d'intégration sans API simulée, avec PostgreSQL, authentification, autorisations et services externes ;
+    \item tester systématiquement les branches BPMN, les transitions, les rôles, les formulaires et les règles de visibilité ;
+    \item évaluer la régénération sur des fichiers effectivement personnalisés et mesurer les conflits, sauvegardes et migrations produits ;
+    \item assister la construction conjointe du BPMN et de \textit{spec-v1}, notamment par des diagnostics compréhensibles par le concepteur ;
+    \item reproduire l'étude sur d'autres domaines, des modèles plus complexes et d'autres piles techniques.
 \end{itemize}
 
-En définitive, ProOWeb constitue une base de travail pour rapprocher la modélisation des processus métier et la réalisation d'applications web. Il ne remplace pas le développeur, mais lui offre un point de départ plus structuré, plus traçable et plus proche du fonctionnement réel de l'organisation.
+En définitive, ce travail montre l'intérêt d'une continuité explicite entre
+modèle métier, spécification enrichie, contrats intermédiaires, artefacts
+générés et évolution contrôlée. C'est dans cette continuité, plus que dans la
+seule quantité de code produite, que se situe la contribution de ProOWeb.
 
 \myCleanStarChapterEnd

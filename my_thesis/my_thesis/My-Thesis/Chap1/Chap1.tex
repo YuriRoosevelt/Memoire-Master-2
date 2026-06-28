@@ -58,7 +58,7 @@ Sorties & Résultats produits : dossier validé, demande rejetée, document gén
 \centering
 \includegraphics[width=0.75\textwidth]{Chap1/images/image1.JPG}
 \caption{Exemple de processus métier }
-\label{fig:chap2-ifml-symfony}
+\label{fig:processus-metier-exemple}
 \end{figure}
 
 \subsection{Gestion des processus métier (BPM)}
@@ -78,7 +78,7 @@ Selon Marlon Dumas \citep{dumas2013fundamentals}, le BPM peut être considéré 
 \centering
 \includegraphics[width=0.75\textwidth]{Chap1/images/image2.JPG}
 \caption{Cycle de vie du BPM \citep{dumas2013fundamentals} }
-\label{fig:chap2-ifml-symfony}
+\label{fig:cycle-vie-bpm}
 \end{figure}
 
 \subsubsection{Identification du processus \textit{(Process Identification)}}
@@ -108,7 +108,7 @@ Lorsque le processus amélioré est exécuté, des données sont collectées pui
 \subsection{Systèmes de gestion des processus métiers}
 
 Les systèmes de gestion des processus métier, généralement désignés par l'abréviation BPMS \textit{(Business Process Management Systems)}, désignent des solutions logicielles 
-conçues pour accompagner la mise en œuvre des démarches BPM. Ces environnements peuvent intégrer plusieurs fonctionnalités, notamment la modélisation des processus,  l’exécution des workflows, la gestion des tâches, le suivi à travers des tableaux de bord, l’interconnexion avec d’autres applications, la supervision des activités et, dans certains cas, la conception d’interfaces utilisateur \citep{bonitasoftBPMN2}. Parmis ces logiciel nous pouvons citer:
+conçues pour accompagner la mise en œuvre des démarches BPM. Ces environnements peuvent intégrer plusieurs fonctionnalités, notamment la modélisation des processus, l’exécution des workflows, la gestion des tâches, le suivi à travers des tableaux de bord, l’interconnexion avec d’autres applications, la supervision des activités et, dans certains cas, la conception d’interfaces utilisateur \citep{bonitasoftBPMN2}. Parmi ces logiciels, nous pouvons citer :
 \begin{itemize}
     \item \textbf{Camunda} : Camunda est une plateforme d’orchestration de processus qui s’appuie notamment sur les standards BPMN et DMN. Elle est souvent utilisée pour automatiser des processus complexes impliquant des utilisateurs, des applications, des services et des règles de décision. Camunda est particulièrement adaptée aux environnements techniques distribués et aux architectures orientées services.
 
@@ -149,32 +149,29 @@ BPMN répond à un besoin fréquent dans les organisations : disposer d'une nota
 
 \subsubsection{Historique du BPMN}
 
-Le Mark von Roding et al. ont cité l'historique de BPMN dans son livre \citep{vonRosing2015bpmn} comme suit :
+Von Rosing et al. retracent l'évolution de BPMN comme suit \citep{vonRosing2015bpmn} :
 
 \begin{itemize}
-    \item En 2001, y avait de nombreuses notations et points de vue différents de modélisation,
-    c'est dans ce cas où les membres de Business Process Management Institute (BPMI) ont
-    commencé à discuter de l'idée de normaliser les techniques orientées pour représenter
-    visuellement les composants de processus et aligner la notation avec un langage de processus exécutable.
+    \item En 2001, il existait de nombreuses notations et plusieurs points de vue sur la modélisation des processus. Les membres de la Business Process Management Initiative (BPMI) ont alors engagé des travaux visant à unifier leur représentation graphique et à rapprocher la notation des langages de processus exécutables.
 
-    \item En mai 2004, c'était la publication de la première version de BPMN (BPMN 1.0).
+    \item En mai 2004, la première version de BPMN, BPMN~1.0, a été publiée.
 
-    \item En 6 février 2006, BPMI (Business Process Management Institute) a été remplacée par
+    \item Le 6 février 2006, la BPMI (Business Process Management Initiative) a été intégrée à
     l'OMG qui a depuis maintenu et développé la norme BPMN.
 
     \item En janvier 2008, la version BPMN 1.1 a été publiée par l'OMG.
 
     \item En 2009, la version BPMN 1.2 a été publiée par l'OMG.
 
-    \item Janvier 2011, la version BPMN 2.0 a été publiée par l'OMG.
+    \item En janvier 2011, la version BPMN 2.0 a été publiée par l'OMG.
 
-    \item En décembre 2013, la version 2.0.2 de BPMN a été publié par l'OMG.
+    \item En décembre 2013, la version 2.0.2 de BPMN a été publiée par l'OMG.
 \end{itemize}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.82\textwidth]{Chap1/images/image3.JPG}
 \caption{Historique du BPMN \citep{vonRosing2015bpmn} }
-\label{fig:chap2-ifml-symfony}
+\label{fig:historique-bpmn}
 \end{figure}
 \subsubsection{Éléments de base de BPMN}
 
@@ -302,7 +299,7 @@ Les partitions sont les éléments graphiques permettant de structurer et de reg
 
 \begin{itemize}
     \item \textbf{Les participants (Pool)} : un pool est la représentation graphique d'un participant à une collaboration. Un participant peut être une entité partenaire spécifique, par exemple une entreprise, ou un rôle partenaire plus général, comme un acheteur, un vendeur ou un fabricant. Un pool peut avoir des détails internes sous forme d'un processus exécuté ou ne présenter aucun détail interne ; dans ce cas, il est considéré comme une « boîte noire ».
-    \item \textbf{Les couloirs (Lane)} : un couloir est un rectangle aux coins carrés pouvant être vertical ou horizontal. Il constitue une partition en sous-ensemble dans le pool. Les couloirs sont utilisés pour organiser et classer les activités. Pour illustrer les échanges entre deux couloirs, on utilise des flux de messages.
+    \item \textbf{Les couloirs (Lane)} : un couloir est une partition verticale ou horizontale d'un pool. Il sert à organiser les activités selon un rôle, une fonction ou une responsabilité. À l'intérieur d'un même pool, y compris entre deux couloirs, l'enchaînement des activités est représenté par des flux de séquence. Les flux de message sont réservés aux échanges entre participants, donc entre pools distincts \cite{omg2013bpmn}.
 \end{itemize}
 
 %Un pool est un rectangle à coins carrés tracé avec une seule ligne continue. L'étiquette du pool peut être placée à n'importe quel endroit et dans n'importe quelle direction à l'intérieur, mais doit être séparée du contenu par une seule ligne.
@@ -358,26 +355,26 @@ BPMN distingue principalement les diagrammes de processus, les diagrammes de col
             \centering
             \includegraphics[width=0.65\textwidth]{Chap1/images/image15.JPG}
             \caption{Exemple de diagramme de processus}
-            \label{fig:artefacts-bpmn}
+            \label{fig:diagramme-processus-bpmn}
             \end{figure}
-    \item Le \textbf{diagramme de collaboration} met en relation plusieurs participants et montre les messages qu'ils échangent. Les Pools sont définis comme étant les participants de cette collaboration. Les messages échangés entre les participants sont présentés à l’aide des flux de messages qui connecte deux pools (ou les objets au sein des pools).
+    \item Le \textbf{diagramme de collaboration} met en relation plusieurs participants et montre les messages qu'ils échangent. Chaque pool représente un participant. Les flux de message relient deux pools distincts ou des objets contenus dans des pools différents ; ils ne relient pas deux activités appartenant au même pool \cite{omg2013bpmn}.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.65\textwidth]{Chap1/images/image14.JPG}
             \caption{Exemple de diagramme de collaboration}
-            \label{fig:artefacts-bpmn}
+            \label{fig:diagramme-collaboration-bpmn}
         \end{figure}
     \item Le \textbf{diagramme de chorégraphie}  se concentre davantage sur les interactions entre participants que sur l'organisation interne de chacun.  Dans ce type de modélisation, la focalisation n’est pas sur l’orchestration (c’est-à-dire sur la manière dont le travail est accompli selon le point de vue des participants), mais sur les échanges de Messages entre les Participants.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.65\textwidth]{Chap1/images/image13.JPG}
             \caption{Exemple de diagramme de chorégraphie}
-            \label{fig:artefacts-bpmn}
+            \label{fig:diagramme-choregraphie-bpmn}
         \end{figure}
 \end{itemize}
 
 \mySection{Ingénierie dirigée par les modèles}{}
-\label{sec:service_composition}
+\label{sec:ingenierie-modeles}
 
 \subsection{Principe général de l’ingénierie dirigée par les modèles}
 
@@ -395,12 +392,12 @@ Un méta-modèle définit le langage dans lequel les modèles sont exprimés. Il
     \centering
     \includegraphics[width=0.50\textwidth]{Chap1/images/image19.JPG}
     \caption{Pyramide de modélisation de l'OMG.\cite{jezequel2012}.}
-    \label{fig:artefacts-bpmn}
+    \label{fig:pyramide-modelisation-omg}
 \end{figure}
 
 \subsection{Transformation de modèles}
 
-La transformation de modèle consiste à produire un modèle cible à partir d'un modèle source, selon des règles définies. Ces règles décrivent les correspondances entre les éléments du modèle d'origine et ceux du modèle obtenu. Une transformation peut être endogène lorsque les modèles source et cible sont conformes au même méta-modèle ; elle est exogène lorsqu'ils relèvent de méta-modèles différents. Elle peut aussi être horizontale lorsqu'elle reste au même niveau d'abstraction, ou verticale lorsqu'elle fait évoluer le niveau d'abstraction, par raffinement ou par abstraction \cite{jezequel2012,idm2020}.
+La transformation de modèle consiste à produire un modèle cible à partir d'un modèle source, selon des règles définies. Ces règles décrivent les correspondances entre les éléments du modèle d'origine et ceux du modèle obtenu. Une transformation peut être endogène lorsque les modèles source et cible sont conformes au même méta-modèle ; elle est exogène lorsqu'ils relèvent de méta-modèles différents. Elle peut aussi être horizontale lorsqu'elle reste au même niveau d'abstraction, ou verticale lorsqu'elle fait évoluer le niveau d'abstraction, par raffinement ou par abstraction \cite{jezequel2012}.
 
 Les transformations occupent une place centrale dans l'IDM parce qu'elles donnent un caractère productif aux modèles. Elles peuvent servir à raffiner une spécification, restructurer une représentation, migrer d'une technologie à une autre, générer du texte ou produire du code. Les deux grandes familles généralement retenues sont les transformations modèle-vers-modèle (M2M) et modèle-vers-texte (M2T). Les standards et langages de transformation, comme QVT, ATL ou les approches par templates, cherchent à formaliser ces passages afin qu'ils soient reproductibles et moins dépendants d'une manipulation manuelle \cite{jezequel2012,omgqvt}.
 
@@ -408,7 +405,7 @@ Les transformations occupent une place centrale dans l'IDM parce qu'elles donnen
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image16.JPG}
     \caption{Schéma de base d'une transformation de modèle  \cite{meghzili2022}}
-    \label{fig:artefacts-bpmn}
+    \label{fig:transformation-modele}
 \end{figure}
 
 \subsection{Model-Driven Architecture}
@@ -418,7 +415,7 @@ La Model-Driven Architecture (MDA) est une initiative de l'OMG qui applique les 
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image17.JPG}
     \caption{Illustration des trois niveaux d'abstraction du MDA  \cite{meghzili2022}}
-    \label{fig:artefacts-bpmn}
+    \label{fig:niveaux-mda}
 \end{figure}
 \begin{itemize}
     \item \textbf{CIM \textit{(Computation Independent Model)}} : il décrit les besoins métier et
@@ -439,7 +436,7 @@ La Model-Driven Architecture (MDA) est une initiative de l'OMG qui applique les 
 L'intérêt de la MDA est de préserver les décisions de conception à un niveau moins fragile que le code. Lorsque les technologies changent, les modèles indépendants peuvent être conservés plus longtemps, tandis que les transformations et les modèles spécifiques sont adaptés aux nouvelles plateformes. La MDA ne se limite donc pas à une génération automatique de code ; elle propose une organisation du développement où la séparation entre abstraction, plateforme et implémentation devient explicite.
 
 \mySection{Applications web métier}{}
-\label{sec:service_composition}
+\label{sec:applications-web-metier}
 
 \subsection{Généralités sur le développement web}
 
@@ -572,8 +569,8 @@ séparation des tâches et la protection des informations sensibles.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image20.JPG}
-    \caption{Coeur du modèle RBAC  \cite{yuan2005abac}}
-    \label{fig:artefacts-bpmn}
+    \caption{Cœur du modèle RBAC, adapté de \cite{sandhu1996rbac}}
+    \label{fig:modele-rbac}
 \end{figure}
 
 \subsection{Applications web métier}
