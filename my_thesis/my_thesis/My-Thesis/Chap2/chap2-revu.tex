@@ -47,7 +47,7 @@ Les systèmes d'information orientés processus placent le déroulement du trava
 au centre de l'organisation du logiciel. Ils s'inscrivent dans le domaine plus
 large de la gestion des processus métier, qui couvre la découverte, la
 modélisation, l'exécution, le suivi et l'amélioration des processus
-\cite{aalst2013,dumas2018bpm}. Dans cette perspective, le modèle ne sert plus
+\cite{aalst2013,dumas2018fundamentals}. Dans cette perspective, le modèle ne sert plus
 uniquement à documenter une organisation : il peut devenir une définition
 exécutable utilisée par un moteur de processus.
 
@@ -342,10 +342,7 @@ limite importante de BPMN : le flux de contrôle ne suffit pas toujours à
 décrire les données manipulées, les interactions utilisateur et les contraintes
 métier nécessaires à la génération.
 
-Les travaux sur les familles de processus BPMN complètent ce constat. Delgado
-et al. montrent l'intérêt de représenter des variantes proches d'un même
-processus lorsque les organisations, les règles ou les contextes d'exécution
-diffèrent \cite{delgado2022}.
+Les travaux analysés font apparaître une limite récurrente : BPMN décrit efficacement le flux de contrôle, les activités, les événements, les passerelles et la répartition des responsabilités, mais il ne porte pas, à lui seul, toutes les informations nécessaires à la génération d'une application web métier. Dès que l'on cherche à produire des formulaires, à organiser la persistance, à contrôler les droits d'accès, à définir la visibilité des données ou à relier les sorties d'une activité aux entrées d'une autre, le modèle de processus doit être complété. Selon les approches, ce complément prend la forme de modèles de données, de modèles d'interaction, de métadonnées, de règles propres au domaine, de mappings ou de spécifications supplémentaires. Cette observation montre qu'une approche de génération ne peut pas demander à BPMN de tout décrire ; elle doit plutôt conserver BPMN comme modèle du processus et lui associer une description complémentaire des informations applicatives.
 
 \subsection{Maintenabilité du code généré et mise en perspective avec le low-code}
 
@@ -377,9 +374,11 @@ habituelles de développement \cite{dragas2024}. Ces contributions rappellent
 que la qualité d'une chaîne générative se mesure aussi après la première
 génération.
 
+Les travaux consacrés à l'intégration du code généré et du code manuscrit montrent que plusieurs stratégies peuvent être utilisées : séparation des fichiers, héritage, délégation, zones protégées, points d'extension ou mécanismes d'override. Aucune de ces stratégies n'est universelle. Leur pertinence dépend du type d'artefacts générés, du niveau de personnalisation attendu et de la fréquence des régénérations. Cette difficulté confirme que la maintenabilité doit être prise en compte dès la conception d'une chaîne de génération.
+
 \subsubsection{Mise en perspective avec les approches low-code}
 
-Les plateformes low-code cherchent également à réduire l'effort de développement grâce à des modèles visuels, composants et connecteurs \cite{rokis2023,pankowska2024}. Elles partagent avec l'IDM une recherche d'abstraction et d'automatisation. Toutefois, elles restent souvent dépendantes des plateformes, de leurs métamodèles, de leurs règles de gouvernance et de leurs connecteurs. Elles ne remplacent donc pas l'étude spécifique d'une génération pilotée par BPMN enrichi et contrôlée par des transformations explicites.
+Les plateformes low-code cherchent également à réduire l'effort de développement grâce à des modèles visuels, composants et connecteurs \cite{rokis2023,pankowska2024}. Elles partagent avec l'IDM une recherche d'abstraction et d'automatisation. Toutefois, elles restent souvent dépendantes des plateformes, de leurs métamodèles, de leurs règles de gouvernance et de leurs connecteurs. Dans le cadre de ce mémoire, l'enjeu est différent : il s'agit de conserver des sources explicites, des transformations identifiables et des artefacts dont l'origine peut être inspectée. Cette différence situe le travail dans une logique d'ingénierie dirigée par les modèles plutôt que dans une démarche low-code généraliste.
 
 \mySection{Discussion et positionnement de la recherche}{}
 
@@ -391,10 +390,16 @@ d'une application web. Les propositions se distinguent surtout par le
 compromis qu'elles établissent entre couverture, automatisation, flexibilité et
 dépendance technologique.
 
+Le tableau \ref{tab:chap2-travaux-etudies} montre que les travaux étudiés
+apportent des réponses utiles, mais rarement complètes. Certains exécutent le
+processus, d'autres génèrent une interface, une API ou un prototype. Les
+approches les plus larges produisent une base applicative, mais elles restent
+liées à une architecture, à un langage ou à une plateforme particulière.
+
 \begin{table}[H]
 \centering
-\caption{Comparaison de travaux représentatifs étudiés}
-\label{tab:chap2-synthese-critique}
+\caption{Récapitulatif des travaux étudiés}
+\label{tab:chap2-travaux-etudies}
 \renewcommand{\arraystretch}{1.15}
 \begin{tabularx}{\textwidth}{p{2.4cm}p{3.8cm}p{3.2cm}X}
 \toprule
@@ -413,44 +418,81 @@ Travaux low-code \cite{bucaioni2022,diruscio2022,pankowska2024,krouwel2024,marti
 \end{tabularx}
 \end{table}
 
-Le tableau \ref{tab:chap2-synthese-critique} montre que les travaux étudiés
-apportent des réponses utiles, mais rarement complètes. Certains exécutent le
-processus, d'autres génèrent une interface, une API ou un prototype. Les
-approches les plus larges produisent une base applicative, mais elles restent
-liées à une architecture, à un langage ou à une plateforme particulière.
+La comparaison des travaux étudiés ne permet pas seulement d'identifier des contributions isolées ; elle met aussi en évidence des limites récurrentes qui traversent plusieurs propositions. Ces limites concernent notamment l'insuffisance des informations portées par BPMN, la couverture partielle des artefacts générés, la dépendance à certaines plateformes, ainsi que les difficultés de traçabilité et de régénération. Le tableau~\ref{tab:chap2-synthese-critique} synthétise ces limites et en dégage les implications pour le framework à concevoir dans ce mémoire.
 
-BPMN apparaît ainsi comme un point d'entrée pertinent, mais insuffisant pour
-produire seul une application web complète. Les travaux doivent souvent lui
-associer des modèles d'interaction, des modèles de données, des métadonnées ou
-des langages propres au domaine. Cette nécessité confirme que la génération ne
-peut pas reposer uniquement sur le diagramme de processus.
+\begin{table}[H]
+\centering
+\caption{Limites transversales des travaux étudiés et implications pour la recherche}
+\label{tab:chap2-synthese-critique}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{p{3.7cm}p{4.4cm}X}
+\toprule
+\textbf{Limite observée dans la littérature}
+& \textbf{Conséquence pour la génération applicative}
+& \textbf{Implication pour l'approche à concevoir} \\
+\midrule
 
-Ce constat précise aussi le positionnement de ProOWeb. Un BPMS classique,
-comme Camunda, Flowable ou jBPM, fournit d'abord un moteur et des services pour
-déployer, exécuter et superviser des processus. ProOWeb poursuit un autre but :
-utiliser le processus comme source d'une chaîne de génération couvrant le socle
-backend/frontend, les données, les règles d'accès et les ressources du runtime.
-Il ne remplace donc pas un moteur de processus généraliste. De même, il se
-distingue d'une plateforme low-code par le caractère explicite et inspectable
-de ses sources BPMN et \textit{spec-v1}, de ses contrats intermédiaires et de
-ses transformations. Cette transparence facilite la traçabilité, mais elle
-demande un effort de modélisation et ne supprime pas les adaptations propres au
-projet.
+BPMN ne contient pas suffisamment d'informations applicatives.
+& Les formulaires, les données, les rôles, les mappings et les règles de visibilité ne peuvent pas être déduits de manière fiable du diagramme seul.
+& Prévoir une spécification complémentaire qui enrichit BPMN sans lui faire porter toute la description technique de l'application. \\
 
-La limite la plus importante concerne l'évolution du résultat généré. Une
-application web doit pouvoir être modifiée, maintenue et parfois régénérée après
-un changement du processus. Or cette dimension reste peu stabilisée dans les
-travaux étudiés. Notre recherche se positionne donc dans cet espace : relier le
-modèle de processus aux artefacts applicatifs tout en gardant un code
-compréhensible, modifiable et maintenable.
+Les travaux génèrent souvent des fragments : interface, API ou prototype.
+& Certaines couches de l'application restent hors du périmètre de génération et doivent être développées séparément.
+& Viser une génération couvrant plusieurs couches du socle applicatif : interface, logique applicative, runtime, données et sécurité. \\
+
+Certaines approches dépendent fortement d'une plateforme, d'un langage ou d'un framework.
+& Le résultat obtenu devient difficile à transposer ou à faire évoluer hors de l'environnement prévu initialement.
+& Séparer autant que possible les décisions métier des détails technologiques, au moyen de représentations intermédiaires et de règles de projection explicites. \\
+
+La traçabilité entre modèles et fichiers générés reste souvent limitée.
+& Lorsqu'un fichier est modifié ou régénéré, il devient difficile de retrouver l'élément du modèle qui l'a produit.
+& Conserver des liens explicites entre les modèles sources, les représentations intermédiaires et les artefacts produits. \\
+
+La cohabitation entre code généré et code manuel est difficile.
+& Les adaptations du développeur peuvent être perdues ou entrer en conflit avec une nouvelle génération.
+& Organiser dès le départ la séparation entre éléments générés, extensions manuelles et mécanismes de personnalisation. \\
+
+La régénération après modification du modèle ou personnalisation du code est peu stabilisée.
+& L'application peut se désaligner du processus ou écraser silencieusement des fichiers déjà adaptés.
+& Prévoir une régénération contrôlée, capable d'identifier les fichiers suivis, les modifications locales et les conflits éventuels. \\
+
+Les évaluations sont souvent limitées à un cas d'étude ou à un contexte spécifique.
+& La généralisation des résultats doit rester prudente et dépend du domaine, du modèle et de l'environnement technique.
+& Évaluer l'approche sur un cas suffisamment représentatif, tout en reconnaissant clairement les limites de généralisation. \\
+
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% BPMN apparaît ainsi comme un point d'entrée pertinent, mais insuffisant pour
+% produire seul une application web complète. Les travaux doivent souvent lui
+% associer des modèles d'interaction, des modèles de données, des métadonnées ou
+% des langages propres au domaine. Cette nécessité confirme que la génération ne
+% peut pas reposer uniquement sur le diagramme de processus.
+
+% Ce constat précise aussi le positionnement de ProOWeb. Un BPMS classique,
+% comme Camunda, Flowable ou jBPM, fournit d'abord un moteur et des services pour
+% déployer, exécuter et superviser des processus. ProOWeb poursuit un autre but :
+% utiliser le processus comme source d'une chaîne de génération couvrant le socle
+% backend/frontend, les données, les règles d'accès et les ressources du runtime.
+% Il ne remplace donc pas un moteur de processus généraliste. De même, il se
+% distingue d'une plateforme low-code par le caractère explicite et inspectable
+% de ses sources BPMN et \textit{spec-v1}, de ses contrats intermédiaires et de
+% ses transformations. Cette transparence facilite la traçabilité, mais elle
+% demande un effort de modélisation et ne supprime pas les adaptations propres au
+% projet.
+
+% La limite la plus importante concerne l'évolution du résultat généré. Une
+% application web doit pouvoir être modifiée, maintenue et parfois régénérée après
+% un changement du processus. Or cette dimension reste peu stabilisée dans les
+% travaux étudiés. Notre recherche se positionne donc dans cet espace : relier le
+% modèle de processus aux artefacts applicatifs tout en gardant un code
+% compréhensible, modifiable et maintenable.
 
 \mySection{Conclusion}{}
 
-Les travaux étudiés montrent que les modèles de processus peuvent piloter
-l'exécution d'un workflow et guider la production d'interfaces, d'API ou
-d'applications web. Ils révèlent cependant plusieurs difficultés persistantes :
-BPMN doit être complété, la couverture applicative reste fragmentée, les
-évaluations sont rarement généralisables, la variabilité des processus reste
-difficile à gouverner et l'évolution du code généré demeure délicate. La
-cohérence entre le processus, les artefacts logiciels produits et leur
-maintenance constitue ainsi un problème encore ouvert.
+Les travaux étudiés montrent que les modèles de processus peuvent guider l'exécution d'un workflow et soutenir la production d'interfaces, d'API, de prototypes ou de bases applicatives. Ils confirment aussi que BPMN constitue un point d'entrée pertinent pour représenter le fonctionnement métier. Cependant, ils révèlent plusieurs limites persistantes : le modèle BPMN doit être complété par des informations applicatives, la couverture générée reste souvent partielle, certaines solutions demeurent liées à une plateforme ou à un langage, la traçabilité modèle--code reste fragile et l'évolution du code généré demeure délicate.
+
+%Ce chapitre permet donc de dégager le besoin d'une approche capable d'associer un processus BPMN à une spécification complémentaire, de contrôler leur cohérence, de produire des représentations intermédiaires exploitables et de projeter ces informations vers un socle applicatif web métier. Le chapitre suivant présente la réponse proposée à ce besoin, en détaillant l'architecture du framework, le modèle d'entrée enrichi, les transformations et les mécanismes prévus pour préserver la traçabilité et accompagner la régénération.
+
+Ces exigences structurent la conception du framework ProOWeb, présenté au chapitre suivant comme la solution proposée dans ce mémoire pour générer un socle applicatif web métier à partir de modèles BPMN enrichis.

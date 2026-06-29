@@ -60,7 +60,7 @@ Code & Projet applicatif comprenant interface, logique métier, données, sécur
 
 \subsection{Contribution méthodologique de l'approche}
 
-La contribution de ce travail se situe à l'intersection de trois préoccupations. La première est la modélisation du processus. Le BPMN reste la référence du workflow et permet de maintenir une continuité avec les pratiques de modélisation métier. La deuxième est la génération d'une application web métier. Le framework ProOWeb ne se limite pas à produire des écrans ou des services isolés ; il organise un projet cible avec ses modules fonctionnels et techniques. La troisième est la maintenance du code généré. La régénération est traitée comme une opération contrôlée, accompagnée par un manifeste, des sauvegardes, des rapports et des mécanismes d'extension.
+La contribution de ce travail se situe à l'intersection de trois préoccupations. La première est la modélisation du processus. Le BPMN reste la référence du workflow et permet de maintenir une continuité avec les pratiques de modélisation métier \cite{zemtsopNdadji2022workflowsWeb}. La deuxième est la génération d'une application web métier. Le framework ProOWeb ne se limite pas à produire des écrans ou des services isolés ; il organise un projet cible avec ses modules fonctionnels et techniques. La troisième est la maintenance du code généré. La régénération est traitée comme une opération contrôlée, accompagnée par un manifeste, des sauvegardes, des rapports et des mécanismes d'extension.
 
 ProOWeb vise donc un résultat exploitable par une équipe de développement : un socle d'application web métier généré à partir du processus, traçable et ouvert à l'adaptation. Le framework automatise les parties décrites par ses modèles et ses gabarits ; il ne prétend ni déduire les règles absentes des sources ni supprimer le travail d'intégration du développeur.
 
@@ -186,7 +186,7 @@ La spécification \textit{spec-v1} constitue le complément applicatif du modèl
 \label{sec:chap3-grammaire-specv1}
 
 Dans ProOWeb, la grammaire ne décrit pas l'ordre d'exécution du processus : cette information
-reste portée par BPMN. Elle formalise les renseignements ajoutés par
+reste portée par BPMN \cite{nguediaMomo2022processusIoT}. Elle formalise les renseignements ajoutés par
 \textit{spec-v1} pour rendre le processus projetable vers un socle applicatif.
 
 Le modèle grammatical attribué d'une spécification est défini par :
@@ -257,7 +257,8 @@ les rôles employés appartiennent au référentiel retenu. De plus, une activit
 manuelle doit posséder au moins un rôle candidat, un mapping doit viser une
 donnée déclarée et une activité automatique doit référencer un gestionnaire
 connu. Une violation bloquante empêche la promotion des contrats. Ainsi,
-\textit{spec-v1} reste une spécification complémentaire à BPMN. Ci-dessous un extrait du fichier JSON de \textit{spec-v1}
+\textit{spec-v1} reste une spécification complémentaire à BPMN. Le listing
+suivant en présente une structure JSON simplifiée.
 
 \begin{lstlisting}[caption={Structure simplifiée de la spécification spec-v1},label={lst:chap3-structure-specv1}]
 {
@@ -323,7 +324,7 @@ Extensibilité & La version de schéma permet d'ajouter des champs, des types ou
 \subsection{Métadonnées des activités}
 
 Les métadonnées d'activité indiquent comment une activité BPMN doit être prise en charge dans l'application. Une activité manuelle est destinée à être traitée par un utilisateur. Elle doit donc préciser les rôles candidats, la stratégie d'affectation, les données visibles, les sorties attendues et les règles de complétion. Une activité automatique est exécutée par le système. Elle doit alors indiquer le gestionnaire à invoquer, son type, son mode de déclenchement et sa configuration.
-L'extraire JSON montre une activité enrichie.
+L'extrait JSON montre la structure d'une activité enrichie.
 
 \begin{lstlisting}[caption={Activité enrichie dans spec-v1},label={lst:chap3-activite-enrichie}]
 "activite_1": {

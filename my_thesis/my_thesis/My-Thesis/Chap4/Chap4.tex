@@ -363,7 +363,10 @@ Le BPMN est complété par le fichier
 \nolinkurl{commande-client.spec-v1.json}. Cet enrichissement suit le
 modèle grammatical défini par l'équation
 \ref{eq:chap3-modele-grammatical-specv1} :
-$G_{\mathrm{spec}}=(p,v,R,S,M,A,D,C)$. La figure suivante illustre cette
+\[
+G_{\mathrm{spec}}=(p,v,R,S,M,A,D,C).
+\]
+La figure suivante illustre cette
 spécification pour l'activité « Passer la commande ».
 
 \begin{figure}[H]
@@ -477,10 +480,10 @@ faire apparaître la structure sans reproduire les fichiers complets.
 }
 \end{lstlisting}
 
-Le bloc \texttt{processModel} identifie la version du processus. Le bloc
-\texttt{activityModel} réunit l'activité, son rôle, son affectation et les
-sorties du formulaire. Le \texttt{runtimeContract} conserve la transition vers
-la notification du client, tandis que le \texttt{dataContract} projette le
+Le bloc \texttt{process\allowbreak Model} identifie la version du processus. Le bloc
+\texttt{activity\allowbreak Model} réunit l'activité, son rôle, son affectation et les
+sorties du formulaire. Le contrat runtime conserve la transition vers
+la notification du client, tandis que le contrat de données projette le
 statut saisi vers la donnée partagée \texttt{commande}. Le dernier bloc est une
 trace de lecture simplifiée, reconstruite à partir des identifiants et des
 chemins versionnés ; il ne constitue pas un champ supplémentaire du contrat

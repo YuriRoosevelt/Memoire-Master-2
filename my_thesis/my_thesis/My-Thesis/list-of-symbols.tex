@@ -1,12 +1,28 @@
 \begin{center}
-	\begin{tabular}[t]{rp{5mm}p{12cm}}
-        $N^*$  & & ensemble des entiers naturels non nul\\
-		$F$  & & ensemble des filières\\
-        $P$  & & ensemble des parcours supérieurs\\
-        $ps$ & & ensemble des points de spécialités\\
-        $l$ & & ensemble des labels\\
-        $e_1, e_2, e_3$ & & ensemble de formations agrégées\\
-        $s$ & & ensemble des aspirations utilisateur\\
-        
-	\end{tabular}
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{0.96}
+    \begin{tabular}[t]{rp{3mm}p{12cm}}
+        $G_{\mathrm{spec}}$ & & modèle grammatical attribué de \textit{spec-v1};\\
+        $p$ & & identifiant du processus BPMN enrichi;\\
+        $v$ & & version de la spécification;\\
+        $R$ & & ensemble des rôles déclarés;\\
+        $S=(R_s,A_s,b_s)$ & & configuration du démarrage du processus;\\
+        $R_s$ & & rôles autorisés à démarrer une instance;\\
+        $A_s$ & & activités initiales du processus;\\
+        $b_s$ & & autorisation de démarrage automatique sans entrée manuelle;\\
+        $M$ & & rôles autorisés à superviser le processus;\\
+        $A=\{a_1,\ldots,a_n\}$ & & ensemble des activités enrichies;\\
+        $D=\{d_1,\ldots,d_m\}$ & & ensemble des entités de données partagées;\\
+        $C$ & & ensemble des contraintes de validité;\\
+        $a_i$ & & activité enrichie d'indice $i$;\\
+        $id_i$ & & identifiant BPMN de l'activité $a_i$;\\
+        $t_i$ & & type de l'activité $a_i$;\\
+        $R_i$ & & rôles candidats de l'activité $a_i$;\\
+        $\alpha_i$ & & politique d'affectation de l'activité $a_i$;\\
+        $I_i$ & & sources d'entrée de l'activité $a_i$;\\
+        $O_i=(s_i,\mu_i)$ & & sortie, stratégie de stockage et mappings de l'activité;\\
+        $V_i=(R_i^a,R_i^d)$ & & visibilité de l'activité et de ses données;\\
+        $X_i$ & & paramètres d'exécution d'une activité automatique;\\
+        $d_j=(k_j,F_j)$ & & entité partagée, sa clé et son ensemble de champs.\\
+    \end{tabular}
 \end{center}

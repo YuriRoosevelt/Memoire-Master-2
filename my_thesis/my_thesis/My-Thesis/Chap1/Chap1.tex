@@ -11,7 +11,7 @@ développement web utiles à l'étude des applications métier. Cette
 présentation permet de préciser le lien entre modèle métier, moteur de processus
 et application web.
 
-\mySection{Processus métiers et gestion des processus métiers (BPM)}{}
+\mySection{Processus métier et gestion des processus métier (BPM)}{}
 \label{sec:calcul_orientee_service}
 
 \subsection{Processus métier}{}
@@ -67,10 +67,10 @@ Sorties & Résultats produits : dossier validé, demande rejetée, document gén
 
 Plusieurs définitions ont été données pour le terme de gestion des processus métier.
 
-D'après  Van Der Aalst et al. , le \textit{Business Process Management} (BPM) comprend
+D'après van der Aalst et al., le \textit{Business Process Management} (BPM) comprend
 \og les méthodes, les techniques et les outils permettant de concevoir, d'exécuter, de gérer et d'analyser les processus opérationnels, en s'appuyant sur des acteurs pouvant être des êtres humains, des organisations, des applications et d'autres sources d'information \fg \cite{vanderAalst2003bpm}.
 
-Le \textit{Business Process Management} (BPM) peut également être défini comme l'art de modéliser, de gérer et d'optimiser les processus métiers afin d'améliorer la performance des entreprises. Il nécessite l'utilisation d'outils permettant de modéliser, d'intégrer, de superviser et d'analyser le fonctionnement des processus tout au long de leur cycle de vie, dans une logique d'amélioration continue \citep{dumas2018fundamentals,weske2012bpm}.
+Le \textit{Business Process Management} (BPM) peut également être défini comme l'art de modéliser, de gérer et d'optimiser les processus métier afin d'améliorer la performance des entreprises. Il nécessite l'utilisation d'outils permettant de modéliser, d'intégrer, de superviser et d'analyser le fonctionnement des processus tout au long de leur cycle de vie, dans une logique d'amélioration continue \citep{dumas2018fundamentals,weske2012bpm}.
 \subsection{Cycle de vie du BPM}
 
 Selon Marlon Dumas \citep{dumas2013fundamentals}, le BPM peut être considéré comme un cycle continu comprenant les phases suivantes
@@ -105,7 +105,7 @@ Cette étape consiste à préparer et à appliquer les changements permettant de
 
 Lorsque le processus amélioré est exécuté, des données sont collectées puis analysées afin d’évaluer sa performance par rapport aux objectifs fixés. Cette observation permet de détecter les lenteurs, les erreurs fréquentes ou les écarts par rapport au fonctionnement prévu. Des actions correctives peuvent alors être engagées. De nouveaux problèmes pouvant apparaître dans le même processus ou dans d’autres, le cycle BPM doit être repris de manière continue.
 
-\subsection{Systèmes de gestion des processus métiers}
+\subsection{Systèmes de gestion des processus métier}
 
 Les systèmes de gestion des processus métier, généralement désignés par l'abréviation BPMS \textit{(Business Process Management Systems)}, désignent des solutions logicielles 
 conçues pour accompagner la mise en œuvre des démarches BPM. Ces environnements peuvent intégrer plusieurs fonctionnalités, notamment la modélisation des processus, l’exécution des workflows, la gestion des tâches, le suivi à travers des tableaux de bord, l’interconnexion avec d’autres applications, la supervision des activités et, dans certains cas, la conception d’interfaces utilisateur \citep{bonitasoftBPMN2}. Parmi ces logiciels, nous pouvons citer :
@@ -120,7 +120,7 @@ conçues pour accompagner la mise en œuvre des démarches BPM. Ces environnemen
 
 \end{itemize}
 
-\mySection{Modélisation des processus métiers}{}
+\mySection{Modélisation des processus métier}{}
 
 La modélisation des processus métier consiste à représenter le fonctionnement d'un processus
 afin de préciser les activités qui le composent ainsi que leur ordre d'exécution. Dans la
@@ -364,7 +364,7 @@ BPMN distingue principalement les diagrammes de processus, les diagrammes de col
             \caption{Exemple de diagramme de collaboration}
             \label{fig:diagramme-collaboration-bpmn}
         \end{figure}
-    \item Le \textbf{diagramme de chorégraphie}  se concentre davantage sur les interactions entre participants que sur l'organisation interne de chacun.  Dans ce type de modélisation, la focalisation n’est pas sur l’orchestration (c’est-à-dire sur la manière dont le travail est accompli selon le point de vue des participants), mais sur les échanges de Messages entre les Participants.
+    \item Le \textbf{diagramme de chorégraphie} se concentre davantage sur les interactions entre participants que sur leur organisation interne. Il ne décrit pas l'orchestration propre à chaque participant, mais les échanges de messages qui structurent leur collaboration.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.65\textwidth]{Chap1/images/image13.JPG}
@@ -378,9 +378,9 @@ BPMN distingue principalement les diagrammes de processus, les diagrammes de col
 
 \subsection{Principe général de l’ingénierie dirigée par les modèles}
 
-L'ingénierie dirigée par les modèles (IDM) désigne une démarche de développement dans laquelle le modèle devient un artefact de travail central. Le modèle n'est donc pas seulement un dessin destiné à expliquer une idée : il sert à décrire un système à un niveau d'abstraction choisi, à vérifier certains choix, à organiser les connaissances du domaine et, lorsque l'outillage le permet, à produire d'autres modèles ou des artefacts techniques. Cette approche répond principalement à deux difficultés du génie logiciel : la croissance de la complexité des systèmes et l'évolution rapide des technologies. En plaçant les modèles au centre du développement, l'IDM cherche à mieux séparer les préoccupations, à réduire la dépendance immédiate aux détails techniques et à rendre certaines tâches répétitives plus maîtrisables \cite{jezequel2012,meghzili2022}.  L'objectif n'est pas de supprimer l'intervention humaine, mais de déplacer une partie de l'effort vers des modèles explicites, contrôlables et transformables.
+L'ingénierie dirigée par les modèles (IDM) désigne une démarche de développement dans laquelle le modèle devient un artefact de travail central. Le modèle n'est donc pas seulement un dessin destiné à expliquer une idée : il sert à décrire un système à un niveau d'abstraction choisi, à vérifier certains choix, à organiser les connaissances du domaine et, lorsque l'outillage le permet, à produire d'autres modèles ou des artefacts techniques. Cette approche répond principalement à deux difficultés du génie logiciel : la croissance de la complexité des systèmes et l'évolution rapide des technologies. En plaçant les modèles au centre du développement, l'IDM cherche à mieux séparer les préoccupations, à réduire la dépendance immédiate aux détails techniques et à rendre certaines tâches répétitives plus maîtrisables \cite{jezequel2012,meghzili2022}. L'objectif n'est pas de supprimer l'intervention humaine, mais de déplacer une partie de l'effort vers des modèles explicites, contrôlables et transformables.
 
-\subsection{Notion de base en Ingénierie Dirigée par les Modèles}
+\subsection{Notions de base en ingénierie dirigée par les modèles}
 
 Un système est l'entité étudiée. Il peut être composé d'éléments reliés entre eux, posséder une organisation interne et interagir avec son environnement. Dans l'IDM, le système n'est généralement pas manipulé directement dans toute sa complexité ; il est représenté par un ou plusieurs modèles.
 
@@ -391,7 +391,7 @@ Un méta-modèle définit le langage dans lequel les modèles sont exprimés. Il
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.50\textwidth]{Chap1/images/image19.JPG}
-    \caption{Pyramide de modélisation de l'OMG.\cite{jezequel2012}.}
+    \caption{Pyramide de modélisation de l'OMG, d'après \cite{jezequel2012}.}
     \label{fig:pyramide-modelisation-omg}
 \end{figure}
 
@@ -404,7 +404,7 @@ Les transformations occupent une place centrale dans l'IDM parce qu'elles donnen
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image16.JPG}
-    \caption{Schéma de base d'une transformation de modèle  \cite{meghzili2022}}
+    \caption{Schéma de base d'une transformation de modèle \cite{meghzili2022}.}
     \label{fig:transformation-modele}
 \end{figure}
 
@@ -414,7 +414,7 @@ La Model-Driven Architecture (MDA) est une initiative de l'OMG qui applique les 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image17.JPG}
-    \caption{Illustration des trois niveaux d'abstraction du MDA  \cite{meghzili2022}}
+    \caption{Illustration des trois niveaux d'abstraction de la MDA \cite{meghzili2022}.}
     \label{fig:niveaux-mda}
 \end{figure}
 \begin{itemize}
