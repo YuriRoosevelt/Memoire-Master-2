@@ -502,20 +502,32 @@ de contrats, et non nécessairement un fichier unique. Dans le prototype, le
 contrôle des codes de rôle est effectif, mais leur confrontation exhaustive à
 un référentiel organisationnel externe reste à consolider.
 
-%\paragraph{Propriétés de la transformation M2M.}
-%La \textbf{terminaison} découle du parcours d'ensembles finis d'activités, de
-%flux, de rôles et de données. Le \textbf{déterminisme} exige que les mêmes
-%entrées $B$, $S$, $R$ et $C$ produisent le même modèle pivot normalisé. La
-%\textbf{cohérence} est assurée par la construction de $P$ à partir des seuls
-%éléments acceptés par la validation. La \textbf{traçabilité} repose
-%concrètement sur la clé et la version du modèle, les identifiants d'activités
-%et les chemins de ressources conservés dans les contrats runtime et data ; la
-%notion d'\texttt{ArtifactTrace} synthétise ce lien logique. La \textbf{sûreté}
-%impose de ne pas promouvoir de contrats lorsqu'une erreur bloquante subsiste.
-%Enfin, l'\textbf{extensibilité} repose sur les fonctions de normalisation et de
-%construction spécialisées : une nouvelle stratégie demande une extension
-%localisée du validateur et des contrats, sans remettre en cause le découpage
-%M2M/M2T.
+\subsubsection{Propriétés de l'algorithme de transformation M2M}
+\label{sec:chap3-proprietes-m2m}
+
+L'étude de l'algorithme M2M porte sur les garanties attendues lors du passage
+du couple BPMN--\textit{spec-v1} aux contrats intermédiaires. Le
+tableau~\ref{tab:chap3-proprietes-m2m} relie chaque propriété aux mécanismes
+effectivement mobilisés par ProOWeb.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Propriétés de l'algorithme de transformation M2M}
+\label{tab:chap3-proprietes-m2m}
+\begin{tabularx}{\textwidth}{p{2.7cm}p{4.2cm}X}
+\toprule
+\textbf{Propriété} & \textbf{Signification} & \textbf{Justification dans ProOWeb} \\
+\midrule
+Terminaison & La transformation doit finir pour toute entrée finie. & Les traitements parcourent des ensembles finis d'activités, de flux, de rôles, de sources et de mappings ; aucune récursion non bornée n'est requise. \\
+Déterminisme & Des entrées normalisées identiques doivent produire les mêmes contrats. & Les identifiants d'activités, les rôles, les transitions et les entités sont triés avant la construction des \texttt{RuntimeContract} et \texttt{DataContract}. \\
+Cohérence & Le pivot ne doit contenir que des éléments compatibles entre eux. & La correspondance avec le BPMN, les types d'activités, les affectations, les sources et les mappings est contrôlée avant la construction des contrats. \\
+Sûreté & Une erreur bloquante ne doit pas conduire à un pivot exploitable. & Le rapport de validation marque la spécification comme invalide et empêche la promotion des contrats lorsque des erreurs subsistent. \\
+Traçabilité & Les éléments intermédiaires doivent rester reliés à leurs sources. & La clé et la version du modèle, les identifiants BPMN et les chemins des ressources sont conservés dans les contrats et les catalogues. \\
+Extensibilité & Une nouvelle règle ne doit pas imposer la réécriture complète de la transformation. & Les fonctions de normalisation et les constructeurs de contrats sont séparés ; une extension reste localisée tant que la structure générale du pivot est préservée. \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \textbf{Construction du modèle applicatif intermédiaire}
 
@@ -586,21 +598,33 @@ gabarits. La transformation M2T reste donc une
 projection : elle matérialise les décisions du pivot sans introduire de rôle,
 de transition ou de règle métier absente des contrats.
 
-%\paragraph{Propriétés de la transformation M2T.}
-%La \textbf{terminaison} résulte du nombre fini de contrats, d'activités, de
-%données et de gabarits. Le \textbf{déterminisme} signifie qu'à modèle pivot,
-%gabarits et configuration identiques, les contenus et la structure des fichiers
-%applicatifs sont identiques. Le manifeste complet peut néanmoins différer par
-%ses dates de génération ou de migration. La \textbf{cohérence} exige que tout
-%artefact corresponde à un élément de $P$, tandis que la \textbf{traçabilité}
-%est portée par les chemins versionnés, les catégories, les propriétaires et les
-%empreintes SHA-256. Le \textbf{non-écrasement contrôlé} signifie qu'un fichier
-%personnalisé est détecté, sauvegardé et consigné avant tout remplacement décidé
-%par la politique de migration. La
-%\textbf{maintenabilité} repose sur une arborescence et des responsabilités
-%lisibles pour le développeur. L'\textbf{extensibilité}, enfin, permet d'ajouter
-%de nouveaux gabarits ou une nouvelle cible technologique sans modifier la
-%sémantique du modèle pivot.
+\subsubsection{Propriétés de l'algorithme de transformation M2T}
+\label{sec:chap3-proprietes-m2t}
+
+Pour la transformation M2T, l'analyse concerne la production et le suivi des
+fichiers du workspace. Le tableau~\ref{tab:chap3-proprietes-m2t} précise les
+garanties apportées par les gabarits, le manifeste et les mécanismes de
+déploiement contrôlé.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Propriétés de l'algorithme de transformation M2T}
+\label{tab:chap3-proprietes-m2t}
+\begin{tabularx}{\textwidth}{p{2.7cm}p{4.2cm}X}
+\toprule
+\textbf{Propriété} & \textbf{Signification} & \textbf{Justification dans ProOWeb} \\
+\midrule
+Terminaison & La génération doit finir lorsque le pivot et les gabarits sont finis. & ProOWeb parcourt un nombre borné de contrats, d'activités, d'entités, de gabarits et de chemins de fichiers. \\
+Déterminisme & Les mêmes entrées doivent produire la même structure applicative. & Les artefacts sont ordonnés par chemin et les mêmes gabarits produisent les mêmes contenus. Les dates techniques du manifeste peuvent néanmoins varier entre deux exécutions. \\
+Cohérence & Chaque fichier doit matérialiser une décision présente dans le pivot. & Les ressources runtime, data, backend, frontend et de sécurité sont produites à partir des contrats validés, sans redéfinir les règles métier dans les gabarits. \\
+Traçabilité & Un fichier généré doit rester identifiable après son écriture. & Le manifeste conserve son chemin, sa catégorie, ses propriétaires logiques et son empreinte SHA-256 ; les ressources de processus sont également versionnées. \\
+Préservation contrôlée & Une personnalisation ne doit pas être perdue silencieusement. & Les empreintes permettent de détecter un fichier modifié ; ProOWeb le signale et crée une sauvegarde avant tout remplacement autorisé par la politique de migration. \\
+Maintenabilité & Le résultat doit pouvoir être repris par un développeur. & Les artefacts sont organisés par couches et responsabilités dans une arborescence backend/frontend explicite. \\
+Extensibilité & La génération doit accepter de nouvelles projections. & Des gabarits et des overrides peuvent être ajoutés sans modifier la sémantique des contrats intermédiaires. \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 %Cet exemple montre que la traçabilité ne se limite pas à un lien documentaire entre le BPMN et le code. Elle sert à expliquer pourquoi un artefact existe, de quelle activité il provient et quelle partie du contrat il matérialise. Elle sert aussi lors de l'évolution du processus : si \texttt{valider\_demande} change de rôle, de formulaire ou de sortie, ProOWeb peut identifier les contrats et les fichiers concernés par la nouvelle génération.
 

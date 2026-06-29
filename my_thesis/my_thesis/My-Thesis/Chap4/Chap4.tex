@@ -16,13 +16,13 @@ Le chapitre suit donc le chemin emprunté par le framework : initialisation du p
 
 La mise en œuvre de ProOWeb a consisté à rendre opérationnel le framework décrit au chapitre précédent. Les blocs conceptuels présentés dans l'architecture de la section \ref{sec:chap3-architecture} sont ici traduits en composants réalisés : un noyau de génération, des mécanismes de validation, des contrats intermédiaires, des gabarits et un projet applicatif cible. Le framework reçoit des informations métier structurées, vérifie leur cohérence, construit des contrats intermédiaires et produit une base applicative exploitable. Cette base contient les éléments nécessaires pour exécuter un processus, afficher les tâches, appliquer les rôles, manipuler les données et suivre les fichiers générés.
 
-Dans ce travail, ProOWeb n'est donc pas présenté comme une simple maquette. Il sert à vérifier si le passage du modèle BPMN vers une application web métier peut être automatisé tout en gardant une trace claire entre le besoin métier et les artefacts produits.
+%Dans ce travail, ProOWeb n'est donc pas présenté comme une simple maquette. Il sert à vérifier si le passage du modèle BPMN vers une application web métier peut être automatisé tout en gardant une trace claire entre le besoin métier et les artefacts produits.
 
 \subsection{Choix technologiques}
 
 Le générateur a été séparé de l'application produite. Cette séparation reprend la distinction établie au chapitre \ref{chap:framework-prooweb} entre le noyau de génération et l'application web générée. ProOWeb s'exécute comme une application Node.js. Il fournit une interface de configuration, des services de gestion du workspace et des modules spécialisés dans la modélisation de processus : catalogue, validation de \textit{spec-v1}, simulation, déploiement, génération des contrats runtime et gestion des fichiers produits.
 
-L'application générée, quant à elle, repose sur Spring Boot pour le backend, React/Vite pour l'interface web et PostgreSQL comme base de données cible. Le workspace généré pour le cas d'étude porte le nom E-commerce Application. Il active notamment la modélisation de processus, la hiérarchie organisationnelle, les notifications, Liquibase, Swagger en profil de développement, les scripts de lancement et les tests frontend Cypress. Ce choix technique n'est donc pas seulement déclaratif : il correspond à une arborescence générée, à des fichiers de configuration et à des scripts de vérification présents dans le projet.
+L'application générée, quant à elle, repose sur Spring Boot pour le backend, React/Vite pour l'interface web et PostgreSQL comme base de données cible.
 
 \begin{table}[H]
 \centering
@@ -43,31 +43,31 @@ Vérification & Scripts et tests Cypress & Vérifier les parcours frontend liés
 \end{tabularx}
 \end{table}
 
-\subsection{Organisation réalisée}
+%\subsection{Organisation réalisée}
 
-ProOWeb est organisé autour de deux espaces qui gardent chacun une responsabilité claire. D'un côté, le framework contient les services de lecture des modèles, les validations, la construction des contrats, les gabarits et les mécanismes de suivi. De l'autre, le projet cible regroupe les fichiers applicatifs produits à partir des modèles et destinés à être exécutés, testés puis adaptés.
+%ProOWeb est organisé autour de deux espaces qui gardent chacun une responsabilité claire. D'un côté, le framework contient les services de lecture des modèles, les validations, la construction des contrats, les gabarits et les mécanismes de suivi. De l'autre, le projet cible regroupe les fichiers applicatifs produits à partir des modèles et destinés à être exécutés, testés puis adaptés.
 
-Cette séparation se voit directement dans l'arborescence du projet. Les modules du framework sont placés dans \texttt{ProOWeb/src/lib} et \texttt{ProOWeb/src/services}. Les artefacts générés sont présents dans le workspace applicatif, avec un backend Spring Boot, un frontend React et des ressources de processus rangées dans le dossier \texttt{resources/processes} du module applicatif. Pour chaque processus déployé, ProOWeb conserve le BPMN, une spécification transformée, un contrat runtime et un contrat de données. Cette organisation rend le résultat plus lisible : le modèle d'entrée reste consultable, tandis que les contrats générés expliquent comment le modèle est projeté vers l'application.
+%Cette séparation se voit directement dans l'arborescence du projet. Les modules du framework sont placés dans \texttt{ProOWeb/src/lib} et \texttt{ProOWeb/src/services}. Les artefacts générés sont présents dans le workspace applicatif, avec un backend Spring Boot, un frontend React et des ressources de processus rangées dans le dossier \texttt{resources/processes} du module applicatif. Pour chaque processus déployé, ProOWeb conserve le BPMN, une spécification transformée, un contrat runtime et un contrat de données. Cette organisation rend le résultat plus lisible : le modèle d'entrée reste consultable, tandis que les contrats générés expliquent comment le modèle est projeté vers l'application.
 
-\begin{table}[H]
-\centering
-\caption{Organisation fonctionnelle réalisée dans ProOWeb}
-\label{tab:chap4-organisation-realisee}
-\begin{tabularx}{\textwidth}{p{3.6cm}X}
-\toprule
-\textbf{Bloc} & \textbf{Responsabilité principale} \\
-\midrule
-Workspace généré & Conserver la configuration de l'application e-commerce, les scripts et les modules générés. \\
-Catalogue de processus & Enregistrer les modèles, les versions, les statuts de validation et les informations de déploiement. \\
-Validation \textit{spec-v1} & Refuser ou signaler les incohérences entre le BPMN, les rôles, les données et les activités enrichies. \\
-Contrats runtime et data & Préparer une représentation stable des activités, transitions, rôles, données partagées et règles d'accès. \\
-Ressources backend & Déposer les fichiers \texttt{v1.bpmn}, \texttt{v1.json}, \texttt{v1.runtime.json} et \texttt{v1.data.json} par processus. \\
-Manifeste & Garder la mémoire des fichiers générés afin de contrôler les évolutions ultérieures. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+%\begin{table}[H]
+%\centering
+%\caption{Organisation fonctionnelle réalisée dans ProOWeb}
+%\label{tab:chap4-organisation-realisee}
+%\begin{tabularx}{\textwidth}{p{3.6cm}X}
+%\toprule
+%\textbf{Bloc} & \textbf{Responsabilité principale} \\
+%\midrule
+%Workspace généré & Conserver la configuration de l'application e-commerce, les scripts et les modules générés. \\
+%Catalogue de processus & Enregistrer les modèles, les versions, les statuts de validation et les informations de déploiement. \\
+%Validation \textit{spec-v1} & Refuser ou signaler les incohérences entre le BPMN, les rôles, les données et les activités enrichies. \\
+%Contrats runtime et data & Préparer une représentation stable des activités, transitions, rôles, données partagées et règles d'accès. \\
+%Ressources backend & Déposer les fichiers \texttt{v1.bpmn}, \texttt{v1.json}, \texttt{v1.runtime.json} et \texttt{v1.data.json} par processus. \\
+%Manifeste & Garder la mémoire des fichiers générés afin de contrôler les évolutions ultérieures. \\
+%\bottomrule
+%\end{tabularx}
+%\end{table}
 
-\mySection{Implémentation de la chaîne de génération}{}
+\subsection{Chaîne de génération}{}
 \label{sec:chap4-implementation-generation}
 
 La figure \ref{fig:chap4-chaine-generation} présente la chaîne de génération
@@ -86,170 +86,170 @@ de traçabilité utilisé lors des régénérations.
 \end{figure}
 
 
-\subsection{Initialisation du projet cible}
+%\subsection{Initialisation du projet cible}
 
-La génération commence par l'initialisation du projet cible. Cette étape fixe l'identité de l'application à produire : nom du projet, espace de travail, package de base, options d'authentification, profils d'exécution et paramètres généraux. Dans le cas d'étude, cette initialisation a produit le workspace E-commerce Application, avec le package de base \texttt{com.prooweb.generated}, un backend Spring Boot, un frontend React et une base de données cible PostgreSQL.
+%La génération commence par l'initialisation du projet cible. Cette étape fixe l'identité de l'application à produire : nom du projet, espace de travail, package de base, options d'authentification, profils d'exécution et paramètres généraux. Dans le cas d'étude, cette initialisation a produit le workspace E-commerce Application, avec le package de base \texttt{com.prooweb.generated}, un backend Spring Boot, un frontend React et une base de données cible PostgreSQL.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.75\textwidth]{Chap4/images/image1.JPG}
-\caption{Initialisation du projet \texttt{E-commerce\_Application}}
-\label{fig:chap4-initialisation-projet}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=0.75\textwidth]{Chap4/images/image1.JPG}
+%\caption{Initialisation du projet \texttt{E-commerce\_Application}}
+%\label{fig:chap4-initialisation-projet}
+%\end{figure}
 
-Cette étape prépare une application structurée, équipée de scripts de compilation, de vérification, de test et de lancement par profil. Le workspace contient ainsi les scripts \texttt{build-all}, \texttt{test-all}, \texttt{verify-all} et \texttt{start-profile}, ainsi que les raccourcis NPM qui permettent de piloter ces opérations depuis la racine du projet.
+%Cette étape prépare une application structurée, équipée de scripts de compilation, de vérification, de test et de lancement par profil. Le workspace contient ainsi les scripts \texttt{build-all}, \texttt{test-all}, \texttt{verify-all} et \texttt{start-profile}, ainsi que les raccourcis NPM qui permettent de piloter ces opérations depuis la racine du projet.
 
-\subsection{Gestion des modèles de processus}
+%\subsection{Gestion des modèles de processus}
 
-Après l'initialisation, ProOWeb prend en charge les modèles BPMN et les spécifications \textit{spec-v1}. Le BPMN garde le rôle de support de workflow. La spécification enrichie ajoute les informations que le modèle ne porte pas naturellement : rôles candidats, règles d'affectation, entrées, sorties, données partagées, visibilité et stratégies de stockage.
+%Après l'initialisation, ProOWeb prend en charge les modèles BPMN et les spécifications \textit{spec-v1}. Le BPMN garde le rôle de support de workflow. La spécification enrichie ajoute les informations que le modèle ne porte pas naturellement : rôles candidats, règles d'affectation, entrées, sorties, données partagées, visibilité et stratégies de stockage.
 
-Pour le cas d'étude, les trois BPMN et les trois fichiers de spécification conservés dans le chapitre 4 sont importés dans ProOWeb par un script dédié. Ce script lit les sources, normalise certaines informations, transforme la spécification de travail vers la forme attendue par ProOWeb, puis lance la validation stricte avec le catalogue des tâches automatiques. Lorsque le modèle est recevable, une version est créée ou ajoutée dans le catalogue, simulée, puis déployée. Cette étape donne une valeur particulière au cas d'étude : les processus présentés dans le mémoire ne restent pas au niveau du dessin, ils deviennent des versions de processus manipulées par le framework.
+%Pour le cas d'étude, les trois BPMN et les trois fichiers de spécification conservés dans le chapitre 4 sont importés dans ProOWeb par un script dédié. Ce script lit les sources, normalise certaines informations, transforme la spécification de travail vers la forme attendue par ProOWeb, puis lance la validation stricte avec le catalogue des tâches automatiques. Lorsque le modèle est recevable, une version est créée ou ajoutée dans le catalogue, simulée, puis déployée. Cette étape donne une valeur particulière au cas d'étude : les processus présentés dans le mémoire ne restent pas au niveau du dessin, ils deviennent des versions de processus manipulées par le framework.
 
-\subsection{Validation et construction des contrats}
+%\subsection{Validation et construction des contrats}
 
-La validation est le premier point de contrôle sérieux de la chaîne. Elle met en oeuvre les contrôles introduits dans le chapitre précédent : cohérence entre BPMN et \textit{spec-v1}, présence des rôles nécessaires, validité des données et correspondance entre activités et artefacts à produire.
+%La validation est le premier point de contrôle sérieux de la chaîne. Elle met en oeuvre les contrôles introduits dans le chapitre précédent : cohérence entre BPMN et \textit{spec-v1}, présence des rôles nécessaires, validité des données et correspondance entre activités et artefacts à produire.
 
-Lorsque ces contrôles sont satisfaits, ProOWeb construit des contrats intermédiaires. Ces contrats correspondent à la matérialisation du modèle pivot présenté au chapitre \ref{chap:framework-prooweb}. Dans le workspace généré, ils apparaissent sous la forme d'un catalogue runtime, d'un catalogue de données, d'un catalogue de tâches automatiques et de contrats propres à chaque processus. Ils ne sont pas encore le comportement exécuté par un utilisateur, mais ils donnent au générateur une base stable pour produire les vues, les règles de progression et les données partagées.
+%Lorsque ces contrôles sont satisfaits, ProOWeb construit des contrats intermédiaires. Ces contrats correspondent à la matérialisation du modèle pivot présenté au chapitre \ref{chap:framework-prooweb}. Dans le workspace généré, ils apparaissent sous la forme d'un catalogue runtime, d'un catalogue de données, d'un catalogue de tâches automatiques et de contrats propres à chaque processus. Ils ne sont pas encore le comportement exécuté par un utilisateur, mais ils donnent au générateur une base stable pour produire les vues, les règles de progression et les données partagées.
 
-\begin{table}[H]
-\centering
-\caption{Contrats produits avant la génération des fichiers}
-\label{tab:chap4-contrats-generation}
-\begin{tabularx}{\textwidth}{p{3.7cm}X}
-\toprule
-\textbf{Contrat} & \textbf{Utilisation dans ProOWeb} \\
-\midrule
-\textit{Runtime contract} & Décrire les processus, activités, transitions, statuts et actions disponibles pendant l'exécution. \\
-\textit{Data contract} & Organiser les données partagées, les champs, les sources et les mappings issus des activités. \\
-Catalogue des formulaires & Définir les champs affichés, les champs produits et les contraintes des activités manuelles. \\
-Catalogue d'interface & Préparer les vues utiles : listes de tâches, actions, suivi et règles d'affichage. \\
-Registre des processus & Conserver les processus disponibles, leurs versions et leurs métadonnées d'exploitation. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+%\begin{table}[H]
+%\centering
+%\caption{Contrats produits avant la génération des fichiers}
+%\label{tab:chap4-contrats-generation}
+%\begin{tabularx}{\textwidth}{p{3.7cm}X}
+%\toprule
+%\textbf{Contrat} & \textbf{Utilisation dans ProOWeb} \\
+%\midrule
+%\textit{Runtime contract} & Décrire les processus, activités, transitions, statuts et actions disponibles pendant l'exécution. \\
+%\textit{Data contract} & Organiser les données partagées, les champs, les sources et les mappings issus des activités. \\
+%Catalogue des formulaires & Définir les champs affichés, les champs produits et les contraintes des activités manuelles. \\
+%Catalogue d'interface & Préparer les vues utiles : listes de tâches, actions, suivi et règles d'affichage. \\
+%Registre des processus & Conserver les processus disponibles, leurs versions et leurs métadonnées d'exploitation. \\
+%\bottomrule
+%\end{tabularx}
+%\end{table}
 
-Les deux extraits suivants proviennent du processus
-\texttt{commande-client}, version~1. Ils ont été réduits aux champs utiles à la
-démonstration, sans modifier les noms ni les valeurs observés. Le contrat
-runtime conserve l'identité de l'activité, son rôle candidat et sa stratégie
-d'affectation ; le contrat data explicite la circulation d'une sortie de
-formulaire vers une entité partagée.
+% Les deux extraits suivants proviennent du processus
+% \texttt{commande-client}, version~1. Ils ont été réduits aux champs utiles à la
+% démonstration, sans modifier les noms ni les valeurs observés. Le contrat
+% runtime conserve l'identité de l'activité, son rôle candidat et sa stratégie
+% d'affectation ; le contrat data explicite la circulation d'une sortie de
+% formulaire vers une entité partagée.
 
-\begin{lstlisting}[breaklines=true,caption={Extrait du contrat runtime de la commande client},label={lst:chap4-extrait-runtime-reel}]
-{
-  "modelKey": "commande-client",
-  "versionNumber": 1,
-  "activities": [{
-    "activityId": "UserTask_AnnulerCommande",
-    "activityType": "MANUAL",
-    "candidateRoles": ["SERVICE_COMMERCIAL"],
-    "assignment": {
-      "mode": "AUTOMATIC",
-      "strategy": "ROLE_QUEUE",
-      "maxAssignees": 1
-    },
-    "output": {"storage": "BOTH"}
-  }]
-}
-\end{lstlisting}
+% \begin{lstlisting}[breaklines=true,caption={Extrait du contrat runtime de la commande client},label={lst:chap4-extrait-runtime-reel}]
+% {
+%   "modelKey": "commande-client",
+%   "versionNumber": 1,
+%   "activities": [{
+%     "activityId": "UserTask_AnnulerCommande",
+%     "activityType": "MANUAL",
+%     "candidateRoles": ["SERVICE_COMMERCIAL"],
+%     "assignment": {
+%       "mode": "AUTOMATIC",
+%       "strategy": "ROLE_QUEUE",
+%       "maxAssignees": 1
+%     },
+%     "output": {"storage": "BOTH"}
+%   }]
+% }
+% \end{lstlisting}
 
-\begin{lstlisting}[breaklines=true,caption={Extrait du contrat data de la commande client},label={lst:chap4-extrait-data-reel}]
-{
-  "modelKey": "commande-client",
-  "versionNumber": 1,
-  "persistence": {
-    "instanceStore": "PROCESS_INSTANCE_CONTEXT",
-    "sharedDataStore": "SHARED_DATA_STORE"
-  },
-  "activities": [{
-    "activityId": "UserTask_AnnulerCommande",
-    "output": {
-      "storage": "BOTH",
-      "mappings": [{
-        "from": "form.commande.statut",
-        "to": "shared.commande.statut"
-      }]
-    },
-    "dataFootprint": {
-      "sharedDataProducedEntities": ["commande"]
-    }
-  }]
-}
-\end{lstlisting}
+% \begin{lstlisting}[breaklines=true,caption={Extrait du contrat data de la commande client},label={lst:chap4-extrait-data-reel}]
+% {
+%   "modelKey": "commande-client",
+%   "versionNumber": 1,
+%   "persistence": {
+%     "instanceStore": "PROCESS_INSTANCE_CONTEXT",
+%     "sharedDataStore": "SHARED_DATA_STORE"
+%   },
+%   "activities": [{
+%     "activityId": "UserTask_AnnulerCommande",
+%     "output": {
+%       "storage": "BOTH",
+%       "mappings": [{
+%         "from": "form.commande.statut",
+%         "to": "shared.commande.statut"
+%       }]
+%     },
+%     "dataFootprint": {
+%       "sharedDataProducedEntities": ["commande"]
+%     }
+%   }]
+% }
+% \end{lstlisting}
 
-\subsection{Génération des artefacts applicatifs}
+% \subsection{Génération des artefacts applicatifs}
 
-La génération transforme les contrats en fichiers organisés dans le projet cible. Elle concrétise les règles de projection décrites au chapitre précédent : une activité, un rôle, une transition ou une donnée partagée sont traduits en artefacts applicatifs cohérents. Une activité BPMN enrichie ne devient donc pas seulement une ligne dans un fichier de configuration. Elle donne lieu à un ensemble cohérent : une action de traitement, un formulaire, des contrôles d'accès, des transitions de processus et des traces exploitables dans l'historique.
+% La génération transforme les contrats en fichiers organisés dans le projet cible. Elle concrétise les règles de projection décrites au chapitre précédent : une activité, un rôle, une transition ou une donnée partagée sont traduits en artefacts applicatifs cohérents. Une activité BPMN enrichie ne devient donc pas seulement une ligne dans un fichier de configuration. Elle donne lieu à un ensemble cohérent : une action de traitement, un formulaire, des contrôles d'accès, des transitions de processus et des traces exploitables dans l'historique.
 
-Le résultat attendu est une base applicative cohérente, et non une collection de fichiers isolés. Les artefacts produits sont regroupés autour de besoins simples : exécuter un processus, faire traiter les tâches, conserver les informations, contrôler les accès et suivre l'évolution du projet généré.
+% Le résultat attendu est une base applicative cohérente, et non une collection de fichiers isolés. Les artefacts produits sont regroupés autour de besoins simples : exécuter un processus, faire traiter les tâches, conserver les informations, contrôler les accès et suivre l'évolution du projet généré.
 
-\begin{lstlisting}[breaklines=true,caption={Organisation simplifiée du workspace généré},label={lst:chap4-arborescence-generee}]
-E-commerce_Application/
-  src/
-    backend/
-      springboot/
-        common/
-        organization/
-        system/
-        prooweb-application/
-          src/main/resources/processes/
-    frontend/
-      web/react/
-        src/
-        cypress/e2e/
-  deployment/
-    docker/
-  build-all.ps1
-  test-all.ps1
-  verify-all.ps1
-  start-profile.ps1
-  .prooweb-managed.json
-\end{lstlisting}
+% \begin{lstlisting}[breaklines=true,caption={Organisation simplifiée du workspace généré},label={lst:chap4-arborescence-generee}]
+% E-commerce_Application/
+%   src/
+%     backend/
+%       springboot/
+%         common/
+%         organization/
+%         system/
+%         prooweb-application/
+%           src/main/resources/processes/
+%     frontend/
+%       web/react/
+%         src/
+%         cypress/e2e/
+%   deployment/
+%     docker/
+%   build-all.ps1
+%   test-all.ps1
+%   verify-all.ps1
+%   start-profile.ps1
+%   .prooweb-managed.json
+% \end{lstlisting}
 
-L'inspection du workspace expérimental ne montre pas seulement une arborescence
-prévue par l'architecture : elle permet d'identifier les familles de fichiers
-effectivement produites. Le tableau \ref{tab:chap4-artefacts-generes} en donne
-une synthèse. Les chemins sont indiqués relativement à la racine de
-l'application générée afin que l'observation puisse être reproduite sans
-dépendre de la machine utilisée.
+% L'inspection du workspace expérimental ne montre pas seulement une arborescence
+% prévue par l'architecture : elle permet d'identifier les familles de fichiers
+% effectivement produites. Le tableau \ref{tab:chap4-artefacts-generes} en donne
+% une synthèse. Les chemins sont indiqués relativement à la racine de
+% l'application générée afin que l'observation puisse être reproduite sans
+% dépendre de la machine utilisée.
 
-\begin{table}[H]
-\centering
-\caption{Artefacts observés dans le workspace généré}
-\label{tab:chap4-artefacts-generes}
-\begin{tabularx}{\textwidth}{p{2.7cm}p{4.4cm}X}
-\toprule
-\textbf{Famille} & \textbf{Exemples inspectés} & \textbf{Rôle vérifiable} \\
-\midrule
-Ressources de processus & Quatre fichiers versionnés par clé : BPMN, spécification, runtime et data & Conserver la source BPMN, la spécification normalisée et les deux contrats propres à chaque version. \\
-Catalogues globaux & Catalogues runtime, data et tâches automatiques & Regrouper les processus déployés, leurs données et les tâches automatiques. \\
-Backend Java & Registre et spécifications de processus, entités et dépôts de données partagées, gestionnaires automatiques & Projeter les contrats dans le domaine, l'application et l'infrastructure Spring Boot. \\
-Frontend React & \textit{Process Runtime Workbench}, client d'API runtime et tests d'interface & Exposer le démarrage, les tâches, les instances et leur chronologie. \\
-Tests générés & Trois fichiers Cypress et trois scénarios Cucumber propres au cas d'étude & Fournir des scénarios vérifiables pour chaque processus, avec les limites précisées dans la section d'évaluation. \\
-Gouvernance & Manifeste, scripts de construction, de test et de vérification & Identifier les fichiers gérés et uniformiser les opérations sur le workspace. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% \begin{table}[H]
+% \centering
+% \caption{Artefacts observés dans le workspace généré}
+% \label{tab:chap4-artefacts-generes}
+% \begin{tabularx}{\textwidth}{p{2.7cm}p{4.4cm}X}
+% \toprule
+% \textbf{Famille} & \textbf{Exemples inspectés} & \textbf{Rôle vérifiable} \\
+% \midrule
+% Ressources de processus & Quatre fichiers versionnés par clé : BPMN, spécification, runtime et data & Conserver la source BPMN, la spécification normalisée et les deux contrats propres à chaque version. \\
+% Catalogues globaux & Catalogues runtime, data et tâches automatiques & Regrouper les processus déployés, leurs données et les tâches automatiques. \\
+% Backend Java & Registre et spécifications de processus, entités et dépôts de données partagées, gestionnaires automatiques & Projeter les contrats dans le domaine, l'application et l'infrastructure Spring Boot. \\
+% Frontend React & \textit{Process Runtime Workbench}, client d'API runtime et tests d'interface & Exposer le démarrage, les tâches, les instances et leur chronologie. \\
+% Tests générés & Trois fichiers Cypress et trois scénarios Cucumber propres au cas d'étude & Fournir des scénarios vérifiables pour chaque processus, avec les limites précisées dans la section d'évaluation. \\
+% Gouvernance & Manifeste, scripts de construction, de test et de vérification & Identifier les fichiers gérés et uniformiser les opérations sur le workspace. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
 
-\subsection{Préservation et régénération contrôlée}
+% \subsection{Préservation et régénération contrôlée}
 
-ProOWeb met en place un manifeste des fichiers générés. Ce choix prolonge les mécanismes de préservation et de synchronisation discutés dans la section \ref{sec:chap3-preservation}. Le manifeste garde la trace des chemins, des catégories et des empreintes associées aux fichiers produits. Lorsqu'une nouvelle génération est lancée, le framework peut comparer l'état attendu avec l'état présent dans le projet cible.
+% ProOWeb met en place un manifeste des fichiers générés. Ce choix prolonge les mécanismes de préservation et de synchronisation discutés dans la section \ref{sec:chap3-preservation}. Le manifeste garde la trace des chemins, des catégories et des empreintes associées aux fichiers produits. Lorsqu'une nouvelle génération est lancée, le framework peut comparer l'état attendu avec l'état présent dans le projet cible.
 
-Ce mécanisme répond à une difficulté réelle : une application générée n'est pas figée. Une équipe peut modifier un libellé, ajouter une règle locale, connecter un service externe ou adapter une vue. La régénération ne doit donc pas effacer ces interventions sans contrôle. ProOWeb cherche à garder le lien entre modèle et code tout en respectant les adaptations humaines.
+% Ce mécanisme répond à une difficulté réelle : une application générée n'est pas figée. Une équipe peut modifier un libellé, ajouter une règle locale, connecter un service externe ou adapter une vue. La régénération ne doit donc pas effacer ces interventions sans contrôle. ProOWeb cherche à garder le lien entre modèle et code tout en respectant les adaptations humaines.
 
-\begin{lstlisting}[breaklines=true,caption={Extrait simplifié du manifeste de génération},label={lst:chap4-manifeste}]
-{
-  "generatedAt": "2026-06-23T03:51:09.185Z",
-  "files": [
-    {
-      "path": "src/frontend/web/react/cypress.config.js",
-      "sha256": "ceeb5f7b...b9edf47a",
-      "owners": ["frontend-cypress-e2e"],
-      "category": "frontend-tests"
-    }
-  ]
-}
-\end{lstlisting}
+% \begin{lstlisting}[breaklines=true,caption={Extrait simplifié du manifeste de génération},label={lst:chap4-manifeste}]
+% {
+%   "generatedAt": "2026-06-23T03:51:09.185Z",
+%   "files": [
+%     {
+%       "path": "src/frontend/web/react/cypress.config.js",
+%       "sha256": "ceeb5f7b...b9edf47a",
+%       "owners": ["frontend-cypress-e2e"],
+%       "category": "frontend-tests"
+%     }
+%   ]
+% }
+% \end{lstlisting}
 
 \mySection{Cas d'étude organisationnel}{}
 \label{sec:chap4-cas-etude}
@@ -258,9 +258,9 @@ Ce mécanisme répond à une difficulté réelle : une application générée n'
 
 Le cas d'étude retenu concerne une organisation de commerce électronique. Cette organisation vend des produits à travers une boutique en ligne et s'appuie sur plusieurs pôles internes : prise en charge des commandes, gestion du stock, préparation logistique, service client et supervision commerciale. Son activité ne se résume donc pas à l'affichage d'un catalogue. Elle implique des décisions, des contrôles, des validations et des échanges entre acteurs avant qu'une commande soit clôturée ou qu'une réclamation soit traitée.
 
-Ce terrain est intéressant pour ProOWeb parce que les processus ne sont pas isolés. Une commande client peut consommer du stock ; une rupture peut déclencher un réapprovisionnement ; une réclamation peut concerner une commande déjà livrée et nécessiter une vérification commerciale ou logistique. Le cas d'étude permet ainsi de vérifier si une même application générée peut regrouper plusieurs workflows tout en conservant une cohérence métier autour des clients, des produits, des commandes et des mouvements de stock.
+%Ce terrain est intéressant pour ProOWeb parce que les processus ne sont pas isolés. Une commande client peut consommer du stock ; une rupture peut déclencher un réapprovisionnement ; une réclamation peut concerner une commande déjà livrée et nécessiter une vérification commerciale ou logistique. Le cas d'étude permet ainsi de vérifier si une même application générée peut regrouper plusieurs workflows tout en conservant une cohérence métier autour des clients, des produits, des commandes et des mouvements de stock.
 
-Ce cas d'étude sert donc de terrain d'application aux choix de conception présentés dans le chapitre \ref{chap:framework-prooweb}. Les processus retenus permettent d'observer l'utilisation conjointe du BPMN, de la spécification \textit{spec-v1}, des contrats intermédiaires, des règles de projection et du mécanisme de traçabilité.
+%Ce cas d'étude sert donc de terrain d'application aux choix de conception présentés dans le chapitre \ref{chap:framework-prooweb}. Les processus retenus permettent d'observer l'utilisation conjointe du BPMN, de la spécification \textit{spec-v1}, des contrats intermédiaires, des règles de projection et du mécanisme de traçabilité.
 
 \subsection{Acteurs et responsabilités}
 
@@ -302,315 +302,450 @@ P3 : réclamation de produit & Traiter une réclamation liée à une commande et
 \end{tabularx}
 \end{table}
 
-\subsection{Déroulement des scénarios}
+\subsection{Scénario nominal et scénarios alternatifs}
 
-Le processus P1 commence lorsqu'un client valide une commande. L'application crée une instance associée au client, aux lignes de commande et aux produits concernés. Le service commercial peut vérifier les informations sensibles, puis le gestionnaire de stock contrôle la disponibilité et prépare la commande. Lorsque la préparation est terminée, la commande peut être marquée comme prête à expédier ou clôturée selon le scénario retenu.
+Dans le scénario nominal, le client soumet sa commande. Le service commercial
+en vérifie les informations et la déclare recevable. Le gestionnaire de stock
+confirme ensuite la disponibilité des produits, prépare la commande et
+enregistre cette préparation. Le service commercial confirme enfin que la
+commande est prête, puis le client consulte la confirmation.
 
-Le processus P2 part d'un besoin de réapprovisionnement. Ce besoin peut être identifié par un gestionnaire de stock lorsqu'un seuil est atteint ou lorsqu'une préparation de commande révèle une quantité insuffisante. La demande est transmise au responsable achats, qui valide, refuse ou demande des précisions. En cas de validation, la réception des produits met à jour les informations de stock.
+Deux scénarios alternatifs complètent ce parcours. Lorsque la commande n'est
+pas recevable, elle est annulée et le client en est informé. Lorsqu'elle est
+recevable mais que le stock est insuffisant, elle est placée en attente et une
+notification est adressée au client. Ces trois issues servent de base à
+l'exemple détaillé présenté ci-après.
 
-Le processus P3 intervient après la vente. Un client signale un problème sur un produit livré : défaut constaté, erreur de référence, quantité incorrecte ou description non conforme. Le service client qualifie la demande, vérifie les informations de commande et analyse le motif de réclamation. Lorsque la situation exige une vérification interne, le gestionnaire de stock contrôle la référence ou la disponibilité du produit. La décision finale est ensuite enregistrée et communiquée au client.
+\mySection{Déroulement complet du processus de commande client}{}
+\label{sec:chap4-exemple-commande}
 
-\begin{table}[H]
+Cette section suit le chemin effectivement pris en charge par ProOWeb :
+initialiser le projet, modéliser le processus, compléter le BPMN avec
+\textit{spec-v1}, valider les deux entrées, construire le modèle pivot puis
+générer le socle applicatif. Le processus de commande client sert de fil
+conducteur à cette démonstration.
+
+\subsection{Initialisation du projet}
+
+La génération commence par l'initialisation du projet cible. Cette étape fixe l'identité de l'application à produire : nom du projet, espace de travail, package de base, options d'authentification, profils d'exécution et paramètres généraux. Dans le cas d'étude, cette initialisation a produit le workspace E-commerce Application, avec le package de base \texttt{com.prooweb.generated}, un backend Spring Boot, un frontend React et une base de données cible PostgreSQL. Le processus
+\texttt{commande-client} est ensuite choisi comme exemple de conception et
+d'exécution.
+\begin{figure}[H]
 \centering
-\caption{Scénarios métier représentés dans le cas pratique}
-\label{tab:chap4-scenarios-executes}
-\begin{tabularx}{\textwidth}{p{2.1cm}p{3.9cm}X}
-\toprule
-\textbf{Processus} & \textbf{Parcours modélisé} & \textbf{Éléments observables dans les artefacts} \\
-\midrule
-P1 & Soumission, vérification, préparation et confirmation ou interruption d'une commande & Tâches manuelles, passerelles de recevabilité et de stock, rôles et données de commande. \\
-P2 & Détection du besoin, décision d'achat, réception et mise à jour du stock & Tâches manuelles, tâche automatique, rôles et données partagées de produit et de stock. \\
-P3 & Dépôt, qualification, vérification, proposition de solution et clôture & Tâches, décisions alternatives, rôles et données de commande, de produit et de réclamation. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\includegraphics[width=0.80\textwidth]{Chap4/images/image1.JPG}
+\caption{Initialisation du projet \texttt{E-commerce\_Application}}
+\label{fig:chap4-initialisation-projet-commande}
+\end{figure}
 
-\subsection{Spécifications enrichies associées}
+\subsection{Modélisation du processus}
 
-Pour chaque processus, le modèle BPMN est complété par une spécification \textit{spec-v1}. Cette spécification précise les informations qui ne sont pas naturellement portées par le modèle : rôles autorisés, données d'entrée, sorties produites, règles de stockage et règles de visibilité. Les fichiers conservés dans \texttt{Chap4/Specs} correspondent au format d'import historique du cas d'étude. Ils utilisent notamment la valeur \texttt{ROLE\_BASED}. Le script d'import ne propage pas cette valeur : il construit une affectation canonique \texttt{ROLE\_QUEUE} avant d'appeler le validateur. La grammaire du chapitre~\ref{chap:framework-prooweb} porte sur cette représentation normalisée, qui constitue le véritable contrat interne de ProOWeb.
-
-L'extrait suivant montre une activité manuelle du processus P1. Il ne représente pas toute la spécification ; il illustre le type d'information que ProOWeb exploite pour produire une tâche réellement traitable dans l'application générée.
-
-\begin{lstlisting}[breaklines=true,caption={Exemple simplifié d'activité enrichie pour le cas d'étude},label={lst:chap4-exemple-spec}]
-{
-  "activityId": "preparer_commande",
-  "type": "manual",
-  "candidateRoles": [
-    "GESTIONNAIRE_STOCK"
-  ],
-  "inputs": [
-    "commande.numero",
-    "client.identite",
-    "lignesCommande",
-    "stock.disponibilite"
-  ],
-  "outputs": [
-    "decisionPreparation",
-    "referenceColis",
-    "commentairePreparation"
-  ],
-  "visibility": {
-    "activityViewerRoles": [
-      "GESTIONNAIRE_STOCK",
-      "SERVICE_COMMERCIAL"
-    ],
-    "dataViewerRoles": [
-      "SERVICE_COMMERCIAL"
-    ]
-  },
-  "storage": "BOTH"
-}
-\end{lstlisting}
-
-\begin{table}[H]
-\centering
-\caption{Synthèse des spécifications enrichies par processus}
-\label{tab:chap4-synthese-specs}
-\begin{tabularx}{\textwidth}{p{2.0cm}p{3.1cm}p{2.8cm}X}
-\toprule
-\textbf{Processus} & \textbf{Rôles principaux} & \textbf{Données manipulées} & \textbf{Écrans générés} \\
-\midrule
-P1 & Client, service commercial, gestionnaire de stock & Client, commande, produits, disponibilités & Commande, vérification, préparation et suivi. \\
-P2 & Gestionnaire de stock, responsable achats & Produit, seuil, quantité demandée, réception & Demande de réapprovisionnement, validation et réception. \\
-P3 & Client, service client, service commercial, gestionnaire de stock & Commande, motif, produit concerné, décision & Réclamation, instruction, vérification et clôture. \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-La correspondance entre les modèles du cas d'étude et le résultat du
-déploiement peut être contrôlée fichier par fichier. Pour chaque clé de
-processus, les quatre ressources du tableau
-\ref{tab:chap4-tracabilite-processus} ont été retrouvées dans
-\nolinkurl{src/backend/springboot/prooweb-application/src/main/resources/processes}.
-
-\begin{table}[H]
-\centering
-\caption{Traçabilité des ressources produites pour les trois processus}
-\label{tab:chap4-tracabilite-processus}
-\begin{tabularx}{\textwidth}{p{2.5cm}p{2.5cm}p{2.1cm}p{2.3cm}X}
-\toprule
-\textbf{Clé} & \textbf{BPMN} & \textbf{Spec. normalisée} & \textbf{Contrat runtime} & \textbf{Contrat data} \\
-\midrule
-P1 : commande client & \nolinkurl{v1.bpmn} & \nolinkurl{v1.json} & \texttt{v1.runtime.}\newline\texttt{json} & \texttt{v1.data.}\newline\texttt{json} \\
-P2 : réapprovisionnement & \nolinkurl{v1.bpmn} & \nolinkurl{v1.json} & \texttt{v1.runtime.}\newline\texttt{json} & \texttt{v1.data.}\newline\texttt{json} \\
-P3 : réclamation & \nolinkurl{v1.bpmn} & \nolinkurl{v1.json} & \texttt{v1.runtime.}\newline\texttt{json} & \texttt{v1.data.}\newline\texttt{json} \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-%\subsection{État des processus déployés dans ProOWeb}
-
-%Après import et déploiement, les trois processus du cas d'étude apparaissent dans le workspace généré comme des versions de processus utilisables par le runtime. Pour chacun d'eux, ProOWeb a conservé le BPMN d'origine, la spécification transformée, le contrat runtime et le contrat de données. Cette matérialisation est importante, car elle montre que le cas d'étude ne se limite pas à une description textuelle : chaque processus possède une représentation exploitable par l'application générée.
-
-%\begin{table}[H]
-%\centering
-%\caption{État des processus déployés dans le workspace ProOWeb}
-%\label{tab:chap4-etat-processus-deployes}
-%\begin{tabularx}{\textwidth}{p{3.0cm}p{1.6cm}p{2.2cm}p{2.6cm}X}
-%\toprule
-%\textbf{Processus} & \textbf{Statut} & \textbf{Activités} & \textbf{Données partagées} & \textbf{Rôles de démarrage et de suivi} \\
-%\midrule
-%Commande client & Déployé & 12 manuelles & 4 entités & Démarrage par \texttt{CLIENT} ; suivi par \texttt{ADMINISTRATEUR} et \texttt{SERVICE\_COMMERCIAL}. \\
-%Réapprovisionnement du stock & Déployé & 10 manuelles, 1 automatique & 3 entités & Démarrage par \texttt{ADMINISTRATEUR} ou \texttt{GESTIONNAIRE\_STOCK} ; suivi par \texttt{ADMINISTRATEUR} et \texttt{RESPONSABLE\_ACHATS}. \\
-%Réclamation de produit & Déployé & 15 manuelles & 4 entités & Démarrage par \texttt{CLIENT} ; suivi par \texttt{ADMINISTRATEUR}, \texttt{SERVICE\_CLIENT} et \texttt{SERVICE\_COMMERCIAL}. \\
-%\bottomrule
-%\end{tabularx}
-%\end{table}
-
-\subsection{Application web métier générée}
-
-À partir des trois processus et de leurs spécifications, ProOWeb produit une application web métier unique pour l'organisation de commerce électronique. L'utilisateur ne voit pas trois applications séparées. Il accède à un même environnement dans lequel les commandes, les besoins de stock, les réclamations, les tâches et les vues de suivi sont organisés selon son rôle.
-Les images suivantes présentent quelques interfaces de l'application générée.
+La commande client est modélisée dans le fichier
+\nolinkurl{Commande_Client.bpmn}. Le processus réunit trois
+acteurs, représentés par les \textit{lanes} Client, Service commercial et
+Gestionnaire de stock. Il comprend un événement de début, douze tâches
+utilisateur, deux passerelles exclusives et trois événements de fin. La première
+passerelle décide si la commande est recevable ; la seconde vérifie la
+disponibilité du stock. Les flux de séquence relient ces éléments et conduisent
+respectivement vers la confirmation, l'annulation ou la mise en attente. BPMN
+décrit ainsi l'ordre des activités, les responsabilités et les décisions du
+processus.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{Chap4/images/image6.JPG}
-\caption{Portail de connexion à l'application \texttt{E-commerce\_Application}}
-\label{fig:chap4-portail-connexion}
+\includegraphics[width=0.75\textwidth]{Chap4/images/modelisatio_commande_client.JPG}
+\caption{Modélisation du processus de commande client dans ProOWeb}
+\label{fig:chap4-preuve-bpmn-commande}
 \end{figure}
+
+\subsection{Enrichissement du BPMN avec \textit{spec-v1}}
+
+Le BPMN est complété par le fichier
+\nolinkurl{commande-client.spec-v1.json}. Cet enrichissement suit le
+modèle grammatical défini par l'équation
+\ref{eq:chap3-modele-grammatical-specv1} :
+$G_{\mathrm{spec}}=(p,v,R,S,M,A,D,C)$. La figure suivante illustre cette
+spécification pour l'activité « Passer la commande ».
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Chap4/images/spec1.JPG}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Chap4/images/spec2.JPG}
+\end{minipage}
+\caption{Spécification ajoutée à l'activité « Passer la commande »}
+\label{fig:chap4-preuve-spec-commande}
+\end{figure}
+
+\subsection{Analyse et validation}
+
+ProOWeb analyse conjointement le BPMN et la spécification avant de poursuivre.
+Il vérifie que l'identifiant du processus correspond, que chaque activité
+enrichie existe dans le diagramme et que les codes de rôles respectent le
+format attendu. Il contrôle également les sources d'entrée, les sorties, les
+destinations des mappings, la présence des règles de visibilité et les
+références aux entités partagées. Une tâche manuelle doit notamment posséder au
+moins un rôle candidat. Lorsqu'une erreur bloquante est détectée, la construction
+des contrats est interrompue ; la génération ne part donc pas d'un couple de
+modèles incohérent.
+
+Le listing~\ref{lst:chap4-validation-commande} reproduit le rapport obtenu en
+appliquant le validateur de ProOWeb au bloc \texttt{specification} de
+\texttt{v1.json}, avec le BPMN déployé \texttt{v1.bpmn} et le mode strict. Les
+valeurs correspondent à la version~1 présente dans le workspace.
+
+\begin{lstlisting}[caption={Résultat de la validation BPMN--spec-v1 de la commande client},label={lst:chap4-validation-commande}]
+Action: specification/validate
+Model: commande-client
+Version: 1
+Schema version: 1
+Activities: 12
+Manual activities: 12
+Automatic activities: 0
+Validation: valid
+Errors: 0
+Warnings: 0
+\end{lstlisting}
+
+Ce résultat atteste que les douze activités détectées dans le BPMN disposent
+d'une représentation acceptée par le validateur et qu'aucune erreur ni aucun
+avertissement n'est produit pour cette version. Une capture d'interface pourra
+montrer les sélecteurs \texttt{commande-client} et version~1, le bouton
+\og Validate spec \fg{} et le message \og Specification validation passed (0
+errors, 0 warnings) \fg{}. Le contrôle de l'existence effective des rôles dans
+un annuaire organisationnel externe ne fait toutefois pas partie de ce résultat.
+
+\subsection{Construction du modèle pivot}
+
+Après validation, la transformation M2M rassemble les informations des deux
+modèles dans le pivot ProOWeb. Le \textit{ProcessModel} porte l'identité et la
+version du processus. Les \textit{ActivityModel} représentent ses tâches ; les
+\textit{RolePolicy} conservent l'affectation et la visibilité ; les
+\textit{FormModel} décrivent les données attendues et produites. Le
+\textit{RuntimeContract} organise les nœuds et les transitions, tandis que le
+\textit{DataContract} formalise les mappings, le stockage et les données
+partagées. Les \textit{ArtifactTrace} maintiennent enfin le lien entre les
+éléments sources et les artefacts qui seront générés. Cette représentation
+intermédiaire évite aux générateurs de manipuler directement et séparément le
+BPMN et \textit{spec-v1}.
+
+Dans l'implémentation, le pivot est matérialisé par plusieurs contrats plutôt
+que par un fichier JSON unique. Le listing
+\ref{lst:chap4-extrait-pivot-commande} rassemble un extrait du contrat runtime
+et du contrat data de la version~1. Une seule activité est conservée afin de
+faire apparaître la structure sans reproduire les fichiers complets.
+
+\begin{lstlisting}[breaklines=true,caption={Vue synthétique du modèle pivot de la commande client},label={lst:chap4-extrait-pivot-commande}]
+{
+  "processModel": {
+    "modelKey": "commande-client",
+    "versionNumber": 1
+  },
+  "activityModel": {
+    "activityId": "UserTask_AnnulerCommande",
+    "candidateRoles": ["SERVICE_COMMERCIAL"],
+    "assignment": {
+      "mode": "AUTOMATIC",
+      "strategy": "ROLE_QUEUE"
+    },
+    "formModel": {
+      "outputs": ["commande.statut", "commande.motifAnnulation"]
+    }
+  },
+  "runtimeContract": {
+    "transition": {
+      "id": "Flow_05",
+      "source": "UserTask_AnnulerCommande",
+      "target": "UserTask_NotifierAnnulationClient"
+    }
+  },
+  "dataContract": {
+    "storage": "BOTH",
+    "mapping": {
+      "from": "form.commande.statut",
+      "to": "shared.commande.statut"
+    }
+  },
+  "traceSimplifiee": {
+    "sourceBpmn": "UserTask_AnnulerCommande",
+    "contracts": ["v1.runtime.json", "v1.data.json"]
+  }
+}
+\end{lstlisting}
+
+Le bloc \texttt{processModel} identifie la version du processus. Le bloc
+\texttt{activityModel} réunit l'activité, son rôle, son affectation et les
+sorties du formulaire. Le \texttt{runtimeContract} conserve la transition vers
+la notification du client, tandis que le \texttt{dataContract} projette le
+statut saisi vers la donnée partagée \texttt{commande}. Le dernier bloc est une
+trace de lecture simplifiée, reconstruite à partir des identifiants et des
+chemins versionnés ; il ne constitue pas un champ supplémentaire du contrat
+brut. Ces informations donnent aux générateurs une entrée stable pour produire
+les services, les formulaires et les règles de progression.
+
+Le listing constitue ici la preuve textuelle attendue pour le pivot. Lors de la
+mise en forme finale, il pourra être complété par une capture montrant les
+fichiers \texttt{v1.runtime.json} et \texttt{v1.data.json} sous la même clé de
+processus, sans reproduire une seconde fois leur contenu.
+
+\subsection{Génération des artefacts applicatifs}
+
+La transformation M2T projette le modèle pivot dans le workspace. Pour la
+commande client, ProOWeb conserve le BPMN dans \texttt{v1.bpmn} et la
+spécification normalisée dans \texttt{v1.json}. Il produit parallèlement les
+contrats runtime et data propres à cette version. Ces contrats alimentent les
+contrôleurs et services backend, les composants frontend, les formulaires d'activité, les
+règles d'accès, les fichiers de configuration et les catalogues communs. Le
+manifeste enregistre les chemins et les empreintes des fichiers gérés afin de
+soutenir les régénérations ultérieures. Le résultat constitue un socle
+applicatif organisé, destiné à être vérifié et complété par le développeur.
+
+L'arborescence suivante reprend les artefacts effectivement observés dans le
+workspace. Elle est limitée aux fichiers utiles à la commande client ; les
+chemins intermédiaires ont été raccourcis, sans modifier les noms des fichiers.
+
+\begin{lstlisting}[breaklines=true,caption={Arborescence simplifiée des artefacts générés pour la commande client},label={lst:chap4-arborescence-commande}]
+E-commerce_Application/
+|-- .prooweb-managed.json
+`-- src/
+    |-- backend/springboot/
+    |   |-- prooweb-application/src/main/resources/
+    |   |   |-- processes/
+    |   |   |   |-- runtime-catalog.json
+    |   |   |   |-- data-catalog.json
+    |   |   |   `-- commande-client/
+    |   |   |       |-- v1.bpmn
+    |   |   |       |-- v1.json
+    |   |   |       |-- v1.runtime.json
+    |   |   |       `-- v1.data.json
+    |   |   `-- db/changelog/changesets/
+    |   |       |-- 900-process-shared-data.generated.yaml
+    |   |       `-- 901-process-lane-roles.generated.yaml
+    |   |-- system/system-domain/.../
+    |   |   `-- CommandeClientProcessV1Spec.java
+    |   |-- system/system-application/.../
+    |   |   `-- ProcessRuntimeEngineService.java
+    |   |-- system/system-infrastructure/.../
+    |   |   |-- SharedCommandeEntity.java
+    |   |   `-- SharedCommandeJpaRepository.java
+    |   `-- gateway/.../ProcessRuntimeController.java
+    `-- frontend/web/react/
+        |-- src/modules/processes/
+        |   |-- generatedProcessRegistry.js
+        |   `-- commande-client/
+        |       |-- ProcessCommandeClientV1Descriptor.js
+        |       |-- ProcessCommandeClientV1RuntimeContract.js
+        |       |-- ProcessCommandeClientV1DataContract.js
+        |       `-- GeneratedCommandeClientV1ProcessPage.jsx
+        `-- cypress/e2e/process-commande-client-v1.cy.js
+\end{lstlisting}
+
+Cette arborescence montre que la transformation M2T relie les ressources
+versionnées, le runtime backend, la persistance des données partagées, les
+composants React et le scénario de test propre au processus. Une capture de
+l'explorateur de fichiers pourra compléter ce listing si elle rend visibles ces
+mêmes chemins.
+
+\subsection{Fonctionnement dans l'application web générée}
+
+Dans l'application générée, l'utilisateur authentifié accède d'abord au
+catalogue des processus autorisés pour son rôle. Un client peut sélectionner la
+commande client, créer une instance et ouvrir le formulaire associé à la tâche
+\og Passer la commande \fg{}. Après validation, les données sont transmises
+selon les mappings du contrat data et la tâche suivante devient disponible pour
+le service commercial. La progression se poursuit ensuite selon les décisions
+de recevabilité et de disponibilité définies dans le BPMN. Chaque acteur ne voit
+que les tâches et les données autorisées par les politiques issues de
+\textit{spec-v1}, tandis que les rôles de suivi peuvent consulter l'état de
+l'instance.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{Chap4/images/image7.JPG}
-\caption{Tableau de bord pour un utilisateur connecté avec le rôle \texttt{CLIENT}}
-\label{fig:chap4-dashboard-client}
+\caption{Accès à la liste des processus et démarrage de la commande client}
+\label{fig:chap4-commande-liste-processus}
 \end{figure}
+
+Cette interface présente les processus accessibles à l'utilisateur selon son rôle.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{Chap4/images/image9.JPG}
-\caption{Tableau de bord pour un utilisateur connecté avec le rôle \texttt{GESTIONNAIRE\_STOCK}}
-\label{fig:chap4-dashboard-stock}
+\includegraphics[width=0.75\textwidth]{Chap4/images/image12.JPG}
+\caption{Formulaire associé à l'activité « Passer la commande »}
+\label{fig:chap4-commande-formulaire}
 \end{figure}
+
+Le formulaire recueille les informations du client, les produits et les quantités avant le démarrage de l'instance. Il matérialise les entrées définies dans \textit{spec-v1}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{Chap4/images/image10.JPG}
-\caption{Tableau de bord pour un utilisateur connecté avec le rôle \texttt{SERVICE\_COMMERCIAL}}
-\label{fig:chap4-dashboard-commercial}
+\includegraphics[width=0.75\textwidth]{Chap4/images/image11.JPG}
+\caption{Transition vers l'activité de vérification affectée au Service commercial}
+\label{fig:chap4-commande-transition}
 \end{figure}
-%Cette unité applicative constitue un résultat important du cas pratique. Les processus restent distincts du point de vue métier, mais ils partagent un socle commun : authentification, rôles, registre de processus, listes de tâches, historique, supervision et données métier communes. C'est précisément ce comportement qui permet de parler d'une application organisationnelle, et non d'un simple générateur de formulaires.
 
-%\begin{table}[H]
-%\centering
-%\caption{Fonctions observées dans l'application générée}
-%\label{tab:chap4-fonctions-observees}
-%\begin{tabularx}{\textwidth}{p{4.0cm}X}
-%\toprule
-%\textbf{Fonction observée} & \textbf{Manifestation dans le cas pratique} \\
-%\midrule
-%Registre des processus & Les processus de commande, de réapprovisionnement et de réclamation sont accessibles dans le même environnement applicatif. \\
-%Listes de tâches & Les tâches visibles dépendent du rôle connecté : service commercial, stock, achats ou service client. \\
-%Formulaires d'activité & Les champs affichés correspondent aux données de commande, produit, stock ou réclamation déclarées dans \textit{spec-v1}. \\
-%Progression des instances & Les statuts changent selon les transitions issues des modèles BPMN propres à chaque processus. \\
-%Supervision & Les commandes, réapprovisionnements, réclamations et décisions restent consultables par les rôles autorisés. \\
-%\bottomrule
-%\end{tabularx}
-%\end{table}
+Cette vue présente les instances en cours et les tâches accessibles au Service commercial. Elle illustre l'application des droits de démarrage et d'accès associés au rôle.
 
-\mySection{Évaluation de ProOWeb}{}
-\label{sec:chap4-evaluation}
-
-\subsection{Méthode d'évaluation}
-
-L'évaluation menée dans ce chapitre est fonctionnelle et qualitative. Elle vérifie si ProOWeb permet de générer une application web métier exploitable à partir de plusieurs processus d'une même organisation. Les critères retenus découlent directement des objectifs du chapitre précédent : exploiter BPMN et \textit{spec-v1}, produire des artefacts applicatifs cohérents, préserver la traçabilité et permettre une évolution contrôlée.
-
-La méthode croise l'inspection des artefacts produits et l'observation de l'interface générée. Les fichiers BPMN conservés, les contrats \texttt{runtime}, les contrats \texttt{data}, les catalogues globaux et les classes Java permettent de vérifier ce que ProOWeb a effectivement écrit. Les trois scénarios Cypress complètent cette inspection en exerçant le \textit{Process Runtime Workbench}. Ils interceptent toutefois les appels à l'API et simulent l'état du backend : ils valident donc l'intégration de l'interface avec le protocole runtime sur un préfixe nominal, et non l'exécution complète du backend, de PostgreSQL ou de toutes les branches BPMN.
-
-\begin{table}[H]
+\begin{figure}[H]
 \centering
-\caption{Critères retenus pour l'évaluation}
-\label{tab:chap4-criteres-evaluation}
-\begin{tabularx}{\textwidth}{p{3.1cm}p{4.8cm}X}
-\toprule
-\textbf{Critère} & \textbf{Question posée} & \textbf{Mode d'observation} \\
-\midrule
-Complétude fonctionnelle & Les éléments nécessaires au runtime de processus sont-ils produits ? & Analyse des ressources générées, des contrats et des classes backend. \\
-Cohérence BPMN-application & Les activités du modèle apparaissent-elles dans les contrats et les parcours testés ? & Comparaison entre BPMN, contrats \texttt{runtime} et tests Cypress. \\
-Gestion des rôles & Les rôles de démarrage, de suivi et d'affectation sont-ils projetés ? & Analyse des contrats et des options de démarrage exposées au runtime. \\
-Gestion des données & Les données partagées et les sorties d'activités sont-elles prises en compte ? & Vérification des contrats \texttt{data} et des entités partagées. \\
-Capacité multi-processus & L'application regroupe-t-elle plusieurs processus dans un même environnement ? & Observation du catalogue, des ressources déployées et des tests par processus. \\
-Évolution contrôlée & Les fichiers générés restent-ils identifiables après déploiement ? & Analyse du manifeste et des ressources suivies. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\includegraphics[width=0.75\textwidth]{Chap4/images/image13.JPG}
+\caption{Suivi de l'instance de commande }
+\label{fig:chap4-commande-suivi}
+\end{figure}
 
-\subsection{Résultats observés}
+Le détail de l'instance restitue son état et la chronologie des tâches et passerelles traversées. Il rend observable la progression du processus exécuté par le runtime.
 
-Les résultats observés se situent à deux niveaux. Au niveau du framework, ProOWeb lit les modèles, valide les informations, produit les contrats et écrit les artefacts du projet cible. Au niveau de l'application générée, les utilisateurs disposent d'un environnement de runtime dans lequel une instance de processus peut être créée, suivie et terminée selon les tâches exposées.
+% \mySection{Évaluation de ProOWeb}{}
+% \label{sec:chap4-evaluation}
 
-Le tableau suivant synthétise les observations réalisées sur le cas pratique. Il ne prétend pas mesurer toutes les qualités possibles d'un système d'information ; il montre ce que la mise en œuvre permet déjà de vérifier par rapport aux objectifs du mémoire.
+% \subsection{Méthode d'évaluation}
 
-\begin{table}[H]
-\centering
-\caption{Synthèse des résultats observés sur le cas d'étude}
-\label{tab:chap4-resultats-observes}
-\begin{tabularx}{\textwidth}{p{3.1cm}p{4.2cm}X}
-\toprule
-\textbf{Élément évalué} & \textbf{Résultat observé} & \textbf{Interprétation} \\
-\midrule
-Ressources de processus & Les trois processus disposent chacun d'un BPMN, d'une spécification, d'un contrat runtime et d'un contrat data. & ProOWeb conserve le lien entre la source métier et les artefacts projetés. \\
-Catalogue global & Les catalogues runtime et data regroupent les versions déployées. & L'application générée peut raisonner sur plusieurs processus dans un même socle. \\
-Backend généré & Le registre, les spécifications Java, des gestionnaires automatiques, des entités et des dépôts de données partagées sont présents côté Spring Boot. & Les processus ne restent pas confinés à des fichiers de configuration. \\
-Runtime frontend & Les scénarios Cypress exercent le démarrage et l'achèvement de tâches dans le \textit{Process Runtime Workbench}, avec réponses d'API simulées. & Le protocole attendu par le frontend est vérifié ; l'intégration au backend réel reste à démontrer séparément. \\
-Tests e2e frontend & Trois fichiers ciblent respectivement la commande, le réapprovisionnement et la réclamation. & La présence de scénarios reproductibles est établie, mais leur couverture se limite à deux ou trois activités par processus. \\
-Manifeste & Les fichiers produits restent identifiés comme éléments gérés par ProOWeb. & La régénération peut être analysée au lieu d'être subie. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% L'évaluation menée dans ce chapitre est fonctionnelle et qualitative. Elle vérifie si ProOWeb permet de générer une application web métier exploitable à partir de plusieurs processus d'une même organisation. Les critères retenus découlent directement des objectifs du chapitre précédent : exploiter BPMN et \textit{spec-v1}, produire des artefacts applicatifs cohérents, préserver la traçabilité et permettre une évolution contrôlée.
 
-La matrice \ref{tab:chap4-objectifs-preuves} relie enfin les objectifs
-opérationnels du mémoire aux réalisations inspectées. Elle évite de confondre
-la présence d'un mécanisme avec une validation exhaustive de son comportement.
+% La méthode croise l'inspection des artefacts produits et l'observation de l'interface générée. Les fichiers BPMN conservés, les contrats \texttt{runtime}, les contrats \texttt{data}, les catalogues globaux et les classes Java permettent de vérifier ce que ProOWeb a effectivement écrit. Les trois scénarios Cypress complètent cette inspection en exerçant le \textit{Process Runtime Workbench}. Ils interceptent toutefois les appels à l'API et simulent l'état du backend : ils valident donc l'intégration de l'interface avec le protocole runtime sur un préfixe nominal, et non l'exécution complète du backend, de PostgreSQL ou de toutes les branches BPMN.
 
-\begin{table}[H]
-\centering
-\caption{Matrice objectifs, réalisations et preuves du cas d'étude}
-\label{tab:chap4-objectifs-preuves}
-\begin{tabularx}{\textwidth}{p{3.0cm}p{4.2cm}X}
-\toprule
-\textbf{Objectif} & \textbf{Réalisation dans ProOWeb} & \textbf{Preuve inspectée et portée} \\
-\midrule
-Enrichir BPMN sans le surcharger & Association BPMN--\textit{spec-v1} et validation croisée & Trois paires de sources cohérentes ; contrats normalisés produits pour chaque processus. \\
-Stabiliser les transformations & Contrats runtime/data et catalogues globaux & Douze ressources propres aux processus et trois catalogues globaux présents dans le workspace. \\
-Générer un socle applicatif & Backend Spring Boot, frontend React, données, sécurité et scripts & Arborescence, sources Java/React, ressources Liquibase et scripts inspectés ; comportement de production non évalué. \\
-Conserver la traçabilité & Clés de processus, versions, contrats et manifeste & Correspondance par clé et version vérifiée ; manifeste doté de chemins, propriétaires, catégories et empreintes. \\
-Soutenir plusieurs processus & Registre et catalogues communs, trois ensembles de ressources & Coexistence des trois processus dans un même workspace ; interactions inter-processus non testées de bout en bout. \\
-Préparer l'évolution & Manifeste, empreintes et mécanismes d'extension & Mécanismes présents dans le code et le manifeste ; campagne de régénération après personnalisation à compléter. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% \begin{table}[H]
+% \centering
+% \caption{Critères retenus pour l'évaluation}
+% \label{tab:chap4-criteres-evaluation}
+% \begin{tabularx}{\textwidth}{p{3.1cm}p{4.8cm}X}
+% \toprule
+% \textbf{Critère} & \textbf{Question posée} & \textbf{Mode d'observation} \\
+% \midrule
+% Complétude fonctionnelle & Les éléments nécessaires au runtime de processus sont-ils produits ? & Analyse des ressources générées, des contrats et des classes backend. \\
+% Cohérence BPMN-application & Les activités du modèle apparaissent-elles dans les contrats et les parcours testés ? & Comparaison entre BPMN, contrats \texttt{runtime} et tests Cypress. \\
+% Gestion des rôles & Les rôles de démarrage, de suivi et d'affectation sont-ils projetés ? & Analyse des contrats et des options de démarrage exposées au runtime. \\
+% Gestion des données & Les données partagées et les sorties d'activités sont-elles prises en compte ? & Vérification des contrats \texttt{data} et des entités partagées. \\
+% Capacité multi-processus & L'application regroupe-t-elle plusieurs processus dans un même environnement ? & Observation du catalogue, des ressources déployées et des tests par processus. \\
+% Évolution contrôlée & Les fichiers générés restent-ils identifiables après déploiement ? & Analyse du manifeste et des ressources suivies. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
 
-\begin{table}[H]
-\centering
-\caption{Portée des trois scénarios Cypress générés}
-\label{tab:chap4-parcours-cypress}
-\begin{tabularx}{\textwidth}{p{3.8cm}p{4.1cm}X}
-\toprule
-\textbf{Processus ciblé} & \textbf{Activités couvertes par le scénario} & \textbf{Résultat contrôlé dans le code du test} \\
-\midrule
-Commande client & Passer la commande, puis vérifier ses informations & État \texttt{COMPLETED}, marqueur \texttt{INSTANCE\_COMPLETED} et présence des deux identifiants d'activité. \\
-Réapprovisionnement du stock & Identifier le stock faible, créer puis examiner la demande & État final et présence des trois identifiants d'activité dans la chronologie simulée. \\
-Réclamation de produit & Déposer, qualifier puis vérifier la commande concernée & État final et présence des trois identifiants d'activité dans la chronologie simulée. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% \subsection{Résultats observés}
 
-Ces scénarios ont une utilité précise : ils détectent une rupture entre les
-composants React, les routes attendues et la forme des échanges du runtime. En
-revanche, l'usage de \texttt{cy.intercept} pour simuler toutes les réponses
-empêche de les considérer comme une preuve d'intégration complète.
+% Les résultats observés se situent à deux niveaux. Au niveau du framework, ProOWeb lit les modèles, valide les informations, produit les contrats et écrit les artefacts du projet cible. Au niveau de l'application générée, les utilisateurs disposent d'un environnement de runtime dans lequel une instance de processus peut être créée, suivie et terminée selon les tâches exposées.
 
-Une nouvelle exécution a été tentée le 27 juin 2026 avec la commande
-\texttt{npm run test:e2e:ci}. L'environnement utilisait Node.js
-\texttt{v24.15.0} et le projet déclarait Cypress \texttt{13.17.0} ; Electron
-était le navigateur prévu. Le lanceur a démarré Vite, puis s'est arrêté avant
-l'exécution des scénarios, car le binaire Cypress~13.17.0 n'était pas présent
-dans le cache local. Aucun navigateur n'a donc été lancé. La commande s'est terminée avec le code~1 après environ
-13~secondes : aucun test n'a donc été exécuté, et il serait incorrect d'annoncer
-un nombre de succès ou d'échecs fonctionnels. Cette tentative fournit un
-protocole précis, mais pas encore la preuve d'une campagne réussie. Le rapport
-brut d'une exécution après installation du binaire requis reste à joindre.
+% Le tableau suivant synthétise les observations réalisées sur le cas pratique. Il ne prétend pas mesurer toutes les qualités possibles d'un système d'information ; il montre ce que la mise en œuvre permet déjà de vérifier par rapport aux objectifs du mémoire.
 
-\subsection{Analyse de la capacité multi-processus}
+% \begin{table}[H]
+% \centering
+% \caption{Synthèse des résultats observés sur le cas d'étude}
+% \label{tab:chap4-resultats-observes}
+% \begin{tabularx}{\textwidth}{p{3.1cm}p{4.2cm}X}
+% \toprule
+% \textbf{Élément évalué} & \textbf{Résultat observé} & \textbf{Interprétation} \\
+% \midrule
+% Ressources de processus & Les trois processus disposent chacun d'un BPMN, d'une spécification, d'un contrat runtime et d'un contrat data. & ProOWeb conserve le lien entre la source métier et les artefacts projetés. \\
+% Catalogue global & Les catalogues runtime et data regroupent les versions déployées. & L'application générée peut raisonner sur plusieurs processus dans un même socle. \\
+% Backend généré & Le registre, les spécifications Java, des gestionnaires automatiques, des entités et des dépôts de données partagées sont présents côté Spring Boot. & Les processus ne restent pas confinés à des fichiers de configuration. \\
+% Runtime frontend & Les scénarios Cypress exercent le démarrage et l'achèvement de tâches dans le \textit{Process Runtime Workbench}, avec réponses d'API simulées. & Le protocole attendu par le frontend est vérifié ; l'intégration au backend réel reste à démontrer séparément. \\
+% Tests e2e frontend & Trois fichiers ciblent respectivement la commande, le réapprovisionnement et la réclamation. & La présence de scénarios reproductibles est établie, mais leur couverture se limite à deux ou trois activités par processus. \\
+% Manifeste & Les fichiers produits restent identifiés comme éléments gérés par ProOWeb. & La régénération peut être analysée au lieu d'être subie. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
 
-La capacité multi-processus occupe une place centrale dans cette évaluation, car elle touche directement à l'ambition de ProOWeb. Une application métier n'est pas seulement une suite d'écrans attachés à une procédure. Elle doit porter une partie de la vie de l'organisation, avec ses acteurs, ses données partagées et ses décisions qui se répondent d'un processus à l'autre.
+% La matrice \ref{tab:chap4-objectifs-preuves} relie enfin les objectifs
+% opérationnels du mémoire aux réalisations inspectées. Elle évite de confondre
+% la présence d'un mécanisme avec une validation exhaustive de son comportement.
 
-Dans le cas d'étude, les trois processus ne sont pas juxtaposés au hasard. La commande client consulte le stock, le réapprovisionnement décrit sa remise à niveau et la réclamation se réfère à une commande et à un produit. Chaque processus conserve son déroulement, ses activités et ses transitions, tandis que le workspace partage le registre, les catalogues et les composants du runtime. L'inspection établit cette coexistence technique et la réutilisation de concepts métier communs ; elle ne démontre pas encore qu'une instance de commande déclenche automatiquement une instance de réapprovisionnement ni que les trois processus partagent, en production, une transaction de données unique.
+% \begin{table}[H]
+% \centering
+% \caption{Matrice objectifs, réalisations et preuves du cas d'étude}
+% \label{tab:chap4-objectifs-preuves}
+% \begin{tabularx}{\textwidth}{p{3.0cm}p{4.2cm}X}
+% \toprule
+% \textbf{Objectif} & \textbf{Réalisation dans ProOWeb} & \textbf{Preuve inspectée et portée} \\
+% \midrule
+% Enrichir BPMN sans le surcharger & Association BPMN--\textit{spec-v1} et validation croisée & Trois paires de sources cohérentes ; contrats normalisés produits pour chaque processus. \\
+% Stabiliser les transformations & Contrats runtime/data et catalogues globaux & Douze ressources propres aux processus et trois catalogues globaux présents dans le workspace. \\
+% Générer un socle applicatif & Backend Spring Boot, frontend React, données, sécurité et scripts & Arborescence, sources Java/React, ressources Liquibase et scripts inspectés ; comportement de production non évalué. \\
+% Conserver la traçabilité & Clés de processus, versions, contrats et manifeste & Correspondance par clé et version vérifiée ; manifeste doté de chemins, propriétaires, catégories et empreintes. \\
+% Soutenir plusieurs processus & Registre et catalogues communs, trois ensembles de ressources & Coexistence des trois processus dans un même workspace ; interactions inter-processus non testées de bout en bout. \\
+% Préparer l'évolution & Manifeste, empreintes et mécanismes d'extension & Mécanismes présents dans le code et le manifeste ; campagne de régénération après personnalisation à compléter. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
 
-Ce résultat soutient donc une capacité multi-processus au sens de la génération et du déploiement dans un socle commun. Les processus restent identifiables sans être enfermés dans trois projets séparés. Une validation plus forte de l'orchestration entre processus exigerait toutefois des scénarios d'intégration qui créent et relient plusieurs instances sur un backend et une base de données réels.
+% \begin{table}[H]
+% \centering
+% \caption{Portée des trois scénarios Cypress générés}
+% \label{tab:chap4-parcours-cypress}
+% \begin{tabularx}{\textwidth}{p{3.8cm}p{4.1cm}X}
+% \toprule
+% \textbf{Processus ciblé} & \textbf{Activités couvertes par le scénario} & \textbf{Résultat contrôlé dans le code du test} \\
+% \midrule
+% Commande client & Passer la commande, puis vérifier ses informations & État \texttt{COMPLETED}, marqueur \texttt{INSTANCE\_COMPLETED} et présence des deux identifiants d'activité. \\
+% Réapprovisionnement du stock & Identifier le stock faible, créer puis examiner la demande & État final et présence des trois identifiants d'activité dans la chronologie simulée. \\
+% Réclamation de produit & Déposer, qualifier puis vérifier la commande concernée & État final et présence des trois identifiants d'activité dans la chronologie simulée. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
 
-\subsection{Apports observés}
+% Ces scénarios ont une utilité précise : ils détectent une rupture entre les
+% composants React, les routes attendues et la forme des échanges du runtime. En
+% revanche, l'usage de \texttt{cy.intercept} pour simuler toutes les réponses
+% empêche de les considérer comme une preuve d'intégration complète.
 
-L'évaluation met surtout en évidence la continuité obtenue entre la modélisation et l'application produite. Les activités décrites dans les modèles ne restent pas au niveau de la documentation : elles se retrouvent dans les tâches, les vues, les actions de traitement et les transitions du runtime. Cette continuité réduit le risque de voir le logiciel s'éloigner progressivement du processus métier qui l'a justifié.
+% Une nouvelle exécution a été tentée le 27 juin 2026 avec la commande
+% \texttt{npm run test:e2e:ci}. L'environnement utilisait Node.js
+% \texttt{v24.15.0} et le projet déclarait Cypress \texttt{13.17.0} ; Electron
+% était le navigateur prévu. Le lanceur a démarré Vite, puis s'est arrêté avant
+% l'exécution des scénarios, car le binaire Cypress~13.17.0 n'était pas présent
+% dans le cache local. Aucun navigateur n'a donc été lancé. La commande s'est terminée avec le code~1 après environ
+% 13~secondes : aucun test n'a donc été exécuté, et il serait incorrect d'annoncer
+% un nombre de succès ou d'échecs fonctionnels. Cette tentative fournit un
+% protocole précis, mais pas encore la preuve d'une campagne réussie. Le rapport
+% brut d'une exécution après installation du binaire requis reste à joindre.
 
-\textit{spec-v1} joue également un rôle important. Les rôles, les données manipulées, les règles de visibilité et les sorties d'activités ne sont pas ajoutés tardivement dans le code ; ils sont déclarés avant la génération et deviennent des éléments exploitables par ProOWeb. Le projet généré gagne ainsi en lisibilité, car les choix métier restent rattachés à une source identifiable.
+% \subsection{Analyse de la capacité multi-processus}
 
-Un autre apport tient à la structure du résultat obtenu. Le workspace généré n'est pas une accumulation de fichiers difficiles à relier. Il possède une organisation backend/frontend, des contrats de processus, des ressources de données, des scripts de vérification et un manifeste de fichiers gérés. Cette structuration facilite la reprise par un développeur et prépare les évolutions futures du projet.
+% La capacité multi-processus occupe une place centrale dans cette évaluation, car elle touche directement à l'ambition de ProOWeb. Une application métier n'est pas seulement une suite d'écrans attachés à une procédure. Elle doit porter une partie de la vie de l'organisation, avec ses acteurs, ses données partagées et ses décisions qui se répondent d'un processus à l'autre.
 
-\subsection{Limites observées}
+% Dans le cas d'étude, les trois processus ne sont pas juxtaposés au hasard. La commande client consulte le stock, le réapprovisionnement décrit sa remise à niveau et la réclamation se réfère à une commande et à un produit. Chaque processus conserve son déroulement, ses activités et ses transitions, tandis que le workspace partage le registre, les catalogues et les composants du runtime. L'inspection établit cette coexistence technique et la réutilisation de concepts métier communs ; elle ne démontre pas encore qu'une instance de commande déclenche automatiquement une instance de réapprovisionnement ni que les trois processus partagent, en production, une transaction de données unique.
 
-ProOWeb présente aussi des limites. La qualité des modèles d'entrée reste déterminante : si le BPMN est ambigu ou si la spécification \textit{spec-v1} est incomplète, la génération ne peut pas produire une application correcte. Le framework peut signaler des incohérences, mais il ne remplace pas l'analyse métier. Dans ce cas d'étude, la présence des sources, des contrats, des classes et des catalogues est entièrement vérifiée. La progression réelle sur toutes les branches, la persistance PostgreSQL, la sécurité, la charge et la régénération après modification manuelle ne sont, en revanche, que partiellement validées ou restent à expérimenter.
+% Ce résultat soutient donc une capacité multi-processus au sens de la génération et du déploiement dans un socle commun. Les processus restent identifiables sans être enfermés dans trois projets séparés. Une validation plus forte de l'orchestration entre processus exigerait toutefois des scénarios d'intégration qui créent et relient plusieurs instances sur un backend et une base de données réels.
 
-Certaines règles très spécifiques doivent également être traitées avec prudence. Dans une organisation de commerce électronique réelle, des décisions peuvent dépendre du transporteur, du prestataire de paiement, des promotions, des garanties commerciales ou des accords fournisseurs. Ces comportements nécessitent parfois une extension manuelle. L'évaluation menée ici garde elle aussi un périmètre limité : les tests Cypress vérifient des préfixes de parcours du \textit{Process Runtime Workbench} avec un backend simulé. Ils sont utiles pour contrôler l'enchaînement frontend/runtime, mais ils ne remplacent pas une campagne complète d'intégration, de charge, de sécurité et de persistance sur une infrastructure réelle.
+% \subsection{Apports observés}
 
-Enfin, l'application générée reste un socle. Elle réduit la distance entre le modèle métier et le projet applicatif, mais elle ne supprime pas le rôle du développeur. Dans un projet réel, une équipe devra encore enrichir les tests, ajuster l'expérience utilisateur, raccorder les services externes et vérifier les règles métier propres à son environnement.
+% L'évaluation met surtout en évidence la continuité obtenue entre la modélisation et l'application produite. Les activités décrites dans les modèles ne restent pas au niveau de la documentation : elles se retrouvent dans les tâches, les vues, les actions de traitement et les transitions du runtime. Cette continuité réduit le risque de voir le logiciel s'éloigner progressivement du processus métier qui l'a justifié.
 
-Avant une diffusion définitive du mémoire, quatre preuves renforceraient le
-protocole expérimental : (1) une copie horodatée de l'arborescence des ressources
-de processus ; (2) le rapport brut d'une exécution des trois scénarios Cypress ;
-(3) un test d'intégration reliant le frontend, le backend et PostgreSQL sans
-interception des API ; (4) un essai de régénération après modification d'un
-fichier personnalisé, accompagné du diff et du rapport de migration. Les deux
-premières consolideraient les observations déjà décrites ; les deux dernières
-étendraient la portée de la validation.
+% \textit{spec-v1} joue également un rôle important. Les rôles, les données manipulées, les règles de visibilité et les sorties d'activités ne sont pas ajoutés tardivement dans le code ; ils sont déclarés avant la génération et deviennent des éléments exploitables par ProOWeb. Le projet généré gagne ainsi en lisibilité, car les choix métier restent rattachés à une source identifiable.
 
-\subsection{Discussion}
+% Un autre apport tient à la structure du résultat obtenu. Le workspace généré n'est pas une accumulation de fichiers difficiles à relier. Il possède une organisation backend/frontend, des contrats de processus, des ressources de données, des scripts de vérification et un manifeste de fichiers gérés. Cette structuration facilite la reprise par un développeur et prépare les évolutions futures du projet.
 
-Les résultats obtenus permettent de situer ProOWeb comme un framework de génération d'applications web métier pilotées par BPMN. Ils étayent, sur le cas e-commerce étudié, la logique défendue au chapitre précédent : BPMN décrit le déroulement métier, \textit{spec-v1} complète les informations applicatives, les contrats intermédiaires stabilisent la génération et le manifeste prépare l'évolution. Sa valeur ne réside pas seulement dans la production de fichiers, mais dans les liens explicites qu'il établit entre processus, rôles, données, interfaces et suivi de génération. La portée de cette conclusion reste celle d'une étude de cas instrumentée, et non d'une généralisation à tout domaine ou à toute construction BPMN.
+% \subsection{Limites observées}
 
-Le cas pratique montre également que la spécification enrichie joue un rôle déterminant. BPMN décrit le déroulement du travail, mais l'application a besoin d'informations supplémentaires. En rendant ces informations explicites dans \textit{spec-v1}, ProOWeb rend la génération plus contrôlable. Cet effort de spécification est le prix à payer pour produire une application métier plus complète qu'une simple maquette d'interface.
+% ProOWeb présente aussi des limites. La qualité des modèles d'entrée reste déterminante : si le BPMN est ambigu ou si la spécification \textit{spec-v1} est incomplète, la génération ne peut pas produire une application correcte. Le framework peut signaler des incohérences, mais il ne remplace pas l'analyse métier. Dans ce cas d'étude, la présence des sources, des contrats, des classes et des catalogues est entièrement vérifiée. La progression réelle sur toutes les branches, la persistance PostgreSQL, la sécurité, la charge et la régénération après modification manuelle ne sont, en revanche, que partiellement validées ou restent à expérimenter.
 
+% Certaines règles très spécifiques doivent également être traitées avec prudence. Dans une organisation de commerce électronique réelle, des décisions peuvent dépendre du transporteur, du prestataire de paiement, des promotions, des garanties commerciales ou des accords fournisseurs. Ces comportements nécessitent parfois une extension manuelle. L'évaluation menée ici garde elle aussi un périmètre limité : les tests Cypress vérifient des préfixes de parcours du \textit{Process Runtime Workbench} avec un backend simulé. Ils sont utiles pour contrôler l'enchaînement frontend/runtime, mais ils ne remplacent pas une campagne complète d'intégration, de charge, de sécurité et de persistance sur une infrastructure réelle.
+
+% Enfin, l'application générée reste un socle. Elle réduit la distance entre le modèle métier et le projet applicatif, mais elle ne supprime pas le rôle du développeur. Dans un projet réel, une équipe devra encore enrichir les tests, ajuster l'expérience utilisateur, raccorder les services externes et vérifier les règles métier propres à son environnement.
+
+% Avant une diffusion définitive du mémoire, quatre preuves renforceraient le
+% protocole expérimental : (1) une copie horodatée de l'arborescence des ressources
+% de processus ; (2) le rapport brut d'une exécution des trois scénarios Cypress ;
+% (3) un test d'intégration reliant le frontend, le backend et PostgreSQL sans
+% interception des API ; (4) un essai de régénération après modification d'un
+% fichier personnalisé, accompagné du diff et du rapport de migration. Les deux
+% premières consolideraient les observations déjà décrites ; les deux dernières
+% étendraient la portée de la validation.
+
+\mySection{Discussion et positionnement}{}
+
+\subsection*{Discussion générale}
+Le cas d'étude e-commerce montre que ProOWeb permet de passer de processus métier exprimés en BPMN à un socle applicatif web structuré. Pour chaque processus étudié, le modèle BPMN est complété par une spécification \texttt{spec-v1}, puis projeté dans des contrats \texttt{runtime} et \texttt{data} avant la génération des artefacts applicatifs. Le résultat ne se limite donc pas à une juxtaposition de fichiers : il matérialise une chaîne cohérente entre le processus métier, son enrichissement, le modèle pivot et le projet logiciel généré. Cette continuité constitue le principal résultat observé dans le périmètre du cas d'étude.
+
+\subsection*{Forces de l'approche}
+La première force de ProOWeb réside dans la continuité qu'il établit entre la modélisation métier et la réalisation logicielle. BPMN conserve la description du déroulement du processus, tandis que \texttt{spec-v1} apporte les rôles, les données, les règles d'affectation, les mappings et les contraintes de visibilité nécessaires à la génération. La validation croisée limite la propagation d'incohérences avant la transformation. Le modèle pivot stabilise ensuite les informations validées dans une représentation commune, exploitée par les transformations \texttt{M2M} et \texttt{M2T}. Les contrats intermédiaires, les traces et le manifeste maintiennent enfin le lien entre les modèles d'entrée et les fichiers produits. Cette organisation rend le socle généré plus lisible, traçable et extensible, tout en laissant au développeur la possibilité de l'adapter aux besoins du projet.
+
+\subsection*{Limites observées et positionnement}
+Ces résultats doivent néanmoins être interprétés dans les limites de l'évaluation menée. Le cas d'étude reste centré sur une organisation e-commerce et ne suffit pas à établir la généralisation de l'approche à tous les domaines métier. Les scénarios Cypress vérifient principalement des parcours frontend dans un environnement contrôlé ; l'utilisation d'interceptions d'API ne démontre pas encore l'intégration complète avec le backend réel, PostgreSQL, les mécanismes de sécurité et la persistance. La qualité du projet généré dépend également de la précision du BPMN et de la spécification \texttt{spec-v1}. Enfin, la préservation du code personnalisé lors de régénérations successives devra être éprouvée sur des évolutions plus importantes. ProOWeb ne se positionne donc ni comme un BPMS classique, ni comme une plateforme low-code généraliste, ni comme un substitut au développeur. Il constitue un framework d'ingénierie dirigée par les modèles destiné à réduire l'écart entre le modèle métier et le projet logiciel, en fournissant une base applicative fonctionnelle, structurée, traçable et extensible que le développeur peut vérifier, adapter et compléter.
 \mySection{Conclusion}{}
 
 Ce chapitre a présenté la mise en œuvre de ProOWeb et son application à un cas d'étude centré sur une organisation de commerce électronique. Il a montré comment les modèles BPMN enrichis sont importés, validés, transformés en contrats, puis déployés dans une application web métier générée.
