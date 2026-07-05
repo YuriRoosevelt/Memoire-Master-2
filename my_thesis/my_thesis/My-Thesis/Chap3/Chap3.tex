@@ -5,35 +5,47 @@
 
 \mySection{Introduction}{}
 
-Ce chapitre présente l'approche proposée pour générer une application web métier à partir d'un modèle BPMN complété par une spécification applicative. Cette approche est concrétisée dans ProOWeb, le framework développé dans ce travail.
+Ce chapitre expose le cœur de la contribution : l'approche d'ingénierie proposée
+et sa concrétisation dans le framework ProOWeb. Il présente la vue d'ensemble de
+la démarche, l'architecture du framework et celle de l'application web générée.
+Il décrit ensuite le modèle d'entrée BPMN--\textit{spec-v1}, la grammaire et les
+propriétés de la spécification, puis les transformations M2M et M2T. La chaîne de
+traçabilité et les mécanismes qui préparent une régénération contrôlée complètent
+cette présentation. L'objectif est de préciser le passage des modèles aux
+artefacts sans assimiler le résultat à une application directement exploitable
+en production.
 
-L'objectif est de montrer comment l'approche conserve la traçabilité entre le processus et le code généré, tout en laissant au développeur la possibilité d'adapter l'application. Le chapitre présente successivement la vue d'ensemble, l'architecture, la spécification d'entrée, les transformations et les mécanismes de préservation du code personnalisé.
-\mySection{Vue d'ensemble de l'approche}{}
+\mySection{Vue d'ensemble de l'approche d'ingénierie}{}
 \label{sec:chap3-vue-ensemble}
 
 \subsection{Problème traité et principe général}
 
-L’approche proposée vise à générer une application web métier à partir
-d’un processus métier modélisé. ProOWeb doit fournir un socle applicatif que le
-développeur peut tester, adapter, versionner et maintenir.
+L'approche d'ingénierie proposée définit la démarche qui relie le processus
+métier au projet cible ; ProOWeb est le framework qui met cette démarche en
+œuvre. L'application générée en constitue le résultat : un socle applicatif web
+métier que l'équipe de développement doit vérifier, adapter et compléter.
 
-Le choix de BPMN comme modèle d’entrée se justifie par sa capacité à représenter
-les activités, les événements, les passerelles et les flux d’un processus métier.
-Toutefois, BPMN ne décrit pas toujours les informations
-nécessaires à la génération d’une application web, telles que les formulaires, les
-droits d’accès, la persistance ou les règles d’affectation. Pour cette raison, ProOWeb repose sur
-un double modèle d’entrée : le fichier BPMN décrit le déroulement du processus,
-tandis que la spécification \textit{spec-v1} fournit les détails applicatifs
-nécessaires.
+BPMN est conservé comme modèle du déroulement, car il représente les activités,
+les événements, les passerelles et les flux. Il ne porte cependant pas toutes
+les informations nécessaires aux formulaires, aux affectations, à la visibilité,
+au stockage ou aux contrôles d'accès. La spécification \textit{spec-v1} complète
+donc le BPMN sans se substituer à lui. Les deux sources sont validées ensemble,
+puis normalisées dans un modèle pivot afin que les gabarits n'aient pas à
+réinterpréter directement des structures hétérogènes.
 
-Le fonctionnement général suit quatre étapes : analyser le modèle BPMN, lire la
-spécification \textit{spec-v1}, construire un modèle applicatif intermédiaire,
-puis générer les artefacts liés à l’interface, à la logique métier, aux données, à
-la sécurité et au suivi du processus.
+La chaîne sépare enfin la transformation M2M, qui construit les contrats du
+modèle pivot, de la transformation M2T, qui écrit les fichiers du workspace.
+Cette séparation permet de contrôler les décisions avant leur projection vers
+le code. Le manifeste et les empreintes prolongent cette organisation après la
+première production : ils préparent la comparaison entre les modèles mis à jour,
+les fichiers gérés et les adaptations introduites dans le projet cible.
 
 \subsection{Positionnement dans le cycle MDA}
 
 La Model-Driven Architecture fournit un cadre pertinent pour comprendre la progression proposée. ProOWeb ne reprend pas ce cadre comme une classification abstraite ; il l'utilise pour clarifier les responsabilités de chaque niveau de la chaîne de génération.
+
+Le tableau~\ref{tab:chap3-positionnement-mda} relie les représentations utilisées
+par le framework aux niveaux d'abstraction retenus dans ce mémoire.
 
 %Au niveau PIM, le processus est décrit sans dépendance directe à une technologie particulière d'interface, de serveur, de persistance ou de déploiement. Le BPMN représente le comportement métier, tandis que \textit{spec-v1} complète la conception applicative sans encore imposer la forme exacte des structures logicielles ou des composants d'interface. La spécification reste donc proche des préoccupations métier et applicatives : qui peut démarrer une instance, qui peut traiter une tâche, quelles données sont consultées, quelles sorties sont produites et quels rôles peuvent voir les informations.
 
@@ -51,10 +63,15 @@ La Model-Driven Architecture fournit un cadre pertinent pour comprendre la progr
 \midrule
 PIM & BPMN et spécification \textit{spec-v1} & Décrire le workflow, les rôles, les entrées, les sorties, la visibilité et les données sans dépendre directement du code cible. \\
 PSM & Contrats intermédiaires, catalogues et registres & Stabiliser les informations dans une forme exploitable par les générateurs d'interface, de logique applicative et de gestion des données. \\
-Code & Projet applicatif comprenant interface, logique métier, données, sécurité et configuration & Produire un socle applicatif fonctionnel, exécutable, versionnable et personnalisable. \\
+Code & Projet applicatif comprenant interface, logique métier, données, sécurité et configuration & Produire un socle applicatif structuré, versionnable et personnalisable. \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+Cette correspondance sépare les décisions indépendantes des technologies, leur
+normalisation dans les contrats intermédiaires et leur projection vers le projet
+cible. Elle situe ainsi les transformations M2M et M2T dans la progression
+retenue par ProOWeb.
 
 %Ce positionnement permet de réduire un risque classique des générateurs : concentrer trop de logique dans les templates. Dans ProOWeb, les gabarits ne doivent pas deviner les règles métier. Ils traduisent des décisions déjà validées dans le modèle pivot. Cette séparation améliore la traçabilité et facilite les tests de la chaîne de génération.
 
@@ -62,19 +79,33 @@ Code & Projet applicatif comprenant interface, logique métier, données, sécur
 
 La contribution de ce travail se situe à l'intersection de trois préoccupations. La première est la modélisation du processus. Le BPMN reste la référence du workflow et permet de maintenir une continuité avec les pratiques de modélisation métier \cite{zemtsopNdadji2022workflowsWeb}. La deuxième est la génération d'une application web métier. Le framework ProOWeb ne se limite pas à produire des écrans ou des services isolés ; il organise un projet cible avec ses modules fonctionnels et techniques. La troisième est la maintenance du code généré. La régénération est traitée comme une opération contrôlée, accompagnée par un manifeste, des sauvegardes, des rapports et des mécanismes d'extension.
 
-ProOWeb vise donc un résultat exploitable par une équipe de développement : un socle d'application web métier généré à partir du processus, traçable et ouvert à l'adaptation. Le framework automatise les parties décrites par ses modèles et ses gabarits ; il ne prétend ni déduire les règles absentes des sources ni supprimer le travail d'intégration du développeur.
+ProOWeb vise donc un résultat exploitable par une équipe de développement : un
+socle applicatif web métier généré à partir du processus, traçable et ouvert à
+l'adaptation. Le framework automatise les parties décrites par ses modèles et
+ses gabarits ; il ne prétend ni déduire les règles absentes des sources ni
+supprimer le travail d'intégration du développeur.
 
 \mySection{Architecture globale du framework proposé}{}
 \label{sec:chap3-architecture}
 
-L'architecture de ProOWeb est organisée autour de quatre parties complémentaires. La première regroupe les modèles d'entrée. La deuxième correspond au noyau de génération du framework. La troisième représente l'application web produite. La quatrième concerne l'exploitation et l'évolution de cette application. Cette lecture par blocs permet de distinguer clairement ce qui est fourni par le concepteur, ce qui est traité par ProOWeb, ce qui est généré et ce qui est utilisé ensuite par les acteurs du système.
+L'architecture du framework ProOWeb est organisée autour de quatre blocs : les
+modèles d'entrée, le noyau de génération, l'application web générée, puis son
+exploitation et son évolution. La figure~\ref{fig:chap3-architecture-prooweb}
+situe ces blocs et distingue ce qui est fourni par le concepteur, transformé par
+le framework, écrit dans le projet cible et repris après la génération.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.82\textwidth]{Chap3/images/architecture_ProOWeb1.png}
+\includegraphics[width=1\textwidth]{Chap3/images/architecture_ProOWeb1.png}
 \caption{Architecture générale de ProOWeb}
 \label{fig:chap3-architecture-prooweb}
 \end{figure}
+
+% La lecture se fait de gauche à droite : BPMN et \textit{spec-v1} alimentent le
+% noyau, le modèle pivot stabilise les informations validées, puis les générateurs
+% projettent ces contrats vers le socle applicatif. La boucle d'évolution rappelle
+% que les modèles et le projet cible ne restent pas figés après cette première
+% production.
 
 \subsection{Modèles d'entrée de ProOWeb}
 
@@ -92,32 +123,35 @@ entre le modèle initial et le code produit.
 
 \subsection{Noyau de génération du framework}
 
-Ce bloc permet de transformer les modèles d’entrée en artefacts générables à travers plusieurs traitements : ingestion du
-BPMN, enrichissement par la spécification \textit{spec-v1}, validation croisée,
+Le noyau transforme les modèles d’entrée en représentations exploitables par les
+générateurs au moyen de plusieurs traitements : ingestion du BPMN,
+enrichissement par la spécification \textit{spec-v1}, validation croisée,
 construction du modèle pivot et génération des fichiers applicatifs. L’ingestion
 extrait les activités, événements, passerelles et flux du processus, puis
 l’enrichissement associe à chaque activité les rôles, données, règles de
 visibilité et comportements définis dans la spécification. La validation vérifie
-ensuite la cohérence entre le BPMN et \textit{spec-v1}, afin d’éviter une
-application générée fonctionnellement incorrecte. Après cette étape, ProOWeb
+ensuite la cohérence structurelle entre le BPMN et \textit{spec-v1}, afin
+d'éviter de propager des références incompatibles dans les fichiers. Après cette étape, ProOWeb
 construit un modèle pivot composé de contrats intermédiaires, tels que le
 \textit{runtime contract}, le \textit{data contract}, les catalogues d’interface
-et le registre des processus. Ces contrats structurent les transformations
-modèle-à-modèle et modèle-à-texte nécessaires à la production du code source.
+et le registre des processus. Ces contrats structurent les transformations M2M
+et M2T nécessaires à la production du code source.
 
 \subsection{Application web générée}
 
-Ici, il ne s’agit pas d’un simple assemblage de fragments, mais d’un projet web métier structuré,
-exécutable et exploitable par les acteurs concernés. L’application générée
+Il ne s’agit pas d’un simple assemblage de fragments, mais d’un projet web métier
+structuré autour du processus et des acteurs concernés. L’application générée
 comprend les vues de traitement, les listes de tâches, les formulaires, les
 interfaces de suivi et les espaces de supervision. Elle intègre également les
 services nécessaires au démarrage d’un processus, à l’exécution des activités, à
 la gestion des transitions, à la persistance des données et au contrôle des
 droits d’accès. Les données peuvent être rattachées à une instance de processus
 ou conservées comme informations partagées, selon les règles définies dans
-\textit{spec-v1}. Ainsi, ProOWeb produit une base applicative complète, reliant
+\textit{spec-v1}. Ainsi, ProOWeb produit un socle applicatif structuré reliant
 interface, logique métier, sécurité, données, exécution du workflow et
-configuration du projet cible.
+configuration du projet cible. Ce socle reste une base fonctionnelle que le
+développeur doit vérifier, adapter et compléter selon l'environnement de
+déploiement.
 
 \subsection{Exploitation et évolution de l'application}
 
@@ -132,22 +166,125 @@ modifications manuelles, la création de sauvegardes et la production de rapport
 de migration. L’architecture forme ainsi une boucle itérative reliant les modèles,
 le code généré et les adaptations réalisées.
 
-%\begin{table}[H]
-%\centering
-%\small
-%\caption{Rôle des principales parties de l'architecture ProOWeb}
-%\label{tab:chap3-parties-architecture}
-%\begin{tabular}{p{3.5cm}p{4.8cm}p{5.4cm}}
-%\hline
-%\textbf{Partie de l'architecture} & \textbf{Contenu principal} & \textbf{Rôle dans l'approche} \\
-%\hline
-%Modèles d'entrée & BPMN, \textit{spec-v1}, rôles, données et configuration & Fournir les informations métier et applicatives nécessaires à la génération. \\
-%Noyau ProOWeb & Ingestion, validation, modèle pivot, transformations et templates & Transformer les modèles en contrats puis en artefacts logiciels. \\
-%Application générée & Interface, logique applicative, données métier, sécurité, exécution du processus et suivi & Produire une application web métier complète et fonctionnelle. \\
-%Exploitation et évolution & Utilisateurs, supervision, manifeste, sauvegardes et migration & Permettre l'utilisation, l'adaptation et la régénération contrôlée de l'application. \\
-%\hline
-%\end{tabular}
-%\end{table}
+\subsection{Architecture logique de l'application web générée}
+\label{sec:chap3-architecture-application-cible}
+
+L'architecture de l'application cible doit être distinguée de celle du
+framework ProOWeb et des choix effectués pour réaliser le prototype. Elle décrit
+les responsabilités du socle applicatif web métier, les échanges entre ses
+composants et les règles de dépendance qui les organisent. Sa définition reste
+ainsi valable quels que soient les langages, les bibliothèques ou les mécanismes
+techniques retenus lors de l'implémentation.
+
+La vue adoptée est inspirée de l'architecture hexagonale. Le cœur métier et les
+services applicatifs sont placés au centre. Les interactions avec les acteurs,
+les données et les systèmes de l'organisation passent par des ports, puis par
+des adaptateurs chargés de traduire les échanges. Cette séparation limite la
+dépendance du cœur envers les interfaces, la persistance et les services
+externes. La figure~\ref{fig:chap3-architecture-application-cible} présente les
+composants logiques retenus et leurs principales relations.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Chap3/images/image1.png}
+\caption{Architecture logique du socle applicatif web métier généré}
+\label{fig:chap3-architecture-application-cible}
+\end{figure}
+
+\paragraph{Couche de présentation et adaptateurs d'interface.}
+Cette partie accueille les éléments générés avec lesquels les utilisateurs
+interagissent : pages, vues, formulaires, tableaux de consultation, composants
+de saisie et écrans de suivi. Elle comprend également les interfaces permettant
+de démarrer un processus, de traiter une activité et de superviser l'avancement
+d'une instance. Leur contenu est projeté à partir des activités, des rôles et
+des données décrits par BPMN et \textit{spec-v1}.
+
+\paragraph{Ports et adaptateurs entrants.}
+Les ports entrants définissent les opérations accessibles depuis une interface
+utilisateur ou un autre système. Les contrôleurs, les points d'entrée
+applicatifs, les interfaces d'accès aux cas d'utilisation et les mécanismes de
+validation des requêtes sont placés dans cette partie. Ils traduisent notamment
+les demandes de démarrage, de traitement d'une activité et de consultation d'une
+instance, puis les transmettent aux services applicatifs sans introduire de
+règle propre au domaine.
+
+\paragraph{Services applicatifs.}
+Cette partie reçoit les services générés ou configurés pour coordonner les cas
+d'utilisation. Elle orchestre le démarrage d'une instance, la progression du
+processus, l'affectation des activités, la consultation de l'état courant et les
+échanges avec le \textit{runtime contract} et le \textit{data contract}. Les services applicatifs organisent
+ces opérations, mais délèguent au cœur métier les invariants et décisions qui
+relèvent du domaine.
+
+\paragraph{Cœur métier.}
+Le cœur rassemble les concepts indépendants des mécanismes d'interface et de
+stockage : processus, instances, activités, rôles, affectations, règles de
+visibilité, données métier, entités partagées et contraintes applicatives. Il ne
+dépend ni de la présentation, ni de la persistance, ni des services externes.
+ProOWeb ne produit pas nécessairement l'intégralité de ce cœur pour chaque
+processus : les structures génériques appartiennent au socle stable, tandis que
+les éléments propres au processus sont projetés depuis BPMN, \textit{spec-v1} et
+le modèle pivot.
+
+\paragraph{Ports et adaptateurs sortants.}
+Les ports sortants expriment les besoins du cœur applicatif envers son
+environnement. Ils regroupent les interfaces de persistance, les dépôts de
+données, les mécanismes de notification, l'accès aux utilisateurs et aux rôles,
+ainsi que les connecteurs nécessaires aux échanges avec les systèmes de
+l'organisation. Les adaptateurs associés réalisent ces échanges sans imposer
+leurs détails techniques au cœur métier.
+
+\paragraph{Gestion des données.}
+Cette partie reçoit les éléments générés qui décrivent les modèles de données,
+les structures persistantes, les entités partagées, les mappings et les
+contraintes de stockage. Elle comprend également les éléments nécessaires à
+l'initialisation et à l'évolution des structures de données. Les accès sont
+présentés au cœur par des ports sortants, ce qui maintient la gestion physique
+des données en dehors des règles métier.
+
+\paragraph{Ressources de processus et contrats.}
+Ce composant conserve le modèle BPMN, la spécification \textit{spec-v1}, le
+\textit{runtime contract}, le \textit{data contract}, les catalogues de processus, les informations de
+version et les correspondances nécessaires à l'exécution. BPMN reste responsable
+du déroulement du processus, tandis que \textit{spec-v1} apporte les rôles, les
+données, les règles d'affectation et les informations de visibilité nécessaires
+au socle applicatif. Les contrats issus du modèle pivot rendent ces informations
+exploitables par les services applicatifs.
+
+\paragraph{Sécurité et contrôle d'accès.}
+La sécurité constitue une responsabilité transversale plutôt qu'un composant
+isolé. Les éléments projetés concernent les rôles autorisés à démarrer une
+instance, les rôles candidats, l'affectation des activités, la supervision, la
+visibilité des activités et des données, ainsi que le contrôle des opérations
+exposées. Ces règles s'appliquent aux interfaces, aux ports et aux services
+applicatifs tout en restant traçables vers \textit{spec-v1}.
+
+\paragraph{Tests et vérification.}
+Cette partie rassemble les catégories de tests générés ou préparés pour vérifier
+les parcours utilisateurs, le démarrage du processus, l'exécution des activités,
+la visibilité, les échanges de données, la conformité des contrats et
+l'intégration entre les composants. Ces vérifications contribuent à contrôler le
+socle produit dans le périmètre étudié ; elles ne suffisent pas à démontrer, à
+elles seules, son aptitude à un déploiement industriel.
+
+\paragraph{Traçabilité et évolution.}
+Ce composant regroupe les informations qui relient BPMN, \textit{spec-v1}, le
+modèle pivot, les contrats et les artefacts générés. Il permet d'identifier
+l'origine d'un élément, de distinguer les parties gérées des personnalisations,
+de conserver les empreintes et de préparer les rapports d'évolution ainsi que la
+régénération contrôlée. Cette responsabilité traverse les différentes couches,
+car une modification des modèles peut affecter plusieurs composants du projet
+cible.
+
+Le cheminement principal suit alors la chaîne suivante : une action provenant
+d'un utilisateur ou d'un système externe traverse un adaptateur entrant, puis un
+service applicatif qui sollicite le cœur métier. Lorsque l'opération nécessite
+une interaction avec l'environnement, le cœur s'appuie sur un port sortant, dont
+l'adaptateur dialogue avec la ressource externe concernée. Les modèles et les
+contrats alimentent les services applicatifs, tandis que la sécurité, les tests
+et la traçabilité interviennent de manière transversale. Cette organisation
+définit un socle applicatif web métier structuré, destiné à être vérifié, adapté
+et complété selon les besoins de l'organisation.
 
 \mySection{Modèle d'entrée enrichi : spécification spec-v1}{}
 \label{sec:chap3-spec}
@@ -156,7 +293,7 @@ le code généré et les adaptations réalisées.
 
 La spécification \textit{spec-v1} constitue le complément applicatif du modèle BPMN. Elle rend explicites les informations nécessaires à la génération d'un socle applicatif web métier : rôles autorisés, supervision, stratégies d'affectation, données d'entrée, sorties, règles de visibilité, stockage et comportement des activités automatiques.
 
-%Cette séparation repose sur une idée simple. Le BPMN doit rester lisible comme modèle de processus, tandis que la spécification doit contenir les informations nécessaires à l'application. Si toutes les règles applicatives étaient injectées dans le diagramme, le modèle deviendrait difficile à lire. Si elles étaient placées uniquement dans le code, la traçabilité entre processus et application serait perdue. \textit{Spec-v1} joue donc un rôle de médiation entre le modèle métier et le projet généré.
+%Cette séparation repose sur une idée simple. Le BPMN doit rester lisible comme modèle de processus, tandis que la spécification doit contenir les informations nécessaires à l'application. Si toutes les règles applicatives étaient injectées dans le diagramme, le modèle deviendrait difficile à lire. Si elles étaient placées uniquement dans le code, la traçabilité entre processus et application serait perdue. \textit{spec-v1} joue donc un rôle de médiation entre le modèle métier et le projet généré.
 
 %\subsection{Structure générale de spec-v1}
 
@@ -192,7 +329,7 @@ reste portée par BPMN \cite{nguediaMomo2022processusIoT}. Elle formalise les re
 Le modèle grammatical attribué d'une spécification est défini par :
 
 \begin{equation}
-G_{\mathrm{spec}} = (p, v, R, S, M, A, D, C).
+G_{\mathrm{spec}}^{\mathrm{att}} = (p, v, R, S, M, A, D, C).
 \label{eq:chap3-modele-grammatical-specv1}
 \end{equation}
 
@@ -209,7 +346,7 @@ Les composantes de ce modèle ont la signification suivante :
     \item $R$ est l'ensemble fini des rôles mentionnés dans la spécification :
     rôles de démarrage, de supervision, d'affectation et de visibilité ;
 
-    \item $S=(R_s,A_s,b_s)$ décrit le démarrage. $R_s\subseteq R$ contient les
+    \item $S=(R_s,A_s,b_s)$ décrit la configuration de démarrage. $R_s\subseteq R$ contient les
     rôles autorisés à créer une instance, $A_s$ les identifiants des activités
     initiales et $b_s$ indique si un démarrage automatique est permis en
     l'absence d'une entrée manuelle ;
@@ -226,6 +363,61 @@ Les composantes de ce modèle ont la signification suivante :
     \item $C$ est l'ensemble des contraintes de validité contrôlées avant la
     construction des contrats intermédiaires.
 \end{itemize}
+
+La structure syntaxique associée à ce modèle attribué est notée :
+
+\begin{equation*}
+G_{\mathrm{spec}}^{\mathrm{syn}}
+  =(N_{\mathrm{spec}},T_{\mathrm{spec}},P_{\mathrm{spec}},S_{\mathrm{spec}}),
+\qquad S_{\mathrm{spec}}=\mathit{Spec}.
+\end{equation*}
+
+L'ensemble $N_{\mathrm{spec}}$ contient les non-terminaux qui représentent la spécification, le
+démarrage, la supervision, les activités, les entrées, les sorties, la
+visibilité et les données partagées. L'ensemble $T_{\mathrm{spec}}$ regroupe les clés du
+format JSON, les identifiants et les valeurs contrôlées, notamment
+\texttt{processId}, \texttt{schemaVersion}, \texttt{start},
+\texttt{monitors}, \texttt{activities}, \texttt{sharedData},
+\texttt{MANUAL} et \texttt{AUTOMATIC}. Le symbole de départ est
+$S_{\mathrm{spec}}$, représenté dans les productions par $\mathit{Spec}$. Cette
+notation le distingue de $S$, qui désigne la configuration de démarrage dans le
+modèle attribué. Enfin, $P_{\mathrm{spec}}$ rassemble les productions qui
+définissent l'organisation des blocs syntaxiques.
+
+Les productions principales peuvent être résumées par l'EBNF suivante. Les
+crochets indiquent un élément optionnel, les accolades une répétition finie et
+le symbole $\mid$ une alternative.
+
+{\small
+\begin{align*}
+\mathit{Spec} &::= \mathit{ProcessId}\;\mathit{SchemaVersion}\;
+                 \mathit{Start}\;\mathit{Monitors} \\
+              &\quad \mathit{Activities}\;\mathit{SharedData}, \\
+\mathit{Start} &::= \mathit{StartableRoles}\;[\mathit{StartActivities}]
+                  \;[\mathit{AutoStart}], \\
+\mathit{Monitors} &::= \mathit{MonitorRoles}, \\
+\mathit{Activities} &::= \{\mathit{Activity}\}, \\
+\mathit{Activity} &::= \mathit{ActivityId}\;\mathit{ActivityType}\;
+                       \mathit{CandidateRoles}\;\mathit{Assignment} \\
+                   &\quad \mathit{Input}\;\mathit{Output}\;
+                       \mathit{Visibility}\;[\mathit{Execution}], \\
+\mathit{ActivityType} &::= \texttt{MANUAL}\mid\texttt{AUTOMATIC}, \\
+\mathit{Input} &::= \{\mathit{Source}\}, \\
+\mathit{Output} &::= \mathit{StorageStrategy}\;\{\mathit{Mapping}\}, \\
+\mathit{Visibility} &::= \mathit{ActivityRoles}\;\mathit{DataRoles}, \\
+\mathit{SharedData} &::= \{\mathit{Entity}\}, \\
+\mathit{Entity} &::= \mathit{EntityKey}\;\{\mathit{Field}\}.
+\end{align*}
+}
+
+Ces productions définissent la forme des informations consommées par ProOWeb ;
+elles ne réécrivent ni les événements, ni les passerelles, ni les flux de
+séquence du BPMN. Les contraintes sémantiques réunies dans $C$ complètent la
+syntaxe : unicité des identifiants, correspondance des activités avec le BPMN,
+appartenance des rôles au référentiel, validité des cibles de mapping et présence
+d'un gestionnaire connu pour une activité automatique. La grammaire prépare
+ainsi la validation, puis la construction du modèle pivot, sans prétendre
+garantir à elle seule la correction métier de l'application.
 
 L'activité constitue l'unité principale d'enrichissement de \textit{spec-v1}.
 Elle est représentée par le tuple suivant :
@@ -247,7 +439,7 @@ activité manuelle.
 
 Une entité partagée $d_j=(k_j,F_j)$ possède une clé $k_j$ et un ensemble de
 champs $F_j$. Chaque champ est décrit par son nom, son type et son caractère
-obligatoire. Cette définition suffit pour que le contrat de données prépare les
+obligatoire. Cette définition suffit pour que le \textit{data contract} prépare les
 structures persistantes et vérifie les cibles des mappings.
 
 Les contraintes $C$ donnent sa portée opérationnelle au modèle grammatical.
@@ -257,8 +449,9 @@ les rôles employés appartiennent au référentiel retenu. De plus, une activit
 manuelle doit posséder au moins un rôle candidat, un mapping doit viser une
 donnée déclarée et une activité automatique doit référencer un gestionnaire
 connu. Une violation bloquante empêche la promotion des contrats. Ainsi,
-\textit{spec-v1} reste une spécification complémentaire à BPMN. Le listing
-suivant en présente une structure JSON simplifiée.
+\textit{spec-v1} reste une spécification complémentaire à BPMN. Le
+listing~\ref{lst:chap3-structure-specv1} en présente une structure JSON
+simplifiée.
 
 \begin{lstlisting}[caption={Structure simplifiée de la spécification spec-v1},label={lst:chap3-structure-specv1}]
 {
@@ -290,41 +483,146 @@ suivant en présente une structure JSON simplifiée.
 }
 \end{lstlisting}
 
+Ce listing rend visibles les cinq blocs structurants de la spécification :
+l'en-tête, le démarrage, la supervision, les activités enrichies et les données
+partagées. Il illustre la forme syntaxique attendue ; la correspondance avec le
+BPMN et les autres contraintes de validité restent contrôlées séparément.
+
 \subsection{Propriétés de la grammaire spec-v1}
 \label{sec:chap3-proprietes-grammaire-specv1}
 
-Ces propriétés précisent dans quelle mesure \textit{spec-v1} remplit son rôle
-de complément à BPMN. Elles portent sur la qualité de la spécification en
-entrée et sur son utilité pour construire les contrats intermédiaires.
+Soient $B$ un modèle BPMN fini, $s$ une spécification \textit{spec-v1} et
+$T_{\mathrm{M2M}}$ la transformation qui construit le modèle pivot $P$. On note
+$\operatorname{Act}(B)$ l'ensemble des activités de $B$,
+$\operatorname{Act}(s)$ celui des activités enrichies de $s$ et
+$\operatorname{id}(x)$ l'identifiant stable d'un élément $x$. Les propositions
+suivantes portent sur la structure de la chaîne ; elles ne démontrent pas la
+correction métier du processus.
 
-Le tableau~\ref{tab:chap3-proprietes-grammaire-specv1} résume ces propriétés,
-leur signification et leur intérêt dans la chaîne de génération.
+\begin{proposition}[Récursivité bornée]
+La récursivité de $G_{\mathrm{spec}}^{\mathrm{syn}}$ est limitée à la construction
+des listes finies de rôles, d'activités, de sources, de mappings, d'entités et
+de champs. Pour tout document JSON fini $s$, l'analyse de ces productions
+récursives se termine.
+\end{proposition}
 
-\begin{table}[H]
-\centering
-\footnotesize
-\caption{Propriétés de la grammaire spec-v1}
-\label{tab:chap3-proprietes-grammaire-specv1}
-\begin{tabularx}{\textwidth}{p{2.8cm}p{5.3cm}X}
-\toprule
-\textbf{Propriété} & \textbf{Signification} & \textbf{Intérêt pour ProOWeb} \\
-\midrule
-Complétude relative & La spécification complète BPMN avec les informations requises pour la génération, sans chercher à décrire tout le domaine métier. & Les rôles, formulaires, données et politiques deviennent projetables. \\
-Cohérence & Les activités, rôles, données et règles doivent être compatibles avec le BPMN et le référentiel de rôles. & Les contradictions sont détectées avant leur propagation dans plusieurs fichiers. \\
-Vérifiabilité & Les règles syntaxiques et sémantiques peuvent être évaluées avant la génération. & ProOWeb peut produire un rapport localisé et bloquer une entrée invalide. \\
-Traçabilité & Une activité enrichie conserve l'identifiant de l'activité BPMN correspondante. & Cet identifiant est repris dans les contrats et les ressources versionnées. \\
-Modularité & Chaque processus peut posséder sa propre spécification dans un workspace commun. & Les processus évoluent séparément tout en partageant catalogues et conventions. \\
-Extensibilité & La version de schéma permet d'ajouter des champs, des types ou des stratégies. & Le langage peut accompagner de nouvelles règles de projection sans modifier son principe général. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\begin{preuve}
+Toute répétition EBNF $\{X\}$ de la grammaire peut être développée sous la forme
+droite récursive
+\[
+L_X\rightarrow\varepsilon
+\qquad\mid\qquad
+L_X\rightarrow X\,L_X.
+\]
+Soient $L_1,\ldots,L_q$ les listes contenues dans $s$ et
+\[
+\rho_0=\sum_{i=1}^{q}|L_i|.
+\]
+Le document étant fini, $\rho_0\in\mathbb{N}$. À chaque application de la
+seconde production, l'analyse consomme exactement un élément de la liste
+courante ; le nombre d'éléments restant vérifie donc
+$\rho_{k+1}=\rho_k-1$. Lorsque $\rho_k=0$, seule la production vers
+$\varepsilon$ est applicable. L'ordre usuel sur $\mathbb{N}$ étant bien fondé,
+aucune analyse guidée par $S$ ne peut produire une récursion infinie.
+\end{preuve}
+
+\begin{proposition}[Non-ambiguïté structurelle conditionnelle]
+Supposons que chaque clé soit unique dans son objet JSON et que les valeurs
+discriminantes, notamment \texttt{MANUAL} et \texttt{AUTOMATIC}, appartiennent
+aux domaines définis par la grammaire. Alors tout document
+$s\in L(G_{\mathrm{spec}}^{\mathrm{syn}})$ possède un unique arbre syntaxique pour
+les blocs structurants de \textit{spec-v1}.
+\end{proposition}
+
+\begin{preuve}
+On raisonne par induction sur la hauteur $h$ de l'arbre JSON de $s$. Pour
+$h=0$, une valeur atomique est reconnue par son type et par la clé qui la porte ;
+elle correspond donc à un terminal déterminé. Supposons l'arbre syntaxique
+unique pour tout sous-arbre de hauteur au plus $h$. Un objet de hauteur $h+1$
+est identifié par une clé structurante telle que \texttt{start},
+\texttt{monitors}, \texttt{activities}, \texttt{assignment}, \texttt{input},
+\texttt{output}, \texttt{visibility} ou \texttt{sharedData}. L'unicité des clés
+sélectionne une seule production, tandis que l'hypothèse d'induction assure
+l'unicité des sous-arbres associés. L'arbre syntaxique du document est donc
+unique. Cette propriété exclut l'ambiguïté de structure sous les hypothèses
+posées ; elle ne préjuge pas d'une éventuelle ambiguïté du sens métier.
+\end{preuve}
+
+\begin{proposition}[Terminaison de la validation]
+La validation syntaxique et sémantique de toute paire finie $(B,s)$ se termine.
+\end{proposition}
+
+\begin{preuve}
+Après l'analyse syntaxique, soit $W_0$ la liste finie de toutes les références à
+contrôler : activités, rôles, sources, mappings, entités, champs et gestionnaires.
+On prend comme variant de boucle
+\[
+\mu(W_k)=|W_k|\in\mathbb{N}.
+\]
+À chaque itération, le validateur retire exactement un élément de $W_k$, effectue
+des tests d'égalité ou d'appartenance dans des ensembles finis, et n'ajoute aucun
+nouvel élément. Ainsi, tant que $W_k\neq\varnothing$,
+$\mu(W_{k+1})=\mu(W_k)-1$. L'ordre usuel sur $\mathbb{N}$ étant bien fondé, la
+boucle atteint $\mu=0$ après au plus $|W_0|$ itérations. La validation termine.
+\end{preuve}
+
+\begin{proposition}[Cohérence conditionnelle du modèle pivot]
+Supposons que les contraintes $C(B,s)$ soient satisfaites et que
+$T_{\mathrm{M2M}}$ soit définie pour toutes les constructions présentes dans
+$(B,s)$. Alors le pivot $P=T_{\mathrm{M2M}}(B,s)$ ne contient aucune référence
+pendante vers une activité, un rôle, une donnée ou un gestionnaire.
+\end{proposition}
+
+\begin{preuve}
+Les contraintes $C(B,s)$ imposent notamment
+\[
+\operatorname{id}(\operatorname{Act}(s))
+  \subseteq \operatorname{id}(\operatorname{Act}(B)),
+\]
+l'appartenance des rôles au référentiel, l'existence des cibles de mapping et
+l'existence du gestionnaire de chaque activité automatique. La transformation
+construit chaque composante de $P$ uniquement à partir d'un élément ayant passé
+le contrôle correspondant et n'introduit pas de nouvelle référence métier.
+Supposons, par contradiction, que $P$ contienne une référence pendante $r$.
+Soit $r$ provient de $(B,s)$, auquel cas la contrainte associée aurait été
+violée, soit $r$ a été créée par la transformation, ce qui contredit la règle de
+construction précédente. Les deux cas sont impossibles. Le pivot est donc
+référentiellement cohérent sous les hypothèses posées.
+\end{preuve}
+
+\begin{proposition}[Traçabilité des activités enrichies]
+Supposons les identifiants d'activités uniques dans $B$ et $s$, et leur
+conservation par $T_{\mathrm{M2M}}$. Pour toute activité enrichie
+$a\in\operatorname{Act}(s)$ promue dans un contrat intermédiaire, il existe une
+unique activité $b\in\operatorname{Act}(B)$ et un unique élément de pivot $p_a$
+tels que
+\[
+\operatorname{id}(b)=\operatorname{id}(a)=\operatorname{id}(p_a).
+\]
+\end{proposition}
+
+\begin{preuve}
+La contrainte de correspondance donne l'existence d'une activité
+$b\in\operatorname{Act}(B)$ ayant le même identifiant que $a$. L'unicité des
+identifiants dans $B$ assure l'unicité de $b$. Par définition de
+$T_{\mathrm{M2M}}$, la construction de $p_a$ recopie
+$\operatorname{id}(a)$ sans le modifier ; l'unicité des identifiants dans le
+pivot assure alors l'unicité de $p_a$. L'égalité précédente permet donc de
+retrouver l'activité BPMN à partir de l'activité enrichie ou du contrat
+intermédiaire, ce qui établit la traçabilité annoncée.
+\end{preuve}
 
 %Les types autorisés restent volontairement simples : chaînes, entiers, booléens, listes, objets structurés et énumérations. Les champs d'une entité partagée peuvent par exemple être typés en \texttt{string}, \texttt{number}, \texttt{boolean}, \texttt{date}, \texttt{datetime} ou \texttt{file}. La spécification utilise donc des valeurs contrôlées. Les types d'activités distinguent les tâches manuelles et automatiques, les stratégies d'affectation sont bornées par une liste connue, et les stratégies de stockage indiquent explicitement où les données produites doivent être conservées. Cette discipline limite les ambiguïtés et rend la génération plus déterministe.
 
 \subsection{Métadonnées des activités}
 
-Les métadonnées d'activité indiquent comment une activité BPMN doit être prise en charge dans l'application. Une activité manuelle est destinée à être traitée par un utilisateur. Elle doit donc préciser les rôles candidats, la stratégie d'affectation, les données visibles, les sorties attendues et les règles de complétion. Une activité automatique est exécutée par le système. Elle doit alors indiquer le gestionnaire à invoquer, son type, son mode de déclenchement et sa configuration.
-L'extrait JSON montre la structure d'une activité enrichie.
+Les métadonnées précisent comment une activité déjà identifiée dans le BPMN doit
+être prise en charge par le projet cible. Une activité manuelle indique les rôles
+candidats, l'affectation, les données visibles et les sorties attendues ; une
+activité automatique précise le gestionnaire, le déclenchement et sa
+configuration. Ces informations alimentent notamment \texttt{ActivityModel},
+\texttt{FormModel}, le \textit{runtime contract} et le \textit{data contract}. Le
+listing~\ref{lst:chap3-activite-enrichie} en montre une forme compacte.
 
 \begin{lstlisting}[caption={Activité enrichie dans spec-v1},label={lst:chap3-activite-enrichie}]
 "activite_1": {
@@ -351,11 +649,22 @@ L'extrait JSON montre la structure d'une activité enrichie.
 }
 \end{lstlisting}
 
-Cet exemple montre le passage du processus vers l'application. L'identifiant \texttt{valider\_demande} renvoie à une activité BPMN. Les rôles candidats orientent l'affectation de la tâche. Les sources d'entrée indiquent les données disponibles pour le formulaire. La stratégie de stockage précise où seront conservées les sorties. Les règles de visibilité distinguent les acteurs qui peuvent voir l'activité de ceux qui peuvent accéder aux données.
+Dans cet exemple, la clé \texttt{activite\_1} conserve l'identifiant de l'activité
+BPMN. Les rôles candidats alimentent la politique d'affectation, les sources
+d'entrée préparent le formulaire et la stratégie de stockage oriente les sorties
+vers le contexte d'instance ou les données partagées. Les mêmes métadonnées sont
+ensuite projetées vers la page d'activité, les contrôles d'accès et les contrats
+consommés par le runtime.
 
 \subsection{Affectation des tâches et sécurité}
 
-L'affectation des tâches est un point central dans une application web métier. Une tâche doit être proposée aux bons utilisateurs, selon les responsabilités prévues par l'organisation. Dans ProOWeb, cette dimension est décrite par les rôles candidats, le mode d'affectation et la stratégie d'assignation.
+L'affectation complète l'information organisationnelle portée par les pools et
+les couloirs BPMN. Dans \textit{spec-v1}, les rôles candidats, le mode et la
+stratégie d'assignation précisent quels utilisateurs peuvent recevoir ou traiter
+une tâche. Le modèle pivot rassemble ces règles dans \texttt{RolePolicy}, puis
+les générateurs les projettent vers les files de tâches, les filtres backend et
+les contrôles d'accès de l'interface. Le tableau~\ref{tab:chap3-strategies-affectation}
+résume les stratégies prises en charge.
 
 %Plusieurs stratégies peuvent être représentées. Une stratégie de file par rôle rend la tâche disponible aux utilisateurs possédant les rôles candidats. Une stratégie supervisée oriente la tâche vers un superviseur. Une stratégie hiérarchique peut remonter vers des responsables lorsque le premier niveau n'est pas disponible. Ces choix ne relèvent pas seulement de l'ergonomie. Ils influencent la sécurité de l'application, car ils déterminent qui peut voir, réclamer, traiter ou déléguer une tâche.
 
@@ -374,6 +683,10 @@ L'affectation des tâches est un point central dans une application web métier.
 \bottomrule
 \end{tabularx}
 \end{table}
+
+Ces stratégies ne modifient pas le chemin défini par BPMN : elles déterminent
+qui peut agir lorsque le runtime atteint l'activité concernée. Leur validité
+organisationnelle dépend du référentiel de rôles fourni au framework.
 
 \subsection{Entrées, sorties et données partagées}
 
@@ -418,17 +731,31 @@ Service backend ou externe & Données résolues par un service applicatif ou un 
 \end{tabularx}
 \end{table}
 
+Après validation, ces déclarations alimentent \texttt{DataContract} et les
+modèles de formulaires. La transformation M2T peut alors produire les structures
+d'entrée, les mappings, les entités partagées, les dépôts et les scripts de
+migration sans déduire de données absentes de la spécification.
+
 
 \subsection{Règles de visibilité}
 
-La visibilité ne se réduit pas à l'affectation. Un utilisateur peut être autorisé à consulter une instance sans être autorisé à traiter la tâche courante. De même, un superviseur peut voir l'état d'un processus sans accéder à toutes les données sensibles produites par les activités. ProOWeb distingue donc la visibilité des activités et la visibilité des données.
-
-Cette distinction permet de générer des filtres plus fins côté services applicatifs et des interfaces plus adaptées côté utilisateur. Les services applicatifs peuvent masquer certaines tâches ou certaines données selon le rôle de l'utilisateur. Les composants d'interface peuvent également adapter les informations affichées sans exposer inutilement des données sensibles.
+La visibilité ne se réduit pas à l'affectation : un utilisateur peut consulter
+une instance sans traiter sa tâche courante, et un superviseur peut suivre le
+processus sans accéder à toutes les données produites. BPMN conserve le
+déroulement ; \textit{spec-v1} distingue les rôles autorisés à voir l'activité
+de ceux qui peuvent lire ses données. Le modèle pivot intègre ces restrictions
+dans \texttt{RolePolicy}. Elles deviennent ensuite des filtres dans les services
+applicatifs et des règles d'affichage dans le frontend, sans faire de l'interface
+le seul niveau de protection.
 
 \mySection{Règles de transformation et génération de l'application web}{}
 \label{sec:chap3-transformations}
 
-Les règles de transformation déterminent la manière dont le double modèle d'entrée devient une application web métier. Dans ProOWeb, la transformation suit deux moments principaux. La transformation modèle-à-modèle construit le modèle applicatif intermédiaire. La transformation modèle-à-texte produit les fichiers du projet cible. Ce découpage permet de vérifier les contrats avant l'écriture du code.
+Les règles de transformation déterminent la manière dont le double modèle
+d'entrée devient un socle applicatif web métier. Dans ProOWeb, la transformation
+M2M construit le modèle applicatif intermédiaire, tandis que la transformation
+M2T produit les fichiers du projet cible. Ce découpage permet de vérifier les
+contrats avant l'écriture du code.
 
 \subsection{Validation avant génération}
 
@@ -436,26 +763,29 @@ La validation est une étape indispensable. Une erreur dans les modèles d'entr�
 
 Les contrôles portent sur quatre dimensions. La dimension structurelle vérifie que les activités enrichies existent dans le BPMN et que les transitions forment un graphe exploitable. La dimension applicative vérifie que les activités manuelles disposent d'informations suffisantes pour être traitées par un utilisateur. La dimension données vérifie que les entrées, sorties et mappings référencent des structures connues. La dimension sécurité vérifie la cohérence des rôles utilisés pour l'exécution, la supervision et la visibilité.
 
-\begin{table}[H]
-\centering
-\caption{Contrôles réalisés avant génération}
-\label{tab:chap3-controles-generation}
-\begin{tabularx}{\textwidth}{p{3.8cm}p{5.2cm}X}
-\toprule
-\textbf{Dimension} & \textbf{Règle contrôlée} & \textbf{Risque évité} \\
-\midrule
-Structure BPMN & Toute activité enrichie doit exister dans le modèle BPMN. & Artefacts sans activité correspondante. \\
-Sécurité & Une tâche manuelle doit posséder au moins un rôle candidat. & Tâche exposée sans responsabilité claire. \\
-Données & Un mapping de sortie doit cibler une donnée connue. & Perte ou mauvaise persistance des données. \\
-Workflow & Une transition générée doit correspondre à un chemin possible. & Divergence entre modèle et runtime. \\
-Interface & Les champs affichés doivent provenir d'une source déclarée. & Formulaire incohérent avec le contexte. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% Le tableau~\ref{tab:chap3-controles-generation} synthétise ces contrôles et le
+% type d'incohérence qu'ils cherchent à empêcher avant l'écriture des artefacts.
+
+% \begin{table}[H]
+% \centering
+% \caption{Contrôles réalisés avant génération}
+% \label{tab:chap3-controles-generation}
+% \begin{tabularx}{\textwidth}{p{3.8cm}p{5.2cm}X}
+% \toprule
+% \textbf{Dimension} & \textbf{Règle contrôlée} & \textbf{Risque évité} \\
+% \midrule
+% Structure BPMN & Toute activité enrichie doit exister dans le modèle BPMN. & Artefacts sans activité correspondante. \\
+% Sécurité & Une tâche manuelle doit posséder au moins un rôle candidat. & Tâche exposée sans responsabilité claire. \\
+% Données & Un mapping de sortie doit cibler une donnée connue. & Perte ou mauvaise persistance des données. \\
+% Workflow & Une transition générée doit correspondre à un chemin possible. & Divergence entre modèle et runtime. \\
+% Interface & Les champs affichés doivent provenir d'une source déclarée. & Formulaire incohérent avec le contexte. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
 
 Ces contrôles doivent produire des diagnostics compréhensibles. L'utilisateur du framework doit pouvoir identifier l'activité, la règle ou la donnée responsable de l'erreur.
 
-\subsection{Transformation modèle-à-modèle}
+\subsection{Transformation M2M}
 
 La transformation M2M reçoit le modèle BPMN, \textit{spec-v1}, le référentiel
 de rôles et la configuration du projet. ProOWeb extrait les activités, les
@@ -476,20 +806,107 @@ activités sont conservés pour assurer la traçabilité vers les futurs artefac
 
 %La construction du modèle pivot doit aussi conserver la traçabilité. Chaque élément généré doit pouvoir être relié à une activité, une entité ou une règle de la spécification. Cette traçabilité facilite la maintenance. Lorsqu'un changement intervient dans le BPMN ou dans \textit{spec-v1}, le framework peut identifier les artefacts concernés et limiter l'impact de la régénération.
 
-\subsubsection{Algorithme de transformation M2M}
+\subsubsection*{Algorithme de transformation M2M}
 \label{sec:chap3-algorithme-m2m}
 
-L'algorithme 1 reçoit le modèle BPMN, la
-spécification \textit{spec-v1}, le référentiel de rôles et la configuration du
-projet. Il décrit le passage de ces sources vers le modèle pivot de ProOWeb et
-produit simultanément un rapport de validation.
+L'algorithme~\ref{alg:m2m} présente la transformation M2M. Celui-ci
+reçoit le modèle BPMN, la spécification \textit{spec-v1}, le référentiel de rôles
+et la configuration du projet. Il produit le modèle pivot et un rapport de
+validation ; lorsqu'une erreur bloquante subsiste, aucun pivot exploitable n'est
+promu vers l'étape M2T.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{Chap3/images/Algorithme_M2M.png}
-\caption{Algorithme de transformation modèle-à-modèle BPMN/spec-v1 vers le modèle pivot}
-\label{alg:chap3-transformation-m2m}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{Chap3/images/Algorithme_M2M.png}
+% \caption{Transformation M2M du couple BPMN/spec-v1 vers le modèle pivot}
+% \label{alg:chap3-transformation-m2m}
+% \end{figure}
+
+\begin{algorithm}[H]
+\footnotesize
+\DontPrintSemicolon
+\SetAlgoLined
+\SetAlgoInsideSkip{smallskip}
+\SetInd{0.4em}{0.8em}
+\SetAlgoNlRelativeSize{-1}
+
+\caption{TransformerM2M($B,S,R,C$)}
+\label{alg:m2m}
+
+\textbf{Entrées :}\;
+\Indp
+$B$ : modèle BPMN\;
+$S$ : spécification \texttt{spec-v1}\;
+$R$ : référentiel de rôles\;
+$C$ : configuration du projet\;
+\Indm
+
+\textbf{Sorties :}\;
+\Indp
+$P$ : modèle pivot ProOWeb\;
+$V$ : rapport de validation\;
+\Indm
+
+\textbf{Début}\;
+
+$V \leftarrow \mathrm{creerRapportValidation}()$\;
+
+$E \leftarrow \mathrm{extraireBPMN}(B)$\;
+\tcp*{\footnotesize activités, événements, passerelles, flux, pools, lanes}
+
+$D \leftarrow \mathrm{lireBlocsSpecV1}(S)$\;
+\tcp*{\footnotesize processId, version, start, monitors, activities, sharedData}
+
+$\mathrm{verifierIdentiteProcessus}(D.\mathrm{processId},E.\mathrm{processus},C,V)$\;
+
+$\mathrm{verifierExistenceActivites}(D.\mathrm{activities},E.\mathrm{activities},V)$\;
+
+$\mathrm{verifierRolesEtAffectations}(D,R,V)$\;
+
+$\mathrm{verifierEntreesSortiesMappings}(D,V)$\;
+
+$\mathrm{verifierVisibilite}(D,R,V)$\;
+
+\If{$V.\mathrm{contientErreurBloquante}()$}{
+    \Return{$(\mathrm{INDEFINI},V)$}\;
+}
+
+$P \leftarrow \mathrm{creerModelePivot}(C)$\;
+
+$P.\mathrm{processModel} \leftarrow
+\mathrm{creerProcessModel}(E.\mathrm{processus},E.\mathrm{pools},E.\mathrm{lanes})$\;
+
+\ForEach{activité $a$ de $E.\mathrm{activities}$}{
+    $e \leftarrow \mathrm{chercherEnrichissement}(a.\mathrm{id},D.\mathrm{activities})$\;
+
+    $a_p \leftarrow \mathrm{creerActivityModel}(a,e)$\;
+
+    $a_p.\mathrm{rolePolicy} \leftarrow \mathrm{construireRolePolicy}(e,R)$\;
+
+    $a_p.\mathrm{formModel} \leftarrow
+    \mathrm{construireFormModel}(e.\mathrm{input},e.\mathrm{output})$\;
+
+    $\mathrm{ajouter}(P.\mathrm{processModel},a_p)$\;
+}
+
+$P.\mathrm{runtimeContract} \leftarrow
+\mathrm{construireRuntimeContract}(P.\mathrm{processModel},
+E.\mathrm{events},E.\mathrm{gateways},E.\mathrm{flows},D.\mathrm{start})$\;
+
+$P.\mathrm{dataContract} \leftarrow
+\mathrm{construireDataContract}(D.\mathrm{sharedData},
+D.\mathrm{activities}.\mathrm{mappings})$\;
+
+$P.\mathrm{artifactTraces} \leftarrow
+\mathrm{construireArtifactTraces}(B,S,
+P.\mathrm{processModel},P.\mathrm{runtimeContract},P.\mathrm{dataContract})$\;
+
+$\mathrm{ajouterDiagnosticsNormalisation}(V,P)$\;
+
+\Return{$(P,V)$}\;
+
+\textbf{Fin}
+\end{algorithm}
 
 Son fonctionnement s'organise autour de trois opérations. ProOWeb extrait
 d'abord la structure du processus et lit les blocs utiles de \textit{spec-v1}.
@@ -497,42 +914,51 @@ Il vérifie ensuite l'identité du processus, les activités enrichies, les rôl
 les mappings et la visibilité ; une erreur bloquante interrompt la
 transformation. Les éléments validés sont enfin normalisés dans le modèle de
 processus, les politiques d'affectation et les formulaires, puis dans les
-contrats runtime et data. Les traces d'artefacts conservent l'origine des
+\textit{runtime contract} et \textit{data contract}. Les traces d'artefacts conservent l'origine des
 éléments destinés à la génération. Le pivot désigne ici cet ensemble cohérent
 de contrats, et non nécessairement un fichier unique. Dans le prototype, le
 contrôle des codes de rôle est effectif, mais leur confrontation exhaustive à
 un référentiel organisationnel externe reste à consolider.
 
-\subsubsection{Propriétés de l'algorithme de transformation M2M}
-\label{sec:chap3-proprietes-m2m}
+% \subsubsection{Propriétés de l'algorithme de transformation M2M}
+% \label{sec:chap3-proprietes-m2m}
 
-L'étude de l'algorithme M2M porte sur les garanties attendues lors du passage
-du couple BPMN--\textit{spec-v1} aux contrats intermédiaires. Le
-tableau~\ref{tab:chap3-proprietes-m2m} relie chaque propriété aux mécanismes
-effectivement mobilisés par ProOWeb.
+% L'étude de l'algorithme M2M porte sur les garanties attendues lors du passage
+% du couple BPMN--\textit{spec-v1} aux contrats intermédiaires. Le
+% tableau~\ref{tab:chap3-proprietes-m2m} relie chaque propriété aux mécanismes
+% effectivement mobilisés par ProOWeb.
 
-\begin{table}[H]
-\centering
-\small
-\caption{Propriétés de l'algorithme de transformation M2M}
-\label{tab:chap3-proprietes-m2m}
-\begin{tabularx}{\textwidth}{p{2.7cm}p{4.2cm}X}
-\toprule
-\textbf{Propriété} & \textbf{Signification} & \textbf{Justification dans ProOWeb} \\
-\midrule
-Terminaison & La transformation doit finir pour toute entrée finie. & Les traitements parcourent des ensembles finis d'activités, de flux, de rôles, de sources et de mappings ; aucune récursion non bornée n'est requise. \\
-Déterminisme & Des entrées normalisées identiques doivent produire les mêmes contrats. & Les identifiants d'activités, les rôles, les transitions et les entités sont triés avant la construction des \texttt{RuntimeContract} et \texttt{DataContract}. \\
-Cohérence & Le pivot ne doit contenir que des éléments compatibles entre eux. & La correspondance avec le BPMN, les types d'activités, les affectations, les sources et les mappings est contrôlée avant la construction des contrats. \\
-Sûreté & Une erreur bloquante ne doit pas conduire à un pivot exploitable. & Le rapport de validation marque la spécification comme invalide et empêche la promotion des contrats lorsque des erreurs subsistent. \\
-Traçabilité & Les éléments intermédiaires doivent rester reliés à leurs sources. & La clé et la version du modèle, les identifiants BPMN et les chemins des ressources sont conservés dans les contrats et les catalogues. \\
-Extensibilité & Une nouvelle règle ne doit pas imposer la réécriture complète de la transformation. & Les fonctions de normalisation et les constructeurs de contrats sont séparés ; une extension reste localisée tant que la structure générale du pivot est préservée. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% \begin{table}[H]
+% \centering
+% %\small
+% \caption{Propriétés de l'algorithme de transformation M2M}
+% \label{tab:chap3-proprietes-m2m}
+% \begin{tabularx}{\textwidth}{p{2.7cm}p{4.2cm}X}
+% \toprule
+% \textbf{Propriété} & \textbf{Signification} & \textbf{Justification dans ProOWeb} \\
+% \midrule
+% Terminaison & La transformation doit finir pour toute entrée finie. & Les traitements parcourent des ensembles finis d'activités, de flux, de rôles, de sources et de mappings ; aucune récursion non bornée n'est requise. \\
+% Déterminisme & Des entrées normalisées identiques doivent produire les mêmes contrats. & Les identifiants d'activités, les rôles, les transitions et les entités sont triés avant la construction des \texttt{RuntimeContract} et \texttt{DataContract}. \\
+% Cohérence & Le pivot ne doit contenir que des éléments compatibles entre eux. & La correspondance avec le BPMN, les types d'activités, les affectations, les sources et les mappings est contrôlée avant la construction des contrats. \\
+% Sûreté & Une erreur bloquante ne doit pas conduire à un pivot exploitable. & Le rapport de validation marque la spécification comme invalide et empêche la promotion des contrats lorsque des erreurs subsistent. \\
+% Traçabilité & Les éléments intermédiaires doivent rester reliés à leurs sources. & La clé et la version du modèle, les identifiants BPMN et les chemins des ressources sont conservés dans les contrats et les catalogues. \\
+% Extensibilité & Une nouvelle règle ne doit pas imposer la réécriture complète de la transformation. & Les fonctions de normalisation et les constructeurs de contrats sont séparés ; une extension reste localisée tant que la structure générale du pivot est préservée. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
+
+% La terminaison découle du parcours d'ensembles finis issus des deux documents
+% d'entrée. Le déterminisme est obtenu pour des entrées normalisées identiques et
+% un même ordre de traitement. La cohérence et la sûreté restent conditionnées par
+% la réussite des contrôles : une référence invalide interrompt la construction
+% avant la promotion des contrats. Enfin, les identifiants BPMN, la clé du modèle
+% et sa version sont recopiés dans le pivot, ce qui justifie la traçabilité. Ces
+% propriétés portent sur la transformation structurelle ; elles ne prouvent pas la
+% correction métier du processus décrit.
 
 \textbf{Construction du modèle applicatif intermédiaire}
 
-Le modèle applicatif intermédiaire regroupe uniquement les informations nécessaires à la génération : déroulement du processus, rôles, données, formulaires et traces des artefacts produits. Il sert de contrat entre l'analyse du BPMN, l'enrichissement \textit{spec-v1} et les gabarits de génération.
+Le modèle applicatif intermédiaire regroupe uniquement les informations nécessaires à la génération : déroulement du processus, rôles, données, formulaires et traces des artefacts produits. Il sert de contrat entre l'analyse du BPMN, l'enrichissement \textit{spec-v1} et les gabarits de génération. Le tableau~\ref{tab:chap3-structures-modele-pivot} en présente les principales structures.
 
 \begin{table}[H]
 \centering
@@ -553,10 +979,15 @@ Le modèle applicatif intermédiaire regroupe uniquement les informations néces
 \end{tabularx}
 \end{table}
 
-\subsection{Transformation modèle-à-texte}
+Ces structures séparent le processus, les règles d'accès, les formulaires, les
+données et les traces de génération. Les gabarits peuvent ainsi consommer une
+représentation validée sans réinterpréter directement le BPMN ou
+\textit{spec-v1}.
+
+\subsection{Transformation M2T}
 
 La transformation M2T reçoit le modèle pivot, les gabarits, la configuration et
-le workspace cible. Elle projette d'abord les contrats runtime et data, puis
+le workspace cible. Elle projette d'abord le \textit{runtime contract} et le \textit{data contract}, puis
 produit les ressources backend, frontend, de sécurité, de configuration et de
 test. Les gabarits traduisent les décisions déjà stabilisées dans le pivot :
 ils ne doivent introduire ni rôle, ni transition, ni règle métier absente des
@@ -569,22 +1000,101 @@ logiques dans le manifeste. Lorsqu'un fichier existant a été personnalisé, le
 services de déploiement et de migration détectent le conflit et créent, selon
 la politique appliquée, une sauvegarde avant tout remplacement contrôlé.
 
-\subsubsection{Algorithme de génération Model-to-Text}
+\subsubsection*{Algorithme de transformation M2T}
 \label{sec:chap3-algorithme-m2t}
 
-L'algorithme 2 présente la projection du
-modèle pivot vers le workspace cible. Il prend en compte les gabarits et la
-configuration du projet, puis retourne les artefacts produits et le manifeste
-qui permet de les suivre.
+L'algorithme~\ref{alg:m2t} présente la transformation M2T. Il reçoit
+le modèle pivot validé, les gabarits, la configuration et le workspace cible,
+puis retourne les artefacts écrits et le manifeste qui permet de les suivre.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{Chap3/images/Algorithme_M2T.png}
-\caption{Algorithme de transformation Model-to-Text vers le socle applicatif}
-\label{alg:chap3-transformation-m2t}
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{Chap3/images/Algorithme_M2T.png}
+% \caption{Transformation M2T du modèle pivot vers le socle applicatif}
+% \label{alg:chap3-transformation-m2t}
+% \end{figure}
 
-L'algorithme initialise le workspace, projette les contrats runtime et data,
+\begin{algorithm}[H]
+\footnotesize
+\DontPrintSemicolon
+\SetAlgoLined
+\SetAlgoInsideSkip{smallskip}
+\SetInd{0.4em}{0.8em}
+\SetAlgoNlRelativeSize{-1}
+
+\caption{GenererM2T($P,T,C,W$)}
+\label{alg:m2t}
+
+\textbf{Entrées :}\;
+\Indp
+$P$ : modèle pivot ProOWeb\;
+$T$ : ensemble de gabarits de génération\;
+$C$ : configuration du projet\;
+$W$ : workspace cible\;
+\Indm
+
+\textbf{Sorties :}\;
+\Indp
+$A$ : artefacts applicatifs générés\;
+$M$ : manifeste de génération\;
+\Indm
+
+\textbf{Début}\;
+
+$W \leftarrow \mathrm{initialiserOuChargerWorkspace}(W,C)$\;
+
+$M_0 \leftarrow \mathrm{chargerManifesteSiPresent}(W)$\;
+
+$A \leftarrow \mathrm{ensembleVide}()$\;
+
+$M \leftarrow \mathrm{creerManifeste}(C)$\;
+
+$\mathrm{ajouter}(A,
+\mathrm{genererRessourcesRuntime}(P.\mathrm{runtimeContract},T,C))$\;
+
+$\mathrm{ajouter}(A,
+\mathrm{genererRessourcesDonnees}(P.\mathrm{dataContract},T,C))$\;
+
+$\mathrm{ajouter}(A,\mathrm{genererBackend}(P,T,C))$\;
+\tcp*{\footnotesize entités, services, contrôleurs, registres, règles applicatives}
+
+$\mathrm{ajouter}(A,\mathrm{genererFrontend}(P,T,C))$\;
+\tcp*{\footnotesize pages, formulaires, tableaux de bord, clients API}
+
+$\mathrm{ajouter}(A,\mathrm{genererAccesEtVisibilite}(P,T,C))$\;
+
+$\mathrm{ajouter}(A,\mathrm{genererConfigurationScriptsEtTests}(P,T,C))$\;
+
+\ForEach{artefact $a$ de $\mathrm{trierParChemin}(A)$}{
+    $\mathrm{cible} \leftarrow \mathrm{resoudreChemin}(W,a.\mathrm{chemin})$\;
+
+    $\mathrm{etat} \leftarrow \mathrm{classifierFichier}(\mathrm{cible},M_0)$\;
+
+    \If{$\mathrm{etat} = \mathrm{PERSONNALISE}$}{
+        $\mathrm{signalerConflitSansEcraser}(\mathrm{cible},a)$\;
+    }
+    \Else{
+        $\mathrm{ecrireFichier}(\mathrm{cible},a.\mathrm{contenu})$\;
+
+        $h \leftarrow \mathrm{calculerEmpreinte}(a.\mathrm{contenu})$\;
+
+        $\mathrm{enregistrer}(M,
+        \{\mathrm{chemin}:a.\mathrm{chemin},
+        \mathrm{categorie}:a.\mathrm{categorie},
+        \mathrm{proprietaire}:a.\mathrm{proprietaireLogique},
+        \mathrm{source}:a.\mathrm{artifactTrace},
+        \mathrm{hash}:h\})$\;
+    }
+}
+
+$\mathrm{sauvegarderManifeste}(W,M)$\;
+
+\Return{$(A,M)$}\;
+
+\textbf{Fin}
+\end{algorithm}
+
+L'algorithme initialise le workspace, projette le \textit{runtime contract} et le \textit{data contract},
 puis génère les ressources backend, frontend, de sécurité, de configuration et
 de test. Les artefacts sont traités selon un ordre stable afin de conserver une
 structure reproductible. Pour chaque fichier effectivement écrit, ProOWeb
@@ -599,39 +1109,49 @@ gabarits. La transformation M2T reste donc une
 projection : elle matérialise les décisions du pivot sans introduire de rôle,
 de transition ou de règle métier absente des contrats.
 
-\subsubsection{Propriétés de l'algorithme de transformation M2T}
-\label{sec:chap3-proprietes-m2t}
+% \subsubsection{Propriétés de l'algorithme de transformation M2T}
+% \label{sec:chap3-proprietes-m2t}
 
-Pour la transformation M2T, l'analyse concerne la production et le suivi des
-fichiers du workspace. Le tableau~\ref{tab:chap3-proprietes-m2t} précise les
-garanties apportées par les gabarits, le manifeste et les mécanismes de
-déploiement contrôlé.
+% Pour la transformation M2T, l'analyse concerne la production et le suivi des
+% fichiers du workspace. Le tableau~\ref{tab:chap3-proprietes-m2t} précise les
+% garanties apportées par les gabarits, le manifeste et les mécanismes de
+% déploiement contrôlé.
 
-\begin{table}[H]
-\centering
-\small
-\caption{Propriétés de l'algorithme de transformation M2T}
-\label{tab:chap3-proprietes-m2t}
-\begin{tabularx}{\textwidth}{p{2.7cm}p{4.2cm}X}
-\toprule
-\textbf{Propriété} & \textbf{Signification} & \textbf{Justification dans ProOWeb} \\
-\midrule
-Terminaison & La génération doit finir lorsque le pivot et les gabarits sont finis. & ProOWeb parcourt un nombre borné de contrats, d'activités, d'entités, de gabarits et de chemins de fichiers. \\
-Déterminisme & Les mêmes entrées doivent produire la même structure applicative. & Les artefacts sont ordonnés par chemin et les mêmes gabarits produisent les mêmes contenus. Les dates techniques du manifeste peuvent néanmoins varier entre deux exécutions. \\
-Cohérence & Chaque fichier doit matérialiser une décision présente dans le pivot. & Les ressources runtime, data, backend, frontend et de sécurité sont produites à partir des contrats validés, sans redéfinir les règles métier dans les gabarits. \\
-Traçabilité & Un fichier généré doit rester identifiable après son écriture. & Le manifeste conserve son chemin, sa catégorie, ses propriétaires logiques et son empreinte SHA-256 ; les ressources de processus sont également versionnées. \\
-Préservation contrôlée & Une personnalisation ne doit pas être perdue silencieusement. & Les empreintes permettent de détecter un fichier modifié ; ProOWeb le signale et crée une sauvegarde avant tout remplacement autorisé par la politique de migration. \\
-Maintenabilité & Le résultat doit pouvoir être repris par un développeur. & Les artefacts sont organisés par couches et responsabilités dans une arborescence backend/frontend explicite. \\
-Extensibilité & La génération doit accepter de nouvelles projections. & Des gabarits et des overrides peuvent être ajoutés sans modifier la sémantique des contrats intermédiaires. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% \begin{table}[H]
+% \centering
+% \small
+% \caption{Propriétés de l'algorithme de transformation M2T}
+% \label{tab:chap3-proprietes-m2t}
+% \begin{tabularx}{\textwidth}{p{2.7cm}p{4.2cm}X}
+% \toprule
+% \textbf{Propriété} & \textbf{Signification} & \textbf{Justification dans ProOWeb} \\
+% \midrule
+% Terminaison & La génération doit finir lorsque le pivot et les gabarits sont finis. & ProOWeb parcourt un nombre borné de contrats, d'activités, d'entités, de gabarits et de chemins de fichiers. \\
+% Déterminisme conditionnel & Les mêmes entrées doivent produire la même structure applicative. & Les artefacts sont ordonnés par chemin et les mêmes gabarits produisent les mêmes contenus. Les dates techniques du manifeste peuvent néanmoins varier entre deux exécutions. \\
+% Cohérence des fichiers & Chaque fichier doit matérialiser une décision présente dans le pivot. & Les ressources runtime, data, backend, frontend et de sécurité sont produites à partir des contrats validés, sans redéfinir les règles métier dans les gabarits. \\
+% Traçabilité & Un fichier généré doit rester identifiable après son écriture. & Le manifeste conserve son chemin, sa catégorie, ses propriétaires logiques et son empreinte SHA-256 ; les ressources de processus sont également versionnées. \\
+% Préservation contrôlée & Une personnalisation ne doit pas être perdue silencieusement. & Les empreintes permettent de détecter un fichier modifié ; ProOWeb le signale et crée une sauvegarde avant tout remplacement autorisé par la politique de migration. \\
+% Maintenabilité & Le résultat doit pouvoir être repris par un développeur. & Les artefacts sont organisés par couches et responsabilités dans une arborescence backend/frontend explicite. \\
+% Extensibilité & La génération doit accepter de nouvelles projections. & Des gabarits et des overrides peuvent être ajoutés sans modifier la sémantique des contrats intermédiaires. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
+
+% La transformation termine parce qu'elle parcourt un nombre fini de contrats,
+% de gabarits et de chemins. Son déterminisme est conditionnel à l'identité du
+% pivot, des gabarits, de la configuration et de la politique d'écriture ; les
+% horodatages techniques peuvent varier. La cohérence des fichiers dépend de la
+% conformité des gabarits aux contrats validés. Le manifeste justifie la
+% traçabilité en conservant chemins, catégories, propriétaires et empreintes. La
+% préservation reste contrôlée plutôt que garantie : ProOWeb détecte un écart et
+% applique la politique choisie, mais une campagne d'évolution plus large demeure
+% nécessaire pour évaluer tous les conflits possibles.
 
 %Cet exemple montre que la traçabilité ne se limite pas à un lien documentaire entre le BPMN et le code. Elle sert à expliquer pourquoi un artefact existe, de quelle activité il provient et quelle partie du contrat il matérialise. Elle sert aussi lors de l'évolution du processus : si \texttt{valider\_demande} change de rôle, de formulaire ou de sortie, ProOWeb peut identifier les contrats et les fichiers concernés par la nouvelle génération.
 
 \subsection{Règles de projection vers les artefacts}
 
-Les règles de projection définissent comment chaque élément du modèle pivot est traduit dans l'application cible. Elles ne sont pas de simples conventions de nommage. Elles indiquent la couche de destination et la responsabilité de l'artefact produit.
+Les règles de projection définissent comment chaque élément du modèle pivot est traduit dans l'application cible. Elles ne sont pas de simples conventions de nommage. Elles indiquent la couche de destination et la responsabilité de l'artefact produit. Le tableau~\ref{tab:chap3-projection-m2t} résume ces correspondances.
 
 \begin{table}[H]
 \centering
@@ -655,7 +1175,18 @@ Cette projection maintient la cohérence entre le modèle et le projet produit. 
 
 \subsection{Traçabilité de bout en bout}
 
-La traçabilité est illustrée ici sur l'activité BPMN \texttt{activité\_1}. L'intérêt n'est pas de détailler séparément chaque couche technique, mais de montrer comment une intention métier reste reconnaissable jusqu'aux éléments produits par ProOWeb.
+La chaîne suivie par ProOWeb peut être résumée ainsi :
+
+\[
+\text{BPMN} \longrightarrow \textit{spec-v1} \longrightarrow
+\text{modèle pivot} \longrightarrow \text{contrats intermédiaires} \longrightarrow
+\text{artefacts} \longrightarrow \text{manifeste}.
+\]
+
+Elle est illustrée sur l'activité BPMN \texttt{activite\_1}. L'objectif est de
+montrer comment une même clé reste reconnaissable depuis le processus jusqu'aux
+fichiers produits, sans répéter la structure complète du modèle pivot. Le
+tableau~\ref{tab:chap3-exemple-tracabilite} suit cette clé à chaque niveau.
 
 \begin{table}[H]
 \centering
@@ -668,11 +1199,18 @@ La traçabilité est illustrée ici sur l'activité BPMN \texttt{activité\_1}. 
 BPMN & La tâche \texttt{activité\_1} donne le point de passage métier et ses liens avec le reste du processus. \\
 \textit{spec-v1} & L'activité reçoit les précisions absentes du diagramme : rôle autorisé, données utiles, sorties attendues et visibilité. \\
 Modèle pivot & ProOWeb rassemble ces informations dans une représentation stable, utilisable par les règles de génération. \\
+Contrats intermédiaires & Le \textit{runtime contract} et le \textit{data contract} reprennent l'identifiant, les transitions, les rôles et les mappings validés. \\
 Artefacts générés & Les fichiers produits matérialisent la même activité : écran de traitement, action de validation, contrôle d'accès et mise à jour des données. \\
 Manifeste & Les fichiers rattachés à cette activité restent identifiables afin de maîtriser les futures régénérations. \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+Cette continuité permet d'expliquer l'origine d'un fichier, de vérifier quels
+artefacts matérialisent une activité et de circonscrire les éléments concernés
+lorsque le BPMN ou \textit{spec-v1} évolue. Le manifeste prolonge la chaîne au
+niveau du workspace : il ne démontre pas la correction métier, mais fournit les
+informations nécessaires pour comparer, signaler et traiter les changements.
 
 %Dans le projet cible, ProOWeb ne cherche pas à multiplier les fichiers pour chaque couche technique. Les artefacts générés sont regroupés autour des besoins concrets de l'application : exécuter le processus, faire traiter les tâches, conserver les données, contrôler les accès et suivre les fichiers produits.
 
@@ -737,13 +1275,22 @@ Manifeste & Les fichiers rattachés à cette activité restent identifiables afi
 \mySection{Préservation du code personnalisé et synchronisation}{}
 \label{sec:chap3-preservation}
 
-Une difficulté importante de la génération d'application concerne l'évolution du projet après une première génération. Dans un contexte réel, les développeurs ajoutent des règles particulières, adaptent les interfaces, complètent des services ou intègrent des dépendances spécifiques. Si chaque nouvelle génération écrase ces modifications, le framework devient difficile à utiliser. ProOWeb traite donc la régénération comme une opération d'ingénierie, et non comme un simple remplacement de fichiers.
+Le projet cible évolue après sa première production : le processus ou
+\textit{spec-v1} peut changer, le développeur ajoute du code, l'interface est
+personnalisée et certaines règles métier sont précisées lors de l'intégration.
+Une nouvelle génération doit donc rapprocher deux états sans considérer le
+workspace comme un répertoire jetable. Le framework ProOWeb traite cette
+opération comme un problème de synchronisation entre modèles, fichiers gérés et
+extensions locales.
 
 Cette préoccupation est bien identifiée dans les travaux sur la cohabitation entre code généré et code écrit à la main. Greifenberg et al. comparent plusieurs mécanismes d'intégration et montrent que le choix d'une stratégie influence directement la maintenabilité des systèmes générés \cite{greifenberg2015}.
 
 \subsection{Problème de la régénération}
 
-La régénération apparaît lorsqu'un processus évolue, lorsqu'une activité est ajoutée, lorsqu'une règle de données change. Elle est nécessaire pour maintenir l'application alignée sur les modèles. Elle est également risquée, car elle peut remplacer des fichiers modifiés par les développeurs.
+La régénération vise à répercuter une évolution du BPMN, des rôles, des données
+ou des projections de \textit{spec-v1}. Elle devient risquée dès qu'un fichier
+produit a été modifié manuellement : un remplacement aveugle peut effacer une
+adaptation, désynchroniser le frontend et le backend ou rendre les tests caducs.
 
 Le problème ne se limite pas à la perte de code. Une régénération non contrôlée peut produire des conflits de fichiers, des incohérences entre la partie applicative et l'interface, la disparition de règles spécifiques, un changement non documenté dans la sécurité ou une rupture des tests. ProOWeb distingue donc les fichiers gérés par le générateur et les fichiers non gérés. Les fichiers gérés sont suivis dans le manifeste \texttt{.prooweb-managed.json}. Les fichiers non gérés restent hors du contrôle du générateur.
 
@@ -771,7 +1318,12 @@ La stratégie retenue repose sur la composition, la configuration et les overrid
 
 Le cycle de synchronisation décrit la manière dont ProOWeb accompagne les évolutions successives du modèle. Une première génération produit l'application de base. Les développeurs peuvent ensuite ajouter des extensions, adapter certains modules ou déclarer des overrides. Lorsque le BPMN ou \textit{spec-v1} évolue, ProOWeb reconstruit un snapshot de génération, compare l'état attendu avec l'état du projet, applique les règles de migration et produit un rapport.
 
-Ce cycle transforme la génération en activité continue. L'application n'est pas simplement créée une fois ; elle peut être régénérée, migrée et adaptée. La synchronisation repose sur trois traces : le manifeste des fichiers gérés, les sauvegardes créées lors des conflits et les rapports de migration. Ces éléments permettent de comprendre ce qui a changé et de revenir sur une modification si nécessaire.
+Ce cycle transforme la génération en activité continue. La synchronisation
+repose sur le manifeste, les empreintes, les sauvegardes, les points d'extension,
+les overrides et les rapports de migration. Ces éléments rendent les changements
+observables et permettent d'appliquer une politique explicite lorsqu'un conflit
+est détecté. Le tableau~\ref{tab:chap3-preservation-synchronisation} en résume les
+responsabilités.
 
 \begin{table}[H]
 \centering
@@ -790,8 +1342,19 @@ Rapports & Décrire les créations, mises à jour, conflits et sauvegardes. & Re
 \end{tabularx}
 \end{table}
 
+Ces mécanismes préparent une régénération contrôlée ; ils ne suffisent pas à en
+établir la robustesse pour toutes les personnalisations possibles. Leur
+comportement doit être éprouvé sur des évolutions plus complexes et interprété à
+la lumière des limites présentées dans le chapitre d'évaluation.
+
 \mySection{Conclusion}{}
 
-Ce chapitre a présenté l'approche proposée et sa concrétisation dans le framework ProOWeb, depuis les modèles d'entrée jusqu'aux artefacts générés. Le BPMN décrit le déroulement du processus, \textit{spec-v1} apporte les informations applicatives nécessaires et le modèle pivot organise ces données avant la génération.
+Ce chapitre a présenté l'approche d'ingénierie proposée et sa concrétisation dans
+le framework ProOWeb. Le couple BPMN--\textit{spec-v1} alimente le modèle pivot,
+que les transformations M2M et M2T projettent vers un socle applicatif web métier
+structuré et traçable.
 
-L'approche met l'accent sur deux points : maintenir la traçabilité entre le modèle et le code, puis permettre l'évolution contrôlée de l'application générée. Le chapitre suivant présente la mise en œuvre technique de cette proposition et son application à un cas d'étude.
+Les mécanismes de suivi des artefacts et de préservation des adaptations
+préparent la régénération contrôlée du projet cible. Le chapitre suivant examine
+la mise en œuvre technique de cette proposition et son application à un cas
+d'étude.

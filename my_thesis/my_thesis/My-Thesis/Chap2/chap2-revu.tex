@@ -7,7 +7,7 @@
 La génération d'applications web à partir de modèles de processus se situe au
 croisement du BPM, de BPMN et du développement web. BPMN permet de représenter
 le déroulement du travail, mais il ne suffit pas à décrire les interfaces, les
-données, les règles d'accès et l'architecture d'une application complète
+données, les règles d'accès et l'architecture d'un socle applicatif web métier
 \cite{omg2013bpmn}. 
 
 Ce chapitre analyse donc les travaux qui rapprochent les
@@ -16,9 +16,61 @@ limites et le positionnement de notre recherche.
 
 \mySection{Démarche d'analyse des travaux existants}{}
 
-La revue n'a pas cherché à rassembler tous les travaux sur BPMN, mais à analyser ceux qui répondent à une question centrale : comment un modèle de processus peut-il être transformé en application web ou en artefacts logiciels utilisables ? Le corpus retenu privilégie donc les travaux portant sur les moteurs de workflow, les transformations BPMN vers d'autres modèles, la génération de code, les applications web générées, les plateformes orientées processus et les approches low-code. La démarche s'inspire des recommandations de Kitchenham et Charters ainsi que de l'esprit de PRISMA, sans constituer une revue systématique exhaustive \cite{kitchenham2007,prisma2020}.
+La revue n'a pas cherché à rassembler tous les travaux sur BPMN. Elle suit une
+démarche structurée, inspirée des recommandations de Kitchenham et Charters et
+de l'esprit de PRISMA, sans se présenter comme une revue systématique exhaustive
+\cite{kitchenham2007,prisma2020}.
 
-L'analyse des travaux s'est faite en trois étapes : comprendre l'objectif de chaque approche, identifier les artefacts réellement produits et examiner les limites récurrentes. Ces limites concernent notamment l'insuffisance d'informations dans les modèles BPMN, la couverture partielle des applications, la dépendance à certaines plateformes, les difficultés de régénération et la cohabitation entre code généré et code manuel.
+\subsection{Questions de revue}
+
+La question principale est la suivante :
+
+\begin{quote}
+\textbf{RQ0 : Quelles approches permettent de transformer un modèle BPMN ou un
+modèle de processus en artefacts logiciels web utilisables, et quelles limites
+subsistent pour produire un socle applicatif structuré, traçable et évolutif ?}
+\end{quote}
+
+Cette question est déclinée en cinq questions secondaires :
+
+\begin{itemize}
+    \item \textbf{RQ1 :} quel rôle BPMN joue-t-il dans la conception et
+    l'exécution des systèmes d'information orientés processus ?
+    \item \textbf{RQ2 :} quels artefacts les transformations existantes
+    produisent-elles à partir de BPMN ou de modèles complémentaires ?
+    \item \textbf{RQ3 :} quelles informations supplémentaires sont nécessaires
+    pour générer les interfaces, les services, les données et les règles d'accès ?
+    \item \textbf{RQ4 :} comment les approches étudiées traitent-elles la
+    traçabilité, la cohabitation avec le code manuel et la régénération ?
+    \item \textbf{RQ5 :} quelles limites récurrentes restent ouvertes pour un
+    projet web dont le code source demeure accessible et adaptable ?
+\end{itemize}
+
+\subsection{Sources consultées et critères de sélection}
+
+Les sources consultées appartiennent à trois catégories : les normes et ouvrages
+de référence sur BPMN, le BPM et l'ingénierie dirigée par les modèles ; les
+articles de revues et de conférences consacrés aux transformations de modèles,
+aux applications orientées processus, à IFML, à la génération de code et au
+low-code ; enfin, les documentations officielles de moteurs BPMN lorsque leur
+fonctionnement technique devait être précisé
+\cite{camunda2026modeler,flowable2026bpmn,jbpm2026docs,activiti2026docs}.
+
+Un travail est inclus s'il décrit une méthode, une architecture, une
+transformation ou un outil reliant les modèles de processus à l'exécution ou à
+des artefacts applicatifs, ou s'il analyse la maintenance et l'évolution du code
+généré. Sont exclus les documents purement introductifs, les travaux sans lien
+direct avec la transformation ou l'exécution de processus, les descriptions ne
+permettant pas d'identifier les artefacts produits et les doublons d'une même
+contribution lorsqu'une version plus complète est disponible.
+
+\subsection{Critères d'analyse}
+
+L'analyse s'effectue en trois étapes : comprendre l'objectif de chaque approche,
+identifier les artefacts réellement produits et examiner les limites annoncées
+ou observables. La même grille est appliquée aux différentes familles de travaux
+afin que le chapitre ne se réduise pas à une succession de résumés.
+Le tableau~\ref{tab:chap2-grille-analyse} présente les critères retenus.
 \begin{table}[H]
 \centering
 \caption{Grille concrète de lecture des travaux étudiés}
@@ -31,13 +83,13 @@ Point de départ & Le travail part-il d'un modèle BPMN seul, d'un processus enr
 Résultat obtenu & Produit-il une interface, une API, une application exécutable, un prototype ou seulement une méthode de transformation ? \\
 Place de la plateforme & Le résultat dépend-il fortement d'un moteur, d'un framework ou d'un environnement low-code ? \\
 Preuve apportée & Les auteurs valident-ils leur proposition par un cas d'étude, une expérimentation, une comparaison ou une revue ? \\
-Limite retenue & Que reste-t-il à faire pour obtenir une application complète, maintenable et adaptable ? \\
+Limite retenue & Que reste-t-il à faire pour obtenir un socle applicatif maintenable et adaptable ? \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-La revue qui suit présente donc les travaux par familles, puis met en évidence les limites
-qui se dégagent de leur comparaison.
+La revue qui suit présente les travaux par familles, puis met en évidence les
+limites qui se dégagent de leur analyse. 
 
 \mySection{Revue de la littérature}{}
 
@@ -72,7 +124,7 @@ l'entoure.
 \label{fig:chap2-camunda-modeler}
 \end{figure}
 
-La figure \ref{fig:chap2-camunda-modeler} montre le point d'entrée d'un moteur
+La figure~\ref{fig:chap2-camunda-modeler} montre le point d'entrée d'un moteur
 comme Camunda : un processus BPMN enrichi de propriétés exécutables. Une fois
 déployé, le moteur crée les instances, affecte les tâches et suit l'exécution,
 mais il ne génère pas à lui seul toute l'application web qui l'exploite.
@@ -96,7 +148,7 @@ développées autour de cette architecture.
 \label{fig:chap2-schaffer-process-driven}
 \end{figure}
 
-La figure \ref{fig:chap2-schaffer-process-driven} montre qu'une application
+La figure~\ref{fig:chap2-schaffer-process-driven} montre qu'une application
 pilotée par processus combine moteur BPMN, tâches, orchestration, supervision
 et services. Le moteur de workflow y apparaît central, mais il doit être
 entouré de composants applicatifs et d'intégration.
@@ -117,7 +169,7 @@ personnalisées tout en couvrant les principaux patrons de contrôle de workflow
 \label{fig:chap2-webworkflow-interface}
 \end{figure}
 
-La figure \ref{fig:chap2-webworkflow-interface} illustre le résultat attendu :
+La figure~\ref{fig:chap2-webworkflow-interface} illustre le résultat attendu :
 une tâche de workflow devient une interface exploitable. L'apport est concret,
 mais la portée de la génération reste liée au langage et aux abstractions de
 WebDSL.
@@ -140,14 +192,14 @@ technologies devenues anciennes.
 \label{fig:chap2-akip}
 \end{figure}
 
-La figure \ref{fig:chap2-akip} montre une génération organisée autour d'une
+La figure~\ref{fig:chap2-akip} montre une génération organisée autour d'une
 architecture de référence. AKIP produit une base applicative moderne, mais son
 évaluation reste limitée à une organisation et certaines constructions BPMN ne
 sont pas encore couvertes.
 
 Ces travaux montrent que l'exécution d'un processus est aujourd'hui bien
 maîtrisée. Ils montrent également que le moteur ne résout qu'une partie du
-problème applicatif. Plus une proposition vise une application complète, plus
+problème applicatif. Plus une proposition élargit sa couverture, plus
 elle doit associer au workflow des informations sur le domaine, les interfaces
 et l'intégration technique.
 
@@ -195,7 +247,7 @@ Symfony plus proche de l'implémentation.
 \label{fig:chap2-ifml-symfony}
 \end{figure}
 
-La figure \ref{fig:chap2-ifml-symfony} illustre la logique MDA : IFML sert de
+La figure~\ref{fig:chap2-ifml-symfony} illustre la logique MDA : IFML sert de
 modèle indépendant, puis Symfony rapproche la représentation de l'implémentation.
 Cette continuité réduit l'écart avec le code, mais renforce aussi la dépendance
 aux conventions du framework cible.
@@ -217,7 +269,8 @@ montre l'intérêt d'un prototype obtenu tôt dans le cycle de développement : 
 permet de confronter le processus modélisé aux interactions attendues par les
 utilisateurs. Le terme de prototype marque cependant la limite assumée de la
 proposition. L'interface obtenue facilite la validation, mais elle ne constitue
-pas encore une application complète prête à être exploitée.
+pas encore un socle applicatif exploitable couvrant le backend, le frontend, le
+runtime et les données.
 
 Pietruck et Steffens s'intéressent à la génération d'API conformes au style
 architectural \textit{Representational State Transfer} (REST) pour les moteurs
@@ -236,6 +289,9 @@ d'application web orientée processus à partir d'une spécification rédigée d
 un langage naturel restreint \cite{hoyos2017}. Leur chaîne analyse la
 spécification, extrait les informations utiles, puis produit des classes du
 domaine, des formulaires, des vues et des contrôleurs.
+
+La figure~\ref{fig:chap2-generation-hoyos} présente le cycle itératif suivi,
+depuis l'expression des besoins jusqu'à la validation du prototype.
 
 \begin{figure}[H]
 \centering
@@ -264,7 +320,7 @@ domaine, des formulaires, des vues et des contrôleurs.
 \label{fig:chap2-hoyos-code-genere}
 \end{figure}
 
-La figure \ref{fig:chap2-hoyos-code-genere} complète le cycle précédent en
+La figure~\ref{fig:chap2-hoyos-code-genere} complète le cycle précédent en
 montrant deux artefacts produits : une route côté contrôleur et un gabarit de
 vue. Elle confirme que l'approche génère un prototype exploitable, même si la
 qualité finale dépend encore des règles de génération.
@@ -312,10 +368,27 @@ concentrent sur une seule de ces dimensions.
 \label{fig:chap2-generation-drave}
 \end{figure}
 
-La figure \ref{fig:chap2-generation-drave} montre une génération en deux étapes
+La figure~\ref{fig:chap2-generation-drave} montre une génération en deux étapes
 qui facilite le contrôle des transformations et la réutilisation des
 informations. Sa limite tient à la couverture incomplète de BPMN et au coût de
 maintenance des langages spécifiques mobilisés.
+
+\subsubsection{Spécification grammaticale des workflows web avec LSAWfP4WEB}
+
+Zemtsop Ndadji propose une démarche fondée sur l'ingénierie dirigée par les modèles pour intégrer la gestion des workflows dans une application web. Son travail part du constat que les processus métier décrivent une partie importante des exigences d'une organisation, mais qu'ils restent souvent secondaires dans les cycles classiques de développement web. La contribution porte alors sur une architecture d'application web capable de concilier deux logiques : le développement classique de fonctionnalités et le développement orienté processus. Pour cela, l'auteur introduit une application de base organisée autour d'un module de sécurité RBAC, d'un système de gestion de workflows et d'une bibliothèque de processus. Il propose également LSAWfP4WEB, une extension du langage LSAWfP destinée à spécifier des workflows exécutables dans une application web, ainsi qu'un DSEL JSON pour faciliter l'export, la sauvegarde et le partage des spécifications \cite{zemtsopNdadji2022workflowsWeb}.
+
+La figure~\ref{fig:architecture-zemtsop} présente l'organisation générale de ce
+système et la place accordée à la gestion des workflows.
+
+%L'intérêt de ce travail est de montrer qu'une application web orientée processus ne doit pas seulement exécuter un workflow, mais aussi offrir une structure permettant au développeur de conserver la maîtrise du code et de faire évoluer l'application. La figure~\ref{fig:architecture-zemtsop} illustre cette idée à travers une architecture qui distingue l'application de base, le cycle de développement des processus et le cycle de développement classique. Toutefois, la portée de la proposition reste limitée par son niveau de validation : le prototype est annoncé comme une preuve de concept en cours de développement, et la génération du code des processus à partir du DSEL reste encore une perspective. Ce travail constitue donc une référence proche de notre problématique, car il confirme l'intérêt d'une articulation entre BPM, IDM et applications web, tout en laissant ouverte la question d'une chaîne de génération plus intégrée, traçable et contrôlée.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{chap2/images/image11.JPG}
+\caption{Architecture du système proposé par Zemtsop Ndadji pour la gestion des workflows dans une application web, adaptée de \cite{zemtsopNdadji2022workflowsWeb}.}
+\label{fig:architecture-zemtsop}
+\end{figure}
+
 
 \subsubsection{Gabarits et compléments aux modèles BPMN}
 
@@ -390,13 +463,14 @@ d'une application web. Les propositions se distinguent surtout par le
 compromis qu'elles établissent entre couverture, automatisation, flexibilité et
 dépendance technologique.
 
-Le tableau \ref{tab:chap2-travaux-etudies} montre que les travaux étudiés
+Le tableau~\ref{tab:chap2-travaux-etudies} montre que les travaux étudiés
 apportent des réponses utiles, mais rarement complètes. Certains exécutent le
 processus, d'autres génèrent une interface, une API ou un prototype. Les
 approches les plus larges produisent une base applicative, mais elles restent
 liées à une architecture, à un langage ou à une plateforme particulière.
 
 \begin{table}[H]
+\small
 \centering
 \caption{Récapitulatif des travaux étudiés}
 \label{tab:chap2-travaux-etudies}
@@ -412,8 +486,8 @@ Pietruck et Steffens \cite{pietruck2020} & Génération d'API REST orientées m�
 %Drave et al. \cite{drave2022} & Génération progressive d'un système extensible à partir de BPMN et de langages complémentaires & Couverture annoncée de 89,5\,\% du BPMN analytique et de 86,8\,\% du BPMN exécutable & Multiplication des langages et nécessité de régénérer après évolution \\
 Delgado et al. \cite{delgado2022} & Gestion dirigée par les modèles des familles de processus BPMN & Représentation de variantes proches d'un même processus & Configuration et contrôle de cohérence plus complexes \\
 AKIP \cite{neto2022} & Génération d'une application web fonctionnelle intégrant interface, serveur et moteur de processus & Étude industrielle portant sur trois processus & Personnalisations métier nécessaires et couverture BPMN partielle \\
-Uyanik et Sayar \cite{uyanik2023} & Environnement intégré de conception de processus et de génération de code & Gains importants rapportés pour le développement, les tests et la taille du code & Résultats liés à un contexte expérimental spécifique \\
-Travaux low-code \cite{bucaioni2022,diruscio2022,pankowska2024,krouwel2024,martinez2026} & Usage de modèles visuels ou d'entreprise pour accélérer la construction d'applications & Revues et études de transformation vers des plateformes low-code & Dépendance aux plateformes, gouvernance et intégration persistantes \\
+%Uyanik et Sayar \cite{uyanik2023} & Environnement intégré de conception de processus et de génération de code & Gains importants rapportés pour le développement, les tests et la taille du code & Résultats liés à un contexte expérimental spécifique \\
+%Travaux low-code \cite{bucaioni2022,diruscio2022,pankowska2024,krouwel2024,martinez2026} & Usage de modèles visuels ou d'entreprise pour accélérer la construction d'applications & Revues et études de transformation vers des plateformes low-code & Dépendance aux plateformes, gouvernance et intégration persistantes \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -452,9 +526,9 @@ La cohabitation entre code généré et code manuel est difficile.
 & Les adaptations du développeur peuvent être perdues ou entrer en conflit avec une nouvelle génération.
 & Organiser dès le départ la séparation entre éléments générés, extensions manuelles et mécanismes de personnalisation. \\
 
-La régénération après modification du modèle ou personnalisation du code est peu stabilisée.
-& L'application peut se désaligner du processus ou écraser silencieusement des fichiers déjà adaptés.
-& Prévoir une régénération contrôlée, capable d'identifier les fichiers suivis, les modifications locales et les conflits éventuels. \\
+%La régénération après modification du modèle ou personnalisation du code est peu stabilisée.
+%& L'application peut se désaligner du processus ou écraser silencieusement des fichiers déjà adaptés.
+%& Prévoir une régénération contrôlée, capable d'identifier les fichiers suivis, les modifications locales et les conflits éventuels. \\
 
 Les évaluations sont souvent limitées à un cas d'étude ou à un contexte spécifique.
 & La généralisation des résultats doit rester prudente et dépend du domaine, du modèle et de l'environnement technique.
@@ -465,7 +539,7 @@ Les évaluations sont souvent limitées à un cas d'étude ou à un contexte sp�
 \end{table}
 
 % BPMN apparaît ainsi comme un point d'entrée pertinent, mais insuffisant pour
-% produire seul une application web complète. Les travaux doivent souvent lui
+% produire seul un socle applicatif web métier. Les travaux doivent souvent lui
 % associer des modèles d'interaction, des modèles de données, des métadonnées ou
 % des langages propres au domaine. Cette nécessité confirme que la génération ne
 % peut pas reposer uniquement sur le diagramme de processus.

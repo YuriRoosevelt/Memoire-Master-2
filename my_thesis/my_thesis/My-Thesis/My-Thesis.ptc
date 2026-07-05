@@ -1,24 +1,24 @@
 \changetocdepth {3}
 \babel@toc {french}{}\relax
-\contentsline {section}{ \hspace {-0.55cm}Dédicaces }{ii}{chapter*.4}%
+\contentsline {section}{ \hspace {-0.55cm}Dédicace }{ii}{chapter*.4}%
 \contentsline {section}{ \hspace {-0.55cm}Remerciements }{iii}{chapter*.6}%
-\contentsline {section}{ \hspace {-0.55cm}Table des Matières }{iv}{chapter*.6}%
-\contentsline {section}{ \hspace {-0.55cm}List of Symbols }{viii}{chapter*.9}%
+\contentsline {section}{ \hspace {-0.55cm}Table des matières }{iv}{chapter*.6}%
+\contentsline {section}{ \hspace {-0.55cm}Liste des symboles }{viii}{chapter*.9}%
 \contentsline {section}{ \hspace {-0.55cm}Liste des acronymes }{ix}{chapter*.11}%
 \contentsline {section}{ \hspace {-0.55cm}Liste des tableaux }{x}{chapter*.11}%
-\contentsline {section}{ \hspace {-0.55cm}Table des figures }{xi}{chapter*.12}%
+\contentsline {section}{ \hspace {-0.55cm}Liste des figures }{xi}{chapter*.12}%
 \contentsline {section}{ \hspace {-0.55cm}Résumé }{xiii}{chapter*.15}%
-\contentsline {section}{ \hspace {-0.55cm}Abstract }{xiv}{chapter*.17}%
-\contentsline {chapter}{ \hspace {-0.25cm}Introduction Générale }{1}{chapter*.19}%
+\contentsline {section}{ \hspace {-0.55cm}Abstract }{xv}{chapter*.19}%
+\contentsline {chapter}{ \hspace {-0.25cm}Introduction générale }{1}{chapter*.21}%
 \ttl@starttoc {chapters@1}
 \ttl@starttoc {chapters@1}
-\contentsline {section}{ \hspace {-0.55cm}Contexte du travail }{1}{section*.20}%
+\contentsline {section}{ \hspace {-0.55cm}Contexte du travail }{1}{section*.22}%
 \ttl@stoptoc {chapters@1}
 \ttl@starttoc {chapters@1}
-\contentsline {section}{ \hspace {-0.55cm}Problématique et objectifs }{2}{section*.21}%
+\contentsline {section}{ \hspace {-0.55cm}Problématique et objectifs }{2}{section*.23}%
 \ttl@stoptoc {chapters@1}
 \ttl@starttoc {chapters@1}
-\contentsline {section}{ \hspace {-0.55cm}Organisation du manuscrit }{4}{section*.22}%
+\contentsline {section}{ \hspace {-0.55cm}Organisation du manuscrit }{4}{section*.24}%
 \ttl@stoptoc {chapters@1}
 \contentsline {chapter}{\chapternumberline {I}Généralités sur le Business Process Model and Notation et applications web métier}{5}{chapter.1}%
 \ttl@stoptoc {chapters@1}
@@ -31,129 +31,133 @@
 \ttl@stoptoc {chapters@2}
 \contentsline {subsection}{\numberline {I.2.1}Processus métier}{6}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {I.2.2}Gestion des processus métier (BPM)}{7}{subsection.1.2.2}%
-\contentsline {subsubsection}{\numberline {I.2.2.1}Définitions de la gestion des processus métier}{7}{subsubsection.1.2.2.1}%
 \contentsline {subsection}{\numberline {I.2.3}Cycle de vie du BPM}{7}{subsection.1.2.3}%
-\contentsline {subsubsection}{\numberline {I.2.3.1}Identification du processus \textit {(Process Identification)}}{8}{subsubsection.1.2.3.1}%
-\contentsline {subsubsection}{\numberline {I.2.3.2}Découverte des processus \textit {(Process Discovery)}}{8}{subsubsection.1.2.3.2}%
-\contentsline {subsubsection}{\numberline {I.2.3.3}Analyse du processus \textit {(Process Analysis)}}{8}{subsubsection.1.2.3.3}%
-\contentsline {subsubsection}{\numberline {I.2.3.4}Refonte du processus \textit {(Process Redesign)}}{8}{subsubsection.1.2.3.4}%
-\contentsline {subsubsection}{\numberline {I.2.3.5}Mise en œuvre du processus \textit {(Process Implementation)}}{8}{subsubsection.1.2.3.5}%
-\contentsline {subsubsection}{\numberline {I.2.3.6}Suivi du processus \textit {(Process Monitoring)}}{9}{subsubsection.1.2.3.6}%
 \contentsline {subsection}{\numberline {I.2.4}Systèmes de gestion des processus métier}{9}{subsection.1.2.4}%
 \ttl@starttoc {chapters@2}
-\contentsline {section}{\numberline {I.3}Modélisation des processus métier}{10}{section.1.3}%
+\contentsline {section}{\numberline {I.3}Modélisation des processus métier}{9}{section.1.3}%
 \ttl@stoptoc {chapters@2}
-\contentsline {subsection}{\numberline {I.3.1}Business Process Model and Notation (BPMN)}{10}{subsection.1.3.1}%
-\contentsline {subsubsection}{\numberline {I.3.1.1}Définition et objectif}{10}{subsubsection.1.3.1.1}%
-\contentsline {subsubsection}{\numberline {I.3.1.2}Historique du BPMN}{11}{subsubsection.1.3.1.2}%
-\contentsline {subsubsection}{\numberline {I.3.1.3}Éléments de base de BPMN}{11}{subsubsection.1.3.1.3}%
-\contentsline {subsubsection}{\numberline {I.3.1.4}Types de diagrammes BPMN}{16}{subsubsection.1.3.1.4}%
+\contentsline {subsection}{\numberline {I.3.1}Business Process Model and Notation (BPMN)}{9}{subsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {I.3.1.1}Définition et objectif}{9}{subsubsection.1.3.1.1}%
+\contentsline {subsubsection}{\numberline {I.3.1.2}Historique du BPMN}{10}{subsubsection.1.3.1.2}%
+\contentsline {subsubsection}{\numberline {I.3.1.3}Éléments de base de BPMN}{10}{subsubsection.1.3.1.3}%
+\contentsline {subsubsection}{\numberline {I.3.1.4}Types de diagrammes BPMN}{13}{subsubsection.1.3.1.4}%
 \ttl@starttoc {chapters@2}
-\contentsline {section}{\numberline {I.4}Ingénierie dirigée par les modèles}{17}{section.1.4}%
+\contentsline {section}{\numberline {I.4}Ingénierie dirigée par les modèles}{14}{section.1.4}%
 \ttl@stoptoc {chapters@2}
-\contentsline {subsection}{\numberline {I.4.1}Principe général de l’ingénierie dirigée par les modèles}{17}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {I.4.2}Notions de base en ingénierie dirigée par les modèles}{18}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {I.4.3}Transformation de modèles}{18}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {I.4.4}Model-Driven Architecture}{19}{subsection.1.4.4}%
+\contentsline {subsection}{\numberline {I.4.1}Principe général de l’ingénierie dirigée par les modèles}{14}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {I.4.2}Notions de base en ingénierie dirigée par les modèles}{15}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {I.4.3}Transformation de modèles}{15}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {I.4.4}Model-Driven Architecture}{16}{subsection.1.4.4}%
 \ttl@starttoc {chapters@2}
-\contentsline {section}{\numberline {I.5}Applications web métier}{20}{section.1.5}%
+\contentsline {section}{\numberline {I.5}Applications web métier}{17}{section.1.5}%
 \ttl@stoptoc {chapters@2}
-\contentsline {subsection}{\numberline {I.5.1}Généralités sur le développement web}{20}{subsection.1.5.1}%
-\contentsline {subsubsection}{\numberline {I.5.1.1}Historique du développement web}{20}{subsubsection.1.5.1.1}%
-\contentsline {subsubsection}{\numberline {I.5.1.2}Définition d'application web et concepts du web}{21}{subsubsection.1.5.1.2}%
-\contentsline {subsubsection}{\numberline {I.5.1.3}Frameworks d'application web}{22}{subsubsection.1.5.1.3}%
-\contentsline {subsubsection}{\numberline {I.5.1.4}Sécurité dans les applications web}{23}{subsubsection.1.5.1.4}%
-\contentsline {subsection}{\numberline {I.5.2}Applications web métier}{24}{subsection.1.5.2}%
-\contentsline {subsubsection}{\numberline {I.5.2.1}Définitions et principe}{24}{subsubsection.1.5.2.1}%
-\contentsline {subsubsection}{\numberline {I.5.2.2}Moteur de processus}{24}{subsubsection.1.5.2.2}%
+\contentsline {subsection}{\numberline {I.5.1}Généralités sur le développement web}{17}{subsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {I.5.1.1}Historique du développement web}{17}{subsubsection.1.5.1.1}%
+\contentsline {subsubsection}{\numberline {I.5.1.2}Définition d'application web et concepts du web}{18}{subsubsection.1.5.1.2}%
+\contentsline {subsubsection}{\numberline {I.5.1.3}Frameworks d'application web}{19}{subsubsection.1.5.1.3}%
+\contentsline {subsubsection}{\numberline {I.5.1.4}Sécurité dans les applications web}{19}{subsubsection.1.5.1.4}%
+\contentsline {subsection}{\numberline {I.5.2}Applications web métier}{20}{subsection.1.5.2}%
+\contentsline {subsubsection}{\numberline {I.5.2.1}Définitions et principe}{20}{subsubsection.1.5.2.1}%
+\contentsline {subsubsection}{\numberline {I.5.2.2}Moteur de processus}{20}{subsubsection.1.5.2.2}%
 \ttl@starttoc {chapters@2}
-\contentsline {section}{\numberline {I.6}Conclusion}{25}{section.1.6}%
+\contentsline {section}{\numberline {I.6}Conclusion}{21}{section.1.6}%
 \ttl@stoptoc {chapters@2}
-\contentsline {chapter}{\chapternumberline {II}État de l'art sur la génération d'applications web pilotées par des modèles}{26}{chapter.2}%
+\contentsline {chapter}{\chapternumberline {II}État de l'art sur la génération d'applications web pilotées par des modèles}{22}{chapter.2}%
 \ttl@stoptoc {chapters@2}
 \ttl@starttoc {chapters@3}
 \ttl@starttoc {chapters@3}
-\contentsline {section}{\numberline {II.1}Introduction}{26}{section.2.1}%
+\contentsline {section}{\numberline {II.1}Introduction}{22}{section.2.1}%
 \ttl@stoptoc {chapters@3}
 \ttl@starttoc {chapters@3}
-\contentsline {section}{\numberline {II.2}Démarche d'analyse des travaux existants}{26}{section.2.2}%
+\contentsline {section}{\numberline {II.2}Démarche d'analyse des travaux existants}{22}{section.2.2}%
+\ttl@stoptoc {chapters@3}
+\contentsline {subsection}{\numberline {II.2.1}Questions de revue}{23}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {II.2.2}Sources consultées et critères de sélection}{23}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {II.2.3}Critères d'analyse}{24}{subsection.2.2.3}%
+\ttl@starttoc {chapters@3}
+\contentsline {section}{\numberline {II.3}Revue de la littérature}{24}{section.2.3}%
+\ttl@stoptoc {chapters@3}
+\contentsline {subsection}{\numberline {II.3.1}Systèmes d'information orientés processus et plateformes d'exécution}{24}{subsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {II.3.1.1}Moteurs BPMS et plateformes d'exécution}{24}{subsubsection.2.3.1.1}%
+\contentsline {subsubsection}{\numberline {II.3.1.2}Architecture web pilotée par BPMN}{25}{subsubsection.2.3.1.2}%
+\contentsline {subsubsection}{\numberline {II.3.1.3}WebWorkFlow}{26}{subsubsection.2.3.1.3}%
+\contentsline {subsubsection}{\numberline {II.3.1.4}Plateforme AKIP}{27}{subsubsection.2.3.1.4}%
+\contentsline {subsection}{\numberline {II.3.2}Dérivation d'artefacts applicatifs à partir de BPMN}{27}{subsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {II.3.2.1}Transformation vers des modèles d'interaction}{27}{subsubsection.2.3.2.1}%
+\contentsline {subsubsection}{\numberline {II.3.2.2}Génération de prototypes et d'API}{28}{subsubsection.2.3.2.2}%
+\contentsline {subsubsection}{\numberline {II.3.2.3}Vers une génération intégrée des artefacts applicatifs}{29}{subsubsection.2.3.2.3}%
+\contentsline {subsection}{\numberline {II.3.3}Ingénierie dirigée par les modèles et génération de systèmes orientés processus}{30}{subsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {II.3.3.1}Composition de langages et génération progressive}{31}{subsubsection.2.3.3.1}%
+\contentsline {subsubsection}{\numberline {II.3.3.2}Spécification grammaticale des workflows web avec LSAWfP4WEB}{31}{subsubsection.2.3.3.2}%
+\contentsline {subsubsection}{\numberline {II.3.3.3}Gabarits et compléments aux modèles BPMN}{32}{subsubsection.2.3.3.3}%
+\contentsline {subsection}{\numberline {II.3.4}Maintenabilité du code généré et mise en perspective avec le low-code}{33}{subsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {II.3.4.1}Gestion conjointe du code généré et du code manuel}{33}{subsubsection.2.3.4.1}%
+\contentsline {subsubsection}{\numberline {II.3.4.2}Mise en perspective avec les approches low-code}{34}{subsubsection.2.3.4.2}%
+\ttl@starttoc {chapters@3}
+\contentsline {section}{\numberline {II.4}Discussion et positionnement de la recherche}{34}{section.2.4}%
 \ttl@stoptoc {chapters@3}
 \ttl@starttoc {chapters@3}
-\contentsline {section}{\numberline {II.3}Revue de la littérature}{27}{section.2.3}%
+\contentsline {section}{\numberline {II.5}Conclusion}{36}{section.2.5}%
 \ttl@stoptoc {chapters@3}
-\contentsline {subsection}{\numberline {II.3.1}Systèmes d'information orientés processus et plateformes d'exécution}{27}{subsection.2.3.1}%
-\contentsline {subsubsection}{\numberline {II.3.1.1}Moteurs BPMS et plateformes d'exécution}{28}{subsubsection.2.3.1.1}%
-\contentsline {subsubsection}{\numberline {II.3.1.2}Architecture web pilotée par BPMN}{28}{subsubsection.2.3.1.2}%
-\contentsline {subsubsection}{\numberline {II.3.1.3}WebWorkFlow}{29}{subsubsection.2.3.1.3}%
-\contentsline {subsubsection}{\numberline {II.3.1.4}Plateforme AKIP}{30}{subsubsection.2.3.1.4}%
-\contentsline {subsection}{\numberline {II.3.2}Dérivation d'artefacts applicatifs à partir de BPMN}{30}{subsection.2.3.2}%
-\contentsline {subsubsection}{\numberline {II.3.2.1}Transformation vers des modèles d'interaction}{31}{subsubsection.2.3.2.1}%
-\contentsline {subsubsection}{\numberline {II.3.2.2}Génération de prototypes et d'API}{32}{subsubsection.2.3.2.2}%
-\contentsline {subsubsection}{\numberline {II.3.2.3}Vers une génération intégrée des artefacts applicatifs}{32}{subsubsection.2.3.2.3}%
-\contentsline {subsection}{\numberline {II.3.3}Ingénierie dirigée par les modèles et génération de systèmes orientés processus}{34}{subsection.2.3.3}%
-\contentsline {subsubsection}{\numberline {II.3.3.1}Composition de langages et génération progressive}{34}{subsubsection.2.3.3.1}%
-\contentsline {subsubsection}{\numberline {II.3.3.2}Gabarits et compléments aux modèles BPMN}{35}{subsubsection.2.3.3.2}%
-\contentsline {subsection}{\numberline {II.3.4}Maintenabilité du code généré et mise en perspective avec le low-code}{36}{subsection.2.3.4}%
-\contentsline {subsubsection}{\numberline {II.3.4.1}Gestion conjointe du code généré et du code manuel}{36}{subsubsection.2.3.4.1}%
-\contentsline {subsubsection}{\numberline {II.3.4.2}Mise en perspective avec les approches low-code}{37}{subsubsection.2.3.4.2}%
-\ttl@starttoc {chapters@3}
-\contentsline {section}{\numberline {II.4}Discussion et positionnement de la recherche}{37}{section.2.4}%
-\ttl@stoptoc {chapters@3}
-\ttl@starttoc {chapters@3}
-\contentsline {section}{\numberline {II.5}Conclusion}{40}{section.2.5}%
-\ttl@stoptoc {chapters@3}
-\contentsline {chapter}{\chapternumberline {III}Approche d'ingénierie proposée pour la génération d'applications web pilotées par BPMN}{42}{chapter.3}%
+\contentsline {chapter}{\chapternumberline {III}Approche d'ingénierie proposée pour la génération d'applications web pilotées par BPMN}{38}{chapter.3}%
 \ttl@stoptoc {chapters@3}
 \ttl@starttoc {chapters@4}
 \ttl@starttoc {chapters@4}
-\contentsline {section}{\numberline {III.1}Introduction}{42}{section.3.1}%
+\contentsline {section}{\numberline {III.1}Introduction}{38}{section.3.1}%
 \ttl@stoptoc {chapters@4}
 \ttl@starttoc {chapters@4}
-\contentsline {section}{\numberline {III.2}Vue d'ensemble de l'approche}{43}{section.3.2}%
+\contentsline {section}{\numberline {III.2}Vue d'ensemble de l'approche d'ingénierie}{39}{section.3.2}%
 \ttl@stoptoc {chapters@4}
-\contentsline {subsection}{\numberline {III.2.1}Problème traité et principe général}{43}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {III.2.2}Positionnement dans le cycle MDA}{43}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {III.2.3}Contribution méthodologique de l'approche}{44}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {III.2.1}Problème traité et principe général}{39}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {III.2.2}Positionnement dans le cycle MDA}{39}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {III.2.3}Contribution méthodologique de l'approche}{40}{subsection.3.2.3}%
 \ttl@starttoc {chapters@4}
-\contentsline {section}{\numberline {III.3}Architecture globale du framework proposé}{44}{section.3.3}%
+\contentsline {section}{\numberline {III.3}Architecture globale du framework proposé}{40}{section.3.3}%
 \ttl@stoptoc {chapters@4}
-\contentsline {subsection}{\numberline {III.3.1}Modèles d'entrée de ProOWeb}{45}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {III.3.2}Noyau de génération du framework}{45}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {III.3.3}Application web générée}{46}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {III.3.4}Exploitation et évolution de l'application}{46}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {III.3.1}Modèles d'entrée de ProOWeb}{41}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {III.3.2}Noyau de génération du framework}{42}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {III.3.3}Application web générée}{42}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {III.3.4}Exploitation et évolution de l'application}{42}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {III.3.5}Architecture logique de l'application web générée}{43}{subsection.3.3.5}%
+\contentsline {paragraph}{Couche de présentation et adaptateurs d'interface.}{43}{figure.caption.66}%
+\contentsline {paragraph}{Ports et adaptateurs entrants.}{43}{figure.caption.66}%
+\contentsline {paragraph}{Services applicatifs.}{44}{figure.caption.66}%
+\contentsline {paragraph}{Cœur métier.}{44}{figure.caption.66}%
+\contentsline {paragraph}{Ports et adaptateurs sortants.}{44}{figure.caption.66}%
+\contentsline {paragraph}{Gestion des données.}{44}{figure.caption.66}%
+\contentsline {paragraph}{Ressources de processus et contrats.}{44}{figure.caption.66}%
+\contentsline {paragraph}{Sécurité et contrôle d'accès.}{45}{figure.caption.66}%
+\contentsline {paragraph}{Tests et vérification.}{45}{figure.caption.66}%
+\contentsline {paragraph}{Traçabilité et évolution.}{45}{figure.caption.66}%
 \ttl@starttoc {chapters@4}
 \contentsline {section}{\numberline {III.4}Modèle d'entrée enrichi : spécification spec-v1}{46}{section.3.4}%
 \ttl@stoptoc {chapters@4}
-\contentsline {subsection}{\numberline {III.4.1}Grammaire de spec-v1}{47}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {III.4.1}Grammaire de spec-v1}{46}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {III.4.2}Propriétés de la grammaire spec-v1}{49}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {III.4.3}Métadonnées des activités}{49}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {III.4.4}Affectation des tâches et sécurité}{50}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {III.4.5}Entrées, sorties et données partagées}{51}{subsection.3.4.5}%
-\contentsline {subsection}{\numberline {III.4.6}Règles de visibilité}{52}{subsection.3.4.6}%
+\contentsline {subsection}{\numberline {III.4.3}Métadonnées des activités}{51}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {III.4.4}Affectation des tâches et sécurité}{52}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {III.4.5}Entrées, sorties et données partagées}{53}{subsection.3.4.5}%
+\contentsline {subsection}{\numberline {III.4.6}Règles de visibilité}{54}{subsection.3.4.6}%
 \ttl@starttoc {chapters@4}
-\contentsline {section}{\numberline {III.5}Règles de transformation et génération de l'application web}{52}{section.3.5}%
+\contentsline {section}{\numberline {III.5}Règles de transformation et génération de l'application web}{54}{section.3.5}%
 \ttl@stoptoc {chapters@4}
-\contentsline {subsection}{\numberline {III.5.1}Validation avant génération}{52}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {III.5.2}Transformation modèle-à-modèle}{53}{subsection.3.5.2}%
-\contentsline {subsubsection}{\numberline {III.5.2.1}Algorithme de transformation M2M}{53}{subsubsection.3.5.2.1}%
-\contentsline {subsubsection}{\numberline {III.5.2.2}Propriétés de l'algorithme de transformation M2M}{55}{subsubsection.3.5.2.2}%
-\contentsline {subsection}{\numberline {III.5.3}Transformation modèle-à-texte}{56}{subsection.3.5.3}%
-\contentsline {subsubsection}{\numberline {III.5.3.1}Algorithme de génération Model-to-Text}{56}{subsubsection.3.5.3.1}%
-\contentsline {subsubsection}{\numberline {III.5.3.2}Propriétés de l'algorithme de transformation M2T}{58}{subsubsection.3.5.3.2}%
+\contentsline {subsection}{\numberline {III.5.1}Validation avant génération}{54}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {III.5.2}Transformation M2M}{55}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {III.5.3}Transformation M2T}{57}{subsection.3.5.3}%
 \contentsline {subsection}{\numberline {III.5.4}Règles de projection vers les artefacts}{59}{subsection.3.5.4}%
 \contentsline {subsection}{\numberline {III.5.5}Traçabilité de bout en bout}{59}{subsection.3.5.5}%
 \ttl@starttoc {chapters@4}
 \contentsline {section}{\numberline {III.6}Préservation du code personnalisé et synchronisation}{60}{section.3.6}%
 \ttl@stoptoc {chapters@4}
-\contentsline {subsection}{\numberline {III.6.1}Problème de la régénération}{60}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {III.6.1}Problème de la régénération}{61}{subsection.3.6.1}%
 \contentsline {subsection}{\numberline {III.6.2}Manifeste et contrat de propriété}{61}{subsection.3.6.2}%
 \contentsline {subsection}{\numberline {III.6.3}Préservation côté logique applicative}{61}{subsection.3.6.3}%
-\contentsline {subsection}{\numberline {III.6.4}Préservation côté interface utilisateur}{61}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {III.6.4}Préservation côté interface utilisateur}{62}{subsection.3.6.4}%
 \contentsline {subsection}{\numberline {III.6.5}Cycle de synchronisation itératif}{62}{subsection.3.6.5}%
 \ttl@starttoc {chapters@4}
-\contentsline {section}{\numberline {III.7}Conclusion}{62}{section.3.7}%
+\contentsline {section}{\numberline {III.7}Conclusion}{63}{section.3.7}%
 \ttl@stoptoc {chapters@4}
-\contentsline {chapter}{\chapternumberline {IV}Mise en œuvre et évaluation de ProOWeb}{64}{chapter.4}%
+\contentsline {chapter}{\chapternumberline {IV}Mise en œuvre et expérimentation}{64}{chapter.4}%
 \ttl@stoptoc {chapters@4}
 \ttl@starttoc {chapters@5}
 \ttl@starttoc {chapters@5}
@@ -181,21 +185,24 @@
 \contentsline {subsection}{\numberline {IV.4.4}Analyse et validation}{72}{subsection.4.4.4}%
 \contentsline {subsection}{\numberline {IV.4.5}Construction du modèle pivot}{72}{subsection.4.4.5}%
 \contentsline {subsection}{\numberline {IV.4.6}Génération des artefacts applicatifs}{74}{subsection.4.4.6}%
-\contentsline {subsection}{\numberline {IV.4.7}Fonctionnement dans l'application web générée}{75}{subsection.4.4.7}%
+\contentsline {subsection}{\numberline {IV.4.7}Observation de l'application web générée}{75}{subsection.4.4.7}%
 \ttl@starttoc {chapters@5}
-\contentsline {section}{\numberline {IV.5}Discussion et positionnement}{78}{section.4.5}%
+\contentsline {section}{\numberline {IV.5}Évaluation de ProOWeb}{79}{section.4.5}%
 \ttl@stoptoc {chapters@5}
 \ttl@starttoc {chapters@5}
-\contentsline {section}{\numberline {IV.6}Conclusion}{79}{section.4.6}%
+\contentsline {section}{\numberline {IV.6}Discussion et positionnement}{81}{section.4.6}%
 \ttl@stoptoc {chapters@5}
-\contentsline {chapter}{ \hspace {-0.25cm}Conclusion générale }{80}{chapter*.91}%
+\ttl@starttoc {chapters@5}
+\contentsline {section}{\numberline {IV.7}Conclusion}{82}{section.4.7}%
+\ttl@stoptoc {chapters@5}
+\contentsline {chapter}{ \hspace {-0.25cm}Conclusion générale }{83}{chapter*.92}%
 \ttl@stoptoc {chapters@5}
 \ttl@starttoc {chapters@6}
 \ttl@starttoc {chapters@6}
-\contentsline {section}{ \hspace {-0.55cm}Bilan du travail }{80}{section*.92}%
+\contentsline {section}{ \hspace {-0.55cm}Bilan du travail }{83}{section*.93}%
 \ttl@stoptoc {chapters@6}
 \ttl@starttoc {chapters@6}
-\contentsline {section}{ \hspace {-0.55cm}Quelques perspectives }{81}{section*.93}%
+\contentsline {section}{ \hspace {-0.55cm}Quelques perspectives }{84}{section*.94}%
 \ttl@stoptoc {chapters@6}
-\contentsline {chapter}{Bibliographie}{83}{chapter*.95}%
+\contentsline {chapter}{Bibliographie}{86}{chapter*.96}%
 \contentsfinish

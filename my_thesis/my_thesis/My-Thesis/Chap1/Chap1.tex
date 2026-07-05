@@ -1,4 +1,4 @@
-\myChapter{Généralités sur le Business Process Model and Notation et applications web métier}{}
+﻿\myChapter{Généralités sur le Business Process Model and Notation et applications web métier}{}
 \label{chap:services_composition_generalities}
 \myMiniToc{mysection}{Sommaire}
 
@@ -54,16 +54,18 @@ Sorties & Résultats produits : dossier validé, demande rejetée, document gén
 \bottomrule
 \end{tabularx}
 \end{table}
+La figure~\ref{fig:processus-metier-exemple} illustre l'enchaînement de ces
+composantes dans un processus simple.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{Chap1/images/image1.JPG}
-\caption{Exemple de processus métier }
+\caption{Exemple de processus métier}
 \label{fig:processus-metier-exemple}
 \end{figure}
 
 \subsection{Gestion des processus métier (BPM)}
 
-\subsubsection{Définitions de la gestion des processus métier}
+\subsubsection*{Définitions de la gestion des processus métier}
 
 Plusieurs définitions ont été données pour le terme de gestion des processus métier.
 
@@ -73,52 +75,46 @@ D'après van der Aalst et al., le \textit{Business Process Management} (BPM) com
 Le \textit{Business Process Management} (BPM) peut également être défini comme l'art de modéliser, de gérer et d'optimiser les processus métier afin d'améliorer la performance des entreprises. Il nécessite l'utilisation d'outils permettant de modéliser, d'intégrer, de superviser et d'analyser le fonctionnement des processus tout au long de leur cycle de vie, dans une logique d'amélioration continue \citep{dumas2018fundamentals,weske2012bpm}.
 \subsection{Cycle de vie du BPM}
 
-Selon Marlon Dumas \citep{dumas2013fundamentals}, le BPM peut être considéré comme un cycle continu comprenant les phases suivantes
+Le BPM s'inscrit dans un cycle d'amélioration continue, illustré par la
+figure~\ref{fig:cycle-vie-bpm}. Selon Dumas \citep{dumas2013fundamentals}, ce
+cycle relie l'étude du fonctionnement existant, la conception d'un processus
+cible, sa mise en œuvre et l'observation de ses résultats.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.75\textwidth]{Chap1/images/image2.JPG}
-\caption{Cycle de vie du BPM \citep{dumas2013fundamentals} }
+\caption{Cycle de vie du BPM, adapté de \cite{dumas2013fundamentals}}
 \label{fig:cycle-vie-bpm}
 \end{figure}
 
-\subsubsection{Identification du processus \textit{(Process Identification)}}
-
-Cette étape part d’un problème concret rencontré dans l’entreprise. Il s’agit alors de repérer les processus concernés, d’en préciser les limites et de comprendre les liens qu’ils entretiennent avec les autres processus. Ce travail conduit à une architecture de processus, nouvelle ou actualisée, qui donne une vue d’ensemble du fonctionnement de l’organisation. Cette architecture sert ensuite de base pour choisir le ou les processus qui seront traités dans les autres phases du cycle de vie. L’identification des processus s’accompagne souvent de la définition des indicateurs de performance.
-
-\subsubsection{Découverte des processus \textit{(Process Discovery)}}
-
-Cette phase correspond à la description de la situation existante. Elle consiste à représenter le fonctionnement réel des processus retenus, le plus souvent à travers un ou plusieurs modèles de processus. Elle permet ainsi de disposer d’une vision claire de la manière dont le travail est effectivement réalisé.
-
-\subsubsection{Analyse du processus \textit{(Process Analysis)}}
-
-À ce niveau, les difficultés liées au processus sont relevées, décrites et, lorsque cela est possible, mesurées à l’aide d’indicateurs de performance. Le résultat obtenu est une liste organisée des problèmes constatés. Ces problèmes sont ensuite hiérarchisés selon leur importance, leur impact sur le processus et l’effort nécessaire pour les corriger.
-
-\subsubsection{Refonte du processus \textit{(Process Redesign)}}
-
-Cette phase, aussi appelée amélioration du processus, vise à proposer les modifications capables de résoudre les problèmes identifiés précédemment et d’aider l’organisation à atteindre ses objectifs de performance. Plusieurs possibilités de changement sont étudiées, puis comparées à partir des indicateurs retenus. Ainsi, la refonte reste étroitement liée à l’analyse : chaque solution envisagée doit être évaluée avant d’être retenue. Les options les plus pertinentes sont finalement regroupées pour produire un processus amélioré, généralement présenté sous forme de modèle.
-
-\subsubsection{Mise en œuvre du processus \textit{(Process Implementation)}}
-
-Cette étape consiste à préparer et à appliquer les changements permettant de passer du processus actuel au processus cible. Elle comporte deux dimensions principales : le changement organisationnel et l’automatisation. Le changement organisationnel concerne l’adaptation des pratiques de travail des acteurs impliqués dans le processus. L’automatisation, quant à elle, renvoie à la mise en place ou à l’amélioration des systèmes informatiques destinés à soutenir le nouveau processus.
-
-\subsubsection{Suivi du processus \textit{(Process Monitoring)}}
-
-Lorsque le processus amélioré est exécuté, des données sont collectées puis analysées afin d’évaluer sa performance par rapport aux objectifs fixés. Cette observation permet de détecter les lenteurs, les erreurs fréquentes ou les écarts par rapport au fonctionnement prévu. Des actions correctives peuvent alors être engagées. De nouveaux problèmes pouvant apparaître dans le même processus ou dans d’autres, le cycle BPM doit être repris de manière continue.
+Les six phases peuvent être résumées ainsi :
+\begin{enumerate}
+    \item l'\textbf{identification} délimite les processus à étudier et précise
+    les objectifs poursuivis ;
+    \item la \textbf{découverte} représente le fonctionnement réel du processus
+    et les responsabilités des acteurs ;
+    \item l'\textbf{analyse} met en évidence les difficultés, les écarts et les
+    résultats mesurables ;
+    \item la \textbf{refonte} élabore un processus cible répondant aux problèmes
+    constatés ;
+    \item la \textbf{mise en œuvre} applique les changements organisationnels et
+    introduit le soutien nécessaire des systèmes d'information ;
+    \item le \textbf{suivi} confronte l'exécution aux objectifs et alimente un
+    nouveau cycle d'amélioration.
+\end{enumerate}
+Pour ce mémoire, la mise en œuvre est particulièrement importante : elle relie
+le modèle de processus à l'automatisation et aux applications chargées de prendre
+en charge les tâches, les données et les interactions avec les acteurs.
 
 \subsection{Systèmes de gestion des processus métier}
 
-Les systèmes de gestion des processus métier, généralement désignés par l'abréviation BPMS \textit{(Business Process Management Systems)}, désignent des solutions logicielles 
-conçues pour accompagner la mise en œuvre des démarches BPM. Ces environnements peuvent intégrer plusieurs fonctionnalités, notamment la modélisation des processus, l’exécution des workflows, la gestion des tâches, le suivi à travers des tableaux de bord, l’interconnexion avec d’autres applications, la supervision des activités et, dans certains cas, la conception d’interfaces utilisateur \citep{bonitasoftBPMN2}. Parmi ces logiciels, nous pouvons citer :
-\begin{itemize}
-    \item \textbf{Camunda} : Camunda est une plateforme d’orchestration de processus qui s’appuie notamment sur les standards BPMN et DMN. Elle est souvent utilisée pour automatiser des processus complexes impliquant des utilisateurs, des applications, des services et des règles de décision. Camunda est particulièrement adaptée aux environnements techniques distribués et aux architectures orientées services.
-
-    \item \textbf{Bonita / Bonitasoft} : Bonita est une plateforme BPMS orientée vers l’automatisation et l’optimisation des processus métier. Elle permet de modéliser des processus, de les exécuter, de gérer les tâches utilisateurs et d’intégrer les processus avec d’autres systèmes d’information. Son intérêt réside dans son caractère extensible et dans sa séparation entre la modélisation métier, le développement technique et l’exécution des processus.
-
-    \item \textbf{IBM Business Automation Workflow} : IBM Business Automation Workflow est une plateforme d’automatisation des workflows numériques. Elle combine la gestion des processus métier et la gestion de cas afin de coordonner les utilisateurs, les informations et les activités. Elle est surtout utilisée dans les grandes organisations ayant besoin de solutions robustes, sécurisées et intégrées à leur système d’information.
-
-    \item \textbf{Flowable} : Flowable est une plateforme de gestion et d’automatisation des processus métier basée sur des standards ouverts. Elle est utilisée pour exécuter des workflows, gérer des processus complexes et coordonner des tâches humaines ou automatisées. Son intérêt se trouve dans sa flexibilité et dans sa capacité à être intégrée dans des applications d’entreprise.
-
-\end{itemize}
+Les systèmes de gestion des processus métier, ou BPMS \textit{(Business Process
+Management Systems)}, soutiennent la démarche BPM par des fonctions de
+modélisation, d'exécution, de gestion des tâches, de supervision et
+d'intégration avec le système d'information \citep{bonitasoftBPMN2}. Camunda,
+Bonita, IBM Business Automation Workflow et Flowable illustrent cette catégorie.
+Un BPMS orchestre et suit les processus ; il ne se confond pas avec l'ensemble
+de l'application web métier, qui doit également prendre en charge les interfaces,
+les données et les règles propres à l'organisation.
 
 \mySection{Modélisation des processus métier}{}
 
@@ -149,229 +145,176 @@ BPMN répond à un besoin fréquent dans les organisations : disposer d'une nota
 
 \subsubsection{Historique du BPMN}
 
-Von Rosing et al. retracent l'évolution de BPMN comme suit \citep{vonRosing2015bpmn} :
-
-\begin{itemize}
-    \item En 2001, il existait de nombreuses notations et plusieurs points de vue sur la modélisation des processus. Les membres de la Business Process Management Initiative (BPMI) ont alors engagé des travaux visant à unifier leur représentation graphique et à rapprocher la notation des langages de processus exécutables.
-
-    \item En mai 2004, la première version de BPMN, BPMN~1.0, a été publiée.
-
-    \item Le 6 février 2006, la BPMI (Business Process Management Initiative) a été intégrée à
-    l'OMG qui a depuis maintenu et développé la norme BPMN.
-
-    \item En janvier 2008, la version BPMN 1.1 a été publiée par l'OMG.
-
-    \item En 2009, la version BPMN 1.2 a été publiée par l'OMG.
-
-    \item En janvier 2011, la version BPMN 2.0 a été publiée par l'OMG.
-
-    \item En décembre 2013, la version 2.0.2 de BPMN a été publiée par l'OMG.
-\end{itemize}
+BPMN est né du besoin de disposer d'une notation commune pour représenter les
+processus métier. Les premiers travaux ont été conduits par la Business Process
+Management Initiative, avant que la norme soit reprise et maintenue par l'OMG.
+Son évolution a progressivement rapproché la notation graphique d'un
+méta-modèle exploitable par les outils. La version 2.0.2 constitue la référence
+utilisée dans ce mémoire \citep{vonRosing2015bpmn,omg2013bpmn}. La
+figure~\ref{fig:historique-bpmn} résume les principales étapes de cette évolution.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.82\textwidth]{Chap1/images/image3.JPG}
-\caption{Historique du BPMN \citep{vonRosing2015bpmn} }
+\caption{Historique du BPMN, adapté de \cite{vonRosing2015bpmn}}
 \label{fig:historique-bpmn}
 \end{figure}
 \subsubsection{Éléments de base de BPMN}
 
-Un diagramme BPMN est composé d'un ensemble d'éléments graphiques qui permettent de modéliser les activités, les flux, les relations, les données et l'interaction entre ces éléments.
-
-Les différents éléments sont organisés en cinq catégories :
-
-\begin{itemize}
-    \item les objets de flux \textit{(Flow Objects)} ;
-    \item les objets de connexion \textit{(Connecting Objects)} ;
-    \item les partitions \textit{(Swimlanes)} ;
-    \item les données ;
-    \item les artéfacts \textit{(Artifacts)}.
-\end{itemize}
-
-Les différents éléments de BPMN 2.0 sont illustrés dans la figure ci-dessous.
+BPMN regroupe ses éléments graphiques en cinq familles : les objets de flux, les
+objets de connexion, les partitions, les données et les artefacts. La
+figure~\ref{fig:elements-bpmn-20} en donne une vue d'ensemble. Ces familles
+suffisent ici à introduire les concepts mobilisés dans les modèles du mémoire,
+sans détailler l'ensemble des symboles définis par la norme.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{Chap1/images/image4.JPG}
-    \caption{Les différents éléments de BPMN 2.0.}
+    \caption{Principaux éléments de BPMN 2.0}
     \label{fig:elements-bpmn-20}
 \end{figure}
 
-\subsubsection*{A. Les objets de flux}
+\subsubsection*{A. Objets de flux}
 
-Les objets de flux sont les principaux éléments graphiques qui permettent de définir le comportement d'un processus métier. Il existe trois types d'objets de flux : les activités, les événements et les passerelles.
+Les objets de flux décrivent le comportement du processus. Une activité
+représente un travail à accomplir ; elle peut correspondre à une tâche atomique
+ou à un sous-processus. Parmi les tâches utiles pour la suite, la tâche
+utilisateur associe une action humaine à une application, la tâche manuelle est
+réalisée sans assistance du moteur de processus, tandis que la tâche de service
+déclenche un traitement automatisé. La figure~\ref{fig:types-taches-bpmn}
+rappelle les principaux types proposés par BPMN.
 
-\textbf{1. Les activités.}
-Les activités sont représentées par un rectangle aux coins arrondis. Elles correspondent à une action pouvant être réalisée par un humain ou par une machine. Une activité peut être atomique ou composée. Les principaux types d'activités sont les suivants :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Chap1/images/image5.JPG}
+    \caption{Principaux types de tâches dans BPMN 2.0}
+    \label{fig:types-taches-bpmn}
+\end{figure}
 
-\begin{itemize}
-    \item \textbf{Tâche} : une tâche est représentée par un rectangle à coins arrondis tracé avec une seule ligne mince. Elle correspond à une activité atomique ayant un début et une fin. Une tâche ne peut débuter que si la tâche précédente est terminée. Il existe plusieurs types de tâches :
-    \begin{itemize}
-        \item \textbf{Tâche utilisateur} : elle précise que la tâche est effectuée par un exécutant humain avec l'aide d'une application informatique.
-        \item \textbf{Tâche manuelle} : elle précise que la tâche doit être effectuée sans l'aide d'un moteur d'exécution de processus métier ni d'une application. Elle est donc réalisée exclusivement par un acteur humain.
-        \item \textbf{Tâche service} : elle utilise un service, qui peut être un service Web ou une application automatisée. Il s'agit d'une tâche automatisée sans intervention humaine.
-       % \item \textbf{Tâche d'envoi de message} : elle spécifie l'envoi d'un message à un participant externe au processus. Une fois le message envoyé, la tâche est terminée.
-       % \item \textbf{Tâche de réception d'un message} : elle spécifie l'arrivée d'un message provenant d'un participant au processus. Une fois le message reçu, la tâche est terminée.
-       % \item \textbf{Tâche script} : elle est exécutée par un moteur de processus métier. Le modélisateur ou l'implémenteur définit un script dans un langage que le moteur peut interpréter. Lorsque la tâche est prête à démarrer, le moteur exécute le script ; lorsque le script est terminé, la tâche est également complétée.
-    \end{itemize}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.9\textwidth]{Chap1/images/image5.JPG}
-        \caption{Les types des tâches dans BPMN 2.0.}
-        \label{fig:types-taches-bpmn}
-    \end{figure}
-\end{itemize}
-
-\textbf{2. Les événements.}
-Les événements sont représentés par des cercles. Ils correspondent à une action qui survient durant le processus. Ils ont généralement une cause et une conséquence. Il existe trois catégories d'événements : les événements de début, les événements intermédiaires et les événements de fin.
+Les événements marquent ce qui déclenche, interrompt ou termine une partie du
+processus. Un événement de début crée une instance, un événement intermédiaire
+intervient pendant son exécution et un événement de fin clôt le chemin concerné.
+Cette distinction est illustrée par la
+figure~\ref{fig:evenements-bpmn}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image6.JPG}
-    \caption{Événements dans BPMN 2.0.}
+    \caption{Événements de début, intermédiaires et de fin dans BPMN 2.0}
     \label{fig:evenements-bpmn}
 \end{figure}
 
-\begin{itemize}
-    \item \textbf{Les événements de début} : ils sont représentés par un cercle avec une seule ligne mince. Ils déclenchent une nouvelle instance de processus. Un processus peut avoir plus d'un événement de début, mais un sous-processus d'événement n'a qu'un seul événement de début.
-    \item \textbf{Les événements intermédiaires} : ils sont représentés par un cercle avec une double ligne mince. Ils indiquent une action qui se produit ou peut se produire au cours du processus, entre le début et la fin. Ils peuvent être utilisés pour attraper un déclencheur d'événement et peuvent être placés dans le flux ou à la limite d'une activité.
-    \item \textbf{Les événements de fin} : ils sont représentés par un cercle avec une ligne épaisse. Ils marquent la fin de l'instance de processus et ne possèdent pas de flux de séquence sortant.
-\end{itemize}
-
-%\begin{itemize}
-    %\item \textbf{L'événement de message} : un message est un moyen spécifique de transmission de données d'un processus à l'autre. Le type message signifie l'envoi ou la réception d'un message.
-    %\item \textbf{L'événement de minuterie} : il est utilisé pour signifier l'attente d'une condition de temps spécifique pour se déclencher, lancer un processus, un événement ou un sous-processus.
-    %\item \textbf{L'événement de condition} : ce type d'événement est déclenché lorsqu'une condition devient vraie. Une condition est un type d'expression.
-    %\item \textbf{L'événement d'annulation} : il signale la fin du processus et annule les transactions en cours.
-    %\item \textbf{L'événement de compensation} : il signale qu'une tâche doit être annulée. Ce type d'événement permet de définir la tâche utilisée pour compenser une tâche particulière.
-    %\item \textbf{L'événement de signal} : il est utilisé pour indiquer l'envoi ou la réception d'un signal.
-    %\item \textbf{L'événement de terminaison} : il correspond à l'événement « stop everything ». Lorsqu'un événement de terminaison est atteint, la totalité du processus est arrêtée.
-%\end{itemize}
-
-\textbf{3. Les passerelles.}
-Les passerelles, ou branchements \textit{(Gateways)}, sont représentées par un losange. Elles servent à représenter les conditions de routage entre les flux d'entrée et les flux de sortie. Les signes internes indiquent le type de contrôle du comportement du branchement.
+Les passerelles contrôlent la divergence et la convergence des chemins. Une
+passerelle exclusive sélectionne une seule branche, une passerelle inclusive
+peut en activer plusieurs selon les conditions, et une passerelle parallèle
+déclenche ou synchronise plusieurs branches. La
+figure~\ref{fig:passerelles-bpmn} présente leurs symboles usuels.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Chap1/images/image7.JPG}
-    \caption{Les branchements de BPMN 2.0.}
+    \caption{Principales passerelles de BPMN 2.0}
     \label{fig:passerelles-bpmn}
 \end{figure}
 
-Les différents branchements possibles sont :
+\subsubsection*{B. Objets de connexion}
 
-\begin{itemize}
-    \item \textbf{Exclusive (XOR)} : elle est utilisée pour créer des chemins alternatifs dans un flux de processus. Lors de la scission, elle dirige le flux vers une branche sortante. Lors de la fusion, elle attend qu'une branche entrante se termine avant de déclencher le flux de sortie.
-    \item \textbf{Inclusive (OR)} : elle peut être utilisée pour créer des chemins alternatifs parallèles. Contrairement à la passerelle exclusive, toutes les expressions de condition sont évaluées. Lors de la scission, elle active une ou plusieurs branches. Lors de la fusion, elle attend que toutes les branches entrantes se terminent avant de fusionner.
-    %\item \textbf{Complexe} : un ou plusieurs chemins sont choisis selon la condition de la passerelle.
-    \item \textbf{Parallèle (AND)} : elle est utilisée pour synchroniser et créer des flux parallèles. Lors de la scission, elle active toutes les branches sortantes simultanément. Lors de la fusion, elle attend que toutes les branches entrantes se terminent.
-\end{itemize}
-
-\subsubsection*{B. Les objets de connexion}
-
-Les objets de connexion sont les éléments graphiques qui permettent de relier les objets de flux les uns aux autres pour représenter le cheminement du processus. Il existe trois types d'objets de connexion.
-
-\begin{itemize}
-    \item \textbf{Les flux de séquence} : ils sont représentés par une flèche pleine et une ligne solide. Ils indiquent l'ordre d'exécution des actions, des événements ou des activités.
-\end{itemize}
+Les objets de connexion relient les éléments du diagramme. Le flux de séquence
+indique l'ordre d'exécution au sein d'un processus ; le flux de message
+représente un échange entre participants distincts ; l'association rattache une
+donnée ou une annotation à un élément. Le flux de séquence est central dans ce
+mémoire, car il porte le déroulement que ProOWeb conserve lors du traitement du
+modèle BPMN. La figure~\ref{fig:flux-sequence-bpmn} en rappelle la notation.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\textwidth]{Chap1/images/image8.JPG}
-    \caption{Les flux de séquence de BPMN 2.0.}
+    \caption{Flux de séquence dans BPMN 2.0}
     \label{fig:flux-sequence-bpmn}
 \end{figure}
 
-\begin{itemize}
-    \item \textbf{Les flux normaux} : le flux normal fait référence aux chemins du flux de séquence qui ne commencent pas à partir d'un événement intermédiaire attaché à la limite d'une activité.
-   % \item \textbf{Les flux conditionnels} : ils correspondent à des flux de séquence dont l'exécution dépend d'une condition.
-    %\item \textbf{Les flux par défaut} : ils sont employés pour les passerelles exclusives ou inclusives. Ce type de flux est utilisé uniquement si tous les autres flux conditionnels sortants ne sont pas vrais au moment de l'exécution du processus.
-    \end{itemize}
+\subsubsection*{C. Partitions}
 
-%\begin{itemize}
-    %\item \textbf{Les flux de message} : ils sont représentés par une ligne pointillée avec un cercle ouvert au début et une flèche vide à la fin. Ils correspondent à un lien entre deux processus séparés.
-    %\item \textbf{Les associations} : une association est dessinée avec une ligne pointillée. Elle permet de lier des données ou des documents aux objets du processus.
-%\end{itemize}
-
-\subsubsection*{C. Les partitions}
-
-Les partitions sont les éléments graphiques permettant de structurer et de regrouper les différents éléments qui composent le diagramme BPMN. Les deux types d'objets sont les participants et les couloirs.
-
-\begin{itemize}
-    \item \textbf{Les participants (Pool)} : un pool est la représentation graphique d'un participant à une collaboration. Un participant peut être une entité partenaire spécifique, par exemple une entreprise, ou un rôle partenaire plus général, comme un acheteur, un vendeur ou un fabricant. Un pool peut avoir des détails internes sous forme d'un processus exécuté ou ne présenter aucun détail interne ; dans ce cas, il est considéré comme une « boîte noire ».
-    \item \textbf{Les couloirs (Lane)} : un couloir est une partition verticale ou horizontale d'un pool. Il sert à organiser les activités selon un rôle, une fonction ou une responsabilité. À l'intérieur d'un même pool, y compris entre deux couloirs, l'enchaînement des activités est représenté par des flux de séquence. Les flux de message sont réservés aux échanges entre participants, donc entre pools distincts \cite{omg2013bpmn}.
-\end{itemize}
-
-%Un pool est un rectangle à coins carrés tracé avec une seule ligne continue. L'étiquette du pool peut être placée à n'importe quel endroit et dans n'importe quelle direction à l'intérieur, mais doit être séparée du contenu par une seule ligne.
+Les partitions rendent visibles les responsabilités organisationnelles. Un
+\textit{pool} représente un participant, alors qu'une \textit{lane} organise les
+activités de ce participant selon un rôle ou une fonction. Les flux de séquence
+relient les activités d'un même pool, tandis que les messages assurent les
+échanges entre pools distincts \cite{omg2013bpmn}. Cette distinction prépare la
+prise en compte des rôles et des interactions dans l'application web métier. La
+figure~\ref{fig:pool-bpmn} montre un pool organisé en deux lanes.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{Chap1/images/image9.JPG}
-    \caption{La représentation d'un pool avec deux lanes en BPMN 2.0.}
+    \caption{Pool comportant deux lanes dans BPMN 2.0}
     \label{fig:pool-bpmn}
 \end{figure}
 
-\subsubsection*{D. Les données}
+\subsubsection*{D. Données}
 
-Les données sont utilisées pour expliquer quelles informations sont nécessaires dans le diagramme.
+Les objets de données indiquent les informations consommées ou produites par une
+activité. Les entrées alimentent le processus ou une activité, tandis que les
+sorties en représentent les résultats. BPMN permet de montrer leur association
+au flux, mais ne suffit pas toujours à exprimer les structures, les mappings, le
+stockage et les règles de visibilité attendus par une application web métier. La
+figure~\ref{fig:donnees-bpmn} présente les symboles correspondants.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{Chap1/images/image11.JPG}
-    \caption{Les données de BPMN 2.0.}
+    \caption{Représentation des données dans BPMN 2.0}
     \label{fig:donnees-bpmn}
 \end{figure}
 
-\begin{itemize}
-    \item \textbf{Données (Data)} : objets utilisés pour représenter les données nécessaires à l'exécution d'une activité, ainsi que celles produites. Les objets de données peuvent représenter un objet singulier ou une collection d'objets.
-   % \item \textbf{Une collection d'objets de données} : elle représente une collection d'éléments de données liés à la même entité de données, par exemple une liste d'articles à commander.
-    \item \textbf{Entrée de données (Data Input)} : elle correspond à une entrée externe pour l'ensemble du processus, pouvant être lue par une activité.
-    \item \textbf{Sortie de données (Data Output)} : elle correspond au résultat de l'ensemble du processus.
-   % \item \textbf{Magasin de données (Data Store)} : il fournit un mécanisme de stockage de données où le processus peut lire ou écrire des données, comme une base de données ou un classeur d'archivage. Il persiste au-delà de la durée de vie de l'instance de processus.
-\end{itemize}
+\subsubsection*{E. Artefacts}
 
-\subsubsection*{E. Les artéfacts}
-
-Les artéfacts sont des objets supplémentaires qui apportent des détails complémentaires afin d'assurer une meilleure compréhension du processus. Il existe deux types d'artéfacts : le groupe et l'annotation textuelle.
+Les artefacts complètent la lecture sans modifier directement le déroulement du
+processus. Les groupes rapprochent visuellement des éléments liés et les
+annotations textuelles apportent une précision destinée au lecteur. Ils restent
+utiles pour documenter un diagramme, mais ne portent pas à eux seuls les
+informations applicatives nécessaires à la génération. La
+figure~\ref{fig:artefacts-bpmn} illustre ces deux formes.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{Chap1/images/image12.JPG}
-    \caption{Les artéfacts.}
+    \caption{Groupes et annotations textuelles dans BPMN 2.0}
     \label{fig:artefacts-bpmn}
 \end{figure}
 
-\begin{itemize}
-    \item \textbf{Groupe} : un groupe est un rectangle à coins arrondis tracé avec une ligne pointillée continue. Il permet de regrouper des tâches d'une même catégorie afin de mieux les repérer visuellement sur le diagramme.
-    \item \textbf{Annotation textuelle} : elle permet d'ajouter des commentaires pour faciliter la lecture du diagramme BPMN.
-\end{itemize}
-
 \subsubsection{Types de diagrammes BPMN}
 
-BPMN distingue principalement les diagrammes de processus, les diagrammes de collaboration et les diagrammes de chorégraphie \cite{omg2013bpmn}. 
-\begin{itemize}
-    \item Le \textbf{diagramme de processus} décrit le déroulement interne d'un processus dans un participant donné. Il est adapté lorsque l'on souhaite comprendre l'enchaînement des activités d'un service ou d'un système.
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.65\textwidth]{Chap1/images/image15.JPG}
-            \caption{Exemple de diagramme de processus}
-            \label{fig:diagramme-processus-bpmn}
-            \end{figure}
-    \item Le \textbf{diagramme de collaboration} met en relation plusieurs participants et montre les messages qu'ils échangent. Chaque pool représente un participant. Les flux de message relient deux pools distincts ou des objets contenus dans des pools différents ; ils ne relient pas deux activités appartenant au même pool \cite{omg2013bpmn}.
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.65\textwidth]{Chap1/images/image14.JPG}
-            \caption{Exemple de diagramme de collaboration}
-            \label{fig:diagramme-collaboration-bpmn}
-        \end{figure}
-    \item Le \textbf{diagramme de chorégraphie} se concentre davantage sur les interactions entre participants que sur leur organisation interne. Il ne décrit pas l'orchestration propre à chaque participant, mais les échanges de messages qui structurent leur collaboration.
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.65\textwidth]{Chap1/images/image13.JPG}
-            \caption{Exemple de diagramme de chorégraphie}
-            \label{fig:diagramme-choregraphie-bpmn}
-        \end{figure}
-\end{itemize}
+BPMN distingue les diagrammes de processus, de collaboration et de chorégraphie
+\cite{omg2013bpmn}. Le diagramme de processus décrit l'enchaînement interne des
+activités d'un participant ; il est privilégié dans ce mémoire, car il porte le
+déroulement utilisé comme entrée de la génération. Le diagramme de collaboration
+ajoute les échanges de messages entre plusieurs participants, tandis que la
+chorégraphie se concentre sur leurs interactions sans détailler leur
+orchestration interne. La figure~\ref{fig:diagramme-processus-bpmn} présente la
+vue privilégiée dans ce travail. La figure~\ref{fig:diagramme-collaboration-bpmn}
+illustre la collaboration, tandis que la
+figure~\ref{fig:diagramme-choregraphie-bpmn} donne un exemple de la seconde.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Chap1/images/image15.JPG}
+\caption{Exemple de diagramme de processus BPMN}
+\label{fig:diagramme-processus-bpmn}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Chap1/images/image14.JPG}
+\caption{Exemple de diagramme de collaboration BPMN}
+\label{fig:diagramme-collaboration-bpmn}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{Chap1/images/image13.JPG}
+    \caption{Exemple de diagramme de chorégraphie BPMN}
+    \label{fig:diagramme-choregraphie-bpmn}
+\end{figure}
+
 
 \mySection{Ingénierie dirigée par les modèles}{}
 \label{sec:ingenierie-modeles}
@@ -388,6 +331,9 @@ Un modèle est une abstraction d'un système, construite dans un objectif donné
 
 Un méta-modèle définit le langage dans lequel les modèles sont exprimés. Il précise les concepts autorisés, leurs relations et les contraintes qui structurent les modèles valides. Le méta-modèle joue donc un rôle de cadre : il rend les modèles manipulables par des outils, car il décrit leur structure attendue. Au-dessus, le méta-méta-modèle fournit le langage permettant de définir les méta-modèles. L'Object Management Group (OMG) organise cette logique selon quatre niveaux : M0 pour le système réel, M1 pour les modèles, M2 pour les méta-modèles et M3 pour le méta-méta-modèle, généralement associé à MOF, Meta-Object Facility \cite{jezequel2012,omgmof}.
 
+La figure~\ref{fig:pyramide-modelisation-omg} synthétise cette organisation en
+quatre niveaux.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.50\textwidth]{Chap1/images/image19.JPG}
@@ -401,6 +347,9 @@ La transformation de modèle consiste à produire un modèle cible à partir d'u
 
 Les transformations occupent une place centrale dans l'IDM parce qu'elles donnent un caractère productif aux modèles. Elles peuvent servir à raffiner une spécification, restructurer une représentation, migrer d'une technologie à une autre, générer du texte ou produire du code. Les deux grandes familles généralement retenues sont les transformations modèle-vers-modèle (M2M) et modèle-vers-texte (M2T). Les standards et langages de transformation, comme QVT, ATL ou les approches par templates, cherchent à formaliser ces passages afin qu'ils soient reproductibles et moins dépendants d'une manipulation manuelle \cite{jezequel2012,omgqvt}.
 
+La figure~\ref{fig:transformation-modele} représente le passage d'un modèle
+source à un modèle cible au moyen de règles de transformation.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image16.JPG}
@@ -410,7 +359,7 @@ Les transformations occupent une place centrale dans l'IDM parce qu'elles donnen
 
 \subsection{Model-Driven Architecture}
 
-La Model-Driven Architecture (MDA) est une initiative de l'OMG qui applique les principes de l'IDM à l'architecture logicielle. Elle vise à décrire une application en distinguant les modèles indépendants de la plateforme et les modèles liés à une plateforme particulière.
+La Model-Driven Architecture (MDA) est une initiative de l'OMG qui applique les principes de l'IDM à l'architecture logicielle. Elle vise à décrire une application en distinguant les modèles indépendants de la plateforme et les modèles liés à une plateforme particulière. La figure~\ref{fig:niveaux-mda} présente les trois niveaux d'abstraction correspondants.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.65\textwidth]{Chap1/images/image17.JPG}
@@ -442,28 +391,15 @@ L'intérêt de la MDA est de préserver les décisions de conception à un nivea
 
 \subsubsection{Historique du développement web}
 
-Le développement web est né avec un objectif essentiellement documentaire :
-publier des informations et permettre leur consultation à distance. Dans cette
-première logique, le navigateur demandait une page, le serveur retournait un
-document HTML, puis le navigateur l'affichait. Les fondements du Web restent
-liés à cette organisation : identification des ressources, liens hypertextes,
-représentations et échanges entre clients et serveurs \cite{w3c2004webarch}.
-
-L'évolution des usages a progressivement transformé le Web en plateforme
-applicative. Les pages statiques ont été complétées par des formulaires, des
-espaces authentifiés, des tableaux de bord, des services de paiement, des
-plateformes universitaires et des applications administratives. Le navigateur
-n'est alors plus seulement un lecteur de documents ; il devient l'interface
-d'un système logiciel distant. Cette évolution a donné plus d'importance aux
-langages côté client, aux serveurs d'application, aux bases de données, aux API,
-à la sécurité et à la maintenabilité.
-
-HTTP demeure le support principal de ces échanges. Le RFC 9110 le définit comme
-un protocole applicatif fondé sur des requêtes, des réponses et des méthodes
-comme \texttt{GET}, \texttt{POST}, \texttt{PUT}, \texttt{PATCH} ou
-\texttt{DELETE} \cite{rfc9110}. Cette base explique pourquoi les applications
-web modernes sont généralement construites autour de routes, de ressources,
-d'opérations métier et de formats de représentation comme HTML ou JSON.
+Initialement conçu pour publier et relier des documents, le Web est devenu une
+plateforme d'exécution d'applications accessibles à distance
+\cite{w3c2004webarch}. Aux pages de consultation se sont ajoutés des formulaires,
+des espaces authentifiés, des tableaux de bord et des services interactifs. Le
+navigateur constitue désormais l'interface d'un système qui traite des données
+et applique des règles métier. Les échanges restent fondés sur le modèle
+requête-réponse du Web \cite{rfc9110}, mais leur organisation doit désormais
+répondre à des exigences de sécurité, de maintenabilité et d'intégration propres
+aux applications métier.
 
 \subsubsection{Définition d'application web et concepts du web}
 
@@ -521,34 +457,15 @@ l’évolution du workflow.
 
 \subsubsection{Frameworks d'application web}
 
-Un framework d'application web fournit un cadre de développement, des composants
-réutilisables et des conventions pour construire une application. Il évite de
-réécrire à chaque projet les mêmes mécanismes : routage, contrôleurs, accès aux
-données, gestion des sessions, validation, rendu des vues, authentification ou
-traitement des erreurs. Son intérêt n'est pas seulement de gagner du temps ; il
-permet aussi d'organiser le code de manière plus régulière et plus maintenable.
-
-\subsubsection*{Frameworks de développement web back-end}
-
-Les frameworks back-end structurent la partie serveur de l'application. Ils
-organisent les routes, les contrôleurs, les services, les modèles de données et
-les mécanismes de sécurité. Dans une application métier, c'est dans cette partie
-que sont vérifiées les règles comme l'autorisation d'un utilisateur, la validité
-d'une demande ou le passage d'un dossier d'un état à un autre. Ils peuvent aussi
-faciliter l'accès aux bases de données, la journalisation, la gestion des erreurs
-et l'exposition d'API. Des environnements comme Spring, Django, Laravel ou
-Express illustrent cette famille d'outils.
-
-\subsubsection*{Frameworks de développement web front-end}
-
-Les frameworks front-end structurent l'interface exécutée dans le navigateur. Ils
-aident à construire des composants réutilisables, gérer les formulaires,
-afficher les données et réagir aux actions de l'utilisateur. Dans une application
-orientée processus, cette partie est importante parce qu'elle rend visibles les
-tâches à traiter, les états du dossier, les messages d'erreur et les actions
-autorisées. Leur rôle est donc aussi ergonomique : ils aident à présenter le
-workflow de façon compréhensible pour chaque acteur. Des outils comme Angular,
-React ou Vue.js sont représentatifs de cette logique côté client.
+Un framework d'application web fournit des conventions et des composants
+réutilisables pour organiser le développement. Côté backend, il structure les
+points d'entrée, les services, l'accès aux données, la validation et la sécurité.
+Côté frontend, il aide à construire les vues, les formulaires et les interactions
+présentées à l'utilisateur. Dans une application web métier orientée processus,
+ces deux parties coopèrent : le backend prend en charge les opérations et les
+règles applicatives, tandis que le frontend rend visibles les tâches, les états
+et les actions autorisées. Le framework facilite cette organisation, sans définir
+à lui seul le processus métier.
 
 \subsubsection{Sécurité dans les applications web}
 
@@ -565,6 +482,9 @@ simplifie la gestion de la sécurité, car les administrateurs peuvent créer de
 leur attribuer des autorisations et contrôler ainsi l’accès aux ressources. Elle
 favorise également des principes essentiels comme le moindre privilège, la
 séparation des tâches et la protection des informations sensibles.
+
+La figure~\ref{fig:modele-rbac} résume les relations entre utilisateurs, rôles
+et permissions dans le modèle RBAC.
 
 \begin{figure}[H]
     \centering

@@ -3,9 +3,10 @@
 \usepackage{graphicx}  % Required for including images
 \usepackage{subcaption}
 \usepackage{float}     % Required for the H option
-% \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
-% \usepackage{amsmath}
-% \usepackage{amssymb}
+\usepackage{longtable}
+% algorithm2e est chargé et configuré dans defs-and-imports.tex.
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \usepackage{listings}
 \usepackage{xcolor} % Nécessaire pour les couleurs
@@ -91,10 +92,18 @@
 % \usepackage{bibtex} % Utiliser natbib pour les citations
 
 \author{NGONG KOUT Yuri Roosevelt}
+\title{Ingénierie des applications web pilotées par des modèles BPMN}
 \date{\today}
+\hypersetup{
+  pdftitle={Ingénierie des applications web pilotées par des modèles BPMN},
+  pdfauthor={NGONG KOUT Yuri Roosevelt},
+  pdfsubject={Mémoire de Master 2 Recherche en informatique}
+}
 
 % Import de vos définitions et de votre style
 \input{defs-and-imports}
+\setlength{\headheight}{30pt}
+\setlength{\emergencystretch}{2em}
 
 \newlength{\defaultBeforeChapSkip}
 \setlength{\defaultBeforeChapSkip}{\beforechapskip}
@@ -151,16 +160,16 @@
     % Génération de la table des matières (avec "Table of Contents" comme titre), de la liste des symboles, de la liste des acronymes, de la liste des tableaux et de la liste des figures
     % Des alternatives à ces commandes sont dispos: il suffit juste d'ajouter le suffixe "Star" pour ne pas les mettre dans la table de matière
     \frontMatterListsLayout
-    \myTableOfContents{Table des Matières}
-	  \myListOfSymbols{}
-	  \myListOfAcronyms{}
-	  \myListOfTables{}
-	  \myListOfFigures{}
+	  \myTableOfContents{Table des matières}
+	  \myListOfSymbols{Liste des symboles}
+	  \myListOfAcronyms{Liste des acronymes}
+	  \myListOfTables{Liste des tableaux}
+	  \myListOfFigures{Liste des figures}
     \restoreDefaultChapterLayout
 	
 	% Résumé et abstract
 	\input{Resume/Resume}
-	%\input{other-pages/thesis-title}
+	\input{other-pages/thesis-title}
 	\input{Abstract/Abstract}
 	\clearpage
 	
