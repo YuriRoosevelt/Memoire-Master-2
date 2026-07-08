@@ -1,30 +1,22 @@
-\begin{center}
-    \setlength{\tabcolsep}{3pt}
-    \renewcommand{\arraystretch}{0.96}
-    \begin{tabular}[t]{rp{3mm}p{10.5cm}}
-        $\mathcal{G}_{\mathrm{spec}}$ & & structure syntaxique de la grammaire de \textit{spec-v1};\\
-        $\mathit{Spec}$ & & symbole de départ de la grammaire syntaxique;\\
-        $G_{\mathrm{spec}}$ & & modèle grammatical attribué de \textit{spec-v1};\\
-        $p$ & & identifiant du processus BPMN enrichi;\\
-        $v$ & & version de la spécification;\\
-        $R$ & & ensemble des rôles déclarés;\\
-        $S=(R_s,A_s,b_s)$ & & configuration du démarrage du processus;\\
-        $R_s$ & & rôles autorisés à démarrer une instance;\\
-        $A_s$ & & activités initiales du processus;\\
-        $b_s$ & & autorisation de démarrage automatique sans entrée manuelle;\\
-        $M$ & & rôles autorisés à superviser le processus;\\
-        $A=\{a_1,\ldots,a_n\}$ & & ensemble des activités enrichies;\\
-        $D=\{d_1,\ldots,d_m\}$ & & ensemble des entités de données partagées;\\
-        $C$ & & ensemble des contraintes de validité;\\
-        $a_i$ & & activité enrichie d'indice $i$;\\
-        $id_i$ & & identifiant BPMN de l'activité $a_i$;\\
-        $t_i$ & & type de l'activité $a_i$;\\
-        $R_i$ & & rôles candidats de l'activité $a_i$;\\
-        $\alpha_i$ & & politique d'affectation de l'activité $a_i$;\\
-        $I_i$ & & sources d'entrée de l'activité $a_i$;\\
-        $O_i=(s_i,\mu_i)$ & & sortie, stratégie de stockage et mappings de l'activité;\\
-        $V_i=(R_i^a,R_i^d)$ & & visibilité de l'activité et de ses données;\\
-        $X_i$ & & paramètres d'exécution d'une activité automatique;\\
-        $d_j=(k_j,F_j)$ & & entité partagée, sa clé et son ensemble de champs.\\
-    \end{tabular}
-\end{center}
+\begingroup
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+
+\begin{longtable}{@{}p{5cm}p{9cm}@{}}
+$G_{\text{spec-v1}}$ & Grammaire formelle de la spécification \texttt{spec-v1}.\\
+$N$ & Ensemble des non-terminaux de $G_{\text{spec-v1}}$.\\
+$T$ & Ensemble des terminaux de $G_{\text{spec-v1}}$.\\
+$P$ & Ensemble des productions de $G_{\text{spec-v1}}$.\\
+$S$ & Symbole de départ de $G_{\text{spec-v1}}$, avec $S=\langle Specification\rangle$.\\
+$B$ & Modèle BPMN importé.\\
+$A_B$ & Ensemble des activités du modèle BPMN $B$.\\
+$A_s$ & Ensemble des activités enrichies par la spécification \texttt{spec-v1}.\\
+$E_s$ & Ensemble des entités partagées déclarées dans \texttt{spec-v1}.\\
+$C$ & Ensemble des contraintes de validité appliquées avant la construction du modèle pivot.\\
+$L_{\mathrm{syn}}$ & Langage syntaxique engendré par $G_{\text{spec-v1}}$.\\
+$L_{\mathrm{val}}$ & Langage des couples BPMN/\texttt{spec-v1} satisfaisant les contraintes d'attributs.\\
+$\operatorname{enc}$ & Fonction de représentation finie d'un modèle ou d'une spécification.\\
+\end{longtable}
+\endgroup

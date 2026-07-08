@@ -175,6 +175,9 @@
 	
 	% *********** Partie principale ***********
 	\mainmatter
+	% Le longtable de la liste des symboles incrémente le compteur des tableaux
+	% dans les pages liminaires. La numérotation du corps du mémoire doit repartir à I.
+	\setcounter{table}{0}
 	
 	% Inclusion des différents chapitres
 	\input{Introduction/Introduction}

@@ -137,44 +137,28 @@ construit un modèle pivot composé de contrats intermédiaires, tels que le
 et le registre des processus. Ces contrats structurent les transformations M2M
 et M2T nécessaires à la production du code source.
 
-\subsection{Application web générée}
-
-Il ne s’agit pas d’un simple assemblage de fragments, mais d’un projet web métier
-structuré autour du processus et des acteurs concernés. L’application générée
-comprend les vues de traitement, les listes de tâches, les formulaires, les
-interfaces de suivi et les espaces de supervision. Elle intègre également les
-services nécessaires au démarrage d’un processus, à l’exécution des activités, à
-la gestion des transitions, à la persistance des données et au contrôle des
-droits d’accès. Les données peuvent être rattachées à une instance de processus
-ou conservées comme informations partagées, selon les règles définies dans
-\textit{spec-v1}. Ainsi, ProOWeb produit un socle applicatif structuré reliant
-interface, logique métier, sécurité, données, exécution du workflow et
-configuration du projet cible. Ce socle reste une base fonctionnelle que le
-développeur doit vérifier, adapter et compléter selon l'environnement de
-déploiement.
-
-\subsection{Exploitation et évolution de l'application}
-
-Après la génération, l’application est utilisée par les acteurs métier
-pour exécuter les tâches, par les superviseurs pour suivre les instances, par les
-administrateurs pour gérer les paramètres et par les développeurs pour adapter le
-code lorsque des besoins spécifiques apparaissent. Cette dimension évolutive est
-essentielle, car un processus, une règle d’affectation, un champ ou une interface
-peuvent être modifiés au cours du temps. ProOWeb prend donc en compte la
-régénération à travers le suivi des fichiers produits, la détection des
-modifications manuelles, la création de sauvegardes et la production de rapports
-de migration. L’architecture forme ainsi une boucle itérative reliant les modèles,
-le code généré et les adaptations réalisées.
-
-\subsection{Architecture logique de l'application web générée}
+\subsection{Application web générée et architecture logique du socle applicatif}
 \label{sec:chap3-architecture-application-cible}
 
-L'architecture de l'application cible doit être distinguée de celle du
-framework ProOWeb et des choix effectués pour réaliser le prototype. Elle décrit
-les responsabilités du socle applicatif web métier, les échanges entre ses
-composants et les règles de dépendance qui les organisent. Sa définition reste
-ainsi valable quels que soient les langages, les bibliothèques ou les mécanismes
-techniques retenus lors de l'implémentation.
+L'application web générée constitue le résultat principal de la chaîne mise en
+œuvre par ProOWeb. Elle ne correspond pas à un simple assemblage de fichiers ou
+de fragments isolés, mais à un projet web métier structuré autour du processus et
+des acteurs concernés. Le socle produit rassemble les vues de traitement, les
+listes de tâches, les formulaires, les interfaces de suivi et les espaces de
+supervision. Il comprend également les services nécessaires au démarrage d'un
+processus, à l'exécution des activités, à la gestion des transitions, à la
+persistance des données et au contrôle des droits d'accès. Les données peuvent
+être rattachées à une instance ou conservées comme informations partagées selon
+les règles définies dans \textit{spec-v1}. L'interface, la logique applicative,
+les données, la sécurité, le runtime, la configuration et le suivi forment ainsi
+un même projet cible, sans que celui-ci soit présenté comme directement prêt
+pour un déploiement en production.
+
+Cette vue générale est précisée par l'architecture logique du socle applicatif.
+Elle décrit les responsabilités
+internes du projet généré, les échanges entre ses composants et les règles de
+dépendance qui les organisent, indépendamment des langages, des frameworks, des
+bibliothèques ou des mécanismes retenus lors de l'implémentation.
 
 La vue adoptée est inspirée de l'architecture hexagonale. Le cœur métier et les
 services applicatifs sont placés au centre. Les interactions avec les acteurs,
@@ -283,8 +267,23 @@ une interaction avec l'environnement, le cœur s'appuie sur un port sortant, don
 l'adaptateur dialogue avec la ressource externe concernée. Les modèles et les
 contrats alimentent les services applicatifs, tandis que la sécurité, les tests
 et la traçabilité interviennent de manière transversale. Cette organisation
-définit un socle applicatif web métier structuré, destiné à être vérifié, adapté
-et complété selon les besoins de l'organisation.
+permet à ProOWeb de produire un socle applicatif web métier fonctionnel,
+structuré, traçable et ouvert à l'évolution. Le projet cible reste toutefois une
+base que le développeur doit vérifier, adapter et compléter selon les contraintes
+de l'organisation et de son environnement de déploiement.
+
+\subsection{Exploitation et évolution de l'application}
+
+Après la génération, l'application est utilisée par les acteurs métier pour
+exécuter les tâches, par les superviseurs pour suivre les instances, par les
+administrateurs pour gérer les paramètres et par les développeurs pour adapter le
+code lorsque des besoins spécifiques apparaissent. Cette dimension évolutive est
+essentielle, car un processus, une règle d'affectation, un champ ou une interface
+peuvent être modifiés au cours du temps. ProOWeb prend donc en compte la
+régénération à travers le suivi des fichiers produits, la détection des
+modifications manuelles, la création de sauvegardes et la production de rapports
+de migration. L'architecture forme ainsi une boucle itérative reliant les modèles,
+le code généré et les adaptations réalisées.
 
 \mySection{Modèle d'entrée enrichi : spécification spec-v1}{}
 \label{sec:chap3-spec}
@@ -319,174 +318,328 @@ La spécification \textit{spec-v1} constitue le complément applicatif du modèl
 %\end{tabularx}
 %\end{table}
 
-\subsection{Grammaire de spec-v1}
+\subsection{Grammaire formelle de spec-v1}
 \label{sec:chap3-grammaire-specv1}
 
-Dans ProOWeb, la grammaire ne décrit pas l'ordre d'exécution du processus : cette information
-reste portée par BPMN \cite{nguediaMomo2022processusIoT}. Elle formalise les renseignements ajoutés par
-\textit{spec-v1} pour rendre le processus projetable vers un socle applicatif.
+Le modèle BPMN conserve la structure de contrôle du processus : activités,
+événements, passerelles et flux de séquence \cite{omg2013bpmn}. Ces éléments ne
+suffisent toutefois pas à déterminer les rôles autorisés, les règles
+d'affectation, les sources de données, leur visibilité ou leur mode de stockage.
+Dans ProOWeb, \textit{spec-v1} forme donc un langage complémentaire qui porte ces
+informations applicatives. Sa grammaire fixe les constructions admises avant la
+validation sémantique et la transformation vers le modèle pivot. Cette séparation
+entre langage source, validation et transformation rejoint le principe de
+modèles explicitement structurés et manipulables propre à l'IDM
+\cite{jezequel2012}.
 
-Le modèle grammatical attribué d'une spécification est défini par :
+\subsubsection*{Définition de la grammaire}
+
+Une grammaire formelle est décrite par un quadruplet composé de non-terminaux,
+de terminaux, de productions et d'un symbole de départ. Pour \textit{spec-v1},
+nous retenons la définition suivante :
 
 \begin{equation}
-G_{\mathrm{spec}}^{\mathrm{att}} = (p, v, R, S, M, A, D, C).
+G_{\text{spec-v1}}=(N,T,P,S),
+\qquad S=\langle Specification\rangle.
 \label{eq:chap3-modele-grammatical-specv1}
 \end{equation}
 
-Les composantes de ce modèle ont la signification suivante :
+L'ensemble $N$ contient les catégories syntaxiques à développer, $T$ les
+symboles qui apparaissent dans une spécification, $P$ les productions qui
+organisent ces symboles et $S$ l'axiome à partir duquel une spécification complète
+est dérivée. La grammaire adopte une forme EBNF abstraite : elle décrit les
+concepts de \textit{spec-v1} sans les rattacher à un format de sérialisation ni à
+l'organisation physique d'un projet.
 
+Les principaux non-terminaux sont répartis en trois groupes :
+
+\begin{sloppypar}
 \begin{itemize}
-    \item $p$ est l'identifiant du processus BPMN enrichi. Dans le format
-    d'import du cas d'étude, il correspond à \texttt{processId} ; ProOWeb le
-    conserve ensuite comme clé de modèle dans le catalogue du workspace ;
-
-    \item $v$ est la version de la spécification. Le langage étudié dans ce
-    mémoire impose $v=1$ ;
-
-    \item $R$ est l'ensemble fini des rôles mentionnés dans la spécification :
-    rôles de démarrage, de supervision, d'affectation et de visibilité ;
-
-    \item $S=(R_s,A_s,b_s)$ décrit la configuration de démarrage. $R_s\subseteq R$ contient les
-    rôles autorisés à créer une instance, $A_s$ les identifiants des activités
-    initiales et $b_s$ indique si un démarrage automatique est permis en
-    l'absence d'une entrée manuelle ;
-
-    \item $M\subseteq R$ est l'ensemble des rôles autorisés à superviser le
-    processus ;
-
-    \item $A=\{a_1,\ldots,a_n\}$ est l'ensemble fini des activités enrichies.
-    Chaque $a_i$ porte l'identifiant d'une activité présente dans le BPMN ;
-
-    \item $D=\{d_1,\ldots,d_m\}$ est l'ensemble fini des entités partagées
-    déclarées par le processus ;
-
-    \item $C$ est l'ensemble des contraintes de validité contrôlées avant la
-    construction des contrats intermédiaires.
+    \item les blocs de processus, avec $\langle Specification\rangle$,
+    $\langle Start\rangle$, $\langle Monitors\rangle$ et
+    $\langle Activities\rangle$ ;
+    \item l'enrichissement d'une activité, avec $\langle Activity\rangle$,
+    $\langle Assignment\rangle$, $\langle AutomaticExecution\rangle$,
+    $\langle Input\rangle$, $\langle Source\rangle$,
+    $\langle Output\rangle$, $\langle Mapping\rangle$ et
+    $\langle Visibility\rangle$ ;
+    \item le modèle de données partagé, avec $\langle SharedData\rangle$,
+    $\langle Entity\rangle$, $\langle Field\rangle$ et
+    $\langle Relation\rangle$.
 \end{itemize}
+\end{sloppypar}
 
-La structure syntaxique associée à ce modèle attribué est notée :
+$\langle Specification\rangle$ représente le document complet.
+$\langle Start\rangle$ décrit son démarrage, $\langle Monitors\rangle$ sa
+supervision et $\langle Activities\rangle$ la collection des activités enrichies.
+Pour chaque activité, $\langle Activity\rangle$ rassemble les informations
+applicatives ; $\langle Assignment\rangle$ formalise son affectation et
+$\langle AutomaticExecution\rangle$ les modalités propres à une exécution
+automatique. Les non-terminaux $\langle Input\rangle$ et $\langle Source\rangle$
+décrivent les provenances des valeurs, tandis que $\langle Output\rangle$ et
+$\langle Mapping\rangle$ précisent leur destination. $\langle Visibility\rangle$
+porte les droits de consultation. Enfin, $\langle SharedData\rangle$ regroupe les
+$\langle Entity\rangle$ ; chacune est décrite par ses $\langle Field\rangle$ et
+ses éventuelles $\langle Relation\rangle$.
 
-\begin{equation*}
-G_{\mathrm{spec}}^{\mathrm{syn}}
-  =(N_{\mathrm{spec}},T_{\mathrm{spec}},P_{\mathrm{spec}},S_{\mathrm{spec}}),
-\qquad S_{\mathrm{spec}}=\mathit{Spec}.
-\end{equation*}
+L'ensemble $T$ comprend d'abord les mots-clés de \textit{spec-v1}, les symboles
+de ponctuation, les identifiants, les chaînes, les booléens et les entiers
+positifs. Il contient aussi les domaines finis effectivement contrôlés par la
+spécification :
 
-L'ensemble $N_{\mathrm{spec}}$ contient les non-terminaux qui représentent la spécification, le
-démarrage, la supervision, les activités, les entrées, les sorties, la
-visibilité et les données partagées. L'ensemble $T_{\mathrm{spec}}$ regroupe les clés du
-format JSON, les identifiants et les valeurs contrôlées, notamment
-\texttt{processId}, \texttt{schemaVersion}, \texttt{start},
-\texttt{monitors}, \texttt{activities}, \texttt{sharedData},
-\texttt{MANUAL} et \texttt{AUTOMATIC}. Le symbole de départ est
-$S_{\mathrm{spec}}$, représenté dans les productions par $\mathit{Spec}$. Cette
-notation le distingue de $S$, qui désigne la configuration de démarrage dans le
-modèle attribué. Enfin, $P_{\mathrm{spec}}$ rassemble les productions qui
-définissent l'organisation des blocs syntaxiques.
+\begin{sloppypar}
+\begin{itemize}
+    \item types d'activités : \texttt{MANUAL} et \texttt{AUTOMATIC} ;
+    \item modes d'affectation : \texttt{AUTOMATIC} et \texttt{MANUAL} ;
+    \item stratégies d'affectation : \texttt{ROLE\_QUEUE},
+    \texttt{SUPERVISOR\_ONLY}, \texttt{SUPERVISOR\_THEN\_ANCESTORS},
+    \texttt{UNIT\_MEMBERS}, \texttt{SINGLE\_MATCH\_ONLY},
+    \texttt{MANUAL\_ONLY} et \texttt{ROUND\_ROBIN} ;
+    \item sources d'entrée : \texttt{PREVIOUS\_ACTIVITY},
+    \texttt{PROCESS\_CONTEXT}, \texttt{SHARED\_DATA},
+    \texttt{BACKEND\_SERVICE} et \texttt{EXTERNAL\_SERVICE} ;
+    \item modes de stockage : \texttt{INSTANCE}, \texttt{SHARED} et
+    \texttt{BOTH} ;
+    \item types de champs : \texttt{STRING}, \texttt{TEXT},
+    \texttt{INTEGER}, \texttt{LONG}, \texttt{DECIMAL}, \texttt{BOOLEAN},
+    \texttt{DATE}, \texttt{DATETIME}, \texttt{JSON} et \texttt{UUID} ;
+    \item types de relations : \texttt{MANY\_TO\_ONE},
+    \texttt{ONE\_TO\_MANY}, \texttt{ONE\_TO\_ONE} et
+    \texttt{MANY\_TO\_MANY}.
+\end{itemize}
+\end{sloppypar}
 
-Les productions principales peuvent être résumées par l'EBNF suivante. Les
-crochets indiquent un élément optionnel, les accolades une répétition finie et
-le symbole $\mid$ une alternative.
+Pour les activités automatiques, le domaine terminal contient également les
+modes de déclenchement \texttt{MANUAL\_TRIGGER}, \texttt{IMMEDIATE} et
+\texttt{DEFERRED}. Les clés telles que \texttt{schemaVersion}, \texttt{start},
+\texttt{monitors}, \texttt{activities}, \texttt{assignment}, \texttt{input},
+\texttt{output}, \texttt{visibility} et \texttt{sharedData} servent de repères
+structurels. Cette organisation par clés nommées rend chaque bloc identifiable
+sans l'associer à un langage de programmation ou à une organisation de fichiers.
+Les catégories lexicales $\langle Identifier\rangle$, $\langle DataPath\rangle$,
+$\langle String\rangle$, $\langle Boolean\rangle$ et
+$\langle PositiveInteger\rangle$ désignent respectivement une référence nommée,
+un chemin de donnée, une chaîne, un booléen et un entier strictement positif. Les
+non-terminaux $\langle ActivityType\rangle$, $\langle AssignmentMode\rangle$,
+$\langle AssignmentStrategy\rangle$, $\langle SourceType\rangle$,
+$\langle StorageType\rangle$, $\langle FieldType\rangle$,
+$\langle RelationType\rangle$ et $\langle TriggerMode\rangle$ prennent exactement
+leurs valeurs dans les domaines finis énumérés ci-dessus.
 
-{\small
-\begin{align*}
-\mathit{Spec} &::= \mathit{ProcessId}\;\mathit{SchemaVersion}\;
-                 \mathit{Start}\;\mathit{Monitors} \\
-              &\quad \mathit{Activities}\;\mathit{SharedData}, \\
-\mathit{Start} &::= \mathit{StartableRoles}\;[\mathit{StartActivities}]
-                  \;[\mathit{AutoStart}], \\
-\mathit{Monitors} &::= \mathit{MonitorRoles}, \\
-\mathit{Activities} &::= \{\mathit{Activity}\}, \\
-\mathit{Activity} &::= \mathit{ActivityId}\;\mathit{ActivityType}\;
-                       \mathit{CandidateRoles}\;\mathit{Assignment} \\
-                   &\quad \mathit{Input}\;\mathit{Output}\;
-                       \mathit{Visibility}\;[\mathit{Execution}], \\
-\mathit{ActivityType} &::= \texttt{MANUAL}\mid\texttt{AUTOMATIC}, \\
-\mathit{Input} &::= \{\mathit{Source}\}, \\
-\mathit{Output} &::= \mathit{StorageStrategy}\;\{\mathit{Mapping}\}, \\
-\mathit{Visibility} &::= \mathit{ActivityRoles}\;\mathit{DataRoles}, \\
-\mathit{SharedData} &::= \{\mathit{Entity}\}, \\
-\mathit{Entity} &::= \mathit{EntityKey}\;\{\mathit{Field}\}.
-\end{align*}
-}
+\subsubsection*{Productions principales}
 
-Ces productions définissent la forme des informations consommées par ProOWeb ;
-elles ne réécrivent ni les événements, ni les passerelles, ni les flux de
-séquence du BPMN. Les contraintes sémantiques réunies dans $C$ complètent la
-syntaxe : unicité des identifiants, correspondance des activités avec le BPMN,
-appartenance des rôles au référentiel, validité des cibles de mapping et présence
-d'un gestionnaire connu pour une activité automatique. La grammaire prépare
-ainsi la validation, puis la construction du modèle pivot, sans prétendre
-garantir à elle seule la correction métier de l'application.
+Les productions ci-dessous décrivent la syntaxe abstraite normalisée de \textit{spec-v1}.
+\begin{lstlisting}[
+  caption={Productions EBNF principales de la grammaire spec-v1},
+  label={lst:chap3-ebnf-specv1},
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  columns=fullflexible
+]
+<Specification> ::= <SchemaVersion> <Start> <Monitors>
+                    <Activities> <SharedData>
 
-L'activité constitue l'unité principale d'enrichissement de \textit{spec-v1}.
-Elle est représentée par le tuple suivant :
+<SchemaVersion> ::= "schemaVersion" "=" "1"
 
-\begin{equation}
-a_i=(id_i,t_i,R_i,\alpha_i,I_i,O_i,V_i,X_i).
-\label{eq:chap3-activite-grammaticale-specv1}
-\end{equation}
+<Start> ::= "start" {
+              <StartableRoles>
+              [ <StartActivities> ]
+              [ <AutoStart> ]
+            }
+<StartableRoles> ::= "startableByRoles" "=" <RoleList>
+<StartActivities> ::= "startActivities" "=" <ActivityIdList>
+<AutoStart> ::= "allowAutoStartWhenNoManualEntry" "=" <Boolean>
 
-Dans cette représentation, $id_i$ est l'identifiant BPMN de l'activité. Son
-type $t_i$ prend la valeur \texttt{MANUAL} ou \texttt{AUTOMATIC}. L'ensemble $R_i$
-contient ses rôles candidats et $\alpha_i$ sa politique d'affectation. $I_i$
-regroupe les sources d'entrée. La sortie $O_i=(s_i,\mu_i)$ associe une stratégie
-de stockage $s_i$ à un ensemble de mappings $\mu_i$. La visibilité
-$V_i=(R_i^a,R_i^d)$ distingue les rôles autorisés à voir l'activité de ceux qui
-peuvent consulter ses données. Enfin, $X_i$ décrit le gestionnaire et le mode de
-déclenchement lorsque l'activité est automatique ; il reste vide pour une
-activité manuelle.
+<Monitors> ::= "monitors" { <MonitorRoles> }
+<MonitorRoles> ::= "monitorRoles" "=" <RoleList>
 
-Une entité partagée $d_j=(k_j,F_j)$ possède une clé $k_j$ et un ensemble de
-champs $F_j$. Chaque champ est décrit par son nom, son type et son caractère
-obligatoire. Cette définition suffit pour que le \textit{data contract} prépare les
-structures persistantes et vérifie les cibles des mappings.
+<Activities> ::= "activities" { [ <ActivityList> ] }
+<ActivityList> ::= <ActivityEntry>
+                 | <ActivityEntry> "," <ActivityList>
+<ActivityEntry> ::= <ActivityId> "=" <Activity>
 
-Les contraintes $C$ donnent sa portée opérationnelle au modèle grammatical.
-Elles imposent notamment que $p$ corresponde au processus BPMN importé, que
-$\{id_1,\ldots,id_n\}$ soit inclus dans l'ensemble des activités du BPMN et que
-les rôles employés appartiennent au référentiel retenu. De plus, une activité
-manuelle doit posséder au moins un rôle candidat, un mapping doit viser une
-donnée déclarée et une activité automatique doit référencer un gestionnaire
-connu. Une violation bloquante empêche la promotion des contrats. Ainsi,
-\textit{spec-v1} reste une spécification complémentaire à BPMN. Le
-listing~\ref{lst:chap3-structure-specv1} en présente une structure JSON
-simplifiée.
+<Activity> ::= {
+                 <ActivityType>
+                 <CandidateRoles>
+                 <Assignment>
+                 [ <AutomaticExecution> ]
+                 <Input>
+                 <Output>
+                 <Visibility>
+               }
+<ActivityType> ::= "activityType" "=" <ActivityTypeValue>
+<CandidateRoles> ::= "candidateRoles" "=" <RoleList>
 
-\begin{lstlisting}[caption={Structure simplifiée de la spécification spec-v1},label={lst:chap3-structure-specv1}]
-{
-  "processId": "processus_1",
-  "schemaVersion": 1,
-  "start": {
-    "startableByRoles": ["ROLE_3"],
-    "startActivities": ["activité_1"]
-  },
-  "monitors": {
-    "monitorRoles": ["ROLE_1", "ROLE_2"]
-  },
-  "activities": {
-    "activité_1": {
-      "activityType": "MANUAL",
-      "candidateRoles": ["ROLE_3"],
-      "assignment": {
-        "mode": "AUTOMATIC",
-        "strategy": "ROLE_QUEUE"
-      },
-      "input": {},
-      "output": {},
-      "visibility": {}
-    }
-  },
-  "sharedData": {
-    "entities": []
-  }
-}
+<Assignment> ::= "assignment" {
+                   <AssignmentMode>
+                   <AssignmentStrategy>
+                   <PreviousAssigneePolicy>
+                   <ManualAssignerRoles>
+                   <MaximumAssignees>
+                 }
+<AssignmentMode> ::= "mode" "=" <AssignmentModeValue>
+<AssignmentStrategy> ::= "strategy" "=" <AssignmentStrategyValue>
+<PreviousAssigneePolicy> ::=
+    "allowPreviouslyAssignedAssignee" "=" <Boolean>
+<ManualAssignerRoles> ::= "manualAssignerRoles" "=" <RoleList>
+<MaximumAssignees> ::= "maxAssignees" "=" <PositiveInteger>
+
+<AutomaticExecution> ::= "automaticExecution" {
+                           <HandlerReference>
+                           <TaskTypeKey>
+                           <TriggerMode>
+                           [ <DeferredDelay> ]
+                           <Configuration>
+                         }
+<HandlerReference> ::= "handlerRef" "=" <Identifier>
+<TaskTypeKey> ::= "taskTypeKey" "=" <Identifier>
+<TriggerMode> ::= "triggerMode" "=" <TriggerModeValue>
+<DeferredDelay> ::= "deferredDelayMinutes" "=" <PositiveInteger>
+<Configuration> ::= "configuration" "=" <StructuredValue>
+
+<Input> ::= "input" { "sources" "=" [ <SourceList> ] }
+<SourceList> ::= <Source> | <Source> "," <SourceList>
+<Source> ::= {
+               <SourceType>
+               <SourceReference>
+               <InputMappings>
+             }
+<SourceType> ::= "sourceType" "=" <SourceTypeValue>
+<SourceReference> ::= "sourceRef" "=" <DataPath>
+<InputMappings> ::= "mappings" "=" [ <MappingList> ]
+
+<Output> ::= "output" {
+               <StorageType>
+               <OutputMappings>
+             }
+<StorageType> ::= "storage" "=" <StorageTypeValue>
+<OutputMappings> ::= "mappings" "=" [ <MappingList> ]
+<MappingList> ::= <Mapping> | <Mapping> "," <MappingList>
+<Mapping> ::= { "from" "=" <DataPath> "to" "=" <DataPath> }
+
+<Visibility> ::= "visibility" {
+                   <ActivityViewerRoles>
+                   <DataViewerRoles>
+                 }
+<ActivityViewerRoles> ::= "activityViewerRoles" "=" <RoleList>
+<DataViewerRoles> ::= "dataViewerRoles" "=" <RoleList>
+
+<SharedData> ::= "sharedData" { "entities" "=" [ <EntityList> ] }
+<EntityList> ::= <Entity> | <Entity> "," <EntityList>
+<Entity> ::= {
+               <EntityKey>
+               [ <DisplayName> ]
+               [ <TableName> ]
+               <Fields>
+               [ <Relations> ]
+             }
+<EntityKey> ::= "entityKey" "=" <Identifier>
+<DisplayName> ::= "displayName" "=" <String>
+<TableName> ::= "tableName" "=" <Identifier>
+<Fields> ::= "fields" "=" <FieldList>
+<FieldList> ::= <Field> | <Field> "," <FieldList>
+<Field> ::= {
+              "name" "=" <Identifier>
+              "type" "=" <FieldType>
+              "required" "=" <Boolean>
+              "indexed" "=" <Boolean>
+              "unique" "=" <Boolean>
+            }
+
+<Relations> ::= "relations" "=" <RelationList>
+<RelationList> ::= <Relation> | <Relation> "," <RelationList>
+<Relation> ::= {
+                 "name" "=" <Identifier>
+                 "type" "=" <RelationType>
+                 "targetEntityKey" "=" <Identifier>
+                 [ "mappedBy" "=" <Identifier> ]
+                 [ "joinColumn" "=" <Identifier> ]
+                 [ "joinTable" "=" <Identifier> ]
+                 [ "inverseJoinColumn" "=" <Identifier> ]
+                 "required" "=" <Boolean>
+               }
+
+<RoleList> ::= [ <RoleSequence> ]
+<RoleSequence> ::= <Role> | <Role> "," <RoleSequence>
+<ActivityIdList> ::= [ <ActivityIdSequence> ]
+<ActivityIdSequence> ::= <ActivityId>
+                       | <ActivityId> "," <ActivityIdSequence>
+
+<ActivityTypeValue> ::= "MANUAL" | "AUTOMATIC"
+<AssignmentModeValue> ::= "AUTOMATIC" | "MANUAL"
+<AssignmentStrategyValue> ::= "ROLE_QUEUE"
+                            | "SUPERVISOR_ONLY"
+                            | "SUPERVISOR_THEN_ANCESTORS"
+                            | "UNIT_MEMBERS"
+                            | "SINGLE_MATCH_ONLY"
+                            | "MANUAL_ONLY"
+                            | "ROUND_ROBIN"
+<SourceTypeValue> ::= "PREVIOUS_ACTIVITY" | "PROCESS_CONTEXT"
+                    | "SHARED_DATA" | "BACKEND_SERVICE"
+                    | "EXTERNAL_SERVICE"
+<StorageTypeValue> ::= "INSTANCE" | "SHARED" | "BOTH"
+<TriggerModeValue> ::= "MANUAL_TRIGGER" | "IMMEDIATE" | "DEFERRED"
+<FieldType> ::= "STRING" | "TEXT" | "INTEGER" | "LONG"
+              | "DECIMAL" | "BOOLEAN" | "DATE" | "DATETIME"
+              | "JSON" | "UUID"
+<RelationType> ::= "MANY_TO_ONE" | "ONE_TO_MANY"
+                 | "ONE_TO_ONE" | "MANY_TO_MANY"
+<Boolean> ::= "true" | "false"
 \end{lstlisting}
 
-Ce listing rend visibles les cinq blocs structurants de la spécification :
-l'en-tête, le démarrage, la supervision, les activités enrichies et les données
-partagées. Il illustre la forme syntaxique attendue ; la correspondance avec le
-BPMN et les autres contraintes de validité restent contrôlées séparément.
+Les productions restent volontairement indépendantes des technologies retenues
+pour le prototype. Elles expriment ce que la chaîne de génération doit connaître,
+et non la manière dont un contrôleur, une vue ou un mécanisme de persistance sera
+programmé. Cette distinction permet à \textit{spec-v1} de jouer le rôle d'un
+langage dédié à la description applicative, tandis que le BPMN demeure la source
+du comportement processuel. La séparation entre structure grammaticale et
+traitements qui l'exploitent est également conforme aux principes de
+l'ingénierie des grammaires \cite{klint2005toward}.
+
+\subsubsection*{Contraintes syntaxiques et sémantiques}
+
+Les productions $P$ déterminent la structure d'une spécification. La conformité
+syntaxique impose la présence des constructions obligatoires, l'unicité des
+propriétés nommées dans leur groupe et l'appartenance des valeurs contrôlées aux
+domaines terminaux précédents. Les identifiants doivent respecter leur forme
+lexicale, les listes doivent être finies et chaque mapping doit contenir une
+source \texttt{from} et une cible \texttt{to} non vides.
+
+Une dérivation syntaxiquement correcte ne suffit pas pour autoriser la
+génération. Soient $B$ le modèle BPMN importé, $A_B$ l'ensemble de ses activités,
+$A_s$ les clés de \texttt{activities} et $E_s$ les clés des entités partagées.
+La validation applique notamment les contraintes suivantes :
+
+\begin{enumerate}
+    \item la version de schéma vaut $1$ et toute activité explicitement enrichie
+    vérifie $A_s\subseteq A_B$ ; les identifiants placés dans
+    \texttt{startActivities} appartiennent également à $A_B$ ;
+    \item une activité de type \texttt{MANUAL} possède au moins un rôle candidat ;
+    lorsque son affectation est manuelle, la liste
+    \texttt{manualAssignerRoles} n'est pas vide ;
+    \item les listes \texttt{activityViewerRoles} et
+    \texttt{dataViewerRoles} ne sont pas vides, et les rôles qu'elles contiennent
+    doivent être compatibles avec le référentiel retenu par le projet ;
+    \item une activité \texttt{AUTOMATIC} désigne un gestionnaire et un type de
+    tâche connus ; le mode \texttt{DEFERRED} exige en outre un délai positif ;
+    \item toute source \texttt{SHARED\_DATA} et toute cible de sortie stockée en
+    mode \texttt{SHARED} ou \texttt{BOTH} désignent une entité de $E_s$ ;
+    \item les clés d'entités, les noms de champs et les noms de relations sont
+    uniques dans leur portée. Toute relation cible une entité déclarée ; les
+    paramètres de jointure doivent être cohérents avec son type.
+\end{enumerate}
+
+Une contrainte bloquante non satisfaite interrompt la promotion de la
+spécification vers les contrats intermédiaires. Cette validation établit une
+cohérence structurelle entre BPMN et \textit{spec-v1} ; elle ne constitue pas une
+preuve de correction complète des règles métier.
+
+Ainsi définie, la grammaire $G_{\text{spec-v1}}$ rend explicite le langage
+complémentaire consommé par ProOWeb. Le BPMN continue de décrire le déroulement
+du processus, alors que \textit{spec-v1} précise les informations applicatives
+nécessaires à la construction du modèle pivot puis à la génération du socle web
+métier. Le passage du modèle de processus au projet cible repose donc sur deux
+sources coordonnées, dont les responsabilités restent distinctes.
 
 \subsection{Propriétés de la grammaire spec-v1}
 \label{sec:chap3-proprietes-grammaire-specv1}
@@ -499,20 +652,112 @@ $\operatorname{id}(x)$ l'identifiant stable d'un élément $x$. Les propositions
 suivantes portent sur la structure de la chaîne ; elles ne démontrent pas la
 correction métier du processus.
 
+Pour préciser la classification obtenue, nous distinguons le langage syntaxique
+$L_{\mathrm{syn}}=L(G_{\text{spec-v1}})$ du langage validé
+\[
+L_{\mathrm{val}}
+=\{\operatorname{enc}(B)\texttt{\#}\operatorname{enc}(s)
+\mid s\in L_{\mathrm{syn}}\land C(B,s)\},
+\]
+où $\operatorname{enc}$ désigne une représentation finie d'un modèle ou d'une
+spécification, et $C(B,s)$ l'ensemble des contraintes syntaxiques et sémantiques
+présentées précédemment. Cette distinction sépare la forme de \textit{spec-v1}
+des correspondances que ProOWeb doit vérifier avec le BPMN.
+
+\begin{proposition}[Nature hors-contexte de la syntaxe]
+La grammaire $G_{\text{spec-v1}}=(N,T,P,S)$ est une grammaire hors-contexte, ou
+grammaire de type~2 dans la hiérarchie de Chomsky.
+\end{proposition}
+
+\begin{preuve}
+Toute production de $P$ possède à gauche un unique non-terminal
+$A\in N$ et s'écrit
+\[
+A ::= \alpha,
+\qquad \alpha\in(N\cup T)^{*}.
+\]
+Les notations EBNF d'optionalité et de groupement peuvent être remplacées par des
+non-terminaux auxiliaires sans modifier cette forme. Aucune règle ne fait
+dépendre sa partie gauche d'un contexte terminal ou non-terminal. La définition
+d'une grammaire hors-contexte est donc satisfaite.
+\end{preuve}
+
+\begin{proposition}[Caractère attribué]
+Munie des informations héritées du modèle BPMN et des valeurs synthétisées lors
+de la validation, $G_{\text{spec-v1}}$ est une grammaire attribuée.
+\end{proposition}
+
+\begin{preuve}
+À chaque non-terminal $X\in N$, on associe un attribut hérité
+$X.\operatorname{env}$ et des attributs synthétisés
+$X.\operatorname{valide}$ et $X.\operatorname{trace}$. L'environnement contient
+notamment les activités de $B$, les rôles retenus, les entités partagées et les
+types de tâches automatiques connus. Les productions portent alors des équations
+sémantiques. Par exemple, pour
+\[
+\langle ActivityEntry\rangle
+::=\langle ActivityId\rangle\texttt{"="}\langle Activity\rangle,
+\]
+on définit
+\[
+\langle ActivityEntry\rangle.\operatorname{valide}
+=\bigl(\langle ActivityId\rangle.\operatorname{lexeme}
+  \in\operatorname{id}(\operatorname{Act}(B))\bigr)
+ \land\langle Activity\rangle.\operatorname{valide},
+\]
+et l'attribut $\operatorname{trace}$ reçoit l'identifiant de l'activité BPMN
+correspondante. De la même manière, une production de mapping synthétise la
+validité de sa cible, tandis que les productions d'affectation et de visibilité
+vérifient leurs rôles dans l'environnement hérité. Ces valeurs sont calculées à
+partir des constituants de la production et transmises au modèle pivot. Les
+productions syntaxiques sont donc complétées par des attributs et des règles
+sémantiques, ce qui établit le caractère attribué de la grammaire
+\cite{klint2005toward,badouel2015active}.
+\end{preuve}
+
+\begin{proposition}[Non-régularité du langage validé]
+Si le domaine lexical des identifiants d'activités n'est pas borné, le langage
+$L_{\mathrm{val}}$ des couples BPMN/\textit{spec-v1} acceptés par les contraintes
+d'attributs n'est pas régulier.
+\end{proposition}
+
+\begin{preuve}
+Considérons le sous-ensemble dans lequel le BPMN contient une unique activité et
+où \textit{spec-v1} enrichit cette même activité, tous les autres constituants
+étant fixés. Restreignons les identifiants aux mots $a^n$, avec $n\geq1$. Cette
+restriction est décrite par un langage régulier $R$. La contrainte de
+correspondance des identifiants impose alors, après suppression des terminaux
+fixes par un homomorphisme $h$,
+\[
+h(L_{\mathrm{val}}\cap R)
+=K=\{a^n\texttt{\#}a^n\mid n\geq1\}.
+\]
+Supposons $K$ régulier et soit $p$ sa longueur de pompage. Pour le mot
+$w=a^p\texttt{\#}a^p$, toute décomposition $w=xyz$ telle que
+$|xy|\leq p$ et $|y|>0$ place $y$ uniquement dans le premier bloc de $a$.
+Le pompage avec l'exposant $0$ diminue donc seulement ce premier bloc ; le mot
+$xz$ n'appartient plus à $K$, ce qui contredit le lemme de pompage. Ainsi, $K$
+n'est pas régulier. Or les langages réguliers sont fermés par intersection avec
+un langage régulier et par homomorphisme. Si $L_{\mathrm{val}}$ était régulier,
+$K$ le serait également, d'où une contradiction. La non-régularité résulte donc
+des égalités de références imposées par les attributs, et non de la seule forme
+EBNF des productions.
+\end{preuve}
+
 \begin{proposition}[Récursivité bornée]
-La récursivité de $G_{\mathrm{spec}}^{\mathrm{syn}}$ est limitée à la construction
+La récursivité de $G_{\text{spec-v1}}$ est limitée à la construction
 des listes finies de rôles, d'activités, de sources, de mappings, d'entités et
-de champs. Pour tout document JSON fini $s$, l'analyse de ces productions
+de champs. Pour toute spécification finie $s$, l'analyse de ces productions
 récursives se termine.
 \end{proposition}
 
 \begin{preuve}
-Toute répétition EBNF $\{X\}$ de la grammaire peut être développée sous la forme
-droite récursive
+Chaque liste d'éléments $X$ est définie par une production droite récursive de
+la forme
 \[
-L_X\rightarrow\varepsilon
-\qquad\mid\qquad
-L_X\rightarrow X\,L_X.
+\langle XList\rangle ::= \langle X\rangle
+\quad\mid\quad
+\langle X\rangle\texttt{","}\langle XList\rangle.
 \]
 Soient $L_1,\ldots,L_q$ les listes contenues dans $s$ et
 \[
@@ -527,92 +772,116 @@ aucune analyse guidée par $S$ ne peut produire une récursion infinie.
 \end{preuve}
 
 \begin{proposition}[Non-ambiguïté structurelle conditionnelle]
-Supposons que chaque clé soit unique dans son objet JSON et que les valeurs
-discriminantes, notamment \texttt{MANUAL} et \texttt{AUTOMATIC}, appartiennent
-aux domaines définis par la grammaire. Alors tout document
-$s\in L(G_{\mathrm{spec}}^{\mathrm{syn}})$ possède un unique arbre syntaxique pour
+Supposons que chaque propriété nommée apparaisse au plus une fois dans son groupe
+et que les valeurs discriminantes, notamment \texttt{MANUAL} et
+\texttt{AUTOMATIC}, appartiennent aux domaines définis par la grammaire. Alors
+toute spécification
+$s\in L(G_{\text{spec-v1}})$ possède un unique arbre syntaxique pour
 les blocs structurants de \textit{spec-v1}.
 \end{proposition}
 
 \begin{preuve}
-On raisonne par induction sur la hauteur $h$ de l'arbre JSON de $s$. Pour
-$h=0$, une valeur atomique est reconnue par son type et par la clé qui la porte ;
-elle correspond donc à un terminal déterminé. Supposons l'arbre syntaxique
-unique pour tout sous-arbre de hauteur au plus $h$. Un objet de hauteur $h+1$
-est identifié par une clé structurante telle que \texttt{start},
-\texttt{monitors}, \texttt{activities}, \texttt{assignment}, \texttt{input},
-\texttt{output}, \texttt{visibility} ou \texttt{sharedData}. L'unicité des clés
-sélectionne une seule production, tandis que l'hypothèse d'induction assure
-l'unicité des sous-arbres associés. L'arbre syntaxique du document est donc
-unique. Cette propriété exclut l'ambiguïté de structure sous les hypothèses
-posées ; elle ne préjuge pas d'une éventuelle ambiguïté du sens métier.
+On raisonne par induction sur la hauteur $h$ de l'arbre de dérivation de $s$.
+Pour $h=0$, une valeur atomique appartient à un domaine terminal déterminé.
+Supposons la dérivation unique pour toute construction de hauteur au plus $h$.
+Une construction de hauteur $h+1$ est introduite par un terminal nommé tel que
+\texttt{start}, \texttt{monitors}, \texttt{activities}, \texttt{assignment},
+\texttt{input}, \texttt{output}, \texttt{visibility} ou \texttt{sharedData}.
+Ce terminal sélectionne une production unique. Pour une liste, la virgule sépare
+un premier élément du suffixe reconnu par la même production récursive.
+L'hypothèse d'induction assure alors l'unicité des sous-arbres. L'arbre de
+dérivation de la spécification est donc unique. Cette propriété exclut
+l'ambiguïté structurelle sous les hypothèses posées ; elle ne préjuge pas d'une
+éventuelle ambiguïté du sens métier.
 \end{preuve}
 
-\begin{proposition}[Terminaison de la validation]
-La validation syntaxique et sémantique de toute paire finie $(B,s)$ se termine.
-\end{proposition}
+% \begin{proposition}[Terminaison de la validation]
+% La validation syntaxique et sémantique de toute paire finie $(B,s)$ se termine.
+% \end{proposition}
 
-\begin{preuve}
-Après l'analyse syntaxique, soit $W_0$ la liste finie de toutes les références à
-contrôler : activités, rôles, sources, mappings, entités, champs et gestionnaires.
-On prend comme variant de boucle
-\[
-\mu(W_k)=|W_k|\in\mathbb{N}.
-\]
-À chaque itération, le validateur retire exactement un élément de $W_k$, effectue
-des tests d'égalité ou d'appartenance dans des ensembles finis, et n'ajoute aucun
-nouvel élément. Ainsi, tant que $W_k\neq\varnothing$,
-$\mu(W_{k+1})=\mu(W_k)-1$. L'ordre usuel sur $\mathbb{N}$ étant bien fondé, la
-boucle atteint $\mu=0$ après au plus $|W_0|$ itérations. La validation termine.
-\end{preuve}
+% \begin{preuve}
+% Après l'analyse syntaxique, soit $W_0$ la liste finie de toutes les références à
+% contrôler : activités, rôles, sources, mappings, entités, champs et gestionnaires.
+% On prend comme variant de boucle
+% \[
+% \mu(W_k)=|W_k|\in\mathbb{N}.
+% \]
+% À chaque itération, le validateur retire exactement un élément de $W_k$, effectue
+% des tests d'égalité ou d'appartenance dans des ensembles finis, et n'ajoute aucun
+% nouvel élément. Ainsi, tant que $W_k\neq\varnothing$,
+% $\mu(W_{k+1})=\mu(W_k)-1$. L'ordre usuel sur $\mathbb{N}$ étant bien fondé, la
+% boucle atteint $\mu=0$ après au plus $|W_0|$ itérations. La validation termine.
+% \end{preuve}
 
-\begin{proposition}[Cohérence conditionnelle du modèle pivot]
-Supposons que les contraintes $C(B,s)$ soient satisfaites et que
-$T_{\mathrm{M2M}}$ soit définie pour toutes les constructions présentes dans
-$(B,s)$. Alors le pivot $P=T_{\mathrm{M2M}}(B,s)$ ne contient aucune référence
-pendante vers une activité, un rôle, une donnée ou un gestionnaire.
-\end{proposition}
+% \begin{proposition}[Cohérence conditionnelle du modèle pivot]
+% Supposons que les contraintes $C(B,s)$ soient satisfaites et que
+% $T_{\mathrm{M2M}}$ soit définie pour toutes les constructions présentes dans
+% $(B,s)$. Alors le pivot $P=T_{\mathrm{M2M}}(B,s)$ ne contient aucune référence
+% pendante vers une activité, un rôle, une donnée ou un gestionnaire.
+% \end{proposition}
 
-\begin{preuve}
-Les contraintes $C(B,s)$ imposent notamment
-\[
-\operatorname{id}(\operatorname{Act}(s))
-  \subseteq \operatorname{id}(\operatorname{Act}(B)),
-\]
-l'appartenance des rôles au référentiel, l'existence des cibles de mapping et
-l'existence du gestionnaire de chaque activité automatique. La transformation
-construit chaque composante de $P$ uniquement à partir d'un élément ayant passé
-le contrôle correspondant et n'introduit pas de nouvelle référence métier.
-Supposons, par contradiction, que $P$ contienne une référence pendante $r$.
-Soit $r$ provient de $(B,s)$, auquel cas la contrainte associée aurait été
-violée, soit $r$ a été créée par la transformation, ce qui contredit la règle de
-construction précédente. Les deux cas sont impossibles. Le pivot est donc
-référentiellement cohérent sous les hypothèses posées.
-\end{preuve}
+% \begin{preuve}
+% Les contraintes $C(B,s)$ imposent notamment
+% \[
+% \operatorname{id}(\operatorname{Act}(s))
+%   \subseteq \operatorname{id}(\operatorname{Act}(B)),
+% \]
+% l'appartenance des rôles au référentiel, l'existence des cibles de mapping et
+% l'existence du gestionnaire de chaque activité automatique. La transformation
+% construit chaque composante de $P$ uniquement à partir d'un élément ayant passé
+% le contrôle correspondant et n'introduit pas de nouvelle référence métier.
+% Supposons, par contradiction, que $P$ contienne une référence pendante $r$.
+% Soit $r$ provient de $(B,s)$, auquel cas la contrainte associée aurait été
+% violée, soit $r$ a été créée par la transformation, ce qui contredit la règle de
+% construction précédente. Les deux cas sont impossibles. Le pivot est donc
+% référentiellement cohérent sous les hypothèses posées.
+% \end{preuve}
 
-\begin{proposition}[Traçabilité des activités enrichies]
-Supposons les identifiants d'activités uniques dans $B$ et $s$, et leur
-conservation par $T_{\mathrm{M2M}}$. Pour toute activité enrichie
-$a\in\operatorname{Act}(s)$ promue dans un contrat intermédiaire, il existe une
-unique activité $b\in\operatorname{Act}(B)$ et un unique élément de pivot $p_a$
-tels que
-\[
-\operatorname{id}(b)=\operatorname{id}(a)=\operatorname{id}(p_a).
-\]
-\end{proposition}
+% \begin{proposition}[Traçabilité des activités enrichies]
+% Supposons les identifiants d'activités uniques dans $B$ et $s$, et leur
+% conservation par $T_{\mathrm{M2M}}$. Pour toute activité enrichie
+% $a\in\operatorname{Act}(s)$ promue dans un contrat intermédiaire, il existe une
+% unique activité $b\in\operatorname{Act}(B)$ et un unique élément de pivot $p_a$
+% tels que
+% \[
+% \operatorname{id}(b)=\operatorname{id}(a)=\operatorname{id}(p_a).
+% \]
+% \end{proposition}
 
-\begin{preuve}
-La contrainte de correspondance donne l'existence d'une activité
-$b\in\operatorname{Act}(B)$ ayant le même identifiant que $a$. L'unicité des
-identifiants dans $B$ assure l'unicité de $b$. Par définition de
-$T_{\mathrm{M2M}}$, la construction de $p_a$ recopie
-$\operatorname{id}(a)$ sans le modifier ; l'unicité des identifiants dans le
-pivot assure alors l'unicité de $p_a$. L'égalité précédente permet donc de
-retrouver l'activité BPMN à partir de l'activité enrichie ou du contrat
-intermédiaire, ce qui établit la traçabilité annoncée.
-\end{preuve}
+% \begin{preuve}
+% La contrainte de correspondance donne l'existence d'une activité
+% $b\in\operatorname{Act}(B)$ ayant le même identifiant que $a$. L'unicité des
+% identifiants dans $B$ assure l'unicité de $b$. Par définition de
+% $T_{\mathrm{M2M}}$, la construction de $p_a$ recopie
+% $\operatorname{id}(a)$ sans le modifier ; l'unicité des identifiants dans le
+% pivot assure alors l'unicité de $p_a$. L'égalité précédente permet donc de
+% retrouver l'activité BPMN à partir de l'activité enrichie ou du contrat
+% intermédiaire, ce qui établit la traçabilité annoncée.
+% \end{preuve}
+
+% \begin{theorem}[Classification de la grammaire de spec-v1]
+% La spécification \textit{spec-v1} repose sur une grammaire hors-contexte
+% attribuée et syntaxiquement non ambiguë sous les conditions d'unicité énoncées.
+% Le langage $L_{\mathrm{val}}$ obtenu après application des contraintes
+% d'attributs est non régulier lorsque les identifiants d'activités sont considérés
+% sur un domaine lexical non borné.
+% \end{theorem}
+
+% \begin{preuve}
+% La nature hors-contexte découle de la forme des productions, qui possèdent toutes
+% un unique non-terminal en partie gauche. Les équations de validation et de
+% traçabilité attachées à ces productions établissent le caractère attribué. La
+% proposition de non-ambiguïté assure l'unicité de l'arbre de dérivation sous les
+% hypothèses précisées, tandis que la réduction au langage
+% $\{a^n\texttt{\#}a^n\mid n\geq1\}$ établit la non-régularité de
+% $L_{\mathrm{val}}$. Ces résultats portent sur la structure et les références de
+% la spécification ; ils ne garantissent pas la correction métier complète du
+% socle applicatif généré.
+% \end{preuve}
 
 %Les types autorisés restent volontairement simples : chaînes, entiers, booléens, listes, objets structurés et énumérations. Les champs d'une entité partagée peuvent par exemple être typés en \texttt{string}, \texttt{number}, \texttt{boolean}, \texttt{date}, \texttt{datetime} ou \texttt{file}. La spécification utilise donc des valeurs contrôlées. Les types d'activités distinguent les tâches manuelles et automatiques, les stratégies d'affectation sont bornées par une liste connue, et les stratégies de stockage indiquent explicitement où les données produites doivent être conservées. Cette discipline limite les ambiguïtés et rend la génération plus déterministe.
+
+Au regard de ces propriétés, la grammaire de la spécification \textit{spec-v1} est hors-contexte attribuée, non régulière et syntaxiquement non ambiguë sous les conditions d’unicité énoncées
 
 \subsection{Métadonnées des activités}
 
@@ -830,7 +1099,7 @@ promu vers l'étape M2T.
 \SetInd{0.4em}{0.8em}
 \SetAlgoNlRelativeSize{-1}
 
-\caption{TransformerM2M($B,S,R,C$)}
+\caption{TransformationM2M($B,S,R,C$)}
 \label{alg:m2m}
 
 \textbf{Entrées :}\;
@@ -1022,7 +1291,7 @@ puis retourne les artefacts écrits et le manifeste qui permet de les suivre.
 \SetInd{0.4em}{0.8em}
 \SetAlgoNlRelativeSize{-1}
 
-\caption{GenererM2T($P,T,C,W$)}
+\caption{TransformationM2T($P,T,C,W$)}
 \label{alg:m2t}
 
 \textbf{Entrées :}\;

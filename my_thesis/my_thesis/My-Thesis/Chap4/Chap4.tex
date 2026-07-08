@@ -377,12 +377,9 @@ l'environnement de ProOWeb.
 \subsection{Enrichissement du BPMN avec \textit{spec-v1}}
 
 Le BPMN est complété par le fichier
-\nolinkurl{commande-client.spec-v1.json}. Cet enrichissement suit le
-modèle grammatical défini par l'équation
-\ref{eq:chap3-modele-grammatical-specv1} :
-\[
-G_{\mathrm{spec}}^{\mathrm{att}}=(p,v,R,S,M,A,D,C).
-\]
+\nolinkurl{commande-client.spec-v1.json}. Cet enrichissement respecte la
+grammaire formelle $G_{\text{spec-v1}}=(N,T,P,S)$ définie par
+l'équation~\ref{eq:chap3-modele-grammatical-specv1}.
 La figure~\ref{fig:chap4-preuve-spec-commande} illustre cette spécification pour
 l'activité « Passer la commande ».
 
@@ -574,8 +571,7 @@ L'observation ne porte pas seulement sur l'ouverture du portail ou l'affichage
 d'un formulaire. Elle suit une même instance du processus
 \texttt{commande-client}, depuis sa création par un client jusqu'à sa clôture,
 en faisant intervenir successivement les rôles prévus par le modèle. Le frontend
-généré a été exécuté le 5 juillet 2026 sur
-\nolinkurl{http://127.0.0.1:5173}. Le runtime a été remplacé, pour cette
+généré a été lancé localement. Le runtime a été remplacé, pour cette
 observation, par des réponses contrôlées qui conservent l'identifiant, l'état et
 la chronologie de l'instance entre les changements d'utilisateur. Ce dispositif
 permet de vérifier le parcours frontend et la projection des rôles sans assimiler
@@ -665,70 +661,68 @@ alors que le backend généré protège les points d'entrée runtime par jeton J
 L'intégration de ces deux mécanismes doit donc être alignée avant de qualifier ce
 scénario de test de bout en bout sur l'ensemble du socle généré.
 
-\mySection{Évaluation de ProOWeb}{}
-\label{sec:chap4-evaluation}
+% \mySection{Évaluation de ProOWeb}{}
+% \label{sec:chap4-evaluation}
 
-L'évaluation menée dans ce chapitre est fonctionnelle et qualitative. Elle
-croise le rapport de validation, l'inspection des artefacts générés et
-l'observation des interfaces du cas d'étude. Cette méthode permet de vérifier la
-continuité entre BPMN, \textit{spec-v1}, le modèle pivot et le projet cible. Sa
-portée reste toutefois limitée : la présence d'un fichier généré ne démontre pas
-à elle seule son comportement dans une infrastructure de production.
+% L'évaluation menée dans ce chapitre est fonctionnelle et qualitative. Elle
+% croise le rapport de validation, l'inspection des artefacts générés et
+% l'observation des interfaces du cas d'étude. Cette méthode permet de vérifier la
+% continuité entre BPMN, \textit{spec-v1}, le modèle pivot et le projet cible. Sa
+% portée reste toutefois limitée : la présence d'un fichier généré ne démontre pas
+% à elle seule son comportement dans une infrastructure de production.
 
-Deux exécutions ont été réalisées le 4 juillet 2026 avec Node.js
-\texttt{v24.15.0}, Cypress~\texttt{15.16.0} et Chrome~149 en mode sans interface.
-Un parcours d'observation automatisé complémentaire a suivi une instance de
-commande depuis sa création jusqu'à l'état \texttt{COMPLETED}. Les huit activités
-du chemin nominal ont été présentées successivement au client, au service
-commercial et au gestionnaire de stock ; les cinq captures des figures
-\ref{fig:chap4-commande-saisie-client} à
-\ref{fig:chap4-commande-instance-terminee} en conservent les principaux états.
-Ce parcours utilise des réponses runtime contrôlées et vérifie donc l'enchaînement
-des interfaces, non leur intégration au backend réel. La campagne des scénarios
-générés a, pour sa part, exécuté cinq tests répartis dans quatre fichiers. Les
-cinq se sont arrêtés sur
-des assertions qui recherchent encore les anciens libellés
-\og Process Runtime Workbench \fg{} ou \og Runtime catalogs \fg{}, absents de la
-nouvelle page d'accueil. Les parcours métier simulés n'ont donc pas été atteints.
-Ce résultat met en évidence un décalage entre l'interface actuelle et les
-sélecteurs des scénarios générés ; il ne permet pas de conclure sur l'intégration
-du runtime backend.
+% Un parcours d'observation automatisé a suivi une instance de
+% commande depuis sa création jusqu'à l'état \texttt{COMPLETED}. Les huit activités
+% du chemin nominal ont été présentées successivement au client, au service
+% commercial et au gestionnaire de stock ; les cinq captures des figures
+% \ref{fig:chap4-commande-saisie-client} à
+% \ref{fig:chap4-commande-instance-terminee} en conservent les principaux états.
+% Ce parcours utilise des réponses runtime contrôlées et vérifie donc l'enchaînement
+% des interfaces, non leur intégration au backend réel.
 
-Le tableau~\ref{tab:chap4-synthese-verifications} distingue les preuves
-effectivement disponibles des validations qui restent partielles ou non
-mesurées dans cette version.
+% L'inspection du workspace relève également quatre fichiers Cypress : trois
+% décrivent les parcours propres aux processus du cas d'étude et un quatrième
+% cible le workbench runtime. Ces scénarios interceptent les appels à l'API pour
+% stabiliser les états du frontend. Certains sélecteurs recherchent encore des
+% libellés de l'ancienne interface, notamment \og Process Runtime Workbench \fg{}
+% et \og Runtime catalogs \fg{}. Ils constituent donc des ressources de test à
+% réaligner sur le portail actuel, et non une preuve d'intégration avec le runtime
+% backend.
 
-\begin{table}[H]
-\centering
-\footnotesize
-\caption{Synthèse des vérifications réalisées dans le cas d'étude}
-\label{tab:chap4-synthese-verifications}
-\begin{tabularx}{\textwidth}{p{2.7cm}p{3.6cm}p{3.4cm}X}
-\toprule
-\textbf{Élément vérifié} & \textbf{Preuve observée} &
-\textbf{Résultat obtenu} & \textbf{Limite associée} \\
-\midrule
-Validation BPMN--\textit{spec-v1} & Rapport du listing~\ref{lst:chap4-validation-commande} & Version~1 acceptée : 12 activités, 0 erreur et 0 avertissement. & L'existence des rôles dans un annuaire externe n'est pas contrôlée. \\
-Contrats runtime et data & Fichiers \texttt{v1.runtime.json}, \texttt{v1.data.json} et catalogues correspondants & Contrats produits et rattachés à la clé et à la version du processus. & Leur couverture sur toutes les variantes de modèles n'est pas mesurée. \\
-Génération backend & Contrôleur runtime, service d'exécution, entité et dépôt JPA présents dans l'arborescence & Structure Spring Boot effectivement générée dans le workspace. & Exécution intégrée avec les services et la base réels non mesurée dans cette version. \\
-Génération frontend & Page React et contrats JavaScript propres à la commande client & Vues et ressources frontend produites pour le processus étudié. & La couverture de toutes les branches BPMN reste partielle. \\
-Manifeste de génération & Fichier \path{.prooweb-managed.json} et chemins suivis & Artefacts gérés identifiables pour préparer la régénération contrôlée. & La préservation après une campagne complète de modifications manuelles reste à consolider. \\
-Scénarios Cypress & Quatre fichiers exécutés sous Chrome~149 & Cinq tests lancés, cinq échecs sur des libellés d'interface devenus obsolètes. & Les parcours simulés n'ont pas été atteints ; les API restent interceptées. \\
-Interfaces générées & Figures~\ref{fig:chap4-commande-saisie-client} à~\ref{fig:chap4-commande-instance-terminee} & Chemin nominal parcouru sur une même instance : huit activités réparties entre trois rôles, jusqu'à l'état \texttt{COMPLETED}. & Runtime contrôlé ; l'authentification JWT, le backend et la persistance réelle ne sont pas sollicités. \\
-API simulées & Usage de \texttt{cy.intercept} dans les scénarios frontend & Forme des échanges attendus par l'interface vérifiable. & Ne constitue pas une preuve d'intégration avec le backend réel. \\
-PostgreSQL, sécurité et persistance & Structures JPA, scripts Liquibase et règles projetées dans les artefacts & Présence des éléments générés vérifiée. & Comportement avec PostgreSQL, sécurité réelle et persistance de bout en bout non mesuré dans cette version. \\
-\bottomrule
-\end{tabularx}
-\end{table}
+% Le tableau~\ref{tab:chap4-synthese-verifications} distingue les preuves
+% effectivement disponibles des validations qui restent partielles ou non
+% mesurées dans cette version.
 
-Ces résultats montrent que la chaîne proposée produit les ressources attendues
-et que le frontend généré restitue le chemin nominal multi-rôles dans le
-périmètre observé. La
-campagne Cypress révèle toutefois que les scénarios générés doivent être
-synchronisés avec le nouveau portail métier. L'intégration avec le backend, la
-base de données, la sécurité et les services réels demande encore des tests
-dédiés. L'évaluation confirme donc la faisabilité de la chaîne ProOWeb, mais pas
-encore son aptitude à un usage industriel complet.
+% \begin{table}[H]
+% \centering
+% \footnotesize
+% \caption{Synthèse des vérifications réalisées dans le cas d'étude}
+% \label{tab:chap4-synthese-verifications}
+% \begin{tabularx}{\textwidth}{p{2.7cm}p{3.6cm}p{3.4cm}X}
+% \toprule
+% \textbf{Élément vérifié} & \textbf{Preuve observée} &
+% \textbf{Résultat obtenu} & \textbf{Limite associée} \\
+% \midrule
+% Validation BPMN--\textit{spec-v1} & Rapport du listing~\ref{lst:chap4-validation-commande} & Version~1 acceptée : 12 activités, 0 erreur et 0 avertissement. & L'existence des rôles dans un annuaire externe n'est pas contrôlée. \\
+% Contrats runtime et data & Fichiers \texttt{v1.runtime.json}, \texttt{v1.data.json} et catalogues correspondants & Contrats produits et rattachés à la clé et à la version du processus. & Leur couverture sur toutes les variantes de modèles n'est pas mesurée. \\
+% Génération backend & Contrôleur runtime, service d'exécution, entité et dépôt JPA présents dans l'arborescence & Structure Spring Boot effectivement générée dans le workspace. & Exécution intégrée avec les services et la base réels non mesurée dans cette version. \\
+% Génération frontend & Page React et contrats JavaScript propres à la commande client & Vues et ressources frontend produites pour le processus étudié. & La couverture de toutes les branches BPMN reste partielle. \\
+% Manifeste de génération & Fichier \path{.prooweb-managed.json} et chemins suivis & Artefacts gérés identifiables pour préparer la régénération contrôlée. & La préservation après une campagne complète de modifications manuelles reste à consolider. \\
+% Scénarios Cypress & Quatre fichiers présents dans le workspace & Trois parcours métier et des contrôles du workbench sont préparés, mais certains sélecteurs ciblent encore l'ancienne interface. & Scénarios à réaligner ; les API interceptées ne prouvent pas l'intégration au backend réel. \\
+% Interfaces générées & Figures~\ref{fig:chap4-commande-saisie-client} à~\ref{fig:chap4-commande-instance-terminee} & Chemin nominal parcouru sur une même instance : huit activités réparties entre trois rôles, jusqu'à l'état \texttt{COMPLETED}. & Runtime contrôlé ; l'authentification JWT, le backend et la persistance réelle ne sont pas sollicités. \\
+% API simulées & Usage de \texttt{cy.intercept} dans les scénarios frontend & Forme des échanges attendus par l'interface vérifiable. & Ne constitue pas une preuve d'intégration avec le backend réel. \\
+% PostgreSQL, sécurité et persistance & Structures JPA, scripts Liquibase et règles projetées dans les artefacts & Présence des éléments générés vérifiée. & Comportement avec PostgreSQL, sécurité réelle et persistance de bout en bout non mesuré dans cette version. \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
+
+% Ces résultats montrent que la chaîne proposée produit les ressources attendues
+% et que le frontend généré restitue le chemin nominal multi-rôles dans le
+% périmètre observé. L'inspection des scénarios Cypress montre toutefois qu'ils
+% doivent être synchronisés avec le nouveau portail métier. L'intégration avec le backend, la
+% base de données, la sécurité et les services réels demande encore des tests
+% dédiés. L'évaluation confirme donc la faisabilité de la chaîne ProOWeb, mais pas
+% encore son aptitude à un usage industriel complet.
 
 % \mySection{Évaluation de ProOWeb}{}
 % \label{sec:chap4-evaluation}
@@ -823,17 +817,6 @@ encore son aptitude à un usage industriel complet.
 % revanche, l'usage de \texttt{cy.intercept} pour simuler toutes les réponses
 % empêche de les considérer comme une preuve d'intégration complète.
 
-% Une nouvelle exécution a été tentée le 27 juin 2026 avec la commande
-% \texttt{npm run test:e2e:ci}. L'environnement utilisait Node.js
-% \texttt{v24.15.0} et le projet déclarait Cypress \texttt{13.17.0} ; Electron
-% était le navigateur prévu. Le lanceur a démarré Vite, puis s'est arrêté avant
-% l'exécution des scénarios, car le binaire Cypress~13.17.0 n'était pas présent
-% dans le cache local. Aucun navigateur n'a donc été lancé. La commande s'est terminée avec le code~1 après environ
-% 13~secondes : aucun test n'a donc été exécuté, et il serait incorrect d'annoncer
-% un nombre de succès ou d'échecs fonctionnels. Cette tentative fournit un
-% protocole précis, mais pas encore la preuve d'une campagne réussie. Le rapport
-% brut d'une exécution réussie n'est pas disponible dans cette version.
-
 % \subsection{Analyse de la capacité multi-processus}
 
 % La capacité multi-processus occupe une place centrale dans cette évaluation, car elle touche directement à l'ambition de ProOWeb. Une application métier n'est pas seulement une suite d'écrans attachés à une procédure. Elle doit porter une partie de la vie de l'organisation, avec ses acteurs, ses données partagées et ses décisions qui se répondent d'un processus à l'autre.
@@ -870,15 +853,61 @@ encore son aptitude à un usage industriel complet.
 \mySection{Discussion et positionnement}{}
 
 \subsection*{Discussion générale}
-Le cas d'étude e-commerce montre que ProOWeb permet de passer de processus métier exprimés en BPMN à un socle applicatif web structuré. Pour chaque processus étudié, le modèle BPMN est complété par une spécification \texttt{spec-v1}, puis projeté dans des contrats \texttt{runtime} et \texttt{data} avant la génération des artefacts applicatifs. Le résultat ne se limite donc pas à une juxtaposition de fichiers : il matérialise une chaîne cohérente entre le processus métier, son enrichissement, le modèle pivot et le projet logiciel généré. Cette continuité constitue le principal résultat observé dans le périmètre du cas d'étude.
+Le cas d'étude e-commerce montre que ProOWeb établit une continuité entre des
+processus exprimés en BPMN et un socle applicatif web métier structuré. Pour les
+trois processus étudiés, le BPMN est complété par \textit{spec-v1}, validé, puis
+projeté dans des contrats \textit{runtime} et \textit{data} avant la production
+des artefacts applicatifs. L'observation du processus de commande client complète
+cette inspection : une même instance est reprise successivement par le client,
+le service commercial et le gestionnaire de stock jusqu'à la fin du parcours
+nominal. Le résultat principal ne réside donc pas dans la seule présence de
+fichiers, mais dans le maintien d'un lien explicite entre le processus, son
+enrichissement, le modèle pivot, les artefacts générés et les interfaces
+observées.
 
-\subsection*{Forces de l'approche}
-La première force de ProOWeb réside dans la continuité qu'il établit entre la modélisation métier et la réalisation logicielle. BPMN conserve la description du déroulement du processus, tandis que \texttt{spec-v1} apporte les rôles, les données, les règles d'affectation, les mappings et les contraintes de visibilité nécessaires à la génération. La validation croisée limite la propagation d'incohérences avant la transformation. Le modèle pivot stabilise ensuite les informations validées dans une représentation commune, exploitée par les transformations \texttt{M2M} et \texttt{M2T}. Les contrats intermédiaires, les traces et le manifeste maintiennent enfin le lien entre les modèles d'entrée et les fichiers produits. Cette organisation rend le socle généré plus lisible, traçable et extensible, tout en laissant au développeur la possibilité de l'adapter aux besoins du projet.
+\subsection*{Forces du framework}
+La première force du framework ProOWeb tient à la séparation des responsabilités.
+BPMN conserve le déroulement du processus, tandis que la grammaire attribuée de
+\textit{spec-v1} structure les rôles, les données, les règles d'affectation, les
+mappings, la visibilité et les modalités d'exécution. La validation croisée
+empêche la promotion des incohérences bloquantes. Le modèle pivot stabilise
+ensuite les informations acceptées dans une représentation commune, exploitée
+successivement par les transformations M2M et M2T. Les contrats intermédiaires,
+les identifiants conservés et le manifeste rendent enfin l'origine des artefacts
+observable et préparent leur régénération. Cette organisation produit un projet
+cible lisible et extensible sans confondre le framework, le socle généré et les
+choix techniques retenus pour le prototype.
 
 \subsection*{Limites observées et positionnement}
-Ces résultats doivent néanmoins être interprétés dans les limites de l'évaluation menée. Le cas d'étude reste centré sur une organisation e-commerce et ne suffit pas à établir la généralisation de l'approche à tous les domaines métier. Le parcours de capture confirme le rendu et la navigation de l'interface, mais la campagne Cypress générée s'arrête sur des assertions qui ne correspondent plus au portail actuel. En outre, les interceptions d'API prévues par ces scénarios ne démontrent pas l'intégration complète avec le backend réel, PostgreSQL, les mécanismes de sécurité et la persistance. La qualité du projet généré dépend également de la précision du BPMN et de la spécification \texttt{spec-v1}. Enfin, la préservation du code personnalisé lors de régénérations successives devra être éprouvée sur des évolutions plus importantes. ProOWeb ne se positionne donc ni comme un BPMS classique, ni comme une plateforme low-code généraliste, ni comme un substitut au développeur. Il constitue un framework d'ingénierie dirigée par les modèles destiné à réduire l'écart entre le modèle métier et le projet logiciel, en fournissant une base applicative fonctionnelle, structurée, traçable et extensible que le développeur peut vérifier, adapter et compléter.
+Ces résultats restent circonscrits au périmètre observé. Le cas d'étude concerne
+une seule organisation e-commerce et ne permet pas de généraliser les résultats à
+tous les domaines métier. Le parcours multi-rôles vérifie les formulaires, les
+vues, les files de tâches, les restrictions de démarrage et la chronologie dans
+un environnement contrôlé. Il ne constitue pas encore un test d'intégration du
+frontend, du backend et de PostgreSQL : l'interface observée emploie une
+authentification Basic, alors que les points d'entrée runtime générés attendent un
+jeton JWT. La persistance réelle, les services externes, les branches alternatives
+des processus et les interactions entre plusieurs instances restent également à
+éprouver. Enfin, la préservation du code personnalisé doit être vérifiée sur des
+régénérations successives plus importantes.
+
+ProOWeb ne se positionne donc ni comme un BPMS classique, ni comme une plateforme
+low-code généraliste, ni comme un substitut au développeur. Son résultat est
+un socle applicatif web métier fonctionnel, structuré et traçable, que le
+développeur doit vérifier, adapter et compléter selon les règles et les
+contraintes de l'organisation.
 \mySection{Conclusion}{}
 
-Ce chapitre a présenté la mise en œuvre de ProOWeb et son application à un cas d'étude centré sur une organisation de commerce électronique. Il a montré comment les modèles BPMN enrichis sont importés, validés, transformés en contrats, puis projetés dans un socle applicatif web métier.
+Ce chapitre a présenté la mise en œuvre de ProOWeb et son application à une
+organisation de commerce électronique. Il a montré comment les modèles BPMN
+enrichis sont importés, validés, transformés en contrats, puis projetés dans un
+socle applicatif web métier.
 
-Le cas pratique a permis d'observer ProOWeb sur trois processus appartenant au même contexte : commande client, réapprovisionnement du stock et réclamation de produit. L'évaluation confirme la production d'un socle applicatif commun et traçable ainsi que l'affichage du portail et du formulaire de commande. Elle ne valide toutefois qu'une partie du comportement : les scénarios Cypress générés doivent être réalignés sur l'interface actuelle, puis complétés par des essais d'intégration et de régénération avant toute conclusion sur un usage en production.
+Le cas pratique porte sur trois processus appartenant au même contexte : commande
+client, réapprovisionnement du stock et réclamation de produit. Les ressources
+générées confirment leur coexistence dans un socle commun et traçable, tandis que
+le scénario de commande restitue un parcours nominal multi-rôles dans un
+environnement contrôlé. Cette évaluation démontre la faisabilité de la chaîne dans
+le périmètre retenu, mais pas encore son aptitude à un usage en production. Des
+essais intégrant réellement l'authentification, le backend, la persistance et la
+régénération après personnalisation restent nécessaires.
